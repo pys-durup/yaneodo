@@ -37,7 +37,7 @@
 .section-image .image{
     width: 100%;
     height: 450px;
-    background-image: url('/project/views/image/matchup_image.jpg');
+    background-image: url('/yaneodo/images/company/matchup_image.jpg');
     background-size: cover;
     opacity: 0.5;
     position: absolute;

@@ -89,7 +89,7 @@
 				<div class="row">
 					<div class="col-md-2 left-item">
 						<div class="pic">
-							<img src="/project/views/image/man_01.png" alt="">
+							<img src="/yaneodo/images/company/man_01.png" alt="">
 						</div>
 						<!-- <div>번호</div> -->
 
@@ -124,7 +124,7 @@
 				<div class="row">
 					<div class="col-md-2 left-item">
 						<div class="pic">
-							<img src="/project/views/image/man_02.png" alt="">
+							<img src="/yaneodo/images/company/man_02.png" alt="">
 						</div>
 						<!-- <div>번호</div> -->
 
@@ -156,7 +156,7 @@
 				<div class="row">
 					<div class="col-md-2 left-item">
 						<div class="pic">
-							<img src="/project/views/image/man_02.png" alt="">
+							<img src="/yaneodo/images/company/man_02.png" alt="">
 						</div>
 						<!-- <div>번호</div> -->
 
@@ -188,7 +188,7 @@
 				<div class="row">
 					<div class="col-md-2 left-item">
 						<div class="pic">
-							<img src="/project/views/image/man_02.png" alt="">
+							<img src="/yaneodo/images/company/man_02.png" alt="">
 						</div>
 						<!-- <div>번호</div> -->
 
