@@ -14,15 +14,16 @@
 <body>
 
 	<!-- ########## 상단 헤더 시작 -->
-	<%@include file="/WEB-INF/views/company/inc/header.jsp"%>
+	   <%@include file="/WEB-INF/views/company/inc/header.jsp" %>
 	<!-- ########## 상단 헤더 끝 -->
-
-	index 페이지
-
+		
+	template.jsp 페이지
+	
+	
 	<!-- ########## 상단 헤더 시작 -->
 	<%@include file="/WEB-INF/views/company/inc/footer.jsp"%>
 	<!-- ########## 상단 헤더 끝 -->
-
+	
 	<script>
 
 	</script>
