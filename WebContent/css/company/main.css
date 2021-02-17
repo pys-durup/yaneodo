@@ -1,3 +1,5 @@
+/* 공통 main css */
+
 @font-face {
 	font-family: 'Jal_Onuel';
 	src:
@@ -141,14 +143,14 @@ ul, li {
 
 /* 부트스트랩 재정의 */
 .container {
-	width: 1100px;
+	width: 100%;
 }
 
 .btn-primary {
 	color: white;
 	/* background-color: #898bcf; */
-	/* background-color: #2886FA; */
-	background-color: #5782AA;
+	background-color: #2886FA;
+	/* background-color: #5782AA; */
 	border: #5782AA 1px solid;
 	outline: none;
 }

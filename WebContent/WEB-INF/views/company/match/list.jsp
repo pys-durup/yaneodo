@@ -67,7 +67,7 @@
 			<div class="sideGroup">
 				<div>
 					<input type="button" value="서비스 결제하기"
-						class="btn btn-primary btn-middle">
+						class="btn btn-primary btn-middle" data-toggle="modal" data-target="#service">
 				</div>
 				<ul>
 					<li class="side-list-item side-list-item-selected"
@@ -290,9 +290,68 @@
 						</div>
 					</div>
 				</div>
-				<div class="modal-footer">
+				<div class="modal-footer showinfo">
 					<span class="modal-footer-text">상세이력 확인시, 열람권이 1회 차감됩니다</span>
 					<button type="button" class="btn btn-info">이력서 상세보기</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<!-- Modal -->
+	<div class="modal modal-center fade" id="service" tabindex="-1"
+		role="dialog">
+		<div class="modal-dialog modal-center modal-70size" role="document">
+			<div class="modal-content modal-70size">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">서비스 플랜</h4>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="col-md-5 service-box basic">
+						<div class="top">
+							<p class="title">베이직<p>
+							<p class="subtitle">1,000,000 원</p>
+							<p class="detail">부가세 별도</p>
+						</div>
+						<div class="bottom">
+							<p class="subtitle">30일간 최대 100건의 이력서 열람 및 면접제안</p>
+							<p class="detail">채용 수수료 무료</p>
+							<p class="detail">학력/경력 등 상세 이력 확인</p>
+							<p class="detail">100건 상세 이력서 열람</p>
+							<p class="detail">100회 제안 보내기 기능</p>
+							<p class="detail">유효기간 : 구매일로부터 30일</p>
+						</div>
+						
+						
+						</div>
+						<div class="col-md-5 service-box lite">
+						<div class="top">
+							<p class="title">라이트<p>
+							<p class="subtitle">500,000 원</p>
+							<p class="detail">부가세 별도</p>
+						</div>
+						<div class="bottom">
+							<p class="subtitle">30일간 최대 30건의 이력서 열람 및 면접제안</p>
+							<p class="detail">채용 수수료 무료</p>
+							<p class="detail">학력/경력 등 상세 이력 확인</p>
+							<p class="detail">30건 상세 이력서 열람</p>
+							<p class="detail">30회 제안 보내기 기능</p>
+							<p class="detail">유효기간 : 구매일로부터 30일</p>
+						</div>
+						
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer container">
+					<button type="button" class="btn btn-primary col-md-12">선택하기</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -308,6 +367,11 @@
 
 	<script>
 		
+		$(".service-box").on("click", function() {
+			alert(this.class);
+		});
+		
+	
 	</script>
 </body>
 </html>
