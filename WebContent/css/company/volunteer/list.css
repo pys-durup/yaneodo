@@ -56,11 +56,11 @@
     max-width: 760px;
 }
 
-#container .nav a {
+#content .nav a {
     color: #555555;
 }
 
-#container .nav li:hover {
+#content .nav li:hover {
     background-color: #e4e2ee;
 }
 

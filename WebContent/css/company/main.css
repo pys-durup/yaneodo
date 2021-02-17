@@ -27,12 +27,12 @@ body, p, div, span, ul, li, dl, dt, dd, table, th, td, a, blockquote,
 	/* font-size: 15px; */
 }
 
-html {
+/* html {
 	position: relative;
 	left: 0;
 	top: 0;
 	min-height: 100%
-}
+} */
 
 html, body {
 	padding: 0;
@@ -80,6 +80,7 @@ body {
 	width: 1100px;
 	margin: 0 auto;
 	color: black;
+	margin: 0 auto;
 }
 
 /* header 부분 */
@@ -254,7 +255,6 @@ ul, li {
 	text-align: left;
 	vertical-align: middle;
 }
-
 
 /* footer */
 #footer {

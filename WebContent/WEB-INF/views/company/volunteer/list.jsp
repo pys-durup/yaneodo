@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <%@include file="/WEB-INF/views/company/inc/asset.jsp"%>
-<link rel="stylesheet" href="/yaneodo/css/company/list.css">
+<link rel="stylesheet" href="/yaneodo/css/company/volunteer/list.css">
 <style>
 </style>
 </head>
@@ -183,6 +183,7 @@
 					value="면접일정 제안하기" class="btn btn-primary" data-toggle="modal"
 					data-target="#myModal">
 			</div>
+			
 
 
 
@@ -206,7 +207,9 @@
 			</div>
 		</div>
 		<!-- content 끝 -->
-
+		
+	</div>
+	<div style="clear: both;"></div>
 
 		<!-- Modal -->
 		<div class="modal modal-center fade" id="myModal" tabindex="-1"
@@ -248,12 +251,13 @@
 			<!-- /.modal-dialog -->
 		</div>
 		<!-- /.modal -->
-	</div>
 	
 	
-		<!-- ########## 상단 헤더 시작 -->
+	
+	<!-- ########## 상단 푸터 시작 -->
 	<%@include file="/WEB-INF/views/company/inc/footer.jsp"%>
-	<!-- ########## 상단 헤더 끝 -->
+	<!-- ########## 상단 푸터 끝 -->
+
 	<script>
 
 	</script>
