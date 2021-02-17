@@ -11,7 +11,7 @@
 <link rel="stylesheet" href="/yaneodo/css/bootstrap.css">
 <link rel="stylesheet" href="/yaneodo/css/company/main.css">
 
-<script src="/yaneodo/js/bootstrap.js"></script>
 <script src="/yaneodo/js/jquery-1.12.4.js"></script>
+<script src="/yaneodo/js/bootstrap.js"></script>
 
 <%-- <%@include file="/WEB-INF/views/company/inc/asset.jsp" %> --%>

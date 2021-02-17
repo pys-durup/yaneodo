@@ -249,6 +249,11 @@
 		</div>
 		<!-- /.modal -->
 	</div>
+	
+	
+		<!-- ########## 상단 헤더 시작 -->
+	<%@include file="/WEB-INF/views/company/inc/footer.jsp"%>
+	<!-- ########## 상단 헤더 끝 -->
 	<script>
 
 	</script>
