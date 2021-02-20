@@ -1,7 +1,5 @@
 package com.yaneodo;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 
 // 자바의 주석
 // 1. 단일 라인 주석
