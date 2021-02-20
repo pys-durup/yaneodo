@@ -8,21 +8,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 <%@include file="/WEB-INF/views/company/inc/asset.jsp"%>
+<!-- <link rel="stylesheet" href="/yaneodo/css/company/position/list.css"> -->
 <style>
 </style>
 </head>
 <body>
 
 	<!-- ########## 상단 헤더 시작 -->
-	<%@include file="/WEB-INF/views/company/inc/header.jsp"%>
+	   <%@include file="/WEB-INF/views/company/inc/header.jsp" %>
 	<!-- ########## 상단 헤더 끝 -->
-
-	index 페이지
-
-	<!-- ########## 상단 헤더 시작 -->
+		
+	template.jsp 페이지
+	
+	
+	<!-- ########## 하단 푸터 시작 -->
 	<%@include file="/WEB-INF/views/company/inc/footer.jsp"%>
-	<!-- ########## 상단 헤더 끝 -->
-
+	<!-- ########## 하단 푸터 끝 -->
+	
 	<script>
 
 	</script>
