@@ -39,7 +39,7 @@ body, p, div, span, ul, li, dl, dt, dd, table, th, td, a, blockquote,
 html, body {
 	padding: 0;
 	margin: 0;
-	background: #EEEEEE;
+	background: #FFFFFF;
 }
 
 body {
@@ -185,7 +185,7 @@ ul, li {
 }
 
 .form-control:focus {
-	border: #b79ced solid 2px;
+	border: solid 2px #76b0f8;
 }
 
 /* modal */
