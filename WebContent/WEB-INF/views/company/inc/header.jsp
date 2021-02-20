@@ -14,7 +14,7 @@
 			<li><a href="/yaneodo/company/match/main.do">매치업</a></li>
 			<li><a href="/yaneodo/company/match/list.do">매치업목록</a></li>
 			<li><a href="/yaneodo/company/position/list.do">포지션</a></li>
-			<li><a href="/yaneodo/company/info/main.do">회사정보</a></li>
+			<li><a href="/yaneodo/company/info/view.do">회사정보</a></li>
 			<!-- <li><a href="/yaneodo/company/match/main.do">계정관리</a></li> -->
 		</ul>
 		<div style="clear: both;"></div>
