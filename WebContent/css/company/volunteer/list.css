@@ -2,7 +2,7 @@
 
 #side-member {
     float: left;
-    width: 299px;
+    width: 249px;
     height: 900px;
     line-height: 50px;
     background-color: #FFFFFF;
@@ -31,7 +31,7 @@
 }
 
 #side-member .side-list-item-selected {
-    color: #3d42d1;
+    color: #2886FA;
     font-weight: 30px;
 }
 
@@ -42,8 +42,8 @@
 #content {
     color: #555555;
     float: left;
-    min-width: 780px;
-    max-width: 780px;
+    min-width: 830px;
+    max-width: 830px;
     height: 900px;
     line-height: 50px;
     background-color: #FFFFFF;
@@ -56,11 +56,11 @@
     max-width: 760px;
 }
 
-#content .nav a {
+#container .nav a {
     color: #555555;
 }
 
-#content .nav li:hover {
+#container .nav li:hover {
     background-color: #e4e2ee;
 }
 
@@ -90,7 +90,33 @@
 }
 
 #content tr:hover td, #content tr:hover .item {
-    background-color: #e4e2ee;
+    background-color: #e3effd;
+}
+
+/* 이미지 컨테이너 */
+#list .pic {
+    position: relative;
+    right: 15px;
+    top: 5px;
+    border-radius: 100%;
+    border: 1px solid #CCCCCC;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+}
+
+/* 이미지 */
+#list .pic img {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* object-fit: cover; */
+}
+
+#list .star {
+    font-size: 1.7em;
 }
 
 #content .item .leftItem {

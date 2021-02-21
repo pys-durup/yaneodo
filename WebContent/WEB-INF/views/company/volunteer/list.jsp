@@ -15,9 +15,9 @@
 <body>
 
 	<!-- ########## 상단 헤더 시작 -->
-	   <%@include file="/WEB-INF/views/company/inc/header.jsp" %>
+	<%@include file="/WEB-INF/views/company/inc/header.jsp"%>
 	<!-- ########## 상단 헤더 끝 -->
-		
+
 
 	<div id="container">
 		<!-- sidemenu -->
@@ -73,17 +73,19 @@
 								<div class="leftItem listItem">
 									<input type="checkbox">
 								</div>
-								<div class="leftItem listItem">
+								<div class="leftItem listItem star">
 									<span class="glyphicon glyphicon-star-empty"></span>
 								</div>
-								<div class="leftItem listItem">프로필</div>
+								<div class="leftItem listItem pic">
+									<img src="/yaneodo/images/company/man_01.png" alt="">
+								</div>
 								<div class="itemContent listItem">
 									<div class="contentNum">번호</div>
 									<div class="contentTitle">이름 지원포지션</div>
 								</div>
 								<!-- 태그 위치 -->
 								<div class="rightItem listItem">
-									<span class="label label-info">new</span>
+									<span class="label label-info">매치업</span>
 								</div>
 								<div style="clear: both;"></div>
 							</div>
@@ -95,16 +97,18 @@
 								<div class="leftItem listItem">
 									<input type="checkbox">
 								</div>
-								<div class="leftItem listItem">
+								<div class="leftItem listItem star">
 									<span class="glyphicon glyphicon-star-empty"></span>
 								</div>
-								<div class="leftItem listItem">프로필</div>
+								<div class="leftItem listItem pic">
+									<img src="/yaneodo/images/company/man_01.png" alt="">
+								</div>
 								<div class="itemContent listItem">
 									<div class="contentNum">번호</div>
 									<div class="contentTitle">이름 지원포지션</div>
 								</div>
 								<div class="rightItem listItem">
-									<span class="label label-warning">new</span>
+									<span class="label label-warning">매치업</span>
 								</div>
 								<div style="clear: both;"></div>
 							</div>
@@ -116,16 +120,18 @@
 								<div class="leftItem listItem">
 									<input type="checkbox">
 								</div>
-								<div class="leftItem listItem">
+								<div class="leftItem listItem star">
 									<span class="glyphicon glyphicon-star-empty"></span>
 								</div>
-								<div class="leftItem listItem">프로필</div>
+								<div class="leftItem listItem pic">
+									<img src="/yaneodo/images/company/man_01.png" alt="">
+								</div>
 								<div class="itemContent listItem">
 									<div class="contentNum">번호</div>
 									<div class="contentTitle">이름 지원포지션</div>
 								</div>
 								<div class="rightItem listItem">
-									<span class="label label-primary">new</span>
+									<span class="label label-primary">매치업</span>
 
 								</div>
 								<div style="clear: both;"></div>
@@ -138,16 +144,18 @@
 								<div class="leftItem listItem">
 									<input type="checkbox">
 								</div>
-								<div class="leftItem listItem">
+								<div class="leftItem listItem star">
 									<span class="glyphicon glyphicon-star-empty"></span>
 								</div>
-								<div class="leftItem listItem">프로필</div>
+								<div class="leftItem listItem pic">
+									<img src="/yaneodo/images/company/man_01.png" alt="">
+								</div>
 								<div class="itemContent listItem">
 									<div class="contentNum">번호</div>
 									<div class="contentTitle">이름 지원포지션</div>
 								</div>
 								<div class="rightItem listItem">
-									<span class="label label-success">new</span>
+									<span class="label label-success">매치업</span>
 								</div>
 								<div style="clear: both;"></div>
 							</div>
@@ -159,17 +167,19 @@
 								<div class="leftItem listItem">
 									<input type="checkbox">
 								</div>
-								<div class="leftItem listItem">
+								<div class="leftItem listItem star">
 									<span class="glyphicon glyphicon-star-empty"></span>
 								</div>
-								<div class="leftItem listItem">프로필</div>
+								<div class="leftItem listItem pic">
+									<img src="/yaneodo/images/company/man_01.png" alt="">
+								</div>
 								<div class="itemContent listItem">
 									<div class="contentNum">번호</div>
 									<div class="contentTitle">이름 지원포지션</div>
 								</div>
 								<div class="rightItem listItem">
-									<span class="label label-default">new</span> <span
-										class="label label-default">new</span>
+									<span class="label label-default">매치업</span> <span
+										class="label label-default">수락</span>
 								</div>
 								<div style="clear: both;"></div>
 							</div>
@@ -183,7 +193,6 @@
 					value="면접일정 제안하기" class="btn btn-primary" data-toggle="modal"
 					data-target="#myModal">
 			</div>
-			
 
 
 
@@ -207,53 +216,53 @@
 			</div>
 		</div>
 		<!-- content 끝 -->
-		
+
 	</div>
 	<div style="clear: both;"></div>
 
-		<!-- Modal -->
-		<div class="modal modal-center fade" id="myModal" tabindex="-1"
-			role="dialog">
-			<div class="modal-dialog modal-center modal-70size " role="document">
-				<div class="modal-content modal-70size">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title">면접일정 제안하기</h4>
-					</div>
-					<div class="modal-body">
-						<div class="modal-body-title">제안 메세지</div>
-						<div>
-							<textarea class="form-control" rows="8"></textarea>
-						</div>
-						<div class="row">
-							<div class="col-md-6">
-								<div class="modal-body-title">면접 일시</div>
-								<input type="text" class="form-control">
-							</div>
-							<div class="col-md-6">
-								<div class="modal-body-title">담당자 연락처</div>
-								<input type="text" class="form-control">
-							</div>
-						</div>
-						<div class="modal-body-title">면접 장소</div>
-						<input type="text" class="form-control">
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-primary">일정 제안하기</button>
-					</div>
+	<!-- Modal -->
+	<div class="modal modal-center fade" id="myModal" tabindex="-1"
+		role="dialog">
+		<div class="modal-dialog modal-center modal-70size " role="document">
+			<div class="modal-content modal-70size">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">면접일정 제안하기</h4>
 				</div>
-				<!-- /.modal-content -->
+				<div class="modal-body">
+					<div class="modal-body-title">제안 메세지</div>
+					<div>
+						<textarea class="form-control" rows="8"></textarea>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="modal-body-title">면접 일시</div>
+							<input type="text" class="form-control">
+						</div>
+						<div class="col-md-6">
+							<div class="modal-body-title">담당자 연락처</div>
+							<input type="text" class="form-control">
+						</div>
+					</div>
+					<div class="modal-body-title">면접 장소</div>
+					<input type="text" class="form-control">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-primary">일정 제안하기</button>
+				</div>
 			</div>
-			<!-- /.modal-dialog -->
+			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal -->
-	
-	
-	
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+
+
 	<!-- ########## 상단 푸터 시작 -->
 	<%@include file="/WEB-INF/views/company/inc/footer.jsp"%>
 	<!-- ########## 상단 푸터 끝 -->
