@@ -24,8 +24,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-9"><h1>모집공고 조회</h1></div>
-                    <div class="btn btn-primary col-md-1">수정하기 </div>
-                    <div class="btn btn-danger col-md-1">삭제하기 </div>
+                    <div class="btn btn-primary col-md-1" onclick="location.href='/yaneodo/company/position/edit.do'">수정하기 </div>
+                    <div class="btn btn-danger col-md-1"  data-toggle="modal"
+                    data-target="#positionDelete">삭제하기 </div>
                 </div>
             </div>
         </div>
@@ -55,10 +56,30 @@
         </div>
 
         <div class="section-footer">
-            <div><a class="btn btn-primary">돌아가기</a>
+            <div><a class="btn btn-default" onclick="history.back();">돌아가기</a>
             </div>
         </div>
     </div>
+    
+     <!-- 포지션 삭제 Modal -->
+        <div class="modal fade" id="positionDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">모집공고 삭제하기</h4>
+                    </div>
+                    <div class="modal-body">
+                        정말 이 모집공고를 삭제하시겠습니까?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+                        <button type="button" id="btnReading" class="btn btn-danger" >삭제하기</button>
+                    </div>
+                </div>
+            </div>
+        </div><!-- 포지션 삭제 Modal 끝-->
 	
 	
 	<!-- ########## 상단 헤더 시작 -->
