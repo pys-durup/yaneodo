@@ -216,28 +216,41 @@ ul, li {
 
 /* modal 사이즈 조절 */
 .modal-dialog.modal-70size {
-	width: 700px;
-	height: 70%;
-	margin: 0;
-	padding: 0;
+    width: 700px;
+    height: 70%;
+    margin: 0;
+    padding: 0;
 }
-
+  
 .modal-contetn.modal-70size {
-	height: auto;
-	min-height: 70%;
+    height: auto;
+    min-height: 70%;
 }
 
 .modal-dialog.modal-60size {
-	width: 600px;
-	height: 60%;
-	margin: 0;
-	padding: 0;
+    width: 600px;
+    height: 60%;
+    margin: 0;
+    padding: 0;
+}
+  
+.modal-contetn.modal-60size {
+    height: auto;
+    min-height: 60%;
 }
 
-.modal-contetn.modal-60size {
-	height: auto;
-	min-height: 60%;
+.modal-dialog.modal-80size {
+    width: 800px;
+    height: 60%;
+    margin: 0;
+    padding: 0;
 }
+  
+.modal-contetn.modal-80size {
+    height: auto;
+    min-height: 60%;
+}
+
 
 /* modal 위치 조절 */
 .modal.modal-center {
