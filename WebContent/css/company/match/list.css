@@ -280,11 +280,11 @@
 }
 
 .blue-masking {
-    width: 500px;
+    width: 660px;
     height: 45px;
     position: absolute;
-    top: 100px;
-    left: 85px;
+    top: 105px;
+    left: 95px;
     color: white;
     background-color: #7fb8fd;
     font-size: 0.9em;
@@ -324,6 +324,12 @@
 
 .modal-body .service-box {
 	border: 1px solid black;
+}
+
+.modal-body .service-box:hover {
+	border: 1px solid #2886FA;;
+	background-color: #d9eaff;
+	
 }
 
 .modal-body .top {
