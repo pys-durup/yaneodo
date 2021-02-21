@@ -27,7 +27,7 @@
                         <h1>회사정보 조회</h1>
                     </div>
                     <div class="col-md-3">
-                    	<input type="button" class="btn btn-primary" onclick="location.href='/yaneodo/company/info/edit.do'" value="수정하기">
+                    	<input type="button" class="btn btn-primary" onclick="history.back();" value="수정완료하기">
                     </div>
                 </div>
             </div>
