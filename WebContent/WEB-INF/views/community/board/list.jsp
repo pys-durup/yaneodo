@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,76 +101,16 @@
                     <th style="width:50px">작성일</th>
                     <th style="width:50px">조회수</th>
                 </tr>
+                
+				<c:forEach items="${list}" var="dto">
                 <tr>
-                    <td>5</td>
-                    <td>수업 방식이 좀 안 맞는 것 같습니다.</td>
-                    <td>홍길동</td>
-                    <td>2021.02.16</td>
+                    <td>${dto.boardSeq}</td>
+                    <td>${dto.title}</td>
+                    <td>${dto.customerSeq}</td>
+                    <td>${dto.writeDate}</td>
                     <td>0</td>
                 </tr>
-                <tr>
-                    <td>4</td>
-                    <td>다들 어떤가요?</td>
-                    <td>아무개</td>
-                    <td>2021.02.16</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>이직 준비합니다.</td>
-                    <td>작성자</td>
-                    <td>2021.02.16</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>프로그램 처음 시작합니다.</td>
-                    <td>작성자</td>
-                    <td>2021.02.16</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>티비에서 봤습니다.</td>
-                    <td>작성자</td>
-                    <td>2021.02.16</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>티비에서 봤습니다.</td>
-                    <td>작성자</td>
-                    <td>2021.02.16</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>티비에서 봤습니다.</td>
-                    <td>작성자</td>
-                    <td>2021.02.16</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>티비에서 봤습니다.</td>
-                    <td>작성자</td>
-                    <td>2021.02.16</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>티비에서 봤습니다.</td>
-                    <td>작성자</td>
-                    <td>2021.02.16</td>
-                    <td>0</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>티비에서 봤습니다.</td>
-                    <td>작성자</td>
-                    <td>2021.02.16</td>
-                    <td>0</td>
-                </tr>
+                </c:forEach>
                 
             </table>
 
