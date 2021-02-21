@@ -110,7 +110,7 @@
 		<div class="section-footer">
 			<div>
 				<a class="btn btn-primary">등록하기</a> &nbsp;&nbsp;&nbsp;&nbsp; <a
-					class="btn btn-default">돌아가기</a>
+					class="btn btn-default" onclick="history.back();">돌아가기</a>
 			</div>
 		</div>
 	</div>

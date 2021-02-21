@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-5"><h1>등록된 모집 공고</h1></div>
-                    <div class="btn btn-primary col-md-offset-5">모집공고 등록하기</div>
+                    <div class="btn btn-primary col-md-offset-5" onclick="location.href='/yaneodo/company/position/add.do'";>모집공고 등록하기</div>
                 </div>
             </div>
         </div>
