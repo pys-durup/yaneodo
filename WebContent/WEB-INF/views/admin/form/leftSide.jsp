@@ -1,16 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
 
 
 
-%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
 
 <link rel="stylesheet" href="/yaneodo/css/admin/leftSide.css">    
     
@@ -117,10 +109,13 @@
             </h4>
           </div>
           <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-            <div class="panel-body sname">
+            <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_main.do';">
+              메인
+            </div>
+            <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_company.do';">
               기업 회원별
             </div>
-            <div class="panel-body sname">
+            <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_member.do';">
               일반 회원별
             </div>
           </div>
@@ -154,7 +149,7 @@
               </h4>
             </div>
             <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
-              <div class="panel-body sname">
+              <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/jobtype.do';">
                 직무이름
               </div>
             </div>
