@@ -1,0 +1,39 @@
+
+@font-face {
+    font-family: 'Jal_Onuel';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Jal_Onuel.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    }
+
+        #accordion {
+          font-family: 'Jal_Onuel';
+          margin-top:20px;
+          width: 200px;
+        }
+
+        #accordion .sname {
+            margin-left : 10px; 
+            border : 0px;
+        }
+
+        #accordion .panel-heading a {
+            text-decoration: none;         
+                        
+        }
+        
+        #accordion .panel-heading {
+            background-color: white;
+            border-bottom: 2px solid #ccc;
+            margin-top : -7px;
+        }
+
+        .panel {
+            border:0px;
+            margin-left : 0px;
+        }
+
+        #accordion .sname:hover {
+            cursor: pointer;
+            color: blueviolet;
+        }
