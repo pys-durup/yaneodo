@@ -53,6 +53,14 @@ body {
     background-color: #ebebeb;
 }
 
+#outline {
+     width: 1110px;
+     height:910px;
+     margin : -10px auto;
+}
+
+
+
 #headerContainer {
     color: white;
     margin: 0;
@@ -153,6 +161,7 @@ ul, li{
     background-color: #FFFFFF;
     padding: 10px;
     
+    
 }
 
 #content #info {
@@ -163,9 +172,7 @@ ul, li{
     margin-bottom: 20px;
 }
 
-#leftSide {
-		width : 200px;
-		height: 900px;
-		margin-top : 0px;
-	}
+
+
+
 
