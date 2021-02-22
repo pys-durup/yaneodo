@@ -67,78 +67,157 @@ button, .btn-group, .open, .dropdown-toggle, .btn {
 }
 
 /* 기본 */
+
+
 body {
-	background-color: #ffffff;
+    background-color: #ffffff;
 }
 
 #headerContainer {
-	color: white;
-	width: 100%;
-	background-color: #1a1a1d;
+    color: white;
+    width: 100%;
+    background-color: #1a1a1d;
 }
 
 /* 내용부분 전체 컨테이너 */
 #container {
-	width: 1100px;
-	height: 100%;
-	margin: 0 auto;
-	color: black;
+    width: 1100px;
+    height: 100%;
+    margin: 0 auto;
+    color: black;
 }
 
 /* header 부분 */
+
 #header {
-	color: white;
-	width: 1100px;
-	height: 50px;
-	line-height: 50px;
-	background-color: #1a1a1d;
-	margin: 0 auto;
+    color: white;
+    width: 1100px;
+    height: 50px;
+    line-height: 50px;
+    background-color: #1a1a1d;
+    margin: 0 auto;
 }
 
+
 #header #logo {
-	float: left;
-	margin-left: 20px;
-	font-size: 1.2em;
+    float: left;
+    margin-left: 20px;
+    font-size: 1.2em;
 }
 
 #header #aside {
-	float: right;
-	padding: 10px;
+    float: right;
+    padding: 10px;
+    position: relative;
 }
 
 #header #aside div {
-	float: left;
-	margin-right: 10px;
-	vertical-align: middle;
+    float: left;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 #header #aside .notice {
-	font-size: 1.2em;
-	margin-left: 5px;
+    font-size: 1.2em;
+    margin-left: 5px;
 }
+
 
 /* 이미지 컨테이너 */
 #header .pic {
-	position: relative;
-	right: 15px;
-	top: 5px;
-	border-radius: 100%;
-	border: 1px solid #CCCCCC;
-	width: 30px;
-	height: 30px;
-	overflow: hidden;
+    position: relative;
+    right: 15px;
+    top: 5px;
+    border-radius: 100%;
+    border: 1px solid #CCCCCC;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
 }
 
 /* 이미지 */
 #header .pic img {
-	position: absolute;
-	width: 100%;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	/* object-fit: cover; */
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* object-fit: cover; */
 }
 
+
+/* 드롭 다운 메뉴 */
+
+#company-dropdown {
+    position: absolute;
+    background: #ffffff;
+    top: 50px;
+    left: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.15s ease-in;
+    border: 1px solid #ccc;
+  }
+  
+  #company-dropdown  li {
+    list-style: none;
+    width: 110px;
+    height: 40px;
+    text-align: center;
+    /* padding: 16px 28px; */
+    /* border-bottom: 1px solid rgba(0,0,0,0.15); */
+  }
+  
+  #company-dropdown > li >  a {
+    color: #000000;
+    text-decoration: none;
+  }
+
+  #aside > .mypage:hover > div > #company-dropdown {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  #company-dropdown > li >  a:hover {
+   text-decoration: underline;
+  }
+
+/* 알람 메뉴 */
+
+#company-notice {
+    position: absolute;
+    background: #ffffff;
+    top: 55px;
+    left: 15px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.15s ease-in;
+    border: 1px solid #ccc;
+  }
+  
+  #company-notice  li {
+    list-style: none;
+    width: 250px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+  }
+  
+  #company-notice > li >  a {
+    color: #000000;
+    text-decoration: none;
+  }
+
+  #aside > .notice:hover > div > #company-notice {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  #company-notice > li >  a:hover {
+   text-decoration: underline;
+  }
 /* nav 부분 */
 #nav {
 	width: 1100px;
