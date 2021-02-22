@@ -108,7 +108,7 @@
 	<div id = outline>
 	
 			<div id="leftSide" style="float:left; background-color: white;">
-			<%@include file="/WEB-INF/views/admin/form/leftSide.jsp" %>
+			<%@include file="/WEB-INF/views/admin/inc/sidemenu.jsp" %>
 			</div>
 		
 			 <div id="content">
