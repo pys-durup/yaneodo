@@ -157,6 +157,7 @@ body {
     visibility: hidden;
     transition: all 0.15s ease-in;
     border: 1px solid #ccc;
+    z-index: 1;
   }
   
   #company-dropdown  li {
@@ -193,6 +194,7 @@ body {
     visibility: hidden;
     transition: all 0.15s ease-in;
     border: 1px solid #ccc;
+    z-index: 1;
   }
   
   #company-notice  li {
