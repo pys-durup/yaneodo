@@ -24,7 +24,7 @@
 		<div class="content">MatchUp은 기업이 직접 우수인재를 찾아보고, 마음에 드는 인재에게 면접
 			제안을 할 수 있는 새로운 채용 솔루션 입니다</div>
 		<div class="button-area">
-			<input type="button" class="btn btn-primary" value="검증된 인재 만나기">
+			<input type="button" class="btn btn-primary" value="검증된 인재 만나기" onclick="location.href='/yaneodo/company/match/list.do';">
 			<input type="button" class="btn btn-primary" value="무료체험 신청하기">
 		</div>
 	</div>
