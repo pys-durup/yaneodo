@@ -13,7 +13,7 @@
 
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
 <link rel="stylesheet" href="/yaneodo/css/admin/admin.css">
-<link rel="stylesheet" href="/yaneodo/css/admin/jquery-ui.css">
+<link rel="stylesheet" href="/yaneodo/css/jquery-ui.css">
 
 <script src="/yaneodo/js/jquery-1.12.4.js"></script>
 <script src="/yaneodo/js/jquery-ui.js"></script>

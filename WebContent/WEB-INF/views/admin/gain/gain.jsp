@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,11 +20,13 @@
   google.charts.setOnLoadCallback(drawChart);
   function drawChart() {
     var data = google.visualization.arrayToDataTable([
+    
       ["Element", "Density", { role: "style" } ],
-      ["a타입", 153, "#E08B95"],
-      ["b타입", 152, "silver"],
-      ["c타입", 215, "gold"],
-      ["d타입", 452, "color: #e5e4e2"]
+      ["a타입", ${dto.a}, "#E08B95"],
+      ["b타입", ${dto.b}, "silver"],
+      ["c타입", ${dto.c}, "gold"],
+      ["d타입", ${dto.d}, "color: #e5e4e2"]
+      ["e타입", ${dto.e}, "color: #e5e4e2"]
     ]);
 
     var view = new google.visualization.DataView(data);

@@ -46,6 +46,7 @@ public class JobtypeDAO {
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 			
+			
 			ArrayList<JobtypeDTO> list = new ArrayList<JobtypeDTO>();
 			
 			while(rs.next()) {

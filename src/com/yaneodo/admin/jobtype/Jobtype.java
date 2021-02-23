@@ -32,6 +32,7 @@ public class Jobtype extends HttpServlet {
 		JobtypeDAO dao = new JobtypeDAO();
 		
 		ArrayList<JobtypeDTO> list = dao.getlist();
+
 		
 		req.setAttribute("list", list);
 
