@@ -54,7 +54,7 @@
                         <a class="mMenus" href="#"><span>받은 제안</span> <strong>0</strong></a>
                 </div>
                 <div id="account">
-                    <a href="/member/myyaneodo/customer_edit.do">계정설정</a>
+                    <a href="/yaneodo/member/myyaneodo/account.do">계정설정</a>
                 </div>
             </div>
 

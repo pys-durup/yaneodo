@@ -605,3 +605,28 @@
         outline: none;
     }
           
+          /*account CSS*/
+            .whiteContainer{
+            float: right;
+            width: 800px;
+            height: 500px;
+            background-color: white;
+            padding: 30px 50px;
+            border: 1px solid #DDD;
+
+        }
+
+        .whiteContainer .deleteInfo{
+            font-size: 17px;
+            color: #999;
+        }
+
+        .whiteContainer .deleteInfo li{
+            margin-top: 20px;
+        } 
+
+        .whiteContainer .deleteInfo li a{
+            color: #999;
+            text-decoration: underline;
+            
+        } 
