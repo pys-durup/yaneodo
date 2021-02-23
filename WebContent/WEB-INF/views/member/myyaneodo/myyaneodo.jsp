@@ -76,13 +76,29 @@
             <div id="rightDown">
                 <div id="recoPosition"  class="table">
                     <div class="title2">추천포지션</div>
-                    <ul>
-                        <li><a class="state"><img src="">기업이름</a></li>
-                        <li><a class="state"><img src="">기업이름</a></li>
-                        <li><a class="state"><img src="">기업이름</a></li>
-                        <li><a class="state"><img src="">기업이름</a></li>
-
-                    </ul>
+               <div class="recoList">
+                <div class="details">
+                    <div><img src="snow.jpg" class="companyPic"></div>
+                    <div class="desc">SCM 매니저</div>
+                    <div class="desc sm">깃컴퍼니</div>
+                </div>
+                <div class="details">
+                    <div><img src="snow.jpg" class="companyPic"></div>
+                    <div class="desc">SCM 매니저</div>
+                    <div class="desc sm">깃컴퍼니</div>
+                </div>
+                <div class="details">
+                    <div><img src="snow.jpg" class="companyPic"></div>
+                    <div class="desc">SCM 매니저</div>
+                    <div class="desc sm">깃컴퍼니</div>
+                </div>
+                <div class="details">
+                    <div><img src="snow.jpg" class="companyPic"></div>
+                    <div class="desc">SCM 매니저</div>
+                    <div class="desc sm">깃컴퍼니</div>
+                </div>
+                <div style="clear: both;"></div>
+        	</div>
                 </div>
             </div>
             <div style="clear: both;"></div>
