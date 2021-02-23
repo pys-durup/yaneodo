@@ -31,15 +31,27 @@
         /* line-height: 1.5em; */
     }
 
+	html {
+	        background-color:white!important;
+	}
 
 
     html>body {
         overflow-x: scroll;
         overflow-y: scroll;
         height: 100%;
+        background-color:white!important;
      
     }
 
+    body {
+        margin-bottom: 100px;
+    }
+
+    
+    input:focus {
+        outline: none; 
+    }
 
 
     .form-control:focus {
@@ -50,6 +62,12 @@
 
     a {
         cursor: pointer;
+        color: #333;
+    }
+
+    a:hover, a:focus {
+        color:#333;
+        text-decoration: none;
     }
 
     #container {
