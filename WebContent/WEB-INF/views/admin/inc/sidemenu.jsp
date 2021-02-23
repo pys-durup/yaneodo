@@ -6,9 +6,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
 
-    <link rel="stylesheet" href="/yaneodo/css/admin/sidemenu.css">
+<link rel="stylesheet" href="/yaneodo/css/admin/sidemenu.css">
 
 </head>
 <body>
@@ -111,10 +110,13 @@
                     </div>
 
                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                        <div class="panel-body sname">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_main.do';">
+              메인
+            </div>
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_company.do';">
                             기업 회원별
                         </div>
-                        <div class="panel-body sname">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_member.do';">
                             일반 회원별
                         </div>
                     </div>
@@ -131,26 +133,26 @@
                     </div>
 
                     <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
-                        <div class="panel-body sname">
+                        <div class="panel-body sname"onclick="location.href='/yaneodo/admin/gain/gain.do';">
                             전체
                         </div>
-                        <div class="panel-body sname">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/gain/gain_company.do';">
                             기업 회원별
                         </div>
                     </div>
                 </div>
         
-                <div class="panel panel-default">
+                <div class="panel panel-default" >
                     <div class="panel-heading" role="tab" id="headingEight">
                         <h4 class="panel-title">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight" >
                                 직무
                             </a>
                         </h4>
                     </div>
 
                     <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
-                        <div class="panel-body sname">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/jobtype/jobtype.do';">
                             직무이름
                         </div>
                     </div>
@@ -167,10 +169,10 @@
                     </div>
 
                     <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
-                        <div class="panel-body sname">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/tag/tagcategory.do';">
                             태그 카테고리
                         </div>
-                        <div class="panel-body sname">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/tag/tag.do';">
                             태그 이름
                         </div>
                     </div>

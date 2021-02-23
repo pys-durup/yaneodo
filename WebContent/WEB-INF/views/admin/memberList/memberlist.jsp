@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
+<%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
     <link rel="stylesheet" href="/yaneodo/css/admin/admin-main.css">
     <link rel="stylesheet" href="/yaneodo/css/admin/admin-membersection.css">
 

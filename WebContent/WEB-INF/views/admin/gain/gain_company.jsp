@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>매치업 관리</title>
+<title>수익 관리</title>
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
 
 <link rel="stylesheet" href="/yaneodo/css/admin/admin.css">
@@ -17,6 +17,35 @@
     
 
 <style>
+
+  #outline {
+            width: 1105px;
+            margin : -10px auto;
+        }
+
+        #tbl {
+            width: 850px;
+            height: 40px;
+            text-align: center;
+            margin : 90px auto;
+        }
+        
+        th, td { 
+            border-bottom: 2px solid #ccc;
+            text-align: center;            
+        }
+
+        #search {
+            width: 250px;
+            float : right;
+        }
+
+        .searchbar {
+            height: 30px;
+            display:inline-block;
+            float: left;
+            line-height: 5px;
+        }
 
 	
 	
@@ -36,57 +65,54 @@
 			<%@include file="/WEB-INF/views/admin/inc/sidemenu.jsp" %>
 			</div>
 		
-        <div id="content">
+         <div id="content">
+
             <form action="" id="search">
                 <input type="text" class="searchbar" placeholder=" 이름">
                 <input type="button" value="검색" class="searchbar">
             </form>
 
-            <table id="tbl">
+            <table id=tbl>
                 <thead>
                     <tr>
                         <th>순서</th>
                         <th>이름</th>
+                        <th>a타입</th>
+                        <th>b타입</th>
+                        <th>c타입</th>
+                        <th>d타입</th>
                         <th>사용한 열람 횟수</th>
-                        <th>면접제안</th>
-                        <th>면접성사</th>
-                        <th>진행중</th>
-                        <th>채용</th>
-                        <th>채용률</th>
+                        <th>잔여 열람 가능 횟수</th>
                     </tr>
                 </thead>
                 <tbody id="tbd">
                     <tr>
                         <td>1</td>
-                        <td class="getname">박세인</td>
-                        <td>164</td>
-                        <td>53</td>
-                        <td>47</td>
-                        <td>12</td>
-                        <td>15</td>
-                        <td>17%</td>
+                        <td>박세인</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>0</td>
+                        <td>1,6412</td>
+                        <td>2,5516</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td class="getname">홍길동</td>
-                        <td>281</td>
-                        <td>85</td>
-                        <td>85</td>
-                        <td>30</td>
-                        <td>34</td>
-                        <td>23%</td>
+                        <td>홍길동</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>2,8155</td>
+                        <td>2,8422</td>
                     </tr>
                 </tbody>
             </table>
 
-           
+  
         </div>
 
     </div>
-
-    <div id="forinfo"></div>
-    </div>
-	
 
 	
 	<!-- footer -->
