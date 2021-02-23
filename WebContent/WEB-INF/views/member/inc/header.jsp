@@ -7,7 +7,7 @@
                 <li id="logo"><img src="" id="logo">yaneoDO</li>
                 <li><a class="menuLink" href="#">탐색</a></li>
                 <li><a class="menuLink" href="#">직무별연봉</a></li>
-                <li><a class="menuLink" href="#">이력서</a></li>
+                <li><a class="menuLink" href="/yaneodo/member/resume/resume_list.do">이력서</a></li>
                 <li><a class="menuLink" href="#">매치업</a></li>
                 <li><a class="menuLink" href="#">코딩테스트</a></li>
                 <li><a class="menuLink" href="#">커뮤니티</a></li>
