@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -125,115 +122,41 @@ th, td {
 
 			<div id="jobtype">직무 종류 관리</div>
 			
-			<form method="POST" action="">
+			
 				<div id="ctlBtn">
 					<input id="btnadd" type="button" value="추가하기" class="btn btn-primary">
-					<input type="submit" id="btn" class="btn btn-primary" value="저장하기">
 				</div>
 				<div style="clear: both;"></div>
 
 				<div id="subframe">
 					<ul id="list1">
 						<li class="ui-state-disabled">
-							<div class="one"></div>
+							<div class="one">순서</div>
 							<div class="two">직무종류</div>
 							<div class="three">관리</div>
 						</li>
+						<c:forEach items="${list}" var="dto" >
 						<li>
-							<div class="one"></div>
+						<form method="POST" action="/yaneodo/admin/jobtype/jobtypeupdate.do">
+							<div class="one" >${dto.seq}</div>
 							<div class="two">
-								<input type="text" class="title" value="DevOps/시스템 관리자">
+								<input type="text" name="jobtype" class="title" value="${dto.jobtype}">
 							</div>
 							<div class="three">
-								<input type="button" class="btn btns btn-primary" value="삭제">
-							</div></li>
-						<li>
-							<div class="one"></div>
-							<div class="two">
-								<input type="text" class="title" value="데이터 사이언티스트">
+							
+								<input type="hidden" name="jobseq" value="${dto.seq}">
+								<input type="hidden" name="jobcount" value="basic">
+								<input type="submit" class="btn btns btn-primary" value="저장">
 							</div>
-							<div class="three">
-								<input type="button"  class="btn btns btn-primary" value="삭제">
-							</div>
+						</form>
 						</li>
-						<li>
-							<div class="one"></div>
-							<div class="two">
-								<input type="text" class="title" value="C,C++ 개발자">
-							</div>
-							<div class="three">
-								<input type="button" class="btn btns btn-primary" value="삭제">
-							</div>
-						</li>
-						<li>
-							<div class="one"></div>
-							<div class="two">
-								<input type="text" class="title" value="시스템, 네트워크 관리자">
-							</div>
-							<div class="three">
-								<input type="button"  class="btn btns btn-primary" value="삭제">
-							</div>
-						</li>
-						<li>
-							<div class="one"></div>
-							<div class="two">
-								<input type="text" class="title" value="개발 매니저">
-							</div>
-							<div class="three">
-								<input type="button" class="btn btns btn-primary" value="삭제">
-							</div>
-						</li>
-						<li>
-							<div class="one"></div>
-							<div class="two">
-								<input type="text" class="title" value="빅데이터 엔지니어">
-							</div>
-							<div class="three">
-								<input type="button"  class="btn btns btn-primary" value="삭제">
-							</div>
-						</li>
-						<li>
-							<div class="one"></div>
-							<div class="two">
-								<input type="text" class="title" value="PHP 개발자">
-							</div>
-							<div class="three">
-								<input type="button"  class="btn btns btn-primary" value="삭제">
-							</div>
-						</li>
-						<li>
-							<div class="one"></div>
-							<div class="two">
-								<input type="text" class="title" value="기술지원">
-							</div>
-							<div class="three">
-								<input type="button"class="btn btns btn-primary" value="삭제">
-							</div>
-						</li>
-						<li>
-							<div class="one"></div>
-							<div class="two">
-								<input type="text" class="title" value="웹 퍼블리셔">
-							</div>
-							<div class="three">
-								<input type="button" class="btn btns btn-primary" value="삭제">
-							</div>
-						</li>
-
-						<li>
-							<div class="one"></div>
-							<div class="two">
-								<input type="text" class="title" value="임베디드 개발자">
-							</div>
-							<div class="three">
-								<input type="button" class="btn btns btn-primary" value="삭제">
-							</div>
-						</li>
+						</c:forEach>
+						
 
 					</ul>
 				</div>
 
-			</form>
+			
 
 		</div>
 	</div>
@@ -247,12 +170,13 @@ th, td {
 
 	<script>
         
-	  $("#list1").sortable();
+	  //$("#list1").sortable();
 
 	  
 
       var list1 = document.getElementById("list1");
       var bar;
+      let num = ${list.size()+1};
 
       
       
@@ -261,19 +185,13 @@ th, td {
           box = document.createElement("li");
 
           box.className = "box";
-          box.innerHTML = "<div class='one'></div><div class='two'><input type='text' class='title' value=''></div> <div class='three'><input type='button' id='btn' class='btn btns btn-primary' value='삭제'></div>";
+          box.innerHTML = "<form method='POST' action='/yaneodo/admin/jobtype/jobtypeupdate.do'><div class='one'>"+ (num++) +"</div><div class='two'><input type='text' name='jobtype' class='title' value=''></div> <div class='three'><input type='hidden' name='jobseq' value='"+ num +"'><input type='hidden' name='jobcount' value='add'><input type='submit' id='btn' class='btn btns btn-primary' value='저장'></div></form>";
           
           // box.innerHTML = "테스트";
           list1.appendChild(box);
 
       });
       
-      $(window).click(function() {
-
-          $(".btns").click(function () {
-              $(this).parent().parent().remove();
-          });   
-      });
 
 
     
