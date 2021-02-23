@@ -1,6 +1,12 @@
 @charset "UTF-8";
-
-    
+  
+	#pageAll {
+	    width: 1200px;
+	    min-height: 1500px;
+	    margin: 50px auto;
+	    background-color: white;
+	}
+       
     /* section */
     #contents {
         width: 990px;
@@ -10,8 +16,8 @@
         border-left: 1px solid #CCC;
     }
     
-    /* memberList.css */
-    #memberManager {
+    /* businessList.css */
+    #businessManager {
         width: 900px;
     }
 
@@ -37,70 +43,67 @@
         margin-top: 10px;
     }
 
-    #memberList tr, #memberList td, #memberList th {
+    #businessList tr, #businessList td, #businessList th {
         border-top: 1px solid #CCC;
         border-bottom: 1px solid #CCC;
         text-align: center;           
     }
 
-    #memberList th {
+    #businessList th {
         padding: 10px 0px;
     }
 
-    #memberList tbody tr:hover {
+    #businessList tbody tr:hover {
         background-color: #DDD;
         cursor: pointer;
     }
 
-    #memberList .profile {
-        width: 100px;
+    #businessList .profile {
+        width: 150px;
         height: 150px; /* 프로필 사진을 뭘 넣을지에 따라서 여기를 건들 것 */
     }
 
-    #memberList .name {
-        width: 100px;
+    #businessList .business-name {
+        width: 150px;
     }
     
-    #memberList .id {
-        width: 120px;
-    }
-
-    #memberList .nick {
+    #businessList .business-tel {
         width: 150px;
     }
 
-    #memberList .email {
+    #businessList .business-email {
+        width: 150px;
+    }
+
+    #businessList .business-address {
         width: 200px;
+        padding: 0px 10px;
     }
 
-    #memberList .tel {
-        width: 150px;
-    }
-
-    #memberList .regdate {
+    #businessList .business-regdate {
         width: 120px;
     }
 
-    /* member */
+    /* business */
 
-    #member {
+    #business {
         margin-top: 20px;
         padding: 30px 20px;
         border: 1px solid #CCC;
     }
 
-    #member img{
+    #business img{
         display: block;
         margin: 0px auto;
     }
 
-    #member #member-name {
+    #business #business-name {
         text-align: center;
         font-size: 2em;
         margin-top: 20px
     }
 
-    .member-info {
+    .business-info {
         margin-bottom: 10px;
         font-size: 1.5em;
     }
@@ -111,14 +114,14 @@
         
     }
 
-    .member-state {
+    .business-state {
         margin-top: 10px;
         padding-bottom: 5px;
         padding-left: 20px;
         border-bottom: 1px solid #CCC;
     }
 
-    .member-count {
+    .business-count {
         font-size: 1.2em;
         padding: 10px
     }

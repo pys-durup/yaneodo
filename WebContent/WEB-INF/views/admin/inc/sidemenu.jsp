@@ -24,7 +24,7 @@
                     </div>
         
                     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/memberList/memberlist.do'">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/member/memberlist.do'">
                             일반회원 목록
                         </div>
                         <div class="panel-body sname">
@@ -48,7 +48,7 @@
                     </div>
 
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body sname">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/business/businesslist.do'">
                             기업회원 승인관리
                         </div>
                         <div class="panel-body sname">

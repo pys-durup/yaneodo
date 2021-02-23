@@ -9,15 +9,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/member/memberlist.do")
-public class MemberList extends HttpServlet {
+@WebServlet("/admin/member/member.do")
+public class Member extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		req.setCharacterEncoding("UTF-8");
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/member/memberlist.jsp");
+		req.setCharacterEncoding("UTF-8");
+		
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/member/member.jsp");
 		dispatcher.forward(req, resp);
 
 	}
