@@ -1,4 +1,4 @@
-package com.yaneodo.admin.board;
+package com.yaneodo.admin.service;
 
 import java.io.IOException;
 
@@ -9,15 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/member/memberlist.do")
-public class MemberList extends HttpServlet {
+@WebServlet("/admin/service/servicequestion.do")
+public class ServiceQuestion extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		req.setCharacterEncoding("UTF-8");
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/member/memberlist.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/service/servicequestion.jsp");
 		dispatcher.forward(req, resp);
 
 	}
