@@ -12,6 +12,11 @@ public class JobNoticeDTO {
 	private String description;
 	private String photo;
 	
+	//회사정보
+	private String name;
+	private String industry;
+	private String address;
+	
 	
 	public String getJobOpeningSeq() {
 		return jobOpeningSeq;
@@ -66,6 +71,24 @@ public class JobNoticeDTO {
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getIndustry() {
+		return industry;
+	}
+	public void setIndustry(String industry) {
+		this.industry = industry;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	
 	

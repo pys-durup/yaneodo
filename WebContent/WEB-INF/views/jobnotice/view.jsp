@@ -11,8 +11,8 @@
 <%@include file="/WEB-INF/views/jobnotice/inc/asset.jsp"%>
 
 <!-- 적용CSS -->
-<link rel="stylesheet" href="/yaneodo/css/member/customer2.css">
 <link rel="stylesheet" href="/yaneodo/css/member/member-main.css">
+<link rel="stylesheet" href="/yaneodo/css/member/customer2.css">
 
 
 
@@ -44,7 +44,7 @@
 
         /* 버튼류 */
         
-        #side-buttons button {
+        #side-btns button, #apply-menu input[type="button"] {
             width: 100%;
             margin-bottom: 10px;
             font-size:16px;
@@ -260,7 +260,7 @@
             font-size: 13px;
         }
     
-        .btn-container {
+        #btn-container {
             margin-top: 30px;
         }
 
@@ -286,15 +286,15 @@
         <div id="jobOpening">
 
             <div id="company-photo">
-                <img class="img-thumbnail" src="../images/wall24.jpg" style="width:700px; height:500px;">
+                <img class="img-thumbnail" src="${dto.photo }" style="width:700px; height:500px;">
             </div>
 
             <div style="margin-bottom: 30px;">
-                <h2 style="margin-bottom: 10px;">프론트엔드 개발자</h2>
-                <h4 style="margin-bottom: 10px;"> <a href="p04_company.html">브랜디</a></h4>
+                <h2 style="margin-bottom: 10px;">${dto.job}</h2>
+                <h4 style="margin-bottom: 10px;"> <a href="/yaneodo/jobnotice/company/view.do?seq=${dto.companySeq}"> ${dto.name }</a></h4>
                 
                 <div id="company-location">
-                    <h6>서울 강남</h6>
+                    <h6>${dto.place }</h6>
                 </div>
 
       
@@ -311,7 +311,7 @@
 
             <div>
                 <div id="description" class="">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad reprehenderit nihil asperiores dolores voluptatem dolor accusantium doloremque vero, optio quisquam? Ex accusamus vero beatae ad eaque illum sequi quibusdam cum quia esse suscipit rerum, ut ducimus doloribus modi quam nostrum iste commodi. Ab eum dolores fugiat eveniet hic doloribus totam tenetur ex nobis aliquam sint magnam sed recusandae eligendi minima nesciunt fugit ipsa possimus autem adipisci quae doloremque, laborum unde accusamus! Commodi deserunt molestias quibusdam enim unde dolorum suscipit laudantium cum quos laborum est ipsa natus blanditiis debitis reiciendis officiis, totam beatae dolorem placeat accusamus vel magni quod. Repudiandae, ratione?
+                    ${dto.description}
                 </div>
            
 
@@ -321,11 +321,11 @@
 
             <div>
                 <span class="form-subtitle">마감일</span>
-                <span class="form-content">상시</span>
+                <span class="form-content">${dto.endDate }</span>
             </div>
             <div>
                 <span class="form-subtitle">근무지역</span>
-                <span class="form-content"> 서울 강남구 테헤란로 38길</span>
+                <span class="form-content">${dto.address}</span>
             </div>
 
             <div>
@@ -334,10 +334,10 @@
 
             
             <div id="company-info">
-                <a href="p04_company.html">
+                <a href="/yaneodo/jobnotice/company/view.do?seq=${dto.companySeq}">
                 <div><img src="img/nopic.png" style="width:50px; height:50px;"></div>
-                <div>브랜디</div>
-                <div>IT,컨텐츠 (산업군)</div>
+                <div>${dto.name }</div>
+                <div>${dto.industry }</div>
                 </a>
             </div>
            
@@ -349,7 +349,7 @@
 
         <div id="right-aside" class="right-aside">
 
-            <div id="side-buttons">
+            <div id="side-btns">
 
                 <button id="bookmark-btn" type="button" class="btn btn-default">
                     <span id="bookmark-icon" class="glyphicon glyphicon-bookmark"></span>
@@ -412,15 +412,16 @@
 
 
 
-                <div class="btn-container">
+                <div id="btn-container">
                     <input type="button" class="btn btn-default" value="새 이력서 작성" onclick="location.href='ex_board.html';">
                     
                     <input type="button" class="btn btn-default" value="파일 업로드">
                     <!-- <input type="file" class="form-control" value="파일 업로드"> -->
+                    
                 </div>
-
                 
             </div>
+
 
             <input type="button" class="btn btn-primary" value="제출하기">
 
