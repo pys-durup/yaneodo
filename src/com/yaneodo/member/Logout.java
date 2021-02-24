@@ -1,5 +1,4 @@
-package com.yaneodo.member.myyaneodo;
-
+package com.yaneodo.member;
 
 import java.io.IOException;
 
@@ -9,15 +8,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/member/myyaneodo/customer_edit.do")
-public class Customer_edit extends HttpServlet {
-	
+@WebServlet("/member/logout.do")
+public class Logout extends HttpServlet {
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/myyaneodo/customer_edit.jsp");
-		dispatcher.forward(req, resp);
+		
+		HttpSession session = req.getSession();
+		
+		//session.removeAttribute("id"); //로그아웃
+		session.invalidate(); //세션초기화
+		
+		resp.sendRedirect("/yaneodo/index.do");
+		
 	}
-
 }

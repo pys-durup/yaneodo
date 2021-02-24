@@ -65,7 +65,7 @@
                         이상의 내용에 동의하여 탈퇴를 원하실 경우, 아래의 “동의하기” 버튼을 클릭 부탁드립니다.
                     </li>
                     <div class="footerButton">
-                        <button type="button" onclick="">동의하기</button>
+                        <button type="button" onclick="location.href='/yaneodo/memeber/logout.do'"">동의하기</button>
                     </div>
 
                 </ul>
