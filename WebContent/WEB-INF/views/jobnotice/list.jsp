@@ -170,7 +170,8 @@
            	<c:forEach items="${list}"  var="dto">
            	
                <div class="details">
-                   <a href="p03_jobinfo.html">
+<%-- 					<a href="/yaneodo/jobnotice/view.do?seq=${dto.seq}&search=${search}&page=${nowPage}"> --%>
+					<a href="/yaneodo/jobnotice/view.do?seq=${dto.jobOpeningSeq}">
                    <div><img src="/images/cat03.jpg" class="companyPic"></div>
                    <div class="desc">${dto.job }</div>
                    <div class="desc sm">${dto.companySeq}</div>
