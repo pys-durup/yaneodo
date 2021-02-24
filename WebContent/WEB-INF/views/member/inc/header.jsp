@@ -1,6 +1,7 @@
-
  <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	
      <!-- header -->
      <div id="headerContainer">
         <nav id="nav">
@@ -12,15 +13,27 @@
                 <li><a class="menuLink" href="#">매치업</a></li>
                 <li><a class="menuLink" href="#">코딩테스트</a></li>
                 <li><a class="menuLink" href="#">커뮤니티</a></li>
+                
+                <!-- <li><span class="menuLink2 glyphicon glyphicon-search" id="search"></span></li> -->
                 <li><button type="button" class="searchButton"><span class="glyphicon glyphicon-search"></span></button></li>
-                <li><a class="menuLink2" id="alarm"><img src="">알람</a></li>
-                <li style="margin-bottom: -10px;"> 
-                    <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/man_01.png')">
-                   	
-                    
-                </li>
-                <li><a class="menuLink2" id="bservice">기업서비스</a></li>   
-                <div style="clear: both;"></div>              
+                
+                
+                <!-- 로그인 전 -->
+                <c:if test="${empty email}">
+                	<li><a class="menuLink2" id="login">로그인/회원가입</a></li>
+         		</c:if>
+         		
+                <!-- 로그인 후 -->
+                <c:if test="${not empty email}">
+					<li><a class="menuLink2" id="alarm"><img src="">알람</a></li>
+	                <li style="margin-bottom: -10px;"> 
+	                    <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/man_01.png')"></li>
+				</c:if>
+                   	 
+                <!-- 공통 -->
+                <li><a href="/yaneodo/companyIndex.do" class="menuLink2" id="bservice">기업서비스</a></li>   
+                <div style="clear: both;"></div>            
+                  
             </ul>
         </nav>
         <div id="myMenu-container" class="container" style="display: none;">
@@ -49,8 +62,27 @@
         </ul>
         </div>
     </div>
+    
+    
 
     <script>
+    
+    
+	/* 로그인/회원가입 버튼 클릭 */
+    $("#login").click(function() {
+        $("#clogin").show();
+        $("#container").css("opacity", ".7");
+    });
+	
+    $("#login").click(function() {
+        $("#clogin").css("display", "block")
+        $("#container").css("opacity", ".7");
+    });
+
+    
+    
+    
+    /* 로그인 후 myYaneodo 메뉴 */
     var flag=false;
 
     $("#myYaneodo-menu").click(function(){

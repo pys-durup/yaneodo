@@ -3,7 +3,7 @@
     margin: 0px;
 } */
 
-#join {
+#form1 {
 	/* border: 1px solid blue; */
 	width: 450px;
 	margin: 0px auto;
@@ -12,20 +12,20 @@
 	margin-bottom: 200px;
 }
 
-#join #jointitle {
+#form1 #jointitle {
 	font-size: 2em;
 	margin-bottom: 20px;
 	/* text-align: center; */
 	/* font-weight: bold; */
 }
 
-#join .box {
+#form1 .box {
 	/* border: 1px solid red; */
 	margin: 15px 10px;
 	padding: 5px 10px;
 }
 
-#join .withFloat {
+#form1 .withFloat {
 	float: left;
 	margin-right: 5px;
 	/* text-align: justify; */
