@@ -120,5 +120,18 @@
             </nav>
         </section>
     </div>
+    
+    <!-- footer -->
+	<div id="footer" >
+	
+		<%@include file="/WEB-INF/views/admin/form/footer.jsp" %>
+	
+	</div>
+	
 </body>
 </html>
+
+
+
+
+
