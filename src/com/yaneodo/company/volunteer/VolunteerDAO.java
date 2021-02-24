@@ -80,7 +80,12 @@ public class VolunteerDAO {
 			}
 			
 			// 페이징 이전 쿼리
-			String sql = String.format("select * from vwVolunteer %s order by pseq desc", where);
+//			String sql = String.format("select * from vwVolunteer %s order by pseq desc", where);
+			
+//			select * from (select rownum as rnum, a.* from (select * from vwVolunteer order by pseq desc) a) where rnum between 1 and 5;
+			
+			String sql = String.format("select * from (select rownum as rnum, a.* from (select * from vwVolunteer %s order by pseq desc) a) where rnum between %s and %s", where, map.get("begin"), map.get("end"));
+			
 			
 			System.out.println(sql);
 			
@@ -147,5 +152,86 @@ public class VolunteerDAO {
 		}
 		
 		return null;
+	}
+
+	
+	//List 서블릿에서 지원자의 총 개수를 리턴
+	public int getTotalCount(HashMap<String, String> map) {
+		
+		try {
+			
+			/*
+			 * String where = "";
+			 * 
+			 * if (map.get("search") != null) { // 검색어가 있을때 > 검색중일때 where +=
+			 * String.format("where (name like '%%%s%%' or job like '%%%s%%')",
+			 * map.get("search"), map.get("search")); where +=
+			 * String.format(" and cmseq = '%s'", map.get("session")); } else { where +=
+			 * String.format("where  cmseq = '%s'", map.get("session")); }
+			 * 
+			 * String sql = String.format("select count(*) as cnt from vwVolunteer %s",
+			 * where);
+			 */
+			
+			String where = "";
+			
+			System.out.println("map의 크기" + map.size());
+			int count = map.size();
+			
+			if (map.size() > 0 ) {
+				where = "where ";
+			}
+			
+			if (map.get("search") != null) {
+				// 검색어가 있을때 > 검색중일때
+				where += String.format("(name like '%%%s%%' or job like '%%%s%%')", map.get("search"), map.get("search"));
+				count--;
+			}
+			
+			if (map.get("isread") != null) {
+				// 매치업 탭을 클릭했을때 
+				if (count == map.size()) {
+					where += String.format(" isread = '%s'", map.get("isread"));
+					count--;
+				} else {
+					where += String.format(" and isread = '%s'", map.get("isread"));
+				}	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+			}
+			
+			if (map.get("session") != null) {
+				if (count == map.size()) {
+					where += String.format(" cmseq = '%s'", map.get("session"));	
+					count--;
+				} else {
+					where += String.format(" and cmseq = '%s'", map.get("session"));
+				}	          
+			}
+			
+			if (map.get("job") != null) {
+				if (count == map.size()) {
+					where += String.format("job = '%s'", map.get("job"));	
+					count--;
+				} else {
+					where += String.format(" and job = '%s'", map.get("job"));
+				}	          
+			}
+			
+			String sql = String.format("select count(*) as cnt from vwVolunteer %s", where);
+			
+			System.out.println(sql);
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
 	}
 }

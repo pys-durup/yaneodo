@@ -453,3 +453,12 @@ ul {
 	display: block;
 	clear: both;
 }
+
+/* 페이징 부분 */
+.pagination > .active > a, .pagination > .active > a:hover {
+	background-color: #a9cbf5;
+    border-color: #b1cbea;
+}
+
+
+

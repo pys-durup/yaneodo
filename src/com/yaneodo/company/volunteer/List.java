@@ -62,9 +62,123 @@ public class List extends HttpServlet {
 			map.put("job", job);
 		}
 		
+		// 페이징 처리
+		int nowPage = 0;		//현재 페이지 번호
+		int totalCount = 0;		//총 게시물 수
+		int pageSize = 5;		//한페이지당 출력 개수
+		int totalPage = 0;		//총 페이지 수
+		int begin = 0;			//rnum 시작 번호
+		int end = 0;			//rnum 끝 번호
+		int n = 0;				//페이지바 관련 변수
+		int loop = 0;			//페이지바 관련 변수
+		int blockSize = 10;		//페이지바 관련 변수
+		
+		String page = req.getParameter("page");
+		
+		if (page == null ||  page == "") {
+			// 기본 1page
+			nowPage = 1;
+		} else {
+			nowPage = Integer.parseInt(page);
+		}
+		
+		// nowPage -> 현재 보려는 페이지 번호
+		// 1 page일때 -> where rnum between 1 and 10
+		// 2 page일때 -> where rnum between 11 and 20
+		// 3 page일때 -> where rnum between 21 and 30
+		
+		begin = ((nowPage - 1) * pageSize) + 1;
+		end = begin + pageSize - 1;
+		
+		// Hashmap에 넣어준다
+		map.put("begin", begin + "");
+		map.put("end", end + "");
+		
+		
+		
+		// 총 페이지 수 계산하기
+		// 총 게시물 수 = 274개
+		// 총 페이지수 = 274 / 10 -> 27.4 -> 무조건 올림 28페이지
+		
+		VolunteerDAO dao = new VolunteerDAO();
+		
+		totalCount = dao.getTotalCount(map); // 총 게시물 수
+		System.out.println("게시물 수 : " + totalCount);
+		
+		totalPage = (int)Math.ceil((double)totalCount / pageSize); // 총 페이지 수
+		System.out.println(totalPage);
+		
+		String pagebar = "";
+		
+		
+		
+		loop = 1;
+		//n = 1;
+		n = ((nowPage - 1) / blockSize) * blockSize + 1;
+		
+		
+		
+		if(job == null) job = "";
+		if(isread == null) isread = "";
+		if(search == null) search = "";
+		
+		
+		// 이전 페이지로 이동
+		
+		if (n == 1) {
+			pagebar += String.format("<li class='disabled'>"
+					+ "	            <a href=\"#!\" aria-label=\"Previous\">"
+					+ "	                <span aria-hidden=\"true\">&laquo;</span>"
+					+ "	            </a>"
+					+ "	        </li>");
+			
+		} else {
+			pagebar += String.format("<li>"
+					+ "	            <a href=\"/yaneodo/company/volunteer/list.do?page=%d&job="+job+"&isread="+isread+"&search="+search+"\" aria-label=\"Previous\">"
+					+ "	                <span aria-hidden=\"true\">&laquo;</span>"
+					+ "	            </a>"
+					+ "	        </li>", n-1);			
+		}
+		
+		
+		
+		
+		// 페이지 번호
+		while (!(loop > blockSize || n > totalPage)) {
+			
+			if (nowPage == n) {
+				pagebar += "<li class='active'>";				
+			} else {
+				pagebar += "<li>";
+			}
+			pagebar += String.format("<a href=\"/yaneodo/company/volunteer/list.do?page=%d&job="+job+"&isread="+isread+"&search="+search+"\">%d</a></li> ",n, n);
+			
+			loop++;
+			n++;
+			
+		}
+		
+		
+		// 다음 10페이지로 이동
+		if (n > totalPage) {
+			pagebar += String.format("<li class='disabled'>"
+					+ "	            <a href=\"#!\" aria-label=\"Next\">"
+					+ "	                <span aria-hidden=\"true\">&raquo;</span>"
+					+ "	            </a>"
+					+ "	        </li>");
+			
+		} else {
+			pagebar += String.format("<li>"
+					+ "	            <a href=\"/yaneodo/company/volunteer/list.do?page=%d\" aria-label=\"Next\">"
+					+ "	                <span aria-hidden=\"true\">&raquo;</span>"
+					+ "	            </a>"
+					+ "	        </li>", n);			
+		}
+				
+				
 		
 		//2. 
-		VolunteerDAO dao = new VolunteerDAO();
+		
 		
 		ArrayList<VolunteerDTO> list = dao.list(map);
 		
@@ -100,7 +214,7 @@ public class List extends HttpServlet {
 		
 		req.setAttribute("sidemenu", sidemenu); // 사이드메뉴 동적코드
 		
-		
+		req.setAttribute("pagebar", pagebar); // 페이지바 코드 넘겨주기
 
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/company/volunteer/list.jsp");
