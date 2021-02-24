@@ -129,6 +129,7 @@
         <div style="clear: both;"></div>
         <!-- content 끝 -->
 	
+	</div>
 	
 	<!-- ########## 하단 푸터 시작 -->
 	<%@include file="/WEB-INF/views/company/inc/footer.jsp"%>
