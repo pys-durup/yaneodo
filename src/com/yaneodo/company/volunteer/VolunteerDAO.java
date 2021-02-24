@@ -38,24 +38,45 @@ public class VolunteerDAO {
 			
 			String where = "";
 			
+			System.out.println("map의 크기" + map.size());
+			int count = map.size();
+			
 			if (map.size() > 0 ) {
 				where = "where ";
 			}
-		
 			
 			if (map.get("search") != null) {
 				// 검색어가 있을때 > 검색중일때
-				where = String.format("name like '%%%s%%' or subject like '%%%s%%' or content like '%%%s%%'", map.get("search"), map.get("search"), map.get("search"));
+				where += String.format("(name like '%%%s%%' or job like '%%%s%%')", map.get("search"), map.get("search"));
+				count--;
 			}
 			
 			if (map.get("isread") != null) {
-				// 매치업 탭을 클릭했을때
-				if (map.size() == 1) {
-					where += String.format("isread = '%s'", map.get("isread"));					
+				// 매치업 탭을 클릭했을때 
+				if (count == map.size()) {
+					where += String.format(" isread = '%s'", map.get("isread"));
+					count--;
 				} else {
-					where += String.format("and isread = '%s'", map.get("isread"));
-				}
-				                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+					where += String.format(" and isread = '%s'", map.get("isread"));
+				}	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+			}
+			
+			if (map.get("session") != null) {
+				if (count == map.size()) {
+					where += String.format(" cmseq = '%s'", map.get("session"));	
+					count--;
+				} else {
+					where += String.format(" and cmseq = '%s'", map.get("session"));
+				}	          
+			}
+			
+			if (map.get("job") != null) {
+				if (count == map.size()) {
+					where += String.format("job = '%s'", map.get("job"));	
+					count--;
+				} else {
+					where += String.format(" and job = '%s'", map.get("job"));
+				}	          
 			}
 			
 			// 페이징 이전 쿼리
@@ -86,6 +107,40 @@ public class VolunteerDAO {
 			
 			return list;
 			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+	
+	//  List 서블릿에서 사이드메뉴 공고직종 목록을 리턴받는다
+	public ArrayList<String> mlist(String cmseq) {
+		
+		try {
+			
+			String sql = "select jo.job as job from tblCompany cp inner join tbljobopening jo on cp.companyseq = jo.companyseq where cp.companymemberseq = ?";
+			
+//			System.out.println(sql);
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, cmseq);
+			
+			rs = pstat.executeQuery();
+			
+			//ResultSet -> ArrayList<DTO>
+			ArrayList<String> list = new ArrayList<String>();
+			
+			while (rs.next()) {
+				//레코드 1줄 -> DTO 1개
+				String menu = rs.getString("job");
+
+				list.add(menu);
+			}
+			
+			return list;
 			
 		} catch (Exception e) {
 			System.out.println(e);

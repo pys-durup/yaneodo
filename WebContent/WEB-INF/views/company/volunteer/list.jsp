@@ -27,9 +27,10 @@
 				<div class="sideName">채용중인 포지션</div>
 				<ul>
 					<li class="side-list-item side-list-item-selected"
-						onclick="location.href=/yaneodo/company/volunteer/list.do';">전체보기</li>
-					<li class="side-list-item">Android developer</li>
-					<li class="side-list-item">IOS developer</li>
+						onclick="location.href='/yaneodo/company/volunteer/list.do';">전체보기</li>
+					${sidemenu}
+					<!-- <li class="side-list-item">Android developer</li> -->
+					<!-- <li class="side-list-item">IOS developer</li> -->
 					<li class="side-list-item" onclick="location.href='/yaneodo/company/volunteer/list.do?isread=1';">매치업</li>
 				</ul>
 			</div>
@@ -45,7 +46,13 @@
 
 		<!-- content -->
 		<div id="content">
-			<div>전체보기</div>
+			<div>
+				전체보기<br>
+				job = ${job}
+				isread = ${isread}
+				search = ${search}
+			
+			</div>
 			<!-- 정보 nav -->
 			<div id="info">
 				<ul class="nav nav-tabs nav-justified">
@@ -58,12 +65,22 @@
 			</div>
 
 			<!-- 검색 -->
-			<div id="search">
-				<div class="input-group">
-					<input class="form-control" placeholder="검색" /> <span
-						class="input-group-addon">찾기</span>
+			<!-- <form id="searchForm" method="GET" action="/codestudy/board/list.do">
+                <div class="input-group search">
+                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2" id="search" name="search" required value="">
+                    <span class="input-group-addon" style="cursor:pointer;" onclick="$('#searchForm').submit();" id="basic-addon2"><span class="glyphicon glyphicon-search"></span></span>
+                </div>
+            </form -->
+            <form id="searchForm" method="GET" action="/yaneodo/company/volunteer/list.do?">
+				<div id="search">
+					<div class="input-group">
+						<input class="form-control" placeholder="검색어를 입력하세요" name="search" required value=""/> 
+						<span class="input-group-addon" style="cursor:pointer;" onclick="$('#searchForm').submit();">찾기</span>
+					</div>
 				</div>
-			</div>
+				<input type="hidden" name="isread" value="${isread}">
+				<input type="hidden" name="job" value="${job}">
+            </form>
 
 			<!-- 지원자 리스트 -->
 			<div id="list">
@@ -73,7 +90,7 @@
 						<td>
 							<div class="item">
 								<div class="leftItem listItem">
-									<input type="checkbox">
+									<input type="checkbox" name="pseq" value="${dto.pseq}" onclick='checkOnlyOne(this)'>
 								</div>
 								<div class="leftItem listItem star">
 									<c:if test="${dto.isdibs.equals('1')}">
@@ -185,7 +202,20 @@
 	<!-- ########## 상단 푸터 끝 -->
 
 	<script>
-
+ 	
+		function checkOnlyOne(element) {
+		  
+			  const checkboxes = document.getElementsByName("pseq");
+			  
+			  checkboxes.forEach((cb) => {
+			    cb.checked = false;
+			  })
+			  
+		  	element.checked = true;
+			 
+			console.log(element.value);
+		}
+ 
 	</script>
 </body>
 </html>
