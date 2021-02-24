@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/company/volunteer/view.do")
-public class view extends HttpServlet {
+public class View extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/company/volunteer/view.jsp");
 		dispatcher.forward(req, resp);

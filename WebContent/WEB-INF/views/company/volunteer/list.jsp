@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -26,10 +27,10 @@
 				<div class="sideName">채용중인 포지션</div>
 				<ul>
 					<li class="side-list-item side-list-item-selected"
-						onclick="location.href='layout.html';">전체보기</li>
+						onclick="location.href=/yaneodo/company/volunteer/list.do';">전체보기</li>
 					<li class="side-list-item">Android developer</li>
 					<li class="side-list-item">IOS developer</li>
-					<li class="side-list-item" onclick="location.href='matchup.html';">매치업</li>
+					<li class="side-list-item" onclick="location.href='/yaneodo/company/volunteer/list.do?isread=1';">매치업</li>
 				</ul>
 			</div>
 			<div class="sideGroup">
@@ -67,6 +68,7 @@
 			<!-- 지원자 리스트 -->
 			<div id="list">
 				<table class="table table-bordered">
+					<c:forEach items="${list}" var="dto">
 					<tr>
 						<td>
 							<div class="item">
@@ -74,117 +76,32 @@
 									<input type="checkbox">
 								</div>
 								<div class="leftItem listItem star">
+									<c:if test="${dto.isdibs.equals('1')}">
 									<span class="glyphicon glyphicon-star-empty"></span>
+									</c:if>
+									<c:if test="${dto.isdibs.equals('0')}">
+									<span class="glyphicon glyphicon-star"></span>
+									</c:if>
 								</div>
 								<div class="leftItem listItem pic">
 									<img src="/yaneodo/images/company/man_01.png" alt="">
 								</div>
-								<div class="itemContent listItem">
-									<div class="contentNum">번호</div>
-									<div class="contentTitle">이름 지원포지션</div>
+								<div class="itemContent listItem" onclick="location.href='/yaneodo/company/volunteer/view.do'">
+									<div class="contentNum">${dto.pseq}</div>
+									<div class="contentTitle">${dto.name}&nbsp;&nbsp;${dto.job}</div>
 								</div>
 								<!-- 태그 위치 -->
 								<div class="rightItem listItem">
-									<span class="label label-info">매치업</span>
+									<c:if test="${dto.isread.equals('1')}">
+										<span class="label label-info">매치업</span>
+									</c:if>
 								</div>
 								<div style="clear: both;"></div>
 							</div>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<div class="item">
-								<div class="leftItem listItem">
-									<input type="checkbox">
-								</div>
-								<div class="leftItem listItem star">
-									<span class="glyphicon glyphicon-star-empty"></span>
-								</div>
-								<div class="leftItem listItem pic">
-									<img src="/yaneodo/images/company/man_01.png" alt="">
-								</div>
-								<div class="itemContent listItem">
-									<div class="contentNum">번호</div>
-									<div class="contentTitle">이름 지원포지션</div>
-								</div>
-								<div class="rightItem listItem">
-									<span class="label label-warning">매치업</span>
-								</div>
-								<div style="clear: both;"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="item">
-								<div class="leftItem listItem">
-									<input type="checkbox">
-								</div>
-								<div class="leftItem listItem star">
-									<span class="glyphicon glyphicon-star-empty"></span>
-								</div>
-								<div class="leftItem listItem pic">
-									<img src="/yaneodo/images/company/man_01.png" alt="">
-								</div>
-								<div class="itemContent listItem">
-									<div class="contentNum">번호</div>
-									<div class="contentTitle">이름 지원포지션</div>
-								</div>
-								<div class="rightItem listItem">
-									<span class="label label-primary">매치업</span>
-
-								</div>
-								<div style="clear: both;"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="item">
-								<div class="leftItem listItem">
-									<input type="checkbox">
-								</div>
-								<div class="leftItem listItem star">
-									<span class="glyphicon glyphicon-star-empty"></span>
-								</div>
-								<div class="leftItem listItem pic">
-									<img src="/yaneodo/images/company/man_01.png" alt="">
-								</div>
-								<div class="itemContent listItem">
-									<div class="contentNum">번호</div>
-									<div class="contentTitle">이름 지원포지션</div>
-								</div>
-								<div class="rightItem listItem">
-									<span class="label label-success">매치업</span>
-								</div>
-								<div style="clear: both;"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="item">
-								<div class="leftItem listItem">
-									<input type="checkbox">
-								</div>
-								<div class="leftItem listItem star">
-									<span class="glyphicon glyphicon-star-empty"></span>
-								</div>
-								<div class="leftItem listItem pic">
-									<img src="/yaneodo/images/company/man_01.png" alt="">
-								</div>
-								<div class="itemContent listItem">
-									<div class="contentNum">번호</div>
-									<div class="contentTitle">이름 지원포지션</div>
-								</div>
-								<div class="rightItem listItem">
-									<span class="label label-default">매치업</span> <span
-										class="label label-default">수락</span>
-								</div>
-								<div style="clear: both;"></div>
-							</div>
-						</td>
-					</tr>
+					</c:forEach>
+					
 				</table>
 			</div>
 
