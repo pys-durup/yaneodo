@@ -52,8 +52,6 @@ public class BoardDAO {
 
 			String sql = String.format("select * from vwBoard");
 
-			System.out.println(sql);
-
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
 
