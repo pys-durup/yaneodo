@@ -8,6 +8,9 @@ public class BoardDTO {
 	private String content;
 	private String writeDate;
 	
+	//작성회원이름
+	private String name; 
+	
 	
 	public String getBoardSeq() {
 		return boardSeq;
@@ -38,6 +41,12 @@ public class BoardDTO {
 	}
 	public void setWriteDate(String writeDate) {
 		this.writeDate = writeDate;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	

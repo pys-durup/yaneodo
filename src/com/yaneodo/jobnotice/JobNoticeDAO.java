@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.yaneodo.DBUtil;
+import com.yaneodo.member.MemberDTO;
+import com.yaneodo.member.resume.ResumeDTO;
 
 
 public class JobNoticeDAO {
@@ -72,7 +74,9 @@ public class JobNoticeDAO {
 				dto.setPlace(rs.getString("place"));
 				dto.setDescription(rs.getString("description"));
 				dto.setPhoto(rs.getString("photo"));
-			
+				
+				//회사정보
+				dto.setName(rs.getString("name"));
 
 				list.add(dto); // ***
 
@@ -130,6 +134,11 @@ public class JobNoticeDAO {
 		
 		return null;
 	}
+	
+	
+
+	
+	
 
 
 }

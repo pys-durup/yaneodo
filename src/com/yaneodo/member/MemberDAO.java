@@ -31,12 +31,12 @@ public class MemberDAO {
 	
 	
 
-	//회원정보 반환 (필요하신분 쓰세여)
+	//회원정보 반환
 	public MemberDTO get(String seq) {
 		
 		try {
 			
-			String sql = "";
+			String sql = "select * from tblCustomer where customerSeq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
