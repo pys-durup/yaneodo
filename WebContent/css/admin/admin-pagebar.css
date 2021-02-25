@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
     /* 밑번호 리스트 */
-    .pagebar {
+    #pageAll nav {
         text-align: right;
         width: 400px;
         margin: 10px auto;

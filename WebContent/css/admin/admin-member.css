@@ -3,7 +3,10 @@
 	#pageAll {
 	    width: 1200px;
 	    min-height: 1200px;
-	    margin: 50px auto;
+	    margin-top: 50px;
+	    margin-bottom: 0px;
+	    margin-left: auto;
+	    margin-right: auto; 
 	    background-color: white;
 	}
     

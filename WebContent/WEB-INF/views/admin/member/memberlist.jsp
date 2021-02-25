@@ -57,7 +57,7 @@
                     	</c:if>
                     
                     	<c:forEach items="${list}" var="dto">
-                        <tr>
+                        <tr onclick="location.href='/yaneodo/admin/member/member.do?customerseq=${dto.customerSeq}&page=${nowPage}'">
                         	<c:if test="${dto.photo eq 'null'}">
                             	<td class="profile"><img src="/yaneodo/images/admin/user.png" alt="기본" style="width: 80px; height: 80px;"></td>
                             </c:if>
@@ -68,8 +68,8 @@
                             <td class="nick">${dto.nickname}</td>
                             <td class="email">${dto.email}</td>
                             <td class="phone">${dto.phone}</td>
-                            <td class="joindate">2021-02-04</td>
-                            <td class="lastdate">2021-02-04</td>
+                            <td class="joindate">${dto.joinDate}</td>
+                            <td class="lastdate">${dto.lastJoin}</td>
                         </tr>
 						</c:forEach>
 						
@@ -79,23 +79,9 @@
 
             <div style="clear: both;"></div>
 
-            <nav class="pagebar">
+            <nav class="pagebar" style="text-align: center;">
                 <ul class="pagination">
-                    <li>
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+                    ${pagebar}
                 </ul>
             </nav>
         </section>
