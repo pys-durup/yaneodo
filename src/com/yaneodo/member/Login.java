@@ -27,7 +27,7 @@ public class Login extends HttpServlet {
 		MemberDTO dto = new MemberDTO();
 		
 		dto.setEmail(email);
-		dto.setpassword(password);
+		dto.setPassword(password);
 		
 		//회원 정보 받아옴
 		int result = dao.login(dto);
@@ -39,14 +39,14 @@ public class Login extends HttpServlet {
 
 			MemberDTO rdto = dao.getMember(email);
 			
-			session.setAttribute("seq", rdto.getSeq());
+			session.setAttribute("seq", rdto.getCustomerSeq());
 			session.setAttribute("name", rdto.getName());
 			session.setAttribute("email", rdto.getEmail());
 			session.setAttribute("nickName", rdto.getNickName());
 			/* session.setAttribute("lastJoin", rdto.getLastJoin()); */
 
 			resp.sendRedirect("/yaneodo/index.do");
-			
+			//return;
 			
 		} else {
 			//해당 이메일 정보 없음 -> 회원가입
@@ -55,13 +55,13 @@ public class Login extends HttpServlet {
 			writer.print("<html><body>");
 			writer.print("<script>");
 			writer.print("alert('입력된 정보가 없습니다. 회원가입 페이지로 이동합니다.');");
-			/* writer.print("location.href='/codestudy/board/list.do;'"); */
+			writer.print("location.href='/yaneodo/member/register.do';"); 
 			writer.print("</script>");
 			writer.print("</body></html>");
 			
 			writer.close();
 			
-			resp.sendRedirect("/yaneodo/member/register.do");
+			//resp.sendRedirect("/yaneodo/member/register.do");
 
 		}
 		
