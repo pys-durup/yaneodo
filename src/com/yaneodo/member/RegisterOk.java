@@ -63,7 +63,7 @@ public class RegisterOk extends HttpServlet {
 			dto.setEmail(email);
 			dto.setName(name);
 			dto.setNickName(nickName);
-			dto.setpassword(password);
+			dto.setPassword(password);
 			dto.setPhone(phone);
 			dto.setBirth(birth);
 			dto.setGender(gender);

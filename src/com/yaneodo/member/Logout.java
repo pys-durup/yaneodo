@@ -18,9 +18,7 @@ public class Logout extends HttpServlet {
 
 		
 		HttpSession session = req.getSession();
-		
-		//session.removeAttribute("id"); //로그아웃
-		session.invalidate(); //세션초기화
+		session.invalidate();
 		
 		resp.sendRedirect("/yaneodo/index.do");
 		

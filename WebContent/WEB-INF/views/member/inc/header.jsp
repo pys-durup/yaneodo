@@ -57,7 +57,7 @@
                 <a href="/profile/bookmarks" class="" data-lnb-kind="bookmarks"><span>북마크</span></a>
             </li>
             <li>
-                <a href="/logout" class="is-logout">로그아웃</a>
+                <a href="/member/logout.do" class="is-logout">로그아웃</a>
             </li>
         </ul>
         </div>
