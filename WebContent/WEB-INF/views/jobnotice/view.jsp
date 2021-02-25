@@ -346,7 +346,9 @@
         </div>
 
 
-
+        <!-- 버튼을 회원만 보이게 -->
+        <%-- <c:if test="${not empty id }"> --%>
+	               
         <div id="right-aside" class="right-aside">
 
             <div id="side-btns">
@@ -383,13 +385,13 @@
                 <div class="apply-subtitle">지원정보</div>
 
                 <span class="apply-item">이름</span>
-                <input type="text" class="apply-input" value="권주홍">
+                <input type="text" class="apply-input" value="${mdto.name }">
 
                 <span class="apply-item">이메일</span>
-                <input type="text" class="apply-input" value="mun7617@naver.com">
+                <input type="text" class="apply-input" value="${mdto.email }">
 
                 <span class="apply-item">연락처</span>
-                <input type="text" class="apply-input" value="010-9094-7617">
+                <input type="text" class="apply-input" value="${mdto.phone }">
 
             </div>
 
@@ -397,19 +399,18 @@
             <div id="apply-file" style="margin-bottom:30px;">
                
                 <div class="apply-subtitle">첨부파일</div>
-
+				
+				<c:forEach items="${rlist}" var="rdto">
+				
                 <div class="apply-file">
                     <input type="checkbox">
-                    <div id="resume-name">이력서1</div>
-                    <div id="resume-regdate">2021.02.12 작성완료</div>
+                    <div id="resume-name">${rdto.orgfileName }</div>
+                    <div id="resume-regdate">${rdto.editDate } 작성완료</div>
                 </div>
+                
+    	 		</c:forEach>
 
-                <div class="apply-file">
-                    <input type="checkbox">
-                    <div id="resume-name">이력서2</div>
-                    <div id="resume-regdate">2021.02.12 작성완료</div>
-                </div>
-
+          
 
 
                 <div id="btn-container">
@@ -428,7 +429,7 @@
 
         </div>
 
-        
+        <%-- </c:if> --%>
 
             
         <div style="clear: both;"></div> 

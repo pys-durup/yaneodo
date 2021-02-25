@@ -32,7 +32,7 @@ public class BoardDAO {
 	
 	
 	
-	//목록 조회
+	//List 서블릿 -> 게시판 글목록 조회
 	public ArrayList<BoardDTO> list(HashMap<String, String> map) {
 
 		try {
@@ -67,9 +67,7 @@ public class BoardDAO {
 				dto.setTitle(rs.getString("title"));
 				dto.setContent(rs.getString("content"));
 				dto.setWriteDate(rs.getString("writedate"));
-				
-//				System.out.println(dto.getBoardSeq());
-			
+				dto.setName(rs.getString("name"));
 			
 				list.add(dto); // ***
 
@@ -81,6 +79,41 @@ public class BoardDAO {
 			System.out.println(e);
 		}
 
+		return null;
+	}
+	
+	
+	//View 서블릿 -> 글1개 내용확인 
+	public BoardDTO get(String seq) {
+
+		try {
+			
+			String sql = "select * from vwBoard where boardseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				
+				BoardDTO dto = new BoardDTO();
+				
+				dto.setBoardSeq(rs.getString("boardSeq"));
+				dto.setCustomerSeq(rs.getString("customerSeq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setContent(rs.getString("content"));
+				dto.setWriteDate(rs.getString("writeDate"));
+				dto.setName(rs.getString("name"));
+			
+				
+				return dto;				
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
 		return null;
 	}
 

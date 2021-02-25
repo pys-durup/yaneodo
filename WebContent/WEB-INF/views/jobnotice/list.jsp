@@ -56,12 +56,12 @@
     #theme .details {           
         margin-top: 10px;
         margin-right: 22px;
-        float: left;
+       /*  float: left; */
     }
 
     #container .title {
         font-family: Jal_Onuel;
-        font-size: 20px;
+        font-size: 18px;
         position: relative;
         left: 0px;
         top: 0px;
@@ -72,15 +72,14 @@
 
     .desc {
         font-family: Jal_Onuel;
-        font-size: 15px;
-        /* padding-top: 5px; */
-        padding-left: 10px;
+        font-size: 16px;
     }
 
-    .sm {
-        font-size: 13px;
+    .m {
+    	color:#666;
+        font-size: 15px;
     }
-    .sm2 {
+    .sm {
         color:#AAA;
         font-size: 13px;
     }
@@ -131,22 +130,22 @@
     <div id="container">
 
 
-    <div id="job-division">
+	    <div id="job-division">
+	
+	        <div class=title><a>전체</a></div>
+	
+	        <div>
+	            <input type="button" class="btn btn-default
+	             job-type" value="서버 개발자" >
+	            <input type="button" class="btn btn-default job-type" value="웹 개발자" >
+	            <input type="button" class="btn btn-default job-type" value="프론트엔드">
+	            <input type="button" class="btn btn-default job-type" value="자바" >
+	        </div>
+	    </div>
 
-        <div class=title><a>전체</a></div>
 
-        <div>
-            <input type="button" class="btn btn-default
-             job-type" value="서버 개발자" >
-            <input type="button" class="btn btn-default job-type" value="웹 개발자" >
-            <input type="button" class="btn btn-default job-type" value="프론트엔드">
-            <input type="button" class="btn btn-default job-type" value="자바" >
-        </div>
-    </div>
+	    <div id="search">
 
-
-    <div id="search">
-        <div>
             <select id="search-tag" class="form-control">
                 <option>태그검색</option>
                 <option>업계연봉수준</option>
@@ -160,30 +159,47 @@
                 <option>구로</option>
                 <option>가산</option>
             </select>
-        </div>
-    </div>
+
+	    </div>
     
 
-    <div id="section">    
-        <div id="job-notice">
+	    <div id="section"> 
+	       
+	        <div id="job-notice">
+	
+	         <c:forEach items="${list}"  var="dto">
+	           	
+	               <div class="details">
+	<%-- 					<a href="/yaneodo/jobnotice/view.do?seq=${dto.seq}&search=${search}&page=${nowPage}"> --%>
+						
+	
+	                   <div>
+	                   		<a href="/yaneodo/jobnotice/view.do?seq=${dto.jobOpeningSeq}">
+	                   		<img src="/images/cat03.jpg" class="companyPic">
+	                   		</a>
+                		</div>
+	                   
+	                   <div class="desc">${dto.job }</div>
+	
+	                   <div class="desc m">${dto.name}</div>
+	                   
+	        		 <div class="desc sm">${dto.place}</div>
+	                   
+	                
+	               </div>
+	               	           
+	               
+	         </c:forEach>
+	         		<div style="clear: both;"></div>
 
-           	<c:forEach items="${list}"  var="dto">
-           	
-               <div class="details">
-<%-- 					<a href="/yaneodo/jobnotice/view.do?seq=${dto.seq}&search=${search}&page=${nowPage}"> --%>
-					<a href="/yaneodo/jobnotice/view.do?seq=${dto.jobOpeningSeq}">
-                   <div><img src="/images/cat03.jpg" class="companyPic"></div>
-                   <div class="desc">${dto.job }</div>
-                   <div class="desc sm">${dto.companySeq}</div>
-                   <div class="desc sm2">${dto.place}</div>
-                   </a>
-               </div>
-               
-           </c:forEach>
-           
-               <div style="clear: both;"></div>
-        </div>
+	        </div>
+	
+	    </div>
 
+
+
+
+    
     </div>
 
     <script>
