@@ -8,7 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.yaneodo.DBUtil2;
+import com.yaneodo.DBUtil;
 
 public class GainDAO {
 	
@@ -19,7 +19,7 @@ public class GainDAO {
 	
 	public GainDAO() {
 		//DB 연결
-		conn = DBUtil2.open();
+		conn = DBUtil.open();
 	}
 	
 	
