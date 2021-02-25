@@ -69,7 +69,7 @@ public class Applied_status extends HttpServlet {
 		//1page = where rnum between 1 and 10
 		//2page = where rnum between 11 and 20
 		//3page = where rnum between 21 and 30
-		
+		//엥
 		
 		begin =((nowPage-1)*pageSize) +1;
 		end = begin + pageSize-1;
