@@ -10,8 +10,15 @@
 <title>Insert title here</title>
 <%@include file="/WEB-INF/views/company/inc/asset.jsp"%>
 <link rel="stylesheet" href="/yaneodo/css/company/volunteer/view.css">
-<style>
-</style>
+    <style>
+
+        .resumeData .row {
+            border-top: 1px solid #ccc;
+            padding-top: 25px;
+            padding-bottom: 10px;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -85,7 +92,7 @@
 				</div>
 				<div class="view-resume-container">
 					<div class="view-resume-body">
-						<div class="title">박OO</div>
+						<div class="title">${vdto.name }</div>
 						<div class="subtitle">
 							이메일 : <span class="text ">test@test.com</span>
 						</div>
@@ -94,35 +101,10 @@
 						</div>
 						<p>착목한는 곳이 원대하고 그들은 피가 더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를
 							능히 품으며 그들의 이상은 아름답고 소담스러운 열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 ! 그들의</p>
-						<div class="make-line"></div>
-						<div>경력</div>
-						<div>Lorem ipsum dolor sit amet consectetur adipisicing
-							elit. Voluptatum repudiandae totam temporibus iusto rerum modi
-							repellat dolorum earum reiciendis corrupti dolores, ea dicta
-							officiis qui quaerat vitae quia? Unde, omnis iure exercitationem
-							reiciendis repellat est illum quidem dicta explicabo voluptatum?
-							Et dicta dolorem aliquid a cum earum aut necessitatibus quaerat
-							corrupti similique autem, consequatur tempore asperiores
-							doloremque accusantium est? Ex est mollitia ipsa nostrum debitis
-							nisi harum. Explicabo natus dolorum officiis assumenda quod, quam
-							nobis sint a sapiente pariatur ullam, asperiores voluptatibus.
-							Iure corrupti molestiae animi error, maiores eveniet ipsam.
-							Excepturi reprehenderit cum possimus eos placeat ad sequi
-							repellat odio?</div>
-						<div class="make-line"></div>
-						<div>추가...</div>
-						<div>Lorem ipsum dolor sit amet consectetur, adipisicing
-							elit. Incidunt labore illo sequi natus cupiditate. Tenetur earum
-							sapiente neque laboriosam nihil magnam aut cupiditate repudiandae
-							sed odio nulla consequuntur adipisci error natus molestiae, cum
-							reiciendis officiis voluptas fugiat! Quam earum autem nam fugiat?
-							Perspiciatis est debitis magnam impedit laudantium accusantium
-							praesentium neque quo harum qui nemo, iste iusto veritatis
-							tempore asperiores aut cumque excepturi ut molestias libero
-							quibusdam eius, voluptatem voluptates? Quo sapiente, explicabo
-							cum quae ut earum, deserunt, accusantium delectus quaerat velit
-							fugiat quasi non ducimus placeat enim dolore sint eum quas
-							eveniet voluptate ipsam dolorum voluptatum. Porro, nihil veniam.</div>
+						
+						<div class="container resumeData">
+							${resumeData}
+						</div>
 					</div>
 					<div class="masking">후보자가 제안을 수락할 경우 이름, 연락처, 이메일을 확인할 수 있습니다
 					</div>
