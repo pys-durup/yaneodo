@@ -31,7 +31,7 @@
 				</c:if>
                    	 
                 <!-- 공통 -->
-                <li><a href="/yaneodo/companyIndex.do" class="menuLink2" id="bservice">기업서비스</a></li>   
+                <li><a href="/yaneodo/company/main/index.do" class="menuLink2" id="bservice">기업서비스</a></li>   
                 <div style="clear: both;"></div>            
                   
             </ul>
