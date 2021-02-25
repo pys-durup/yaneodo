@@ -12,6 +12,8 @@
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
 <script src="/codestudy/js/highcharts.js"></script>
 <link rel="stylesheet" href="/yaneodo/css/admin/admin.css">
+
+
     
 
 
@@ -20,7 +22,7 @@
    #outline {
             width: 1110px;
             margin : -10px auto;
-            height: 900px;
+            
         }
 
         #tbl {
@@ -69,7 +71,7 @@
 	</div>
 	<div style="clear:both;"></div>
 	
-	<div id = outline>
+	<div id = "outline">
 	
 			<div id="leftSide" style="float:left; background-color: white;">
 			<%@include file="/WEB-INF/views/admin/inc/sidemenu.jsp" %>
@@ -227,18 +229,6 @@
         wsum.innerHTML="${(dtoweek.a*100000)+(dtoweek.b*200000)+(dtoweek.c*300000)+(dtoweek.d*400000)+(dtoweek.e*500000)}";
         msum.innerHTML="${(dtomonth.a*100000)+(dtomonth.b*200000)+(dtomonth.c*300000)+(dtomonth.d*400000)+(dtomonth.e*500000)}";
   
-
-        
-        
-       /*  if ( ${flag}.equals("pick") ) {
-        	$("#datePicker").val(${pickdate});
-	        
-        } else {
-	        	
-        } */
-        
-        
-
 
 
         $("#datePicker").change(function () {
