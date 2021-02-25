@@ -84,7 +84,7 @@ public class VolunteerDAO {
 			
 //			select * from (select rownum as rnum, a.* from (select * from vwVolunteer order by pseq desc) a) where rnum between 1 and 5;
 			
-			String sql = String.format("select * from (select rownum as rnum, a.* from (select * from vwVolunteer %s order by pseq desc) a) where rnum between %s and %s", where, map.get("begin"), map.get("end"));
+			String sql = String.format("select * from (select rownum as rnum, a.* from (select * from vwVolunteer %s order by aseq desc) a) where rnum between %s and %s", where, map.get("begin"), map.get("end"));
 			
 			
 			System.out.println(sql);
@@ -100,6 +100,7 @@ public class VolunteerDAO {
 				VolunteerDTO dto = new VolunteerDTO();
 				
 				dto.setPseq(rs.getString("pseq"));
+				dto.setAseq(rs.getString("aseq"));
 				dto.setCmseq(rs.getString("cmseq"));
 				dto.setName(rs.getString("name"));
 				dto.setJob(rs.getString("job"));
@@ -234,4 +235,69 @@ public class VolunteerDAO {
 		
 		return 0;
 	}
+
+	
+	// View 서블릿 에서 요청 한명의 view페이지 정보를 반환한다
+	public VolunteerViewDTO getView(String aseq, String cmseq) {
+		
+		try {
+			
+			String sql = "select * from vwVolunteerView where aseq = ? and cmseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, aseq);
+			pstat.setString(2, cmseq);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				
+				VolunteerViewDTO dto = new VolunteerViewDTO();
+				
+				dto.setAseq(rs.getString("aseq"));
+				dto.setCmseq(rs.getString("cmseq"));
+				dto.setName(rs.getString("name"));
+				dto.setEmail(rs.getString("email"));
+				dto.setPhone(rs.getString("phone"));
+				dto.setReaddate(rs.getString("readdate"));
+				
+				dto.setMseq(rs.getString("mseq"));
+				dto.setMessage(rs.getString("message"));
+				dto.setSgdate(rs.getString("sgdate"));
+				dto.setRank(rs.getString("rank"));
+				dto.setIncome(rs.getString("income"));
+				dto.setPosition(rs.getString("position"));
+				dto.setArea(rs.getString("area"));
+				dto.setStock(rs.getString("stock"));
+				dto.setState(rs.getString("state"));
+				
+				return dto;
+				
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

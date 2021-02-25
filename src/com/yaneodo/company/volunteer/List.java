@@ -28,7 +28,7 @@ public class List extends HttpServlet {
 //		HttpSession session = req.getSession();
 //		session.setAttribute("cmseq", "1");
 		
-		String tempSession = "1";
+		String tempSession = "1"; // 기업회원번호 임의 세션
 		
 		
 		

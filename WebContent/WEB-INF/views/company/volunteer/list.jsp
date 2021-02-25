@@ -85,6 +85,7 @@
 			<!-- 지원자 리스트 -->
 			<div id="list">
 				<table class="table table-bordered">
+					<!-- DB에서 vwVolunteer에서 가져온 데이터들 -->
 					<c:forEach items="${list}" var="dto">
 					<tr>
 						<td>
@@ -103,8 +104,8 @@
 								<div class="leftItem listItem pic">
 									<img src="/yaneodo/images/company/man_01.png" alt="">
 								</div>
-								<div class="itemContent listItem" onclick="location.href='/yaneodo/company/volunteer/view.do'">
-									<div class="contentNum">${dto.pseq}</div>
+								<div class="itemContent listItem" onclick="location.href='/yaneodo/company/volunteer/view.do?aseq=${dto.aseq}&search=${search}&page=${page}&job=${dto.job}&isread=${dto.isread }'">
+									<div class="contentNum">no.${dto.aseq}</div>
 									<div class="contentTitle">${dto.name}&nbsp;&nbsp;${dto.job}</div>
 								</div>
 								<!-- 태그 위치 -->

@@ -4,6 +4,8 @@ public class VolunteerDTO {
 	
 	private String pseq; // 프로필 번호
 	private String cmseq; // 기업회원 번호
+	private String aseq; // 지원공고 번호
+	
 	private String name; // 회원 이름
 	private String job; // 공고 직무
 	private String isread; // 이력서 열람여부 1:열람 / 0:미열람
@@ -12,6 +14,13 @@ public class VolunteerDTO {
 	
 	
 	
+	
+	public String getAseq() {
+		return aseq;
+	}
+	public void setAseq(String aseq) {
+		this.aseq = aseq;
+	}
 	public String getAsseq() {
 		return asseq;
 	}
