@@ -15,7 +15,8 @@
 <link rel="stylesheet" href="/yaneodo/css/member/member-menu.css">
 <link rel="stylesheet" href="/yaneodo/css/member/layout-profile.css">
 
-    
+
+   
     <style>
         
       
@@ -24,6 +25,7 @@
             width:1050px;
             margin: 0px auto;
             margin-top: 80px;
+            margin-bottom: 100px;
         }
 
         #container .title{
@@ -144,8 +146,8 @@
 
  
         #box2{
-            height: 350px;
-            margin-top: 30px;
+            height: 400px;
+            margin-top: 0px;
             padding: 20px 20px;
         }
 
@@ -157,6 +159,7 @@
         }
 
         .form-subtitle {
+      
             margin: 10px 0px;
         }
 
@@ -175,19 +178,15 @@
 
         #box3 {
             padding: 20px 20px;
-     
             height: auto;
-  
-            margin: 20px 0px;
+            margin: 30px 0px;
      
         }
 
         #box4 {
             padding: 20px 20px;
-
             height: auto;
-            
-            margin: 20px 0px;
+            margin-bottom: 30px;
           
         }
 
@@ -200,6 +199,8 @@
 
 </head>
 <body>
+
+
 
   	  
 	<!-- 상단헤더 -->
@@ -254,94 +255,114 @@
       
 
 
+       
 
-       <div id="rightContainer">
-        
-           <div id="box1" class="rightbox"> 
+        <div id="rightContainer">
+         
+			<form method="POST" action="/yaneodo/member/profile/editok.do">
 
-               <span>입력을 완료하면 매치업 등록이 가능합니다. </span>
-               <input type="button" value="입력하기" style="float:right;" class="btn btn-default" 
-               onclick="location.href='/yaneodo/member/profile/edit.do?seq=${dto.customerSeq}'">
+            <div id="box2" class="rightbox">
+            
+                <div class="form-title">학교·직장 등록</div>
+
+                
+                <div class="form-subtitle">학교</div>
+                <input type="text" placeholder="학교입력"  class="form-control" name="school" value="${dto.school }">
+                 <input type="text" placeholder="전공입력"  class="form-control"  name="major" value="${dto.major }">  
+
+
+                <div class="form-subtitle">직장</div>
+                <input type="text" placeholder="직장입력"  class="form-control" name="company" value="${dto.company }">
+                
+
+                <!-- <select class="item">
+                    <option>이력서1</option>
+                </select> -->
+                    
+
+
+                <div class="form-subtitle">간단소개글</div>
+                <span style="color:#999; font-size:14px;">직무 내용, 경험, 목표 등을 추가해서 더욱 멋진 소개글을 작성해보세요.</span>
+                <textarea class="form-control" style="height:100px; resize: none;" placeholder="간단 소개글을 작성하세요." ></textarea>
+			
+            </div>
+	
+
+            <div id="box3" class="rightbox">
+
+                <div class="form-title">전문분야설정</div>
+
+                <div class="form-subtitle">직군</div>
+                <select class="form-control">
+                    <option>개발</option>
+                    <option>기타</option>
+                </select>
                
-           </div>
-      
-
-           <div id="box2" class="rightbox">
-
-               <div class="form-title">기본 이력서</div>
-               
-               <div class="form-subtitle">기본 이력서 선택</div>
-
-               <div>
-                   <select class="item">
-                       <option>이력서1</option>
-                   </select>
-               </div>
-
-               <div class="form-subtitle">학교</div>
-                   <div class="item underline-box" style="color:red">${dto.school }</div>
-                   <div class="item underline-box" style="color:red">${dto.major }</div>
-               <div class="form-subtitle">직장</div>
-                   <div class="item underline-box">${dto.company }</div>
-                   
-               <div class="form-subtitle">간단소개글</div>
-                   <div class=item> </div>
-
-           </div>
+                <div class="form-subtitle">직무</div>
+                <select class="form-control">
+                    <option>웹개발자</option>
+                    <option>서버개발자</option>
+                    <option>프론트엔드개발자</option>
+                </select>
+            
+                <div class="form-subtitle">경력</div>
+                <select class="form-control">
+                    <option>신입</option>
+                    <option>1년</option>
+                    <option>2년</option>
+                    <option>3년</option>
+                    <option>4년</option>
+                    <option>5년</option>
+                    <option>6년</option>
+                    <option>7년</option>
+                    <option>8년</option>
+                    <option>9년</option>
+                    <option>10년이상</option>
+                </select>
+            
+            </div>
 
 
-
-           <div id="box3" class="rightbox">
-
-               <div class="form-title">전문분야설정</div>
-
-               <div class="form-subtitle">직군</div>
-               <div class="item underline-box">학교 미입력</div>
-  
-               <div class="form-subtitle">직무</div>
-               <div class="item underline-box">직장 미입력</div>
-           
-               <div class="form-subtitle">경력</div>
-               <div class="item underline-box">직장 미입력</div>
-           
-           </div>
-
-
-           <div id="box4" class="rightbox">
-
-               <div>
-                   <div class="form-subtitle" style="float:left; margin-right:30px;">제외기업 설정</div>
-                   <input type="button" value="선택하기" style="margin-top:6px;">
-
-                   <div style="clear: both;"></div>
-               </div>
-
-
-               <div style="float:left;">
-                   <div class="form-subtitle" style="float:left; margin-right:30px;">구직여부 설정</div>
-                  
-                   <select class="item form-control" style="width: 300px; margin: 6px 0px; margin-right: 30px; float:left;">
-                       <option>관심없음</option>
-                       <option>관심있음</option>
-                       <option>현재 구직중</option>
-                   </select>
-
-                   <div style="float:left; margin-top: 10px;">이력서 비공개</div>           
-               </div>
-
-           </div>
-
-
-           <div style="clear: both;"></div>
-
-       </div>
+            <div id="box4" class="rightbox">
 
        
 
+                <div class="form-subtitle">현재 연봉</div>
+                <input type="text" placeholder="" class="form-control">
+               
+                <div class="form-subtitle">스킬</div>
+                <select class="form-control">
+                    <option>java</option>
+                    <option>javascript</option>
+                    
+                </select>
+            
+       
+            </div>
+
+            <div style="clear: both;"></div>   
+
+         
+			<button type="submit" class="btn btn-primary" style="float: right;" >작성완료</button>
+			
+			<input type="hidden" name="customerSeq" value="${dto.customerSeq }">
+			</form>
+
+    </section>
 
 
+    
+    <script>
 
-   </section>
+    var btn1 = document.getElementById("btn-school");
+    var child;
+
+    btn1.onclick = function() {
+
+        child = window.open("p02-1_school.html", "child", "width=400, height=300, left=100, top=100");
+
+    }
+    </script>
 
     
 </body>
