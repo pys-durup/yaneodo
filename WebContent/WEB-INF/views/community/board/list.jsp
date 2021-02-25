@@ -81,9 +81,8 @@
                 <tr>
                     <th style="width:50px">번호</th>
                     <th style="width:300px">글제목</th>
-                    <th style="width:50px">작성자</th>
-                    <th style="width:50px">작성일</th>
-                    <th style="width:50px">조회수</th>
+                    <th style="width:75px">작성자</th>
+                    <th style="width:75px">작성일</th>
                 </tr>
                 
 				<c:forEach items="${list}" var="dto">
@@ -92,7 +91,6 @@
                     <td>${dto.title}</td>
                     <td>${dto.customerSeq}</td>
                     <td>${dto.writeDate}</td>
-                    <td>0</td>
                 </tr>
                 </c:forEach>
                 
