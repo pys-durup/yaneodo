@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.yaneodo.member.MemberDAO;
+import com.yaneodo.member.MemberDTO;
+
 
 @WebServlet("/member/profile/view.do")
 public class View extends HttpServlet {
@@ -25,18 +28,18 @@ public class View extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		//1.
-		String seq = req.getParameter("seq");
+//		String seq = req.getParameter("seq");
 
 	
 		//2.
-//		MemberDAO dao = new MemberDAO();
-//		MemberDTO dto = dao.get(seq);
-//		
-//		dao.close();//*****
-//		
-//	
-//		//3.
-//		req.setAttribute("dto", dto);
+		MemberDAO dao = new MemberDAO();
+		MemberDTO dto = dao.getProfile("1");
+		
+		dao.close();//*****
+		
+	
+		//3.
+		req.setAttribute("dto", dto);
 
 
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/member/profile/view.jsp");
