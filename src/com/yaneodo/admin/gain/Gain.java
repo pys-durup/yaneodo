@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yaneodo.admin.matchup.MatchupDAO;
+import com.yaneodo.admin.matchup.MatchupDTO;
+
 @WebServlet("/admin/gain/gain.do")
 public class Gain extends HttpServlet {
 
@@ -30,10 +33,7 @@ public class Gain extends HttpServlet {
 		
 		  req.setAttribute("pickdate", date);
 		 
-		  /* 
-		 * if (req.getParameter("flag").equals("pick")) { req.setAttribute("flag",
-		 * "pick"); } else { req.setAttribute("flag", "today"); }
-		 */
+
 		//2. 
 		
 		Calendar now = Calendar.getInstance();
@@ -55,11 +55,11 @@ public class Gain extends HttpServlet {
 			}
 		}
 		
-		
 		GainDAO dao = new GainDAO();
 		GainDTO dtoday = dao.getgainday(date); 
 		GainDTO dtoweek = dao.getgainweek(date); 
 		GainDTO dtomonth = dao.getgainmonth(date); 
+		
 		
 		
 		req.setAttribute("dto", dtoday);
