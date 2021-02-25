@@ -8,13 +8,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+=======
+>>>>>>> dev
 @WebServlet("/company/main/registerok.do")
 public class RegisterOk extends HttpServlet {
 
 	@Override
+<<<<<<< HEAD
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
 		req.setCharacterEncoding("UTF-8");
@@ -89,3 +93,12 @@ public class RegisterOk extends HttpServlet {
 		
 	}
 }
+=======
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
+
+
+	}
+}
+>>>>>>> dev

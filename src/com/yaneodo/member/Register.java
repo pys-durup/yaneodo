@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/member/register.do")
+@WebServlet("/member/registerok.do")
 public class Register extends HttpServlet {
 
 	@Override
