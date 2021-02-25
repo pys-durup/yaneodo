@@ -72,9 +72,9 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ["Element", "Density", { role: "style" } ],
-          ["오늘", 131, "#E08B95"],
-          ["어제", 275, "silver"],
-          ["이번주", 1086, "gold"]
+          ["오늘", ${today}, "#E08B95"],
+          ["어제", ${yest}, "silver"],
+          ["이번주", ${week}, "gold"]
         ]);
     
         var view = new google.visualization.DataView(data);
@@ -115,15 +115,15 @@
 
             <div id="dateSelect">
                 
-                <input type="date" id="datePicker" value="2021-02-15">
+                <input type="date" id="datePicker" value="">
                 <div>날짜 선택 : </div> 
             </div>
             <div style="clear: both;"></div>
 
            <div id="text">
-               <div class="count">오늘 매칭 횟수 : <span>131</span>회</div>
-               <div class="count">어제 매칭 횟수 : <span>275</span>회</div>
-               <div class="count">이번주 매칭 횟수 : <span>1086</span>회</div>
+               <div class="count" >오늘 매칭 횟수 : <span id="today"></span>회</div>
+               <div class="count" >어제 매칭 횟수 : <span id="yest"></span>회</div>
+               <div class="count" >이번주 매칭 횟수 : <span id="week"></span>회</div>
            </div>
 
             <div id="columnchart_values" style="width: 500px; height: 300px;"></div>
@@ -140,6 +140,30 @@
 	
 	  <script>
         
+	  let m;
+		m = ${pickdate}+"";
+
+		if ( m == null ||  m =="" ) {
+			document.getElementById("datePicker").value = new Date().toISOString().substring(0, 10);
+		} else {			
+			document.getElementById("datePicker").value = '${pickdate}';
+		}
+		
+		var today = document.getElementById("today");
+        var yest = document.getElementById("yest");
+        var week = document.getElementById("week");
+        		 
+
+        
+        today.innerHTML="${today}";
+        yest.innerHTML="${yest}";
+        week.innerHTML="${week}";
+	  
+	  $("#datePicker").change(function () {
+          //alert($("#datePicker").val());
+          location.href="/yaneodo/admin/matchup/matchup_main.do?date="+$("#datePicker").val();
+          
+      });
 
 
     

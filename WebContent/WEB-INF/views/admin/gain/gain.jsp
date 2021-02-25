@@ -228,6 +228,8 @@
        	tsum.innerHTML="${(dto.a*100000)+(dto.b*200000)+(dto.c*300000)+(dto.d*400000)+(dto.e*500000)}";
         wsum.innerHTML="${(dtoweek.a*100000)+(dtoweek.b*200000)+(dtoweek.c*300000)+(dtoweek.d*400000)+(dtoweek.e*500000)}";
         msum.innerHTML="${(dtomonth.a*100000)+(dtomonth.b*200000)+(dtomonth.c*300000)+(dtomonth.d*400000)+(dtomonth.e*500000)}";
+        
+        
   
 
 
