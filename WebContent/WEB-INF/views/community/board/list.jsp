@@ -81,26 +81,28 @@
                 <tr>
                     <th style="width:50px">번호</th>
                     <th style="width:300px">글제목</th>
-                    <th style="width:50px">작성자</th>
-                    <th style="width:50px">작성일</th>
-                    <th style="width:50px">조회수</th>
+                    <th style="width:75px">작성자</th>
+                    <th style="width:75px">작성일</th>
                 </tr>
                 
-				<c:forEach items="${list}" var="dto">
+
+				<c:forEach items="${list}" var="dto" varStatus="status">
                 <tr>
-                    <td>${dto.boardSeq}</td>
-                    <td>${dto.title}</td>
-                    <td>${dto.customerSeq}</td>
+                    <td>${list.size() - status.index}</td>
+                    <td>
+                    <a href="/yaneodo/community/board/view.do?seq=${dto.boardSeq}">${dto.title}</a>
+                    </td>
+                    <td>${dto.name}</td>
                     <td>${dto.writeDate}</td>
-                    <td>0</td>
                 </tr>
                 </c:forEach>
+
                 
             </table>
 
 
     
-            <button class="btn btn-default" onclick="location.href='p05_board-write.html'">
+            <button class="btn btn-default" onclick="/yaneodo/community/board/write.do">
                 <span class="glyphicon glyphicon-pencil"></span>
                 글쓰기
             </button>

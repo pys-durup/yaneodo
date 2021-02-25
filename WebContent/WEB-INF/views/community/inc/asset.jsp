@@ -18,6 +18,6 @@
 <!-- 적용CSS -->
 <link rel="stylesheet" href="/yaneodo/css/member/customer2.css">
 <link rel="stylesheet" href="/yaneodo/css/member/member-main.css">
-<!-- <link rel="stylesheet" href="/yaneodo/css/member/member-menu.css">-->
+
 <link rel="stylesheet" href="/yaneodo/css/member/layout-board.css">
 

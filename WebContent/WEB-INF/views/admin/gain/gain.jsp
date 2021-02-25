@@ -10,54 +10,23 @@
 
 
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
-
+<script src="/codestudy/js/highcharts.js"></script>
 <link rel="stylesheet" href="/yaneodo/css/admin/admin.css">
+
+
     
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-  google.charts.load("current", {packages:['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-    
-      ["Element", "Density", { role: "style" } ],
-      ["a타입", ${dto.a}, "#E08B95"],
-      ["b타입", ${dto.b}, "silver"],
-      ["c타입", ${dto.c}, "gold"],
-      ["d타입", ${dto.d}, "color: #e5e4e2"]
-      ["e타입", ${dto.e}, "color: #e5e4e2"]
-    ]);
 
-    var view = new google.visualization.DataView(data);
-    view.setColumns([0, 1,
-                     { calc: "stringify",
-                       sourceColumn: 1,
-                       type: "string",
-                       role: "annotation" },
-                     2]);
-
-    var options = {
-      title: "오늘",
-      width: 600,
-      height: 400,
-      bar: {groupWidth: "40%"},
-      legend: { position: "none" },
-    };
-    var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-    chart.draw(view, options);
-}
-</script>
 <style>
 
    #outline {
             width: 1110px;
             margin : -10px auto;
-            height: 900px;
+            
         }
 
         #tbl {
-            width: 600px;
+            width: 700px;
             height: 40px;
             text-align: center;
             margin : 90px auto;
@@ -83,46 +52,17 @@
             margin-top: -50px;
         }
 
-        #tbd tr:hover {
-            color: #999;
-            cursor:pointer;
-        }
+        
+        #chart1 {
+		
+		    width: 600px;
+		    margin-left: 100px;
+		    
+		}
 
 
     
 </style>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ["Element", "Density", { role: "style" } ],
-          ["오늘", 131, "#E08B95"],
-          ["어제", 275, "silver"],
-          ["이번주", 1086, "gold"]
-        ]);
-    
-        var view = new google.visualization.DataView(data);
-        view.setColumns([0, 1,
-                         { calc: "stringify",
-                           sourceColumn: 1,
-                           type: "string",
-                           role: "annotation" },
-                         2]);
-    
-        var options = {
-          title: "",
-          width: 500,
-          height: 400,
-          bar: {groupWidth: "40%"},
-          legend: { position: "none" },
-        };
-        var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
-        chart.draw(view, options);
-    }
-    </script>
-
 </head>
 <body>
 	<!-- header -->
@@ -131,7 +71,7 @@
 	</div>
 	<div style="clear:both;"></div>
 	
-	<div id = outline>
+	<div id = "outline">
 	
 			<div id="leftSide" style="float:left; background-color: white;">
 			<%@include file="/WEB-INF/views/admin/inc/sidemenu.jsp" %>
@@ -141,7 +81,7 @@
 
             <div id="dateSelect">
                 
-                <input type="date" id="datePicker" value="2021-02-15">
+                <input type="date" id="datePicker" value="">
                 <div>날짜 선택 : </div> 
             </div>
 
@@ -153,46 +93,110 @@
                         <th>b타입</th>
                         <th>c타입</th>
                         <th>d타입</th>
+                        <th>e타입</th>
                         <th>총 수입</th>
                     </tr>
                 </thead>
                 <tbody id="tbd">
                     <tr>
                         <td>오늘</td>
-                        <td>153</td>
-                        <td>152</td>
-                        <td>215</td>
-                        <td>452</td>
-                        <td>1,280,000</td>
+                        <td> ${dto.a}</td>
+                        <td> ${dto.b}</td>
+                        <td> ${dto.c}</td>
+                        <td> ${dto.d}</td>
+                        <td> ${dto.e}</td>
+                        <td id="tsum"></td>
                     </tr>
                     <tr>
-                        <td>어제</td>
-                        <td>125</td>
-                        <td>135</td>
-                        <td>301</td>
-                        <td>397</td>
-                        <td>2,540,000</td>
+                        <td>한주</td>
+                        <td> ${dtoweek.a}</td>
+                        <td> ${dtoweek.b}</td>
+                        <td> ${dtoweek.c}</td>
+                        <td> ${dtoweek.d}</td>
+                        <td> ${dtoweek.e}</td>
+                        <td id="wsum"></td>
                     </tr>
                     <tr>
-                        <td>이번주</td>
-                        <td>851</td>
-                        <td>765</td>
-                        <td>1210</td>
-                        <td>3105</td>
-                        <td>41,100,000</td>
-                    </tr>
-                    <tr>
-                        <td>이번달</td>
-                        <td>3542</td>
-                        <td>3325</td>
-                        <td>5052</td>
-                        <td>1,4211</td>
-                        <td>125,480,000</td>
+                        <td>한달</td>
+                        <td> ${dtomonth.a}</td>
+                        <td>${dtomonth.b}</td>
+                        <td>${dtomonth.c}</td>
+                        <td>${dtomonth.d}</td>
+                        <td>${dtomonth.e}</td>
+                        <td id="msum"></td>
                     </tr>
                 </tbody>
             </table>
 
-            <div id="columnchart_values" style="width: 900px; height: 500px;"></div>
+             <div id="chart1"></div>
+  
+  <script type="text/javascript">
+    Highcharts.chart('chart1', {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: '오늘'
+        },
+        xAxis: {
+            categories: ['오늘', '한주', '한달'],
+            title: {
+                text: null
+            }
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '판매 횟수',
+                align: 'high'
+            },
+            labels: {
+                overflow: 'justify'
+            }
+        },
+        tooltip: {
+            valueSuffix: ' 개'
+        },
+        plotOptions: {
+            bar: {
+                dataLabels: {
+                    enabled: true
+                }
+            }
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'top',
+            x: 0,
+            y: 80,
+            floating: true,
+            borderWidth: 1,
+            backgroundColor:
+                Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+            shadow: true
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{
+            name: 'A타입',
+            data: [${dto.a}, ${dtoweek.a}, ${dtomonth.a}]
+        }, {
+            name: 'B타입',
+            data: [ ${dto.b}, ${dtoweek.b}, ${dtomonth.b}]
+        }, {
+            name: 'C타입',
+            data: [ ${dto.c}, ${dtoweek.c}, ${dtomonth.c}]
+        }, {
+            name: 'D타입',
+            data: [ ${dto.d}, ${dtoweek.d}, ${dtomonth.d}]
+        }, {
+            name: 'E타입',
+            data: [ ${dto.e}, ${dtoweek.e}, ${dtomonth.e}]
+        }]
+    });
+        </script>
   
         </div>
 
@@ -205,13 +209,39 @@
 	</div>
 	
 <script>
+		let m;
+		m = ${pickdate}+"";
+
+		if ( m == null ||  m =="" ) {
+			document.getElementById("datePicker").value = new Date().toISOString().substring(0, 10);
+		} else {			
+			document.getElementById("datePicker").value = '${pickdate}';
+		}
+        
+		        
+        var tsum = document.getElementById("tsum");
+        var wsum = document.getElementById("wsum");
+        var msum = document.getElementById("msum");
+        		 
+
+        
+       	tsum.innerHTML="${(dto.a*100000)+(dto.b*200000)+(dto.c*300000)+(dto.d*400000)+(dto.e*500000)}";
+        wsum.innerHTML="${(dtoweek.a*100000)+(dtoweek.b*200000)+(dtoweek.c*300000)+(dtoweek.d*400000)+(dtoweek.e*500000)}";
+        msum.innerHTML="${(dtomonth.a*100000)+(dtomonth.b*200000)+(dtomonth.c*300000)+(dtomonth.d*400000)+(dtomonth.e*500000)}";
+        
+        
+  
+
+
+        $("#datePicker").change(function () {
+            //alert($("#datePicker").val());
+            location.href="/yaneodo/admin/gain/gain.do?date="+$("#datePicker").val();
+            
+        });
     
-	$("#tbd").click(function() {
-       alert("선택한 행의 수치로 차트바꾸기");
-   	});
 
+       	
 
-
-</script>
+    </script>
 </body>
 </html>

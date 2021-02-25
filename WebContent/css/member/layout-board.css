@@ -10,7 +10,7 @@ html>body {
 
 #side {
     float: left;
-    width: 250px;
+    width: 240px;
     height: 600px;
     line-height: 50px;
     background-color: #FFFFFF;
@@ -58,11 +58,12 @@ html>body {
 
 #content {
     float: left;
-    min-width: 800px;
-    height: 700px;
+    max-width: 800px;
+    min-height: 700px;
     line-height: 50px;
     background-color: #FFFFFF;
     padding: 10px;
+    margin-bottom: 100px;
 }
 
 
@@ -70,6 +71,8 @@ html>body {
     font-size: 24px;
     border-bottom: 1px solid #999;
     margin-top: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .title>small {

@@ -207,7 +207,7 @@
         <div id="company-title" style=" padding: 10px 0;">
 
             <div id=""> <img src="../images/cat02.jpg" style="width:50px; height: 50px; float:left;margin-right:10px;"></div>
-            <div id="company-name" style="font-size:25px;float:left; margin-top:10px;">브랜디(Brandi)</div>
+            <div id="company-name" style="font-size:25px;float:left; margin-top:10px;">${dto.name }</div>
 
             <div style="clear: both;"></div> 
 
@@ -283,13 +283,13 @@
 
                 
                 <div id="company-photo" >
-                    <img class="img-thumbnail" src="../images/wall24.jpg" style="width:200px; height:100px; margin-bottom:10px">
+                    <img class="img-thumbnail" src="${dto.photo }" style="width:200px; height:100px; margin-bottom:10px">
                 </div>
 
 
                 <div id="company-introduce"> 
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit itaque libero, a numquam laborum eius eum reiciendis saepe quis fugiat illo molestiae commodi quae pariatur adipisci ea porro maiores laudantium id! Praesentium officia sint similique quo aperiam repellat tempora minima nobis excepturi veritatis ipsa voluptate unde totam laborum, expedita veniam provident neque cum quibusdam dolorum odit aut. Nam quibusdam nemo ut laudantium! Pariatur modi, maxime itaque sequi in odit voluptas unde placeat, nemo impedit, deserunt ratione! Iusto sapiente cumque laudantium maxime ipsum? Libero id inventore fugit maxime, facilis aspernatur beatae eveniet a perspiciatis expedita nam ratione omnis optio esse non.
+                        ${dto.introduction }
                     </p>
 
 
@@ -301,13 +301,15 @@
 
 
 
-            <!-- 평균연봉 -->
-            <div id="anual-income" class="form-area">
-                <div class="form-subtitle">평균 연봉</div>
+            <!-- 매출액 -->
+            <div id="sales" class="form-area">
+                <div class="form-subtitle">매출액</div>
                 <div class="inner-box">
                     
-                    <span>전체</span>
-                    <span>2,793 만원</span>
+                    <span></span>
+                    <span>
+                  	 ${dto.sales }
+                     만원</span>
           
                 </div>
 
@@ -320,7 +322,7 @@
                 <div class="form-subtitle">직원수</div>
                 <div class="inner-box">
                     <span>전체 인원</span>
-                    <span>29 명</span>
+                    <span>${dto.employeeNum } 명</span>
                 </div>
                 
             </div>

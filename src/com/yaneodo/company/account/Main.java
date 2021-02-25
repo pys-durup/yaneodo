@@ -1,4 +1,4 @@
-package com.yaneodo;
+package com.yaneodo.company.account;
 
 import java.io.IOException;
 
@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/companyIndex.do")
-public class companyIndex extends HttpServlet {
+@WebServlet("/company/account/main.do")
+public class Main extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/companyMain/index.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/company/account/main.jsp");
 		dispatcher.forward(req, resp);
-
 	}
+
 }

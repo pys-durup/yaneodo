@@ -62,7 +62,7 @@
     .themePic {
         width: 522px;
         height: 190px;
-        background-image: url("snow.jpg");
+        background-image: url("/yaneodo/images/company/snow.jpg");
         border-radius: 5px;
         margin-bottom: 10px;
         cursor: pointer;

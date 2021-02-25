@@ -7,7 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.yaneodo.DBUtil2;
+import com.yaneodo.DBUtil;
+import com.yaneodo.member.MemberDTO;
+import com.yaneodo.member.resume.ResumeDTO;
 
 
 public class JobNoticeDAO {
@@ -19,7 +21,7 @@ public class JobNoticeDAO {
 
 	public JobNoticeDAO() {
 		//DB 연결
-		conn = DBUtil2.open();
+		conn = DBUtil.open();
 		
 	}
 	
@@ -53,8 +55,6 @@ public class JobNoticeDAO {
 
 			String sql = String.format("select * from vwJobOpening");
 
-			System.out.println(sql);
-
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
 
@@ -74,10 +74,10 @@ public class JobNoticeDAO {
 				dto.setPlace(rs.getString("place"));
 				dto.setDescription(rs.getString("description"));
 				dto.setPhoto(rs.getString("photo"));
-			
+				
+				//회사정보
+				dto.setName(rs.getString("name"));
 
-			
-			
 				list.add(dto); // ***
 
 			}
@@ -90,5 +90,55 @@ public class JobNoticeDAO {
 
 		return null;
 	}
+
+	
+	
+	//View 서블릿 -> 공고 1개 내용 반환
+	public JobNoticeDTO get(String seq) {
+		
+		try {
+			
+			String sql = "select * from vwJobOpening where jobOpeningSeq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+			
+			if(rs.next()) {
+				
+				JobNoticeDTO dto = new JobNoticeDTO();
+				
+				dto.setJobOpeningSeq(rs.getString("jobOpeningSeq"));
+				dto.setCompanySeq(rs.getString("companySeq"));
+				dto.setTitle(rs.getString("title"));
+				dto.setStartDate(rs.getString("startDate"));
+				dto.setEndDate(rs.getString("endDate"));
+				dto.setJob(rs.getString("job"));
+				dto.setPlace(rs.getString("place"));
+				dto.setDescription(rs.getString("description"));
+				dto.setPhoto(rs.getString("photo"));
+				
+				//회사정보
+				dto.setName(rs.getString("name"));
+				dto.setIndustry(rs.getString("industry"));
+				dto.setAddress(rs.getString("address"));
+				
+				return dto;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+	
+	
+
+	
+	
+
 
 }

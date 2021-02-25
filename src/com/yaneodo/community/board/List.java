@@ -50,6 +50,18 @@ public class List extends HttpServlet {
 		//데이터 조작 -> 서블릿 담당
 		//데이터 출력 -> JSP 담당
 		
+		//1.1 데이터 조작
+		for (BoardDTO dto : list) {
+			
+			//날짜에서 시간 잘라내기
+			dto.setWriteDate(dto.getWriteDate().substring(0, 10));
+			
+			//제목이 너무 길면 자르기
+			if (dto.getTitle().length() > 30) {
+				dto.setTitle(dto.getTitle().substring(0, 30) + "...");
+			}
+		}
+		
 		
 		//2.
 		req.setAttribute("list", list);

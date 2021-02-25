@@ -1,25 +1,22 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>수익 관리</title>
+
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
 
 <link rel="stylesheet" href="/yaneodo/css/admin/admin.css">
-<link rel="stylesheet" href="/yaneodo/css/admin/matchup_admin.css">
     
 
 <style>
 
   #outline {
-            width: 1105px;
+            width: 1100px;
             margin : -10px auto;
         }
 
@@ -30,12 +27,12 @@
             margin : 90px auto;
         }
         
-        th, td { 
+        #tbl th, #tbl td { 
             border-bottom: 2px solid #ccc;
             text-align: center;            
         }
 
-        #search {
+        #content #search {
             width: 250px;
             float : right;
         }
@@ -67,9 +64,9 @@
 		
          <div id="content">
 
-            <form action="" id="search">
-                <input type="text" class="searchbar" placeholder=" 이름">
-                <input type="button" value="검색" class="searchbar">
+            <form method="GET" action="/yaneodo/admin/gain/gain_company_search.do" id="search">
+                <input type="text" class="searchbar" name ="searchname" id="searchname" placeholder=" 이름">
+                <input type="submit" value="검색" class="searchbar">
             </form>
 
             <table id=tbl>
@@ -81,31 +78,26 @@
                         <th>b타입</th>
                         <th>c타입</th>
                         <th>d타입</th>
+                        <th>e타입</th>
                         <th>사용한 열람 횟수</th>
                         <th>잔여 열람 가능 횟수</th>
                     </tr>
                 </thead>
                 <tbody id="tbd">
+                <c:forEach items="${list}" var="one" varStatus="index">
                     <tr>
-                        <td>1</td>
-                        <td>박세인</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>1,6412</td>
-                        <td>2,5516</td>
+                        <td>${index.index+1}</td>
+                        <td>${one.name}</td>
+                        <td>${one.a}</td>
+                        <td>${one.b}</td>
+                        <td>${one.c}</td>
+                        <td>${one.d}</td>
+                        <td>${one.e}</td>
+                        <td>${one.used}</td>
+                        <td>${(one.a*50)+(one.b*110)+(one.c*170)+(one.d*270)+(one.e*400) - (one.used)}</td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>홍길동</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>1</td>
-                        <td>2,8155</td>
-                        <td>2,8422</td>
-                    </tr>
+                </c:forEach>
+                    
                 </tbody>
             </table>
 
@@ -119,61 +111,6 @@
 	<div id="footer" >
 	<%@include file="/WEB-INF/views/admin/form/footer.jsp" %>
 	</div>
-	
-	    <script>
 
-        var box;
-        var box2;
-        var forinfo = document.getElementById("forinfo");
-        var flag = false;
-
-        $(window).click(function() {
-
-            
-            if(flag) {
-
-                $(".box").remove();
-                
-                flag=false;
-            }
-    
-        });
-
-        $(".getname").click(function() {
-            //alert("면접제안 회원, 채용 회원 보기 만들기");
-            
-            event.cancelBubble = true;
-            if (flag) {
-                $(".box").remove();
-            }
-            
-
-            box = document.createElement("div");
-
-            box.className = "box";
-            box.style.left = event.clientX + "px";
-            box.style.top = event.clientY + "px";
-            
-            forinfo.appendChild(box);
-            box.innerHTML = "<a href='http://www.naver.com'>면접제안 회원보기</a>";
-            
-            flag = true;
-            //alert(flag);
-        
-            box2 = document.createElement("div");
-
-            box2.className = "box";
-            box2.style.left = event.clientX + "px";
-            box2.style.top = event.clientY+29 + "px";
-            
-            forinfo.appendChild(box2);
-            box2.innerHTML = "<a href='http://www.naver.com'>채용 회원 보기</a>";
-
-
-        });
-
-
-    
-    </script>
 </body>
 </html>

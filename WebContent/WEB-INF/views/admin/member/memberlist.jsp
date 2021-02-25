@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -40,85 +41,63 @@
                         <tr>
                             <th>프로필 사진</th>
                             <th>이름</th>
-                            <th>아이디</th>
                             <th>닉네임</th>
                             <th>이메일</th>
                             <th>연락처</th>
                             <th>가입날짜</th>
+                            <th>마지막접속</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="profile"><img src="../images/man_03.png" alt="김영범"></td>
-                            <td class="name">김영범</td>
-                            <td class="id">abcd4501</td>
-                            <td class="nick">rladudqja96</td>
-                            <td class="email">abcd4501@naver.com</td>
-                            <td class="tel">01044984501</td>
-                            <td class="regdate">2021-02-04</td>
+           	
+                    	<c:if test="${list.size() == 0}">
+                    	<tr>
+                    		<td colspan="7" style="text-align:center;">회원이 없습니다.</td>
+                    	</tr>
+                    	</c:if>
+                    
+                    	<c:forEach items="${list}" var="dto">
+                        <tr onclick="location.href='/yaneodo/admin/member/member.do?customerseq=${dto.customerSeq}&page=${nowPage}'">
+                        	<c:if test="${dto.photo eq 'null'}">
+                            	<td class="profile"><img src="/yaneodo/images/admin/user.png" alt="기본" style="width: 80px; height: 80px;"></td>
+                            </c:if>
+                            <c:if test="${dto.photo ne 'null'}">
+                            	<td class="profile"><img src="/yaneodo/images/admin/${dto.photo}" alt="${dto.photo}"></td>
+                            </c:if>
+                            <td class="name">${dto.name}</td>
+                            <td class="nick">${dto.nickname}</td>
+                            <td class="email">${dto.email}</td>
+                            <td class="phone">${dto.phone}</td>
+                            <td class="joindate">${dto.joinDate}</td>
+                            <td class="lastdate">${dto.lastJoin}</td>
                         </tr>
-                        <tr>
-                            <td class="profile"><img src="../images/man_01.png" alt="홍길동"></td>
-                            <td class="name">홍길동</td>
-                            <td class="id">hong1234</td>
-                            <td class="nick">honghong</td>
-                            <td class="email">hong1234@naver.com</td>
-                            <td class="tel">01012345678</td>
-                            <td class="regdate">2021-02-05</td>
-                        </tr>
-                        <tr>
-                            <td class="profile"><img src="../images/man_01.png" alt="홍길동"></td>
-                            <td class="name">홍길동</td>
-                            <td class="id">hong1234</td>
-                            <td class="nick">honghong</td>
-                            <td class="email">hong1234@naver.com</td>
-                            <td class="tel">01012345678</td>
-                            <td class="regdate">2021-02-05</td>
-                        </tr>
-                        <tr>
-                            <td class="profile"><img src="../images/woman_01.png" alt="홍길동"></td>
-                            <td class="name">호호호</td>
-                            <td class="id">hohoho1234</td>
-                            <td class="nick">hohohoho</td>
-                            <td class="email">hohoho1234@naver.com</td>
-                            <td class="tel">01045678912</td>
-                            <td class="regdate">2021-02-06</td>
-                        </tr>
-                        <tr>
-                            <td class="profile"><img src="../images/woman_02.png" alt="홍길동"></td>
-                            <td class="name">헤헤헤</td>
-                            <td class="id">hohoho1234</td>
-                            <td class="nick">hohohoho</td>
-                            <td class="email">hohoho1234@naver.com</td>
-                            <td class="tel">01045678912</td>
-                            <td class="regdate">2021-02-06</td>
-                        </tr>
+						</c:forEach>
+						
                     </tbody>
                 </table>
             </div>
 
             <div style="clear: both;"></div>
 
-            <nav class="pagebar">
+            <nav class="pagebar" style="text-align: center;">
                 <ul class="pagination">
-                    <li>
-                        <a href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                        <a href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+                    ${pagebar}
                 </ul>
             </nav>
         </section>
     </div>
+    
+    <!-- footer -->
+	<div id="footer" >
+	
+		<%@include file="/WEB-INF/views/admin/form/footer.jsp" %>
+	
+	</div>
+	
 </body>
 </html>
+
+
+
+
+

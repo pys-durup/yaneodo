@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -26,10 +27,11 @@
 				<div class="sideName">채용중인 포지션</div>
 				<ul>
 					<li class="side-list-item side-list-item-selected"
-						onclick="location.href='layout.html';">전체보기</li>
-					<li class="side-list-item">Android developer</li>
-					<li class="side-list-item">IOS developer</li>
-					<li class="side-list-item" onclick="location.href='matchup.html';">매치업</li>
+						onclick="location.href='/yaneodo/company/volunteer/list.do';">전체보기</li>
+					${sidemenu}
+					<!-- <li class="side-list-item">Android developer</li> -->
+					<!-- <li class="side-list-item">IOS developer</li> -->
+					<li class="side-list-item" onclick="location.href='/yaneodo/company/volunteer/list.do?isread=1';">매치업</li>
 				</ul>
 			</div>
 			<div class="sideGroup">
@@ -44,7 +46,13 @@
 
 		<!-- content -->
 		<div id="content">
-			<div>전체보기</div>
+			<div>
+				전체보기<br>
+				job = ${job}
+				isread = ${isread}
+				search = ${search}
+			
+			</div>
 			<!-- 정보 nav -->
 			<div id="info">
 				<ul class="nav nav-tabs nav-justified">
@@ -57,134 +65,61 @@
 			</div>
 
 			<!-- 검색 -->
-			<div id="search">
-				<div class="input-group">
-					<input class="form-control" placeholder="검색" /> <span
-						class="input-group-addon">찾기</span>
+			<!-- <form id="searchForm" method="GET" action="/codestudy/board/list.do">
+                <div class="input-group search">
+                    <input type="text" class="form-control" placeholder="" aria-describedby="basic-addon2" id="search" name="search" required value="">
+                    <span class="input-group-addon" style="cursor:pointer;" onclick="$('#searchForm').submit();" id="basic-addon2"><span class="glyphicon glyphicon-search"></span></span>
+                </div>
+            </form -->
+            <form id="searchForm" method="GET" action="/yaneodo/company/volunteer/list.do?">
+				<div id="search">
+					<div class="input-group">
+						<input class="form-control" placeholder="검색어를 입력하세요" name="search" required value=""/> 
+						<span class="input-group-addon" style="cursor:pointer;" onclick="$('#searchForm').submit();">찾기</span>
+					</div>
 				</div>
-			</div>
+				<input type="hidden" name="isread" value="${isread}">
+				<input type="hidden" name="job" value="${job}">
+            </form>
 
 			<!-- 지원자 리스트 -->
 			<div id="list">
 				<table class="table table-bordered">
+					<!-- DB에서 vwVolunteer에서 가져온 데이터들 -->
+					<c:forEach items="${list}" var="dto">
 					<tr>
 						<td>
 							<div class="item">
 								<div class="leftItem listItem">
-									<input type="checkbox">
+									<input type="checkbox" name="pseq" value="${dto.pseq}" onclick='checkOnlyOne(this)'>
 								</div>
 								<div class="leftItem listItem star">
+									<c:if test="${dto.isdibs.equals('1')}">
 									<span class="glyphicon glyphicon-star-empty"></span>
+									</c:if>
+									<c:if test="${dto.isdibs.equals('0')}">
+									<span class="glyphicon glyphicon-star"></span>
+									</c:if>
 								</div>
 								<div class="leftItem listItem pic">
 									<img src="/yaneodo/images/company/man_01.png" alt="">
 								</div>
-								<div class="itemContent listItem">
-									<div class="contentNum">번호</div>
-									<div class="contentTitle">이름 지원포지션</div>
+								<div class="itemContent listItem" onclick="location.href='/yaneodo/company/volunteer/view.do?aseq=${dto.aseq}&search=${search}&page=${page}&job=${dto.job}&isread=${dto.isread }'">
+									<div class="contentNum">no.${dto.aseq}</div>
+									<div class="contentTitle">${dto.name}&nbsp;&nbsp;${dto.job}</div>
 								</div>
 								<!-- 태그 위치 -->
 								<div class="rightItem listItem">
-									<span class="label label-info">매치업</span>
+									<c:if test="${dto.isread.equals('1')}">
+										<span class="label label-info">매치업</span>
+									</c:if>
 								</div>
 								<div style="clear: both;"></div>
 							</div>
 						</td>
 					</tr>
-					<tr>
-						<td>
-							<div class="item">
-								<div class="leftItem listItem">
-									<input type="checkbox">
-								</div>
-								<div class="leftItem listItem star">
-									<span class="glyphicon glyphicon-star-empty"></span>
-								</div>
-								<div class="leftItem listItem pic">
-									<img src="/yaneodo/images/company/man_01.png" alt="">
-								</div>
-								<div class="itemContent listItem">
-									<div class="contentNum">번호</div>
-									<div class="contentTitle">이름 지원포지션</div>
-								</div>
-								<div class="rightItem listItem">
-									<span class="label label-warning">매치업</span>
-								</div>
-								<div style="clear: both;"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="item">
-								<div class="leftItem listItem">
-									<input type="checkbox">
-								</div>
-								<div class="leftItem listItem star">
-									<span class="glyphicon glyphicon-star-empty"></span>
-								</div>
-								<div class="leftItem listItem pic">
-									<img src="/yaneodo/images/company/man_01.png" alt="">
-								</div>
-								<div class="itemContent listItem">
-									<div class="contentNum">번호</div>
-									<div class="contentTitle">이름 지원포지션</div>
-								</div>
-								<div class="rightItem listItem">
-									<span class="label label-primary">매치업</span>
-
-								</div>
-								<div style="clear: both;"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="item">
-								<div class="leftItem listItem">
-									<input type="checkbox">
-								</div>
-								<div class="leftItem listItem star">
-									<span class="glyphicon glyphicon-star-empty"></span>
-								</div>
-								<div class="leftItem listItem pic">
-									<img src="/yaneodo/images/company/man_01.png" alt="">
-								</div>
-								<div class="itemContent listItem">
-									<div class="contentNum">번호</div>
-									<div class="contentTitle">이름 지원포지션</div>
-								</div>
-								<div class="rightItem listItem">
-									<span class="label label-success">매치업</span>
-								</div>
-								<div style="clear: both;"></div>
-							</div>
-						</td>
-					</tr>
-					<tr>
-						<td>
-							<div class="item">
-								<div class="leftItem listItem">
-									<input type="checkbox">
-								</div>
-								<div class="leftItem listItem star">
-									<span class="glyphicon glyphicon-star-empty"></span>
-								</div>
-								<div class="leftItem listItem pic">
-									<img src="/yaneodo/images/company/man_01.png" alt="">
-								</div>
-								<div class="itemContent listItem">
-									<div class="contentNum">번호</div>
-									<div class="contentTitle">이름 지원포지션</div>
-								</div>
-								<div class="rightItem listItem">
-									<span class="label label-default">매치업</span> <span
-										class="label label-default">수락</span>
-								</div>
-								<div style="clear: both;"></div>
-							</div>
-						</td>
-					</tr>
+					</c:forEach>
+					
 				</table>
 			</div>
 
@@ -196,21 +131,11 @@
 
 
 
-			<!-- paging -->
+			<!-- paging -->    
 			<div id="paging">
 				<nav aria-label="Page navigation">
 					<ul class="pagination">
-						<li><a href="#" aria-label="Previous"> <span
-								aria-hidden="true">&laquo;</span>
-						</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#" aria-label="Next"> <span
-								aria-hidden="true">&raquo;</span>
-						</a></li>
+						${pagebar}
 					</ul>
 				</nav>
 			</div>
@@ -268,7 +193,20 @@
 	<!-- ########## 상단 푸터 끝 -->
 
 	<script>
-
+ 	
+		function checkOnlyOne(element) {
+		  
+			  const checkboxes = document.getElementsByName("pseq");
+			  
+			  checkboxes.forEach((cb) => {
+			    cb.checked = false;
+			  })
+			  
+		  	element.checked = true;
+			 
+			console.log(element.value);
+		}
+ 
 	</script>
 </body>
 </html>

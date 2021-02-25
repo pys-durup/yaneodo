@@ -10,10 +10,16 @@
 <title>Insert title here</title>
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
+<%@include file="/WEB-INF/views/member/auth/login.jsp"%>
+<%@include file="/WEB-INF/views/main/search.jsp"%>
 
-<link rel="stylesheet" href="/yaneodo/css/main.css">
+<link rel="stylesheet" href="/yaneodo/css/main/main.css">
+<link rel="stylesheet" href="/yaneodo/css/main/search.css">
+<!-- <link rel="stylesheet" href="/yaneodo/css/member/member-main.css"> -->
 <link rel="stylesheet" href="/yaneodo/css/member/header.css">
 <link rel="stylesheet" href="/yaneodo/css/member/footer.css">
+<link rel="stylesheet" href="/yaneodo/css/member/login.css">
+
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -38,8 +44,9 @@
 
 	<div id="slider">
 		<ul class="bxslider">
-			<li><img src="random1.jpg" class="images"></li>
-			<li><img src="random2.jpg" class="images"></li>
+			<li><img src="/yaneodo/images/mainSlider/random1.jpg" class="images"></li>
+			<li><img src="/yaneodo/images/mainSlider/random2.jpg" class="images"></li>
+			<li><img src="/yaneodo/images/mainSlider/random3.jpg" class="images"></li>
 		</ul>
 	</div>
 
@@ -48,28 +55,28 @@
 			<div class="title">추천 공고</div>
 			<div class="details">
 				<div>
-					<img src="snow.jpg" class="companyPic">
+					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
 				</div>
 				<div class="desc">SCM 매니저</div>
 				<div class="desc sm">깃컴퍼니</div>
 			</div>
 			<div class="details">
 				<div>
-					<img src="snow.jpg" class="companyPic">
+					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
 				</div>
 				<div class="desc">SCM 매니저</div>
 				<div class="desc sm">깃컴퍼니</div>
 			</div>
 			<div class="details">
 				<div>
-					<img src="snow.jpg" class="companyPic">
+					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
 				</div>
 				<div class="desc">SCM 매니저</div>
 				<div class="desc sm">깃컴퍼니</div>
 			</div>
 			<div class="details">
 				<div>
-					<img src="snow.jpg" class="companyPic">
+					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
 				</div>
 				<div class="desc">SCM 매니저</div>
 				<div class="desc sm">깃컴퍼니</div>
@@ -81,28 +88,28 @@
 			<div class="title">신규 채용 회사</div>
 			<div class="details">
 				<div>
-					<img src="snow.jpg" class="companyPic">
+					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
 				</div>
 				<div class="desc">SCM 매니저</div>
 				<div class="desc sm">깃컴퍼니</div>
 			</div>
 			<div class="details">
 				<div>
-					<img src="snow.jpg" class="companyPic">
+					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
 				</div>
 				<div class="desc">SCM 매니저</div>
 				<div class="desc sm">깃컴퍼니</div>
 			</div>
 			<div class="details">
 				<div>
-					<img src="snow.jpg" class="companyPic">
+					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
 				</div>
 				<div class="desc">SCM 매니저</div>
 				<div class="desc sm">깃컴퍼니</div>
 			</div>
 			<div class="details">
 				<div>
-					<img src="snow.jpg" class="companyPic">
+					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
 				</div>
 				<div class="desc">SCM 매니저</div>
 				<div class="desc sm">깃컴퍼니</div>
@@ -120,14 +127,14 @@
 			</div>
 			<div class="details">
 				<div>
-					<img src="snow.jpg" class="themePic">
+					<img src="/yaneodo/images/company/snow.jpg" class="themePic">
 				</div>
 				<div class="desc">포스트 코로나 시대에도 유망할 언택트 기업</div>
 				<div class="desc sm">포스트 코로나 시대, 비대면 서비스를 제공하는 기업을 소개합니다.</div>
 			</div>
 			<div class="details">
 				<div>
-					<img src="snow.jpg" class="themePic">
+					<img src="/yaneodo/images/company/snow.jpg" class="themePic">
 				</div>
 				<div class="desc">포스트 코로나 시대에도 유망할 언택트 기업</div>
 				<div class="desc sm">포스트 코로나 시대, 비대면 서비스를 제공하는 기업을 소개합니다.</div>
@@ -145,89 +152,9 @@
 	<!-- ########## 푸터 끝 -->
 
 
-	<!-- 로그인 시작 -->
-
-	<form method="POST" action="" enctype="multipart/form-data" id="">
-		<div id="clogin">
-			<div class="logo">
-				yaneoDO
-				<div class="glyphicon glyphicon-remove" id="emailClose"
-					style="color: gray; float: left;"></div>
-				<div style="clear: both;"></div>
-			</div>
-			<div id="title">
-				직장인을 위한<br>커리어 플랫폼, 야너도!
-			</div>
-			<div class="subtitle">이메일</div>
-			<div class="inputbox">
-				<input type="txt" id="email" name="email" placeholder="이메일을 입력해주세요."
-					required>
-			</div>
-			<div>
-				<input type="submit" id="btn1" value="이메일로 시작하기">
-			</div>
-		</div>
-	</form>
-
-	<form method="POST" action="" enctype="multipart/form-data" id="">
-		<div id="cpassword">
-			<div class="logo">
-				yaneoDO
-				<div class="glyphicon glyphicon-remove" id="cpasswordClose"
-					style="color: gray; float: left;"></div>
-				<div style="clear: both;"></div>
-			</div>
-			<div class="subtitle">비밀번호</div>
-			<div class="inputbox">
-				<input type="password" id="password" name="password"
-					placeholder="비밀번호를 입력해주세요." required>
-			</div>
-			<div>
-				<input type="submit" id="btn2" value="로그인">
-			</div>
-		</div>
-	</form>
-
-	<!-- 로그인 끝 -->
-
-	<!-- 검색 시작 -->
-
-	<form action="">
-		<div id="searchBox1">
-			<div id="searchBox2">
-				<span class="glyphicon glyphicon-search" id="searchCon"
-					style="outline: none";></span> <input type="text"
-					class="form-control" id="searchKey" name="searchKey"
-					placeholder="#태그, 회사, 포지션 검색">
-			</div>
-
-
-			<div id="selTag">
-				<span>추천태그로 검색해보세요.</span>
-				<ul>
-					<li><a>#퇴사율5%이하</a></li>
-					<li><a>#연봉상위2~5%</a></li>
-					<li><a>#스타트업</a></li>
-					<li><a>#재택근무</a></li>
-				</ul>
-			</div>
-		</div>
-	</form>
-	<!-- 검색 끝 -->
-
-
-
-
-
 	<script>
 
-	    
-	    $(document).ready(function() {
-            $("#clogin").hide();
-            $("#cpassword").hide();
-            $("#searchBox1").hide();
-        });
-
+		/* 슬라이더 */
         $(document).ready(function () {
 
             $('.bxslider').bxSlider({ // 클래스명 주의!
@@ -242,21 +169,7 @@
 
         });
 
-        $("#login").click(function() {
-            $("#clogin").show();
-            $("#container").css("opacity", ".7");
-        });
-
-        $("#emailClose").click(function() {
-            $("#clogin").hide();
-            $("#container").css("opacity", "1");
-        });
-
-        $("#cpasswordClose").click(function() {
-            $("#clogin").hide();
-            $("#container").css("opacity", "1");
-        });
-
+		
         //이메일으로 시작
         $("#btn1").click(function() {
             // 비밀번호 입력창 바로 보여주지 않고, 일치하는 이메일 있으면 비밀번호 입력창
@@ -266,7 +179,7 @@
             // $("#cpassword").show();
         });
 
-        //로그인
+        /* 로그인 */
         $("#btn2").click(function() {
             location.href="main.html";
         });
@@ -280,7 +193,7 @@
             $("#headerContainer").show();
         });
 
-
+		/* 검색창 */
         $(function(){
             $(document).mousedown(function( e ){
                 if( $("#searchBox1").is(":visible") ) {

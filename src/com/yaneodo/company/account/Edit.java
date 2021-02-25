@@ -1,4 +1,4 @@
-package com.yaneodo.company.volunteer;
+package com.yaneodo.company.account;
 
 import java.io.IOException;
 
@@ -9,13 +9,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/company/volunteer/list.do")
-public class list extends HttpServlet {
+@WebServlet("/company/account/edit.do")
+public class Edit extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/company/volunteer/list.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/company/account/edit.jsp");
 		dispatcher.forward(req, resp);
 	}
 

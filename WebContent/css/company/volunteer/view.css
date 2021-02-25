@@ -181,6 +181,16 @@
 }
 
 
+/* 면접 제안 modal */
+
+#interview .modal-body-title {
+	margin-top: 10px;
+}
+
+.modal input, textarea {
+    margin-bottom: 10px;
+}
+
 
 /*
 
