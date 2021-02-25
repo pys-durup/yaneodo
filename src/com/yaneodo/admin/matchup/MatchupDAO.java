@@ -8,8 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.yaneodo.DBUtil2;
-import com.yaneodo.admin.gain.GainDTO;
+import com.yaneodo.DBUtil;
 
 public class MatchupDAO {
 	
@@ -20,7 +19,7 @@ public class MatchupDAO {
 	
 	public MatchupDAO() {
 		//DB 연결
-		conn = DBUtil2.open();
+		conn = DBUtil.open();
 	}
 	
 	

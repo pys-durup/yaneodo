@@ -55,6 +55,7 @@ th, td {
 .one, .two, .three {
 	float: left;
 	text-align: center;
+	height:30px;
 }
 
 .one {
@@ -189,6 +190,8 @@ th, td {
           
           // box.innerHTML = "테스트";
           list1.appendChild(box);
+          
+          $(".box .two input").focus();
 
       });
       
