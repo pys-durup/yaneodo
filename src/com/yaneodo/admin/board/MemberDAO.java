@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.yaneodo.DBUtil;
 
@@ -34,11 +35,13 @@ public class MemberDAO {
 	}
 
 	//MemberList 서블릿
-	public ArrayList<MemberDTO> list() {
+	public ArrayList<MemberDTO> list(HashMap<String, String> map) {
 		
 		try {
 			
-			String sql = "select * from tblCustomer";
+			String sql = String.format("select * from (select rownum as rnum, c.* from (select * from tblCustomer) c) where rnum between %s and %s"
+					, map.get("begin")
+					, map.get("end"));
 			
 			pstat = conn.prepareStatement(sql);
 			rs = pstat.executeQuery();
@@ -49,7 +52,7 @@ public class MemberDAO {
 				
 				MemberDTO dto = new MemberDTO();
 				
-				dto.setSeq(rs.getString("customerSeq"));
+				dto.setCustomerSeq(rs.getString("customerSeq"));
 				dto.setPhoto(rs.getString("photo"));
 				dto.setName(rs.getString("name"));
 				dto.setNickname(rs.getString("nickname"));
@@ -68,6 +71,31 @@ public class MemberDAO {
 			System.out.println(e);
 		}
 		
+		return null;
+	}
+
+	public int getTotalCount(HashMap<String, String> map) {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from tblCustomer";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+		
+	}
+
+	public MemberDTO member(String seq) {
 		return null;
 	}
 

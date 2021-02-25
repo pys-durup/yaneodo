@@ -2,7 +2,7 @@ package com.yaneodo.admin.board;
 
 public class MemberDTO {
 	
-	private String seq;
+	private String customerSeq;
 	private String photo;
 	private String name;
 	private String nickname;
@@ -13,11 +13,11 @@ public class MemberDTO {
 	private String gender;
 	private String lastJoin;
 	
-	public String getSeq() {
-		return seq;
+	public String getCustomerSeq() {
+		return customerSeq;
 	}
-	public void setSeq(String seq) {
-		this.seq = seq;
+	public void setCustomerSeq(String customerSeq) {
+		this.customerSeq = customerSeq;
 	}
 	public String getPhoto() {
 		return photo;
