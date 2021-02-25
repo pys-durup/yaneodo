@@ -16,8 +16,6 @@
 <link rel="stylesheet" href="/yaneodo/css/company/main/footer.css">
 
 
-</script>
-
 <style>
 </style>
 </head>
@@ -31,7 +29,7 @@
 		<div class="section" id="section1">
 			<p>
 				<span>사람</span>과 <span>일자리</span>를 가장<br> 인간적이고 효율적으로<br>
-				<span>연결</span>합니다</span>
+				<span>연결</span>합니다
 			</p>
 		</div>
 		<div class="section" id="section2">
@@ -91,7 +89,7 @@
 
 			<div id="box">
 				<div class="subbox">
-					<input type="txt" id="email" name="email"
+					<input type="text" id="email" name="email"
 						placeholder="회사 이메일(로그인 아이디로 사용됩니다.)" required>
 				</div>
 
@@ -129,20 +127,20 @@
 
 			<div id="box">
 				<div class="subbox">
-					<input type="txt" id="managerName" name="managerName"
+					<input type="text" id="managerName" name="managerName"
 						placeholder="담당자 성함" required>
 				</div>
 
 				<div id="box">
 					<div class="subbox">
-						<input type="txt" id="managerPhone" name="managerPhone"
+						<input type="text" id="managerPhone" name="managerPhone"
 							placeholder="연락처" required>
 					</div>
 
 					<hr>
 
 					<div class="subbox">
-						<input type="txt" id="email" name="email"
+						<input type="text" id="email" name="email"
 							placeholder="회사 이메일(로그인 아이디로 사용됩니다.)" required>
 					</div>
 
@@ -162,6 +160,7 @@
 
 				</div>
 			</div>
+		</div>
 	</form>
 	<!-- 관리자 가입 끝 -->
 

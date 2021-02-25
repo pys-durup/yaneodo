@@ -109,10 +109,10 @@ public class MemberDAO {
 				dto.setBirth(rs.getString("birth"));
 				dto.setNickName(rs.getString("nickName"));
 				dto.setPhone(rs.getString("phone"));
-				dto.setpassword(rs.getString("password"));
+				dto.setPassword(rs.getString("password"));
 				dto.setPhoto(rs.getString("photo"));
 				dto.setEmail(rs.getString("email"));
-				dto.setSeq(rs.getString("customerSeq"));
+				dto.setCustomerSeq(rs.getString("customerSeq"));
 				
 				return dto;
 			}
