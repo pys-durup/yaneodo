@@ -11,21 +11,11 @@
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
 
-<link rel="stylesheet" href="/yaneodo/css/companyMain/main.css">
-<link rel="stylesheet" href="/yaneodo/css/companyMain/header.css">
-<link rel="stylesheet" href="/yaneodo/css/companyMain/footer.css">
+<link rel="stylesheet" href="/yaneodo/css/company/main/main.css">
+<link rel="stylesheet" href="/yaneodo/css/company/main/header.css">
+<link rel="stylesheet" href="/yaneodo/css/company/main/footer.css">
 
-<link rel="stylesheet"
-	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-<script
-	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
-<script>
-	$(document).ready(function() {
-		$('.slider').bxSlider();
-	});
 </script>
 
 <style>
@@ -34,7 +24,7 @@
 <body>
 
 	<!-- ########## 상단 헤더 시작 -->
-	<%@include file="/WEB-INF/views/companyMain/inc/header.jsp"%>
+	<%@include file="/WEB-INF/views/company/inc/regHeader.jsp"%>
 	<!-- ########## 상단 헤더 끝 -->
 
 	<div id="contents">
@@ -84,7 +74,7 @@
 
 
 	<!-- ########## 푸터 시작 -->
-	<%@include file="/WEB-INF/views/companyMain/inc/footer.jsp"%>
+	<%@include file="/WEB-INF/views/company/inc/regFooter.jsp"%>
 	<!-- ########## 푸터 끝 -->
 
 

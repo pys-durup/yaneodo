@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/company/index.do")
-public class Index extends HttpServlet {
+@WebServlet("/company/register.do")
+public class Register extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/company/index.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/company/register.jsp");
 		dispatcher.forward(req, resp);
-	}
 
+	}
 }

@@ -11,9 +11,9 @@
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
 
-<link rel="stylesheet" href="/yaneodo/css/main.css">
-<link rel="stylesheet" href="/yaneodo/css/member/header.css">
-<link rel="stylesheet" href="/yaneodo/css/member/footer.css">
+<link rel="stylesheet" href="/yaneodo/css/company/main/main.css">
+<link rel="stylesheet" href="/yaneodo/css/company/main/header.css">
+<link rel="stylesheet" href="/yaneodo/css/company/main/register.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -26,11 +26,10 @@
 <body>
 
 	<!-- ########## 상단 헤더 시작 -->
-	<%@include file="/WEB-INF/views/companyMain/inc/header.jsp"%>
+	<%@include file="/WEB-INF/views/company/inc/regHeader.jsp"%>
 	<!-- ########## 상단 헤더 끝 -->
 
-	<form method="POST" action="company_registerOk"
-		enctype="multipart/form-data" id="companyJoin">
+	<form method="POST" action="/yaneodo/company/main/registerok.do" enctype="multipart/form-data" id="companyJoin">
 		<div class="box" id="title">
 			<p>회사 정보를 등록해 주세요.</p>
 			<p>야너도는 추천인/후보자들에게 좋은 일자리를 제공하기 위해, 다음 정보를 리뷰하여 회사등록을 승인하고 있습니다.</p>
@@ -117,7 +116,7 @@
 			<label for="introduction">회사/서비스 소개 (1,300자 제한)*</label>
 			<textarea class="form-control" id="introduction" name="introduction"
 				style="height: 200px; resize: none;" placeholder="회사 정보 입력" required></textarea>
-		</div>
+		</div>                  
 
 		<div class="">
 			<div class="withFloat subbox" style="width: 350px;">
@@ -132,12 +131,17 @@
 			</div>
 		</div>
 
-
-		<div class="subbox" style="width: 750px;">
-			<label for="webAddress">웹사이트 주소*</label> <input type="text"
-				class="form-control" id="webAddress" name="webAddress" required>
+		<div class="">
+			<div class="withFloat subbox" style="width: 350px;">
+				<label for="webAddress">웹사이트 주소*</label> <input type="text"
+					class="form-control" id="webAddress" name="webAddress" required>
+			</div>
+	
+			<div class="withFloat subbox" style="width: 350px; backgound: transparent; border: none;">
+				<label for="photo">대표사진</label>
+				<input type="file" id="photo" name="photo" placeholder="Picture" class="form-control">
+			</div>
 		</div>
-
 
 		<div class="subbox" style="width: 750px;">
 			<label for="terms">기업회원 이용약관</label>

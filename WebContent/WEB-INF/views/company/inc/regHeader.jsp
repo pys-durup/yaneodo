@@ -11,12 +11,12 @@
 			<li><a class="bmenuLink" id="bJoinBtn">관리자 가입</a></li>
 
 			<!-- 기업관리자 로그인 후 -->
-			<li><a href="company_register.html" class="bmenuLink"
+			<li><a href="/yaneodo/company/main/register.do" class="bmenuLink"
 				id="regCompany">기업등록</a></li>
 
 
 
-			<li><a href="main.html" class="bmenuLink" id="home">야너도 홈</a></li>
+			<li><a href="/yaneodo/index.do" class="bmenuLink" id="home">야너도 홈</a></li>
 			<div style="clear: both;"></div>
 		</ul>
 	</nav>
