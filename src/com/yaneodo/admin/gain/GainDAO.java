@@ -38,7 +38,7 @@ public class GainDAO {
 		
 		try {
 			
-			String sql = "select Atype, Btype, Ctype, Dtype, Etype, (Atype *100000+Btype*200000+Ctype*300000+Dtype*400000+Etype*500000) as sum from (select count(case when sp.type = '1' then 1 end) as Atype, count(case when sp.type = 'b상품' then 1 end) as Btype, count(case when sp.type = 'c상품' then 1 end) as Ctype, count(case when sp.type = 'd상품' then 1 end) as Dtype, count(case when sp.type = 'e상품' then 1 end) as Etype from tblServiceproduct sp inner join tblPayment pm on sp.serviceProductSeq = pm.serviceProductSeq where to_char(pm.paydate,'yy/mm/dd') = ?)";
+			String sql = "select Atype, Btype, Ctype, Dtype, Etype, (Atype *100000+Btype*200000+Ctype*300000+Dtype*400000+Etype*500000) as sum from (select count(case when sp.type = 'a상품' then 1 end) as Atype, count(case when sp.type = 'b상품' then 1 end) as Btype, count(case when sp.type = 'c상품' then 1 end) as Ctype, count(case when sp.type = 'd상품' then 1 end) as Dtype, count(case when sp.type = 'e상품' then 1 end) as Etype from tblServiceproduct sp inner join tblPayment pm on sp.serviceProductSeq = pm.serviceProductSeq where to_char(pm.paydate,'yy/mm/dd') = ?)";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, days);
@@ -87,7 +87,7 @@ public class GainDAO {
 			
 			daystart = end.substring(2,4) +"/"+ end.substring(5,7)+"/"+end.substring(8);
 			
-			String sql = "select Atype, Btype, Ctype, Dtype, Etype, (Atype *100000+Btype*200000+Ctype*300000+Dtype*400000+Etype*500000) as sum from (select count(case when sp.type = '1' then 1 end) as Atype, count(case when sp.type = 'b상품' then 1 end) as Btype, count(case when sp.type = 'c상품' then 1 end) as Ctype, count(case when sp.type = 'd상품' then 1 end) as Dtype, count(case when sp.type = 'e상품' then 1 end) as Etype from tblServiceproduct sp inner join tblPayment pm on sp.serviceProductSeq = pm.serviceProductSeq where to_char(pm.paydate,'yy/mm/dd') between ? and ?)";
+			String sql = "select Atype, Btype, Ctype, Dtype, Etype, (Atype *100000+Btype*200000+Ctype*300000+Dtype*400000+Etype*500000) as sum from (select count(case when sp.type = 'a상품' then 1 end) as Atype, count(case when sp.type = 'b상품' then 1 end) as Btype, count(case when sp.type = 'c상품' then 1 end) as Ctype, count(case when sp.type = 'd상품' then 1 end) as Dtype, count(case when sp.type = 'e상품' then 1 end) as Etype from tblServiceproduct sp inner join tblPayment pm on sp.serviceProductSeq = pm.serviceProductSeq where to_char(pm.paydate,'yy/mm/dd') between ? and ?)";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, daystart);
@@ -134,7 +134,7 @@ Calendar cal = Calendar.getInstance();
 			
 			daystart = end.substring(2,4) +"/"+ end.substring(5,7)+"/"+end.substring(8);
 			
-			String sql = "select Atype, Btype, Ctype, Dtype, Etype, (Atype *100000+Btype*200000+Ctype*300000+Dtype*400000+Etype*500000) as sum from (select count(case when sp.type = '1' then 1 end) as Atype, count(case when sp.type = 'b상품' then 1 end) as Btype, count(case when sp.type = 'c상품' then 1 end) as Ctype, count(case when sp.type = 'd상품' then 1 end) as Dtype, count(case when sp.type = 'e상품' then 1 end) as Etype from tblServiceproduct sp inner join tblPayment pm on sp.serviceProductSeq = pm.serviceProductSeq where to_char(pm.paydate,'yy/mm/dd') between ? and ?)";
+			String sql = "select Atype, Btype, Ctype, Dtype, Etype, (Atype *100000+Btype*200000+Ctype*300000+Dtype*400000+Etype*500000) as sum from (select count(case when sp.type = 'a상품' then 1 end) as Atype, count(case when sp.type = 'b상품' then 1 end) as Btype, count(case when sp.type = 'c상품' then 1 end) as Ctype, count(case when sp.type = 'd상품' then 1 end) as Dtype, count(case when sp.type = 'e상품' then 1 end) as Etype from tblServiceproduct sp inner join tblPayment pm on sp.serviceProductSeq = pm.serviceProductSeq where to_char(pm.paydate,'yy/mm/dd') between ? and ?)";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, daystart);
