@@ -1,7 +1,7 @@
 package com.yaneodo.member.myyaneodo;
 
-
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,27 +14,34 @@ import javax.servlet.http.HttpSession;
 import com.yaneodo.member.MemberDAO;
 import com.yaneodo.member.MemberDTO;
 
-
-@WebServlet("/member/myyaneodo/customer_edit.do")
-public class Customer_edit extends HttpServlet {
+@WebServlet("/member/myyaneodo/customer_editdata.do")
+public class Customer_editData extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		HttpSession session = req.getSession();
+		//중복검사데이터가져오기
+
+		String nickName = req.getParameter("nickName");
+
 		
+		//가져온데이터담기
 		MemberDAO dao = new MemberDAO();
-		//MemberDTO dto = dao.getInfo((String)session.getAttribute("seq"));
-		MemberDTO dto = dao.getInfo(2);
-		
-		req.setAttribute("dto", dto);
-		
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views//member/myyaneodo/customer_edit.jsp");
-		dispatcher.forward(req, resp);
 
-
+		
+		
+		//중복검사
+		int checkNick = dao.checkNick(nickName);
+		
+		//결과처리
+		PrintWriter writer=resp.getWriter();
+		
+		writer.print(checkNick);
+		
+		writer.close();
+		
+	
 		
 	}
-
 }
+
