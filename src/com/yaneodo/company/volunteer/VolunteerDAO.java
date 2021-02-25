@@ -109,6 +109,7 @@ public class VolunteerDAO {
 				dto.setIsdibs(rs.getString("isdibs"));
 				dto.setAsseq(rs.getString("asseq"));
 				
+				
 				list.add(dto);
 			}
 			
@@ -271,6 +272,9 @@ public class VolunteerDAO {
 				dto.setArea(rs.getString("area"));
 				dto.setStock(rs.getString("stock"));
 				dto.setState(rs.getString("state"));
+				
+				dto.setRseq(rs.getString("rseq")); // 이력서 번호
+				System.out.println("이력서 번호 : " + dto.getRseq());
 				
 				return dto;
 				

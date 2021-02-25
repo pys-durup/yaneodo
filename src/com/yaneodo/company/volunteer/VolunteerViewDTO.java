@@ -24,6 +24,13 @@ public class VolunteerViewDTO {
 	
 	
 	
+	public String getRseq() {
+		return rseq;
+	}
+	public void setRseq(String rseq) {
+		this.rseq = rseq;
+	}
+	
 	public String getReaddate() {
 		return readdate;
 	}
