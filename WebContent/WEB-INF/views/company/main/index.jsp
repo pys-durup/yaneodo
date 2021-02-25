@@ -10,14 +10,10 @@
 <title>Insert title here</title>
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
-<%@include file="/WEB-INF/views/company/main/login.jsp"%>
-<%@include file="/WEB-INF/views/company/main/register.jsp"%>
 
-<link rel="stylesheet" href="/yaneodo/css/companyMain/main.css">
-<link rel="stylesheet" href="/yaneodo/css/companyMain/header.css">
-<link rel="stylesheet" href="/yaneodo/css/companyMain/footer.css">
-
-<script>
+<link rel="stylesheet" href="/yaneodo/css/company/main/main.css">
+<link rel="stylesheet" href="/yaneodo/css/company/main/header.css">
+<link rel="stylesheet" href="/yaneodo/css/company/main/footer.css">
 
 
 </script>
@@ -28,14 +24,14 @@
 <body>
 
 	<!-- ########## 상단 헤더 시작 -->
-	<%@include file="/WEB-INF/views/company/inc/mheader.jsp"%>
+	<%@include file="/WEB-INF/views/company/inc/regHeader.jsp"%>
 	<!-- ########## 상단 헤더 끝 -->
 
 	<div id="contents">
 		<div class="section" id="section1">
 			<p>
 				<span>사람</span>과 <span>일자리</span>를 가장<br> 인간적이고 효율적으로<br>
-				<span>연결</span>합니다
+				<span>연결</span>합니다</span>
 			</p>
 		</div>
 		<div class="section" id="section2">
@@ -78,61 +74,138 @@
 
 
 	<!-- ########## 푸터 시작 -->
-	<%@include file="/WEB-INF/views/company/inc/mfooter.jsp"%>
+	<%@include file="/WEB-INF/views/company/inc/regFooter.jsp"%>
 	<!-- ########## 푸터 끝 -->
+
+
+	<!-- 로그인 시작 -->
+
+	<form method="POST" action="ok" enctype="multipart/form-data" id="">
+		<div id="bLogin">
+			<div id="subbox">
+				<div id="title">관리자 계정 로그인</div>
+				<div class="glyphicon glyphicon-remove" id="bLoginClose"
+					style="color: gray; float: left;"></div>
+				<div style="clear: both;"></div>
+			</div>
+
+			<div id="box">
+				<div class="subbox">
+					<input type="txt" id="email" name="email"
+						placeholder="회사 이메일(로그인 아이디로 사용됩니다.)" required>
+				</div>
+
+				<div class="subbox">
+					<input type="password" id="password" name="password"
+						placeholder="비밀번호" required>
+				</div>
+
+
+				<div>
+					<input type="submit" class="subbox" id="bLoginBtn2" value="로그인">
+				</div>
+				<div id="subTitle">
+					계정이 없으신가요? <a id="toBjoin"
+						style="text-decoration: none; cursor: pointer;">관리자 계정 만들기</a>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<!-- 로그인 끝 -->
+
+	<!-- 관리자 가입 시작 -->
+
+	<form method="POST" action="ok" enctype="multipart/form-data" id="">
+		<div id="bJoin">
+			<div id="subbox">
+				<div id="title">관리자 계정 만들기</div>
+				<div class="glyphicon glyphicon-remove" id="bJoinClose"
+					style="color: gray; float: left;"></div>
+				<div style="clear: both;"></div>
+			</div>
+
+			<hr>
+
+			<div id="box">
+				<div class="subbox">
+					<input type="txt" id="managerName" name="managerName"
+						placeholder="담당자 성함" required>
+				</div>
+
+				<div id="box">
+					<div class="subbox">
+						<input type="txt" id="managerPhone" name="managerPhone"
+							placeholder="연락처" required>
+					</div>
+
+					<hr>
+
+					<div class="subbox">
+						<input type="txt" id="email" name="email"
+							placeholder="회사 이메일(로그인 아이디로 사용됩니다.)" required>
+					</div>
+
+					<div class="subbox">
+						<input type="password" id="password" name="password"
+							placeholder="6자리 이상 비밀번호" required>
+					</div>
+
+
+					<div>
+						<input type="submit" class="subbox" id="bJoinBtn2" value="로그인">
+					</div>
+					<div id="subTitle">
+						계정이 있으신가요? <a id="toBlogin"
+							style="text-decoration: none; cursor: pointer;">관리자 로그인</a>
+					</div>
+
+				</div>
+			</div>
+	</form>
+	<!-- 관리자 가입 끝 -->
+
+
+
+
 
 	<script>
 		
 	    $(document).ready(function() {
-	        //$("#bLogin").hide();
-	        //$("#bJoin").hide();
+	        $("#bLogin").hide();
+	        $("#bJoin").hide();
 	    });
-
-	    
-		/* 로그인 컨트롤 */
-		$("#bLoginBtn").click(function() {
-	        $("#bLogin").css("display", "block")
+	
+	    $("#bLoginBtn").click(function() {
+	        $("#bLogin").show();
 	        $("#container").css("opacity", ".8");
-	        
-			/* $("#user").attr("disabled", true);
-			$("#btnConnect").attr("disabled", true);
-			$("#btnDisconnect").attr("disabled", false);
-			$("#message").attr("disabled", false);
-			$("#message").focus(); */
-			
+	    });
+	
+	    $("#bJoinBtn").click(function() {
+	        $("#bJoin").show();
+	        $("#container").css("opacity", ".8");
 	    });
 	
 	    $("#bLoginClose").click(function() {
 	        $("#bLogin").hide();
 	        $("#container").css("opacity", "1");
 	    });
-	    
-	    $("#toBlogin").click(function() {
-	        $("#bJoin").hide();
-	        $("#bLogin").show();
-	    });
-	
-	    /* 회원가입 컨트롤 */
-	    $("#bJoinBtn").click(function() {
-	    	//$("#bJoin").show();
-	    	$("#bLogin").css("display", "block");
-	        $("#container").css("opacity", ".8");
-	    });
 	
 	    $("#bJoinClose").click(function() {
 	        $("#bJoin").hide();
 	        $("#container").css("opacity", "1");
 	    });
-    
+	
+	
 	    $("#toBjoin").click(function() {
 	        $("#bLogin").hide();
 	        $("#bJoin").show();
 	    });
 	
-	
-
-	
-
+	    $("#toBlogin").click(function() {
+	        $("#bJoin").hide();
+	        $("#bLogin").show();
+	    });
     
 	</script>
 </body>
