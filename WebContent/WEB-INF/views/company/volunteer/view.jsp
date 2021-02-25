@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -51,7 +52,7 @@
 							</div>
 
 							<div class="col-md-3 name">
-								<sapn>박OO</sapn>
+								<span>${vdto.name }</span>
 							</div>
 							<div class="col-md-1">
 								<span class="label label-warning tag">매치업</span>
@@ -59,21 +60,22 @@
 
 						</div>
 						<div class="col-md-4">
-							<input type="button" class="btn btn-primary" value="보낸 제안 확인">
+							<input type="button" class="btn btn-default" style="margin-left: 10px;" onclick="history.back();" value="돌아가기">
+							<input type="button" class="btn btn-primary" data-toggle="modal" data-target="#interview" id="btnInterview" value="보낸 제안 확인">
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-2 subtitle">타임라인</div>
 						<div class="col-md-9 subtitle">
-							<p>매칭 : 2021-01-17, 09:25</p>
-							<p>제안 : 2021-01-17, 11:25</p>
+							<p>매칭 : ${vdto.readdate }</p>
+							<p>제안 : ${vdto.sgdate }</p>
 						</div>
 					</div>
 				</div>
 			</div>
 
-
+			<!-- 이력서 부분 -->
 			<div class="view-resume">
 				<div class="view-resume-header">
 					<div class="title">이력서 & 첨부파일</div>
@@ -131,6 +133,50 @@
 		<div style="clear: both;"></div>
 
 	</div>
+	
+	<!-- 면접제안 Modal -->
+     <div class="modal modal-center fade" id="interview" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-center modal-60size " role="document">
+          <div class="modal-content modal-60size">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">면접 제안</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-body-title"> 제안 메세지 </div>
+                <div><textarea class="form-control" rows="8" >${vdto.message }</textarea></div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="modal-body-title">직급</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="modal-body-title">연봉<span style="font-size: 0.7em;"> (단위:만원)</span></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" value="${vdto.rank }">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" value="${vdto.income }"> 
+                    </div>
+                </div>
+                <div class="modal-body-title"> 포지션 선택 </div>
+                <select name="" id="" class="form-control">
+                    <option value="test">test</option>
+                </select>
+                <div class="modal-body-title"> 근무 지역 </div>
+                <input type="text" class="form-control" value="${vdto.area }">
+                <div class="modal-body-title"> 스톡옵션 여부 </div>
+                <input type="text" class="form-control" value="${vdto.stock }">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+              <button type="button" class="btn btn-primary">보내기</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
 
 
 	<!-- ########## 하단 푸터 시작 -->
