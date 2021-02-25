@@ -10,9 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yaneodo.member.resume.AbroadDTO;
+import com.yaneodo.member.resume.AwardDTO;
+import com.yaneodo.member.resume.CertificateDTO;
 import com.yaneodo.member.resume.EducationDTO;
 import com.yaneodo.member.resume.ExperienceDTO;
+import com.yaneodo.member.resume.LanguageDTO;
+import com.yaneodo.member.resume.PortfolioDTO;
+import com.yaneodo.member.resume.PreferenceDTO;
 import com.yaneodo.member.resume.ResumeDAO;
+import com.yaneodo.member.resume.TrainingDTO;
 
 @WebServlet("/company/volunteer/view.do")
 public class View extends HttpServlet {
@@ -78,7 +85,7 @@ public class View extends HttpServlet {
 		// 학력
 		ArrayList<EducationDTO> edlist = rdao.getEducationList(rseq);
 		
-		if (elist.size() > 0) {
+		if (edlist.size() > 0) {
 			for (EducationDTO dto : edlist) {
 				resumeData += String.format("<div class=\"row\">\r\n"
 						+ "                                    <div class=\"col-md-2 subtitle\">\r\n"
@@ -102,7 +109,149 @@ public class View extends HttpServlet {
 			}
 		}
 		
+		//자격증
+		ArrayList<CertificateDTO> clist = rdao.getCertificateList(rseq);
 		
+		if (clist.size() > 0) {
+			for (CertificateDTO dto : clist) {
+				resumeData += String.format("<div class=\"row\">\r\n"
+						+ "                                    <div class=\"col-md-2 subtitle\">\r\n"
+						+ "                                        자격증\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                    <div class=\"col-md-10\">\r\n"
+						+ "                                        <div class=\"subtitle\">\r\n"
+						+ "                                            <div><span>%s</span></div>\r\n"
+						+ "                                            <div style=\"text-align: right;\"><span>취득일 : %s</span></div>\r\n"
+						+ "                                        </div>\r\n"
+						+ "                                        <div class=\"text\">등급 : %s</div>\r\n"
+						+ "                                        <div class=\"text\">발행기관 : %s</div>\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                </div>",dto.getType(), dto.getGetdate(), dto.getGrade(), dto.getAgency() );
+			}
+		}
+		
+		
+		//외국어
+		ArrayList<LanguageDTO> llist = rdao.getLanguageList(rseq);
+		
+		if (llist.size() > 0) {
+			for (LanguageDTO dto : llist) {
+				resumeData += String.format("<div class=\"row\">\r\n"
+						+ "                                    <div class=\"col-md-2 subtitle\">\r\n"
+						+ "                                        외국어\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                    <div class=\"col-md-10\">\r\n"
+						+ "                                        <div class=\"subtitle\">\r\n"
+						+ "                                            <div><span>%s</span></div>\r\n"
+						+ "                                        </div>\r\n"
+						+ "                                        <div class=\"text\">수준 : %s</div>\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                </div>", dto.getLanguagetype(), dto.getGrade());
+			}
+		}
+		
+		// 교육 및 대외활동
+		ArrayList<TrainingDTO> tlist = rdao.getTrainingList(rseq);
+		
+		if (tlist.size() > 0) {
+			for (TrainingDTO dto : tlist) {
+				resumeData += String.format("<div class=\"row\">\r\n"
+						+ "                                    <div class=\"col-md-2 subtitle\">\r\n"
+						+ "                                        교육 및 대외 활동\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                    <div class=\"col-md-10\">\r\n"
+						+ "                                        <div class=\"subtitle\">\r\n"
+						+ "                                            <div><span>%s | %s</span></div>\r\n"
+						+ "                                            <div style=\"text-align: right;\"><span>%s ~ %s</span></div>\r\n"
+						+ "                                        </div>\r\n"
+						+ "                                        <div class=\"text\">기관 : %s</div>\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                </div>", dto.getType(), dto.getName(), dto.getStartDate(), dto.getEnddate(), dto.getAgency());
+			}
+		}
+		
+		
+		// 해외연수
+		ArrayList<AbroadDTO> alist = rdao.getAbroadList(rseq);
+		
+		if (alist.size() > 0) {
+			for (AbroadDTO dto : alist) {
+				resumeData += String.format("<div class=\"row\">\r\n"
+						+ "                                    <div class=\"col-md-2 subtitle\">\r\n"
+						+ "                                        해외연수\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                    <div class=\"col-md-10\">\r\n"
+						+ "                                        <div class=\"subtitle\">\r\n"
+						+ "                                            <div><span>%s | %s</span></div>\r\n"
+						+ "                                            <div style=\"text-align: right;\"><span>%s ~ %s</span></div>\r\n"
+						+ "                                        </div>\r\n"
+						+ "                                        <div class=\"text\">%s </div>\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                </div>", dto.getType(), dto.getCountry(), dto.getStartDate(), dto.getEndDate(), dto.getNote());
+			}
+		}
+		
+		
+		// 수상내역
+		ArrayList<AwardDTO> awlist = rdao.getAwardList(rseq);
+		
+		if (awlist.size() > 0) {
+			for (AwardDTO dto : awlist) {
+				resumeData += String.format("<div class=\"row\">\r\n"
+						+ "                                    <div class=\"col-md-2 subtitle\">\r\n"
+						+ "                                        수상내역\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                    <div class=\"col-md-10\">\r\n"
+						+ "                                        <div class=\"subtitle\">\r\n"
+						+ "                                            <div><span>%s</span></div>\r\n"
+						+ "                                            <div style=\"text-align: right;\"><span>취득날짜 : %s</span></div>\r\n"
+						+ "                                        </div>\r\n"
+						+ "                                        <div class=\"text\">발행기관 : %s</div>\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                </div>", dto.getAwardname(), dto.getGetdate(), dto.getAgency());
+			}
+		}
+		
+		// 취업 우대사항
+		
+		ArrayList<PreferenceDTO> prelist = rdao.getPreferenceList(rseq);
+		
+		if (prelist.size() > 0) {
+			for (PreferenceDTO dto : prelist) {
+				resumeData += String.format("<div class=\"row\">\r\n"
+						+ "                                    <div class=\"col-md-2 subtitle\">\r\n"
+						+ "                                        취업우대사항\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                    <div class=\"col-md-10\">\r\n"
+						+ "                                        <div class=\"subtitle\">\r\n"
+						+ "                                            <div><span>%s</span></div>\r\n"
+						+ "                                        </div>\r\n"
+						+ "                                        <div class=\"text\">%s</div>\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                </div>", dto.getType(), dto.getNote());
+			}
+		}
+		
+		
+		
+		// 포트폴리오
+		ArrayList<PortfolioDTO> polist = rdao.getPortfolioList(rseq);
+		
+		if (polist.size() > 0) {
+			for (PortfolioDTO dto : polist) {
+				resumeData += String.format(" <div class=\"row\">\r\n"
+						+ "                                    <div class=\"col-md-2 subtitle\">\r\n"
+						+ "                                        포트폴리오\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                    <div class=\"col-md-10\">\r\n"
+						+ "                                        <div class=\"subtitle\">\r\n"
+						+ "                                            <div><span class=\"glyphicon glyphicon-bookmark\"></span><span> %s</span></div>\r\n"
+						+ "                                            <div><span class=\"glyphicon glyphicon-file\"></span><span> %s</span></div>\r\n"
+						+ "                                        </div>\r\n"
+						+ "                                    </div>\r\n"
+						+ "                                </div>", dto.getUrl(), dto.getPfile());
+			}
+		}
 		
 		
 		/*
