@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.yaneodo.DBUtil2;
+import com.yaneodo.DBUtil;
 
 public class BoardDAO {
 	
@@ -18,7 +18,7 @@ public class BoardDAO {
 
 	public BoardDAO() {
 		//DB 연결
-		conn = DBUtil2.open();
+		conn = DBUtil.open();
 		
 	}
 	

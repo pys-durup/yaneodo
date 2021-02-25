@@ -3,31 +3,10 @@ package com.yaneodo;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-// 자바의 주석
-// 1. 단일 라인 주석
-/* 2. 다중 라인 주석 */
-/**
- * 자바 도큐먼트 주석
- * @author YSPark
- *
- */
-
-/**
- * DBUtil 데이터베이스 연결 클래스 입니다
- * @author YSPark
- *
- */
-
-/**
- * 
- * @author YSPark
- *
- */
 
 public class DBUtil {
 	
 	private static Connection conn;
-	
 	
 	/**
 	 * 데이터베이스 연결 메서드 입니다
@@ -36,7 +15,7 @@ public class DBUtil {
 	public static Connection open() {
 		
 		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		String id = "hr";
+		String id = "yaneodo";
 		String pw = "java1234";
 		
 		try {
