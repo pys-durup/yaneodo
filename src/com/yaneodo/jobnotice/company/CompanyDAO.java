@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.yaneodo.DBUtil2;
+import com.yaneodo.DBUtil;
 
 public class CompanyDAO {
 	
@@ -16,7 +16,7 @@ public class CompanyDAO {
 
 	public CompanyDAO() {
 		//DB 연결
-		conn = DBUtil2.open();
+		conn = DBUtil.open();
 		
 	}
 	

@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.yaneodo.DBUtil2;
+import com.yaneodo.DBUtil;
 
 
 public class QnADAO {
@@ -19,7 +19,7 @@ public class QnADAO {
 
 	public QnADAO() {
 		//DB 연결
-		conn = DBUtil2.open();
+		conn = DBUtil.open();
 		
 	}
 	

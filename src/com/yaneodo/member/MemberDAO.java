@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.yaneodo.DBUtil2;
+import com.yaneodo.DBUtil;
 
 
 public class MemberDAO {
@@ -17,15 +17,14 @@ public class MemberDAO {
 	
 	public MemberDAO() {
 		//DB 연결
-		conn = DBUtil2.open();
+		conn = DBUtil.open();
 	}
-	
 	
 	public void close() {
 		try {
 			conn.close();
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println("MemberDAO.close()");
 		}
 	}
 	
@@ -141,25 +140,6 @@ public class MemberDAO {
 	
 
 	
-
-	private Connection conn;
-	private Statement stat;
-	private PreparedStatement pstat;
-	private ResultSet rs;
-	
-	public MemberDAO() {
-		conn = DBUtil.open();
-	}
-
-	public void close() {
-		try {
-			conn.close();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
-
-	
 	//Login servlet -> 로그인 요청
 	public int login(MemberDTO dto) {
 		
@@ -169,7 +149,7 @@ public class MemberDAO {
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getEmail());
-			pstat.setString(2, dto.getpassword());
+			pstat.setString(2, dto.getPassword());
 			rs = pstat.executeQuery();
 			
 			if (rs.next()) {
@@ -200,7 +180,7 @@ public class MemberDAO {
 				
 				MemberDTO dto = new MemberDTO();
 				
-				dto.setSeq(rs.getString("customerSeq"));
+				dto.setCustomerSeq(rs.getString("customerSeq"));
 				dto.setEmail(rs.getString("email"));
 				dto.setPhoto(rs.getString("name"));
 				dto.setNickName(rs.getString("nickName"));
@@ -234,7 +214,7 @@ public class MemberDAO {
 			pstat.setString(4, dto.getPhone());
 			pstat.setString(5, dto.getBirth());
 			pstat.setString(6, dto.getGender());
-			pstat.setString(7, dto.getpassword());
+			pstat.setString(7, dto.getPassword());
 
 			return pstat.executeUpdate();
 			

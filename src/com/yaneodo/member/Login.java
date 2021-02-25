@@ -27,7 +27,7 @@ public class Login extends HttpServlet {
 		MemberDTO dto = new MemberDTO();
 		
 		dto.setEmail(email);
-		dto.setpassword(password);
+		dto.setPassword(password);
 		
 		//회원 정보 받아옴
 		int result = dao.login(dto);
@@ -39,7 +39,7 @@ public class Login extends HttpServlet {
 
 			MemberDTO rdto = dao.getMember(email);
 			
-			session.setAttribute("seq", rdto.getSeq());
+			session.setAttribute("seq", rdto.getCustomerSeq());
 			session.setAttribute("name", rdto.getName());
 			session.setAttribute("email", rdto.getEmail());
 			session.setAttribute("nickName", rdto.getNickName());

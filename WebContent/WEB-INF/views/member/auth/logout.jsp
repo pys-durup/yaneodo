@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%@include file="/example/inc/asset.jsp" %>
+
 <style>
 
 </style>
