@@ -24,8 +24,8 @@ public class Customer_edit extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		MemberDAO dao = new MemberDAO();
-		//MemberDTO dto = dao.getInfo((String)session.getAttribute("seq"));
-		MemberDTO dto = dao.getInfo(2);
+		MemberDTO dto = dao.getInfo((String)session.getAttribute("seq"));
+
 		
 		req.setAttribute("dto", dto);
 		

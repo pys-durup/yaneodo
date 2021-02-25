@@ -73,16 +73,17 @@ public class MemberDAO {
 
   
 	//Customer_editOk 서블릿 -> 회원정보수정
-	public int edit(MemberDTO dto) {
+	public int edit(MemberDTO dto, String seq) {
 		try {
 			
-			String sql ="update tblCustomer set name=?, nickName=?, birth=?, phone=? where customerseq=2";
+			String sql ="update tblCustomer set name=?, nickName=?, birth=?, phone=? where customerseq=?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getName());
 			pstat.setString(2, dto.getNickName());
 			pstat.setString(3, dto.getBirth());
 			pstat.setString(4, dto.getPhone());
+			pstat.setString(5, seq);
 			
 			
 			return pstat.executeUpdate();
@@ -93,13 +94,13 @@ public class MemberDAO {
 	}
 
 	//Customer_edit 서블릿 -> 회원정보가져오기
-	public MemberDTO getInfo(int i) {
+	public MemberDTO getInfo(String seq) {
 		try {
 			
 			String sql = "select * from tblCustomer where customerSeq =?";
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setInt(1, i);
+			pstat.setString(1, seq);
 			
 			rs = pstat.executeQuery();
 			
@@ -109,10 +110,10 @@ public class MemberDAO {
 				dto.setBirth(rs.getString("birth"));
 				dto.setNickName(rs.getString("nickName"));
 				dto.setPhone(rs.getString("phone"));
-				dto.setpassword(rs.getString("password"));
+				dto.setPassword(rs.getString("password"));
 				dto.setPhoto(rs.getString("photo"));
 				dto.setEmail(rs.getString("email"));
-				dto.setSeq(rs.getString("customerSeq"));
+				dto.setCustomerSeq(rs.getString("customerSeq"));
 				
 				return dto;
 			}

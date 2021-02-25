@@ -44,7 +44,7 @@ public class Customer_editOk extends HttpServlet {
 		
 		//수정처리
 		
-		int result = dao.edit(dto);
+		int result = dao.edit(dto,(String)session.getAttribute("seq"));
 		
 		
 		//결과처리
