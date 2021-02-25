@@ -2,7 +2,7 @@
 
 	#pageAll {
 	    width: 1200px;
-	    min-height: 1000px;
+	    min-height: 1200px;
 	    margin: 50px auto;
 	    background-color: white;
 	}
@@ -60,17 +60,13 @@
 
     #memberList .profile {
         width: 100px;
-        height: 150px; /* 프로필 사진을 뭘 넣을지에 따라서 여기를 건들 것 */
+        height: 100px; /* 프로필 사진을 뭘 넣을지에 따라서 여기를 건들 것 */
     }
 
     #memberList .name {
         width: 100px;
     }
     
-    #memberList .id {
-        width: 120px;
-    }
-
     #memberList .nick {
         width: 150px;
     }
@@ -79,14 +75,18 @@
         width: 200px;
     }
 
-    #memberList .tel {
+    #memberList .phon {
         width: 150px;
     }
 
-    #memberList .regdate {
+    #memberList .joindate {
         width: 120px;
     }
 
+    #memberList .lastjoin {
+        width: 120px;
+    }
+    
     /* member */
 
     #member {

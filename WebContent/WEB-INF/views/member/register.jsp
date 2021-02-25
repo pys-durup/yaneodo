@@ -32,9 +32,8 @@
 	<!-- ########## 상단 헤더 시작 -->
 	<%@include file="/WEB-INF/views/member/inc/header.jsp"%>
 	<!-- ########## 상단 헤더 끝 -->
-	
-	
-	<form id="join">
+
+	<form method="POST" action="/yaneodo/member/registerok.do" enctype="multipart/form-data" id="form1">
 		<div class="form-group box" id="jointitle">회원가입</div>
 
 		<div class="box">
@@ -109,13 +108,11 @@
 				<div style="clear: both;"></div>
 				<!-- </div> -->
 			</div>
-
 		</div>
 
 		<div class="form-check box">
 			<input type="checkbox" class="form-check-input" id="agree"
-				name="agree" value="checked">개인정보 수집 및 이용 동의(필수) <a><small>
-					자세히</small></a></label>
+				name="agree" value="checked">개인정보 수집 및 이용 동의(필수) <a><small>자세히</small></a>
 		</div>
 		<div class="box">
 			<button type="submit" class="btn btn-primary" id="submit">회원가입</button>
@@ -186,6 +183,73 @@
 			}
 
 		}
+		
+		
+		/* 입력한 정보 유효성 검사 */
+		$("#form1").submit(function(evt) {
+			
+			var name = $("#name").val().trim();
+			
+			//이름, 닉네임 길이 확인
+			if (name.length < 2 || name.length > 5) {
+				alert("이름은 2자 이상 5자 이내로 입력해주세요.");
+				$("#name").focus();
+				evt.preventDefault();
+				return false;
+			}           
+
+			for (var i = 0; i < name.length; i++) {
+				if (name.charAt(i) < '가' || name.charAt(i) > '힣') {
+					alert("이름은 한글로 입력해주세요.");
+					$("#name").focus();
+					evt.preventDefault();
+					return false;
+				}			
+			}
+		
+
+			if ($("#nickName").val().trim().length < 2 || $("#nickName").val().trim().length > 6) {
+				alert("닉네임은 2자 이상 6자 이내로 입력해주세요.");
+				$("#nickName").focus();
+				evt.preventDefault();
+				return false;
+			}
+
+			
+			//휴대폰 번호
+			if ($("#phone").val().trim().replace(/-/gi, "").length > 11) {
+				alert("휴대폰 번호는 '-' 제외 11자 이내로 입력해주세요.");
+				$("#phone").focus();
+				evt.preventDefault();
+				return false;
+			}
+			
+			//암호 & 암호 확인이 일치하는지?	
+			if ($("#password").val().trim().length < 6) {
+				alert("비밀번호는 6자 이상 입력해주세요.");
+				$("#password").focus();
+				evt.preventDefault();
+				return false;
+			}
+			
+			if ($("#password").val() != $("#cpassword").val()) {
+				alert("비밀번호가 일치하지 않습니다.");
+				$("password").focus();			
+				evt.preventDefault();
+				return false;
+			}
+			
+			console.log($("#agree").prop('checked'));
+			
+			if (!$("#agree").prop('checked')) {
+				alert("개인정보 수집 및 이용에 동의해주세요.");
+				evt.preventDefault();
+				return false;
+			}
+
+		});
+
+		
 	</script>
 </body>
 </html>

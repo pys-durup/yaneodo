@@ -2,17 +2,18 @@ package com.yaneodo.member;
 
 public class MemberDTO {
 	
-	private String customerSeq;
-	private String photo;
-	private String name;
-	private String nickName;
-	private String email;
-	private String phone;
-	private String birth;
-	private String gender;
-	private String password;
-	private String joinDate;
-	private String lastJoin;
+	private String customerSeq; //회원번호
+	private String photo; //사진
+	private String name; //이름
+	private String nickName; //닉네임
+	private String email; //이메일
+	private String password; //비밀번호
+	private String phone; //연락처
+	private String birth; //생년월일
+	private String gender; //성별
+	private String joinDate; //가입일
+	private String lastJoin; //마지막 접속일
+	
 	
 	//프로필 정보
 	private String resumeSeq; //이력서번호
