@@ -46,18 +46,17 @@ public class LoginOk extends HttpServlet {
 			
 			
 			//승인 여부에 따라 페이지 분기
-			if (rdto.getState().equals("1")) {
-				
+			if (rdto.getState() == null || rdto.getState().equals("0")) {
+				//승인 X : 기업 메인
+				resp.sendRedirect("/yaneodo/company/main/index.do");
+				return;
+						
+			} else if (rdto.getState().equals("1")) {		
 				//승인 O: 기업 관리 메인 페이지
 				resp.sendRedirect("/yaneodo/company/account/main.do");
-				return;
-				
-				//승인 X : 기업 메인
-			} else {
-				resp.sendRedirect("/yaneodo/company/main/index.do");
 				
 			}
-
+			
 			
 		} else {
 

@@ -15,10 +15,13 @@
 			<!-- 기업관리자 로그인 후 -->
 			<c:if test="${not empty email}">
 				<li><a href="/yaneodo/company/main/logout.do"class="bmenuLink" id="bLogoutBtn">로그아웃</a></li>
-				<li><a href="/yaneodo/company/main/register.do" class="bmenuLink"
-					id="regCompany">기업등록</a></li>
 			</c:if>
-
+			
+			<!-- 로그인 & 기업 미등록 -->
+			<c:if test="${state != null}">
+			<li><a href="/yaneodo/company/main/register.do" class="bmenuLink" id="regCompany">기업등록</a></li>
+			</c:if>
+			
 			<!-- 공통 -->
 			<li><a href="/yaneodo/index.do" class="bmenuLink" id="home">야너도 홈</a></li>
 			<div style="clear: both;"></div>

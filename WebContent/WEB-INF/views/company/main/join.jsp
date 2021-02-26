@@ -16,7 +16,7 @@
 	
 	<!-- 관리자 가입 시작 -->
 
-	<form method="POST" action="/yaneodo/company/main/join.do" id="form1">
+	<form method="POST" action="/yaneodo/company/main/join.do" id="formJoin">
 		<div id="bJoin">
 		
 			<div id="subbox">
@@ -43,12 +43,12 @@
 					<hr>
 
 					<div class="subbox">
-						<input type="text" id="email" name="email"
+						<input type="text" id="companyEmail" name="email"
 							placeholder="회사 이메일(로그인 아이디로 사용됩니다.)" required>
 					</div>
 
 					<div class="subbox">
-						<input type="password" id="password" name="password"
+						<input type="password" id="companyPassword" name="password"
 							placeholder="6자리 이상 비밀번호" required>
 					</div>
 
@@ -76,20 +76,20 @@
 	<script>
 
 		/* 입력한 정보 유효성 검사 */
-		$("#form1").submit(function(evt) {
+		$("#formJoin").submit(function(evt) {
 			
 			var managerName = $("#managerName").val().trim();
-			
-			//이름, 닉네임 길이 확인
-			if (name.length < 2 || name.length > 5) {
+
+			if (managerName.length < 2 || managerName.length > 5) {
 				alert("이름은 2자 이상 5자 이내로 입력해주세요.");
+				//$("#managerName").val("");
 				$("#managerName").focus();
 				evt.preventDefault();
 				return false;
 			}           
 	
 			for (var i = 0; i < name.length; i++) {
-				if (name.charAt(i) < '가' || name.charAt(i) > '힣') {
+				if (managerName.charAt(i) < '가' || managerName.charAt(i) > '힣') {
 					alert("이름은 한글로 입력해주세요.");
 					$("#managerName").focus();
 					evt.preventDefault();
@@ -106,15 +106,13 @@
 			}
 			
 	
-			if ($("#password").val().trim().length < 6) {
+			if ($("#companyPassword").val().trim().length < 6) {
 				alert("비밀번호는 6자 이상 입력해주세요.");
 				$("#password").focus();
 				evt.preventDefault();
 				return false;
 			}
 
-			
-			console.log($("#agree").prop('checked'));
 			
 			if (!$("#agree").prop('checked')) {
 				alert("개인정보 수집 및 이용에 동의해주세요.");
