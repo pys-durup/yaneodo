@@ -3,6 +3,7 @@ package com.yaneodo.company.main;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -94,7 +95,7 @@ public class RegisterOk extends HttpServlet {
 			dto.setPhoto(photo);
 			
 			result = dao.add(dto);
-			System.out.println(result);
+			//System.out.println(result);
 			
 			
 			if (result == 1) {
@@ -105,11 +106,13 @@ public class RegisterOk extends HttpServlet {
 				writer.print("<html><head><meta charset='utf-8'></head><body>");
 				writer.print("<script>");
 				writer.print("alert('기업 정보 제출이 완료되었습니다.\n관리자 승인 후 이용가능합니다.');");
-				writer.print("location.href='/yaneodo/company/main/index.do';"); 
+				//writer.print("location.href='/yaneodo/company/main/index.do';"); 
 				writer.print("</script>");
 				writer.print("</body></html>");
 				
 				writer.close();
+				
+				return;
 			
 				//resp.sendRedirect("/company/main/index.do");
 			
@@ -128,11 +131,15 @@ public class RegisterOk extends HttpServlet {
 				
 				writer.close();
 				
-
+				return;
 			}
 
 	
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/board/write.jsp");
+//			dispatcher.forward(request, response);
+	
 	}
+	
 
 }
 

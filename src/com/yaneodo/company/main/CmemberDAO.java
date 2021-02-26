@@ -57,6 +57,8 @@ public class CmemberDAO {
 	//LoginOk Servlet -> 기업회원 정보 가져오기
 	public CmemberDTO getMember(String email) {
 		
+		System.out.println(email);
+		
 		try {
 			
 			//기업회원 번호, 승인여부
@@ -66,6 +68,7 @@ public class CmemberDAO {
 			pstat.setString(1, email);
 			rs = pstat.executeQuery();
 			
+
 			if (rs.next()) {
 				
 				CmemberDTO dto = new CmemberDTO();
