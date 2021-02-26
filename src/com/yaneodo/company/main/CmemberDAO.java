@@ -60,7 +60,7 @@ public class CmemberDAO {
 		try {
 			
 			//기업회원 번호, 승인여부
-			String sql = "select c.companyMemberSeq, (select state from tblCompany where companyMemberSeq = c.companyMemberSeq) as state from tblCompanyMember c where email = ?";
+			String sql = "select c.companyMemberSeq as companyMemberSeq, (select state from tblCompany where companyMemberSeq = c.companyMemberSeq) as state from tblCompanyMember c where email = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, email);

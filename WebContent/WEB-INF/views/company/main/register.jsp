@@ -45,7 +45,7 @@
 				<label for="inputState">국가*</label> <select class="form-control"
 					id="country" name="country">
 					<option selected>한국</option>
-					<option>대만</option>
+					<option disabled>대만</option>
 					<option>싱가폴</option>
 					<option>일본</option>
 					<option>홍콩</option>

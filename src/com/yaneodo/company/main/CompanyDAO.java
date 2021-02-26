@@ -26,10 +26,10 @@ public class CompanyDAO {
 		
 		try {
 				conn.close();
-			} catch (Exception e) {
-				System.out.println(e);
-			}
+		} catch (Exception e) {
+			System.out.println(e);
 		}
+	}
 	
 	//company register servlet
 	public int add(CompanyDTO dto) {

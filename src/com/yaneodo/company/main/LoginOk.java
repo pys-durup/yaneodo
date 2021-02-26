@@ -19,7 +19,7 @@ public class LoginOk extends HttpServlet {
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		
-		//System.out.println(email);
+		System.out.println(email);
 		//System.out.println(password);
 
 		CmemberDAO dao = new CmemberDAO();
@@ -29,7 +29,7 @@ public class LoginOk extends HttpServlet {
 		dto.setPassword(password);
 		
 		int result = dao.login(dto);
-		System.out.println(result);
+		//System.out.println(result);
 		
 		//결과 처리
 		if (result == 1) {

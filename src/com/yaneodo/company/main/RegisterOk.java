@@ -25,7 +25,7 @@ public class RegisterOk extends HttpServlet {
 
 		
 		String companyMemberSeq = (String)session.getAttribute("cmseq");
-		
+
 		String name = "";
 		String country = "";
 		String region = "";
@@ -71,9 +71,9 @@ public class RegisterOk extends HttpServlet {
 //						multi.getFilesystemName("photo") : "nopic.png";
 			
 			
-			} catch (Exception e) {
-				System.out.println(e);
-			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 			
 			CompanyDAO dao = new CompanyDAO();
 			CompanyDTO dto = new CompanyDTO();
@@ -94,22 +94,23 @@ public class RegisterOk extends HttpServlet {
 			dto.setPhoto(photo);
 			
 			result = dao.add(dto);
+			System.out.println(result);
+			
 			
 			if (result == 1) {
 		
-				resp.setCharacterEncoding("UTF-8");
-				
+				resp.setCharacterEncoding("UTF-8");				
 				PrintWriter writer = resp.getWriter();
 				
-				writer.print("<html><body>");
+				writer.print("<html><head><meta charset='utf-8'></head><body>");
 				writer.print("<script>");
 				writer.print("alert('기업 정보 제출이 완료되었습니다.\n관리자 승인 후 이용가능합니다.');");
-				writer.print("location.href='/yaneodo/company/main/index.do';");
+				writer.print("location.href='/yaneodo/company/main/index.do';"); 
 				writer.print("</script>");
 				writer.print("</body></html>");
 				
 				writer.close();
-				
+			
 				//resp.sendRedirect("/company/main/index.do");
 			
 			} else {
@@ -118,15 +119,16 @@ public class RegisterOk extends HttpServlet {
 				
 				PrintWriter writer = resp.getWriter();
 				
-				writer.print("<html><body>");
+				writer.print("<html><head><meta charset='utf-8'></head><body>");
 				writer.print("<script>");
 				writer.print("alert('기업 등록에 실패했습니다.');");
-				writer.print("history.back();");
+				writer.print("location.href='/yaneodo/company/main/index.do';"); 
 				writer.print("</script>");
 				writer.print("</body></html>");
 				
 				writer.close();
 				
+
 			}
 
 	
