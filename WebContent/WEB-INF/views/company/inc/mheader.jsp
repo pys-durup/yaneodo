@@ -13,23 +13,21 @@
 			</c:if>
 			
 			<!-- 기업관리자 로그인 후 -->
-<<<<<<< HEAD:WebContent/WEB-INF/views/company/inc/regHeader.jsp
-			<li><a href="/yaneodo/company/main/register.do" class="bmenuLink"
-=======
+			<li><a href="/yaneodo/company/main/register.do" class="bmenuLink"></a>
+
 			<c:if test="${not empty email}">
-			<li><a href="company_register.html" class="bmenuLink"
->>>>>>> dev:WebContent/WEB-INF/views/company/inc/mheader.jsp
+			<li><a href="company_register.html" class="bmenuLink">
+
 				id="regCompany">기업등록</a></li>
 			</c:if>
 
-<<<<<<< HEAD:WebContent/WEB-INF/views/company/inc/regHeader.jsp
 
 
 			<li><a href="/yaneodo/index.do" class="bmenuLink" id="home">야너도 홈</a></li>
-=======
+
 			<!-- 공통 -->
 			<li><a href="main.html" class="bmenuLink" id="home">야너도 홈</a></li>
->>>>>>> dev:WebContent/WEB-INF/views/company/inc/mheader.jsp
+
 			<div style="clear: both;"></div>
 		</ul>
 	</nav>
