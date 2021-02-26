@@ -45,14 +45,24 @@ public class MatchDAO {
 			String where = "";
 			int count = map.size();
 		
-//			if (map.size() > 0 ) {
-//				where = "where ";
-//			}
+			if (map.size() > 0 ) {
+				where = "where ";
+			}
 			
 			if (map.get("search") != null) {
 				// 검색어가 있을때 > 검색중일때
-				where += String.format("where (name like '%%%s%%' or job like '%%%s%%')", map.get("search"), map.get("search"));
+				where += String.format("(jobtype like '%%%s%%' or company like '%%%s%%' or major like '%%%s%%' or school like '%%%s%%')", map.get("search"), map.get("search"), map.get("search"), map.get("search") );
 				count--;
+			}
+			
+			if (map.get("jobtype") != null) {
+				// 직무가 선택되었을때 
+				if (count == map.size()) {
+					where += String.format(" jobtype = '%s'", map.get("jobtype"));
+					count--;
+				} else {
+					where += String.format(" and jobtype = '%s'", map.get("jobtype"));
+				}	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
 			}
 			
 			String sql = String.format("select * from vwMatchList %s", where);
@@ -92,7 +102,25 @@ public class MatchDAO {
 	 * @return
 	 */
 	public ArrayList<String> listJob() {
-		// TODO Auto-generated method stub
+		
+		try {
+			
+			String sql = "select type from tblJob";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			ArrayList<String> list = new ArrayList<String>();
+			
+			while (rs.next()) {
+				list.add(rs.getString("type"));
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return null;
 	}
 }

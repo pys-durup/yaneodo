@@ -22,29 +22,28 @@
 	<div id="container">
         <!-- search -->
         <div id="section-search">
-            <div id="search">
+            <div id="searcharea">
                 <div class="row">
                     <div class="title">찾고 있는 인재의 직무를 설정하고 검색할 수 있습니다</div>
                 </div>
-                <div class="row">
-                    <div class="col-md-3">
-                        <select class="form-control search-slt" id="exampleFormControlSelect1">
-                            <option>웹 개발자</option>
-                            <option>Example one</option>
-                            <option>Example one</option>
-                            <option>Example one</option>
-                            <option>Example one</option>
-                            <option>Example one</option>
-                            <option>Example one</option>
-                        </select>
-                    </div>
-                    <div class="col-md-7">
-                        <input type="text" class="form-control search-slt" placeholder="검색어를 입력하세요">
-                    </div>
-                    <div class="col-md-2 ">
-                        <button type="button" class="btn btn-primary btn-search ">검색</button>
-                    </div>
-                </div>
+                <form method="GET" action="/yaneodo/company/match/list.do" id="searchForm">
+	                <div class="row">
+	                    <div class="col-md-3">
+	                        <select class="form-control search-slt" id="jobtype" name="jobtype">
+	                        	<option value="">전체직무</option>
+	                        	<c:forEach items="${jlist}" var="job">
+	 	                           <option value="${job}">${job}</option>
+	                        	</c:forEach>
+	                        </select>
+	                    </div>
+	                    <div class="col-md-7">
+	                        <input type="text" id="search" name="search" class="form-control search-slt" placeholder="검색어를 입력하세요">
+	                    </div>
+	                    <div class="col-md-2 ">
+	                        <button type="submit" class="btn btn-primary btn-search" >검색</button>
+	                    </div>
+	                </div>
+                </form>
 
                 <div class="row">
                     <div class="col-md-3 col-md-offset-9 ">
@@ -432,6 +431,9 @@
 	<!-- ########## 상단 헤더 끝 -->
 
     <script>
+    
+    
+
 
     // modal 창 조작
     $(document).ready(function() {
@@ -443,7 +445,20 @@
         $("#btnInterview").click(function() {
             $('#modalResumeDetail').modal('hide');
         });
+        
+        // 검색어 상태유지
+        $("#search").val("${search}");
+        
+        // 직무선택 select 유지
+        $("#jobtype").val("${jobtype}").prop("selected", true);
     });
+    
+
+    
+    
+ 
+    
+    
     </script>
     
 </body>
