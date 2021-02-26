@@ -45,7 +45,7 @@ public class ResumeDAO {
 	
 		try {
 			
-			String sql = String.format("select* from tblresume where customerseq = (select customerseq from tblcustomer where customerseq =?)");
+			String sql = "select* from tblresume where customerseq = ?";
 
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
@@ -82,7 +82,7 @@ public class ResumeDAO {
 	}
 
 
-=======
+
 	/**
 	 * Company/volunteer/view 서블릿에서 이력서 경력정보를 리턴받는다
 	 * @param resq 이력서 번호
