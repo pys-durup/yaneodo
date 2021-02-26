@@ -44,24 +44,25 @@
                 <div class="resume-basic-info" >
                     <div class="resume-basic-header">
                         <div class="resume-input-form-group">
-                            <input class="resume-input resume_title" type="text" maxlength="100" placeholder="이력서 제목(필수)" name="resume_title" value="Hyeseung Cho 5" >
+                        <form method="POST" action="">
+                            <input class="resume-input resume_title" type="text" maxlength="100" placeholder="이력서 제목(필수)" name="title" value="${name}5" >
                         </div>
                     </div>
                     <div class="resume-input-form-group" >
-                        <input class="resume-input name" type="text" maxlength="100" placeholder="이름(필수)" name="name" value="Hyeseung Cho" >
+                        <input class="resume-input name" type="text" maxlength="100" placeholder="이름(필수)" name="name" value="${name}" disabled>
                     </div>
                     <div class="resume-input-form-group" >
-                        <input class="resume-input email" type="text" maxlength="120" placeholder="이메일(필수)" name="email" value="jhs9214@gmail.com">
+                        <input class="resume-input email" type="text" maxlength="120" placeholder="이메일(필수)" name="email" value="${email}" disabled>
                     </div>
-                    <div class="resume-input-form-group"><input class="resume-input mobile" type="text" maxlength="200" placeholder="연락처(필수) ex) 010-0000-0000" name="mobile" value="+821093889048">
+                    <div class="resume-input-form-group"><input class="resume-input mobile" type="text" maxlength="200" placeholder="연락처(필수) ex) 010-0000-0000" name="mobile" value="${phone}" disabled>
                     </div>
                 </div>
                 <div class="resume-about-info">
                     <div class="resume-about-header" >간단 소개글</div>
                     <div class="resume-input-form-group">
                         <div class="dynamic-textarea">
-                            <textarea style="height:34px;" class="resume-input about" maxlength="4000" placeholder="간단한 자기소개를 통해 이력서를 돋보이게 만들어보세요. (5~10줄 권장)"></textarea>
-                            
+                            <textarea style="height:34px;" name="info" class="resume-input about" maxlength="4000" placeholder="간단한 자기소개를 통해 이력서를 돋보이게 만들어보세요. (5~10줄 권장)"></textarea>
+                            </form>
                             <textarea class="textarea-clone" readonly="" style="top: 0px; left: 0px; width: 900px; padding: 0px; font-size: 16px; line-height: 22.8571px; font-weight: 400; position: absolute; visibility: hidden; z-index: -9999; height: 0px;">간단한 자기소개를 통해 이력서를 돋보이게 만들어보세요. (3~5줄 권장)</textarea>
                         </div>
                     </div>
@@ -141,11 +142,11 @@
             </div>
             <div class="resume-toolbar fixed-bottom" >
                 <div class="save-btns">
-                    <div>
+                    <!-- <div>
                         <button class="border-primary btn btn-default" type="button">임시 저장</button>
-                    </div>
+                    </div> -->
                     <div>
-                        <button class="btn btn-primary" type="button" >작성 완료</button>
+                        <button class="btn btn-primary" type="submit" >작성 완료</button>
                     </div>
                 </div>
             </div>
@@ -167,7 +168,24 @@
         }
 
 
-    var templete = "<ul id='no"+maxAppend+"' class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'><div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'><input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div><div class='end-time'><span class='delimiter'>-</span><div class='form-group'><input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'><input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div><div class='form-group'><div class='checkbox'><label class=''><input type='checkbox' label='현재 재직중' onchange='delEndTime("+maxAppend+")'><span>현재 재직중</span></label></div></div></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'><form action='.'><input type='search' class='resume-input company_name' placeholder='회사명'></form></div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='부서명/직책' name='title'></div><div class='dynamic-textarea'><textarea style='height: 114px; width: 710px; margin-top:10px' class='resume-input description' placeholder='상세 업무 내용과 성과를 기입해주세요'></textarea></div></div><button id='btnNo"+maxAppend+"' class='btn-delete btn' onclick='delTest("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul>"
+    var templete = "<form method='POST' action='/yaneodo/member/resume/careerok.do'><ul id='no"+maxAppend+"' class='list-group sortable-list careers'>"
+    + "<li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div>"
+    + "<div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'>"
+    +"<div class='start-time'><div class='form-group'>"
+    +"<input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div>"
+    +"<span><span>.</span><div class='form-group'>"
+    +"<input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div>"
+    +"<div class='end-time'><span class='delimiter'>-</span><div class='form-group'>"
+    +"<input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span>"
+    +"<div class='form-group'><input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div>"
+    +"<div class='form-group'><div class='checkbox'><label class=''>"
+    +"<input type='checkbox' label='현재 재직중' onchange='delEndTime("+maxAppend+")'><span>현재 재직중</span></label></div></div></div></div>"
+    +"<div class='col-sm-9'><div class='search-input-box resume-input-form-group'>"
+    +"<input type='text' class='resume-input company_name' name='company' placeholder='회사명'>"
+    +"</div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='부서명/직책' name='job'></div>"
+    +"<div class='dynamic-textarea'><textarea style='height: 114px; width: 710px; margin-top:10px' name='info' class='resume-input description' placeholder='상세 업무 내용과 성과를 기입해주세요'></textarea></div></div>"
+    +"<button id='btnNo"+maxAppend+"' class='btn-delete btn' onclick='delTest("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>"
+    
   
  
     $("#careerBody").append(templete);
@@ -209,7 +227,18 @@ $(function(){
         } 
 
 
-        var templete = "<ul id='eno"+maxAppend+"' class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'><div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'><input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div><div class='end-time'><span class='delimiter'>-</span><div class='form-group'><input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'><input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div><div class='form-group'><div class='checkbox'><label class=''><input type='checkbox' label='현재 재학중' onchange='edelEndTime("+maxAppend+")'><span>현재 재학중</span></label></div></div></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'><form action='.'><input type='search' class='resume-input company_name' placeholder='학교명'></form></div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='학위' name='title1'><input class='resume-input title' type='text' maxlength='255' placeholder='전공' name='title2'><input class='resume-input title' type='text' maxlength='255' placeholder='졸업현황(졸업/자퇴/기타)' name='title3'></div></div></div><button id='ebtnNo"+maxAppend+"' class='btn-delete btn' onclick='delEducation("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul>"
+        var templete = "<form metod='POST' action='/yaneodo/member/resume/schoolok.do'><ul id='eno"+maxAppend+"' class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'>"
+        +"<div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'>"
+        +"<div class='start-time'><div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div>"
+        +"<span><span>.</span><div class='form-group'><input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div>"
+        +"<div class='end-time'><span class='delimiter'>-</span><div class='form-group'><input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'>"
+        +"<input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div>"
+        +"<div class='form-group'><div class='checkbox'><label class=''><input type='checkbox' label='현재 재학중' onchange='edelEndTime("+maxAppend+")'><span>현재 재학중</span></label></div></div></div></div>"
+        +"<div class='col-sm-9'><div class='search-input-box resume-input-form-group'><input type='text' name='school' class='resume-input company_name' placeholder='학교명'></div>"
+        +"<div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='학위' name='schoolType'>"
+        +"<input class='resume-input title' type='text' maxlength='255' placeholder='전공' name='major'>"
+        +"<input class='resume-input title' type='text' maxlength='255' placeholder='졸업현황(졸업/자퇴/기타)' name='state'></div></div></div>"
+        +"<button id='ebtnNo"+maxAppend+"' class='btn-delete btn' onclick='delEducation("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>"
   
  
         $("#educationBody").append(templete);
@@ -255,7 +284,14 @@ $(function(){
         }
 
 
-    var templete = "<ul id='cerno"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'> <div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'><input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span><span><span>.</span><div class='form-group'><input name='startDay' type='text' maxlength='2' class='month form-control' placeholder='DD' value=''></div></span></div></div></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'><form action='.'><input type='search' class='resume-input company_name' placeholder='자격증명'></form></div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='등급및점수' name='title4'></div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='발행기관' name='title5'></div></div></div><button id='ebtnNo"+maxAppend+"' class='btn-delete btn' onclick='delCertifi("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul>"
+    var templete = "<form method='POST' action='/yaneodo/member/resume/certificationok.do'><ul id='cerno"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'>"
+    +"<div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'>"
+    +"<div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'>"
+    +"<input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span><span><span>.</span><div class='form-group'>"
+    +"<input name='startDay' type='text' maxlength='2' class='month form-control' placeholder='DD' value=''></div></span></div></div></div></div><div class='col-sm-9'>"
+    +"<div class='search-input-box resume-input-form-group'><input type='text' name='certification' class='resume-input company_name' placeholder='자격증명'></div><div class='resume-input-form-group'>"
+    +"<input class='resume-input title' type='text' maxlength='255' placeholder='등급및점수' name='score'></div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='발행기관' name='agency'></div></div></div>"
+    +"<button id='ebtnNo"+maxAppend+"' class='btn-delete btn' onclick='delCertifi("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
 
     $("#certifiBody").append(templete);
   
@@ -292,7 +328,14 @@ $(function(){
         }
 
 
-    var templete = "<ul id='awardNo"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'> <div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'><input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span><span><span>.</span><div class='form-group'><input name='startDay' type='text' maxlength='2' class='month form-control' placeholder='DD' value=''></div></span></div></div></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'><form action='.'><input type='search' class='resume-input company_name' placeholder='수상명'></form></div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='발행기관' name='title6'></div></div></div><button id='awardBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delAward("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul>"
+    var templete = "<form method='POST' action='/yaneodo/member/resume/awardok.do'><ul id='awardNo"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'>"
+    +"<div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'>"
+    +"<div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'>"
+    +"<input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span><span><span>.</span><div class='form-group'>"
+    +"<input name='startDay' type='text' maxlength='2' class='month form-control' placeholder='DD' value=''></div></span></div></div></div></div><div class='col-sm-9'>"
+    +"<div class='search-input-box resume-input-form-group'><input type='text' name='award'class='resume-input company_name' placeholder='수상명'></div>"
+    +"<div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='발행기관' name='agency'></div></div></div>"
+    +"<button id='awardBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delAward("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
   
     
 
@@ -331,7 +374,17 @@ $(function(){
         }
 
 
-    var templete = "<ul id='trainingNo"+maxAppend+"' class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'><div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'><input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div><div class='end-time'><span class='delimiter'>-</span><div class='form-group'><input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'><input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div><div class='form-group'><div class='checkbox'><label class=''><input type='checkbox' label='현재 진행중' onchange='tdelEndTime("+maxAppend+")'><span>현재 진행중</span></label></div></div></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'><form action='.'><input type='search' class='resume-input company_name' placeholder='활동명'></form></div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='종류' name='title7'><input class='resume-input title' type='text' maxlength='255' placeholder='기관' name='title8'></div></div></div><button id='tbtnNo"+maxAppend+"' class='btn-delete btn' onclick='delTraining("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul>"
+    var templete = "<form method='POST' action='/yaneodo/member/resume/trainingok.do'> <ul id='trainingNo"+maxAppend+"' class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'>"
+    +"<div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'><div class='form-group'>"
+    +"<input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'>"
+    +"<input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div><div class='end-time'>"
+    +"<span class='delimiter'>-</span><div class='form-group'><input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div>"
+    +"<span><span>.</span><div class='form-group'><input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div>"
+    +"<div class='form-group'><div class='checkbox'><label class=''><input type='checkbox' label='현재 진행중' onchange='tdelEndTime("+maxAppend+")'><span>현재 진행중</span></label>"
+    +"</div></div></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'>"
+    +"<input type='text' name='training'class='resume-input company_name' placeholder='활동명'></div><div class='resume-input-form-group'>"
+    +"<input class='resume-input title' type='text' maxlength='255' placeholder='종류' name='type'><input class='resume-input title' type='text' maxlength='255' placeholder='기관' name='agency'>"
+    +"</div></div></div><button id='tbtnNo"+maxAppend+"' class='btn-delete btn' onclick='delTraining("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
   
  
     $("#trainingBody").append(templete);
@@ -373,7 +426,17 @@ $(function(){
         }
 
 
-    var templete = "<ul id='abroadNo"+maxAppend+"' class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'><div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'><input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div><div class='end-time'><span class='delimiter'>-</span><div class='form-group'><input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'><input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div><div class='form-group'><div class='checkbox'><label class=''><input type='checkbox' label='현재 진행중' onchange='abDelEndTime("+maxAppend+")'><span>현재 진행중</span></label></div></div></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'><form action='.'><input type='search' class='resume-input company_name' placeholder='해외연수명'></form></div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='나라' name='title9'><input class='resume-input title' type='text' maxlength='255' placeholder='비고' name='title10'></div></div></div><button id='aBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delAbroad("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul>"
+    var templete = "<form method='POST' action='/yaneodo/member/resume/abroadok.do'><ul id='abroadNo"+maxAppend+"' class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'>"
+    +"<div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'><div class='form-group'>"
+    +"<input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'>"
+    +"<input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div><div class='end-time'>"
+    +"<span class='delimiter'>-</span><div class='form-group'><input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div>"
+    +"<span><span>.</span><div class='form-group'><input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div>"
+    +"<div class='form-group'><div class='checkbox'><label class=''><input type='checkbox' label='현재 진행중' onchange='abDelEndTime("+maxAppend+")'><span>현재 진행중</span></label>"
+    +"</div></div></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'><input type='text' name='abroad' class='resume-input company_name' placeholder='해외연수명'>"
+    +"</div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='나라' name='country'>"
+    +"<input class='resume-input title' type='text' maxlength='255' placeholder='비고' name='etc'></div></div></div>"
+    +"<button id='aBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delAbroad("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
   
  
     $("#abroadBody").append(templete);
@@ -419,7 +482,11 @@ $(function(){
         }
 
 
-    var templete = "<ul id='languageNo"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'><form action='.'><input type='search' class='resume-input company_name' placeholder='언어'></form></div><div class='resume-input-form-group'><select class='form-control' style='margin-top: 10px;'><option>일상 회화</option><option>비즈니스 회화</option><option>유창함</option></select></div></div></div><button id='languageBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delLanguage("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul>"
+    var templete = "<form method='POST' action='/yaneodo/member/resume/languageok.do'><ul id='languageNo"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'>"
+    +"</div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'></div></div><div class='col-sm-9'>"
+    +"<div class='search-input-box resume-input-form-group'><form action='.'><input type='text' name='language' class='resume-input company_name' placeholder='언어'></div>"
+    +"<div class='resume-input-form-group'><select name='level' class='form-control' style='margin-top: 10px;'><option value='일상 회화'>일상 회화</option><option value='비즈니스 회화'>비즈니스 회화</option><option value='유창함'>유창함</option></select></div>"
+    +"</div></div><button id='languageBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delLanguage("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
   
     
 
@@ -452,7 +519,12 @@ $(function(){
         }
 
 
-    var templete = "<ul id='specialNo"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'><form action='.'><input type='search' class='resume-input company_name' placeholder='우대사항'></form></div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='비고' name='title11'></div></div></div><button id='specialBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delSpecial("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul>"
+    var templete = "<form method='POST' action='/yaneodo/member/resume/preferenceok.do'><ul id='specialNo"+maxAppend+"'class='list-group sortable-list careers'>"
+    +"<li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'>"
+    +"<div class='period'><div class='datetime'></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'>"
+    +"<input type='text' name='preference'class='resume-input company_name' placeholder='우대사항'></div>"
+    +"<div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='비고' name='etc'></div></div></div>"
+    +"<button id='specialBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delSpecial("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
   
     
 
@@ -485,7 +557,12 @@ $(function(){
         }
 
 
-    var templete = "<ul id='portfolioNo"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'></div></div><div class='col-sm-9'><div class='resume-input-form-group'><input class='resume-input title' type='url' maxlength='255' placeholder='http://' name='title12'></div><div class='resume-input-form-group'><input class='resume-input title' type='file' maxlength='255' name='title13' style='width: 300px;'></div></div></div><button id='portfolioBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delPortfolio("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul>"
+    var templete = "<form method='POST' action='/yaneodo/member/resume/portfoliook.do'><ul id='portfolioNo"+maxAppend+"'class='list-group sortable-list careers'>"
+    +"<li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div>"
+    +"<div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'></div></div><div class='col-sm-9'>"
+    +"<div class='resume-input-form-group'><input class='resume-input title' type='url' maxlength='255' placeholder='http://' name='linkName'></div>"
+    +"<div class='resume-input-form-group'><input class='resume-input title' type='file' maxlength='255' name='fileName' style='width: 300px;'></div></div></div>"
+    +"<button id='portfolioBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delPortfolio("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
   
     
 
