@@ -35,12 +35,17 @@ public class ResumeDAO {
 
 	
 	
-	// 회원번호에 해당하는 이력서목록 반환
+	/***
+	 * 회원번호 해당하는 이력서 목록조회
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
 	public ArrayList<ResumeDTO> list(String seq) {
 	
 		try {
 			
-			String sql = String.format("select * from tblResume where customerSeq = ?");
+			String sql = String.format("select* from tblresume where customerseq = (select customerseq from tblcustomer where customerseq =?)");
 
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
@@ -76,6 +81,8 @@ public class ResumeDAO {
 		return null;
 	}
 
+
+=======
 	/**
 	 * Company/volunteer/view 서블릿에서 이력서 경력정보를 리턴받는다
 	 * @param resq 이력서 번호
@@ -444,6 +451,63 @@ public class ResumeDAO {
 	}
 
 
+
+	/***
+	 * 이력서 작성하기선택시, 이력서생성
+	 * @author 혜승
+	 * @param dto 
+	 * @param seq
+	 */
 	
+	public int resumeWrite(MemberDTO dto, String seq) {
+		try {
+			
+			String sql ="insert into tblresume (resumeseq, customerseq,orgfilename,filename,introduce,name,phone,email,writedate,editdate) values (resumeseq.nextval,?,?,?,'',?,?,?,default,default)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			pstat.setString(2, dto.getName());
+			pstat.setString(3, dto.getName());
+			pstat.setString(4, dto.getName());
+			pstat.setString(5, dto.getPhone());
+			pstat.setString(6, dto.getEmail());
+			
+			int result = pstat.executeUpdate();
+			
+			return result;
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+		
+	}
+
+	/***
+	 * 최신에 생성된 이력서 번호가져오기
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public String newResume(String seq) {
+		try {
+			String sql ="select max(resumeseq) as rseq from tblresume where customerseq = (select customerseq from tblcustomer where customerseq = "+seq+")";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if(rs.next()) {
+				return rs.getString("rseq");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+
+
+
 	
 }

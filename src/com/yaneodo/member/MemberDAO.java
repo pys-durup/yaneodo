@@ -32,7 +32,12 @@ public class MemberDAO {
 	
 	
 
-	//회원정보 반환
+	/***
+	 * 회원정보반환
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
 	public MemberDTO get(String seq) {
 		
 		try {
@@ -72,7 +77,14 @@ public class MemberDAO {
 	
 
   
-	//Customer_editOk 서블릿 -> 회원정보수정
+	
+	/***
+	 * Customer_editOk 서블릿 -> 회원정보수정
+	 * @author 혜승
+	 * @param dto
+	 * @param seq
+	 * @return
+	 */
 	public int edit(MemberDTO dto, String seq) {
 		try {
 			
@@ -93,7 +105,13 @@ public class MemberDAO {
 		return 0;
 	}
 
-	//Customer_edit 서블릿 -> 회원정보가져오기
+
+	/***
+	 * Customer_edit 서블릿 -> 회원정보가져오기
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
 	public MemberDTO getInfo(String seq) {
 		try {
 			
@@ -125,6 +143,12 @@ public class MemberDAO {
 		return null;
 	}
 
+	/***
+	 * Customer_edit 닉네임중복검사
+	 * @author 혜승
+	 * @param nickName
+	 * @return
+	 */
 	public int checkNick(String nickName) {
 		try {
 			String sql = "select count(*) as cnt from tblCustomer where nickName=? ";

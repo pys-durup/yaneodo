@@ -19,7 +19,14 @@ public class StatusDAO {
 		conn = DBUtil.open();
 	}
 	
-	/*지원 목록 가져오기*/
+
+	/**
+	 * 지원 목록 가져오기
+	 * @author 혜승
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
 	public ArrayList<StatusDTO> list(HashMap<String, String> map, String seq) {
 
 		try {
@@ -52,7 +59,13 @@ public class StatusDAO {
 		}
 		return null;
 	}
-	/*지원현황 전체 카운트 (작성중 제외)*/
+	
+	/***
+	 * 지원현황 전체 카운트 (작성중 제외)
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
 	public int cntAll(String seq) {
 		try {
 		
@@ -70,7 +83,13 @@ public class StatusDAO {
 		}
 		return 0;
 	}
-	/*작성중 카운트*/
+
+	/***
+	 * 작성중 카운트
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
 	public int cntWriting(String seq) {
 		try {
 		
@@ -89,7 +108,13 @@ public class StatusDAO {
 		return 0;
 	}
 
-	/*지원 완료 카운트*/
+	
+	/***
+	 * 지원 완료 카운트
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
 	public int cntComplete(String seq) {
 		try {
 		
@@ -107,7 +132,13 @@ public class StatusDAO {
 		}
 		return 0;
 	}
-	/*서류 통과 카운트*/
+
+	/***
+	 * 서류 통과 카운트
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
 	public int cntResumePass(String seq) {
 		try {
 		
@@ -126,7 +157,13 @@ public class StatusDAO {
 		return 0;
 	}
 	
-	/* 최종합격 카운트*/
+
+	/***
+	 * 최종합격 카운트
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
 	public int cntPass(String seq) {
 		try {
 		
@@ -145,7 +182,13 @@ public class StatusDAO {
 		return 0;
 	}
 	
-	/* 불합격 카운트*/
+
+	/***
+	 * 불합격 카운트
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
 	public int cntFail(String seq) {
 		try {
 		
@@ -164,7 +207,14 @@ public class StatusDAO {
 		return 0;
 	}
 	
-	/*지원현황 페이징위한 총 개시물 수 */
+
+	/***
+	 * 지원현황 페이징위한 총 게시물 수
+	 * @author 혜승
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
 	public int getTotalCount(HashMap<String, String> map,String seq) {
 		try {
 			String where ="";
@@ -189,6 +239,23 @@ public class StatusDAO {
 			System.out.println(e);
 		}
 		return 0;
+	}
+
+	/***
+	 *회원 매치업 현황 목록 조회
+	 * @author 혜승
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
+	public ArrayList<StatusDTO> mlist(HashMap<String, String> map, String seq) {
+		try {
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
 	}
 
 }
