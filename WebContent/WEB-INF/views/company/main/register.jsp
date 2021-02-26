@@ -40,12 +40,16 @@
 				required>
 		</div>
 
-		<div class="">
+		<div class="box">
 			<div class="withFloat subbox" style="width: 350px;">
 				<label for="inputState">국가*</label> <select class="form-control"
 					id="country" name="country">
 					<option selected>한국</option>
-					<option>...</option>
+					<option>대만</option>
+					<option>싱가폴</option>
+					<option>일본</option>
+					<option>홍콩</option>
+					<option>기타</option>
 				</select>
 			</div>
 			<div class="withFloat subbox" style="width: 350px;">
@@ -72,13 +76,15 @@
 			</div>
 		</div>
 
+
 		<div class="subbox" style="width: 750px;">
 			<label for="address">대표 주소*</label> <input type="text"
 				class="form-control" id="address" name="address"
 				placeholder="대표 주소 입력" required>
 		</div>
 
-		<div class="">
+
+		<div class="box">
 			<div class="withFloat subbox" style="width: 350px;">
 				<label for="regNum">사업자 등록 번호*</label> <input type="text"
 					class="form-control" id="regNum" name="regNum"
@@ -91,23 +97,18 @@
 			</div>
 		</div>
 
-		<div class="">
+
+		<div class="box">
 			<div class="withFloat subbox" style="width: 350px;">
 				<label for="industry">산업군*</label> <select class="form-control"
 					id="industry" name="industry">
 					<option selected>IT/컨텐츠</option>
 				</select>
 			</div>
+			
 			<div class="withFloat subbox" style="width: 350px;">
-				<label for="employeeNum">직원수(승인기준: 팀원 10명 이상)*</label> <select
-					class="form-control" id="employeeNum" name="employeeNum">
-					<option selected>회사규모</option>
-					<option>1~10명</option>
-					<option>11~50명</option>
-					<option>51~200명</option>
-					<option>201~500명</option>
-					<option>500명 이상</option>
-				</select>
+				<label for="employeeNum">직원수(승인기준: 팀원 10명 이상)*</label> 
+				<input type="text" class="form-control" id="employeeNum" name="employeeNum" required>
 			</div>
 		</div>
 
@@ -118,7 +119,8 @@
 				style="height: 200px; resize: none;" placeholder="회사 정보 입력" required></textarea>
 		</div>                  
 
-		<div class="">
+
+		<div class="box">
 			<div class="withFloat subbox" style="width: 350px;">
 				<label for="establishment">설립연도*</label> <select
 					class="form-control" id="establishment" name="establishment">
@@ -131,13 +133,14 @@
 			</div>
 		</div>
 
-		<div class="">
+
+		<div class="box">
 			<div class="withFloat subbox" style="width: 350px;">
 				<label for="webAddress">웹사이트 주소*</label> <input type="text"
 					class="form-control" id="webAddress" name="webAddress" required>
 			</div>
 	
-			<div class="withFloat subbox" style="width: 350px; backgound: transparent; border: none;">
+			<div class="withFloat subbox" style="width: 350px; backgound: transparent; border: none; padding:7px, 10px;">
 				<label for="photo">대표사진</label>
 				<input type="file" id="photo" name="photo" placeholder="Picture" class="form-control">
 			</div>
@@ -179,7 +182,59 @@
 	        op.text = i + "년";
 	        establishment.options.add(op);
 	    }
-    
+	    
+	    
+	    /* 입력한 정보 유효성 검사 */
+		$("#companyJoin").submit(function(evt) {
+
+			if ($("#name").length > 5) {
+				alert("기업명은 15자 이내로 입력해주세요.");
+				$("#managerName").focus();
+				evt.preventDefault();
+				return false;
+			}           
+	
+			
+			if ($("#address").length > 30) {
+				alert("주소는 30자 이내로 입력해주세요.");
+				$("#address").focus();
+				evt.preventDefault();
+				return false;		
+			}
+		
+
+			if ($("#regNum").val().trim().replace(/-/gi, "").length > 10) {
+				alert("사업자 등록 번호는 '-' 제외 10자입니다.");
+				$("#regNum").focus();
+				evt.preventDefault();
+				return false;
+			}
+			
+	
+			if ($("#introduction").val().length > 1300) {
+				alert("회사/서비스소개는 1300자 이내로 입력해주세요.");
+				$("#introduction").focus();
+				evt.preventDefault();
+				return false;
+			}
+			
+			
+			if ($("#webAddress").val().length > 50) {
+				alert("웹사이트 주소는 50자 이내로 입력해주세요.");
+				$("#webAddress").focus();
+				evt.preventDefault();
+				return false;
+			}
+	
+			if (!$("#checked").prop('checked')) {
+				alert("이용약관 및 야나도 기업회원 가입에 동의해주세요.");
+				evt.preventDefault();
+				return false;
+			}
+	
+		});
+	    
+
     
 	</script>
 </body>

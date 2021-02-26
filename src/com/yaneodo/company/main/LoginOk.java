@@ -19,8 +19,8 @@ public class LoginOk extends HttpServlet {
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
 		
-		System.out.println(email);
-		System.out.println(password);
+		//System.out.println(email);
+		//System.out.println(password);
 
 		CmemberDAO dao = new CmemberDAO();
 		CmemberDTO dto = new CmemberDTO();
@@ -29,6 +29,7 @@ public class LoginOk extends HttpServlet {
 		dto.setPassword(password);
 		
 		int result = dao.login(dto);
+		System.out.println(result);
 		
 		//결과 처리
 		if (result == 1) {
@@ -36,13 +37,14 @@ public class LoginOk extends HttpServlet {
 			//기업 승인 여부 가져오기 (1:승인 or 0:미승인 or null:미등록)
 			CmemberDTO rdto = dao.getMember(email);
 			
+			//회원 메인 페이지 -> 기업 메인페이지 이동하는 경우 세션 중복 => 기업회원 세션에 cm 추가
 			HttpSession session = req.getSession();
-			session.setAttribute("email", dto.getEmail());
+			session.setAttribute("cmemail", dto.getEmail());	
 			
-			session.setAttribute("seq", rdto.getCompanyMemberSeq());
-			session.setAttribute("state", rdto.getState());
+			session.setAttribute("cmseq", rdto.getCompanyMemberSeq());
+			session.setAttribute("cmstate", rdto.getState());
 			
-			System.out.println(rdto.getState());
+			//System.out.println(rdto.getState());
 			
 			
 			//승인 여부에 따라 페이지 분기

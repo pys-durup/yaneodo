@@ -20,6 +20,7 @@ public class CmemberDAO {
 	
 	
 	public void close() {
+
 		try {
 			conn.close();
 		} catch (Exception e) {
@@ -41,24 +42,7 @@ public class CmemberDAO {
 			rs = pstat.executeQuery();
 			
 			if (rs.next()) {
-				
-				//CmemberDTO rdto = new CmemberDTO();
-				//System.out.println(rs.getString("companyMemberSeq"));
-				//System.out.println(rs.getString("state"));
-				
-				
-				//int result =  rs.getInt("cnt");
-				//System.out.println(result);
-				//return result;
-
 				return rs.getInt("cnt");
-//						
-//				String sql = "select * from tblCompanyMember where customerSeq = 20";
-//				
-//				pstat = conn.prepareStatement(sql);
-//				rs = pstat.executeQuery();
-				
-//				System.out.println(rs.getString("name"));
 	
 			}
 			
