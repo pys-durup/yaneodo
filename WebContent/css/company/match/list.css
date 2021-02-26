@@ -136,6 +136,16 @@
     margin-left: 10px;
 }
 
+.matchList .matchTitle {
+	font-weight: bold;
+	font-size: 1.1em;
+	color: #444;
+}
+
+.matchList .subInfo {
+	color: #777;
+}
+
 /* 이미지 컨테이너 */
 #search-reasult .pic {
     position: relative;

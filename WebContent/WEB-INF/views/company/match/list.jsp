@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -82,7 +83,8 @@
 
         <!-- search-reasult -->
         <div id="search-reasult">
-            <div class="container">
+            <div class="container matchList">
+            	<c:forEach items="${list}" var="dto"> 
                 <div class="row">
                     <div class="col-md-2 left-item">
                         <div class="pic"><img src="/yaneodo/images/company/man_01.png" alt=""></div>
@@ -90,13 +92,24 @@
 
                     </div>
                     <div class="col-md-10 right-item">
-                        <div>프론트엔드 개발자<span>서버 개발자/ 웹 개발자/ Node.js 개발자</span></div>
-                        <div>신입 | 코코아톡 <span>(2개월)</span></sapn>
+                        <div class="matchTitle">${dto.jobtype}</div>
+                        <div class="subInfo">
+                        <c:if test="${dto.career.equals('신입')}">
+                        신입
+                        </c:if>
+                        <c:if test="${!dto.career.equals('신입')}">
+                        경력
+                        </c:if>
+                        | 직장명 : ${dto.company } 
+                        <span class="subInfo">
+                        <c:if test="${!dto.career.equals('신입')}">
+                       	(${dto.career })
+                        </c:if>
+                        </span>
                         </div>
-                        <div><span>이런 생각을 합니다
-                                자존감은 높이고, 자존심은 낮추려 합니다...</span>
+                        <div><span>${dto.introduction }</span>
                         </div>
-                        <div>한국대학교 <span>컴퓨터 공학과</span></div>
+                        <div class="subInfo">${dto.school } <span>${dto.major }</span></div>
                         <div class="row">
                             <button class="btn btn-default col-md-offset-8">찜하기</button>
                             <input type="button" class="btn btn-primary col-md-offset-0" data-toggle="modal"
@@ -105,83 +118,12 @@
 
                     </div>
                 </div>
+                </c:forEach>
             </div>
 
 
 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2 left-item">
-                        <div class="pic"><img src="/yaneodo/images/company/man_01.png" alt=""></div>
-                        <!-- <div>번호</div> -->
-
-                    </div>
-                    <div class="col-md-10 right-item">
-                        <div>프론트엔드 개발자<span>서버 개발자/ 웹 개발자/ Node.js 개발자</span></div>
-                        <div>신입 | 코코아톡 <span>(2개월)</span></sapn>
-                        </div>
-                        <div><span>이런 생각을 합니다
-                                자존감은 높이고, 자존심은 낮추려 합니다...</span>
-                        </div>
-                        <div>한국대학교 <span>컴퓨터 공학과</span></div>
-                        <div class="row">
-                            <button class="btn btn-default col-md-offset-8">찜하기</button>
-                            <button class="btn btn-primary col-md-offset-0">이력서 미리보기</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2 left-item">
-                        <div class="pic"><img src="/yaneodo/images/company/man_01.png" alt=""></div>
-                        <!-- <div>번호</div> -->
-
-                    </div>
-                    <div class="col-md-10 right-item">
-                        <div>프론트엔드 개발자<span>서버 개발자/ 웹 개발자/ Node.js 개발자</span></div>
-                        <div>신입 | 코코아톡 <span>(2개월)</span></sapn>
-                        </div>
-                        <div><span>이런 생각을 합니다
-                                자존감은 높이고, 자존심은 낮추려 합니다...</span>
-                        </div>
-                        <div>한국대학교 <span>컴퓨터 공학과</span></div>
-                        <div class="row">
-                            <button class="btn btn-default col-md-offset-8">찜하기</button>
-                            <button class="btn btn-primary col-md-offset-0">이력서 미리보기</button>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-2 left-item">
-                        <div class="pic"><img src="/yaneodo/images/company/man_01.png" alt=""></div>
-                        <!-- <div>번호</div> -->
-
-                    </div>
-                    <div class="col-md-10 right-item">
-                        <div>프론트엔드 개발자<span>서버 개발자/ 웹 개발자/ Node.js 개발자</span></div>
-                        <div>신입 | 코코아톡 <span>(2개월)</span></sapn>
-                        </div>
-                        <div><span>이런 생각을 합니다
-                                자존감은 높이고, 자존심은 낮추려 합니다...</span>
-                        </div>
-                        <div>한국대학교 <span>컴퓨터 공학과</span></div>
-                        <div class="row">
-                            <button class="btn btn-default col-md-offset-8">찜하기</button>
-                            <button class="btn btn-primary col-md-offset-0">이력서 미리보기</button>
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-
+           
             <!-- 페이지네이션 -->
             <div id="paging">
                 <nav aria-label="Page navigation">

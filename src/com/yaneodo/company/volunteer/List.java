@@ -43,7 +43,7 @@ public class List extends HttpServlet {
 		String isread = req.getParameter("isread");
 		String job = req.getParameter("job");
 		
-		System.out.println(isread);
+//		System.out.println(isread);
 		
 		if (!(search == null || search.equals(""))) {
 			// 검색중일 때
