@@ -33,33 +33,46 @@ public class LoginOk extends HttpServlet {
 		//결과 처리
 		if (result == 1) {
 			
-			HttpSession session = req.getSession();
-			session.setAttribute("email", dto.getEmail()); 	
-
+			//기업 승인 여부 가져오기 (1:승인 or 0:미승인 or null:미등록)
 			CmemberDTO rdto = dao.getMember(email);
+			
+			HttpSession session = req.getSession();
+			session.setAttribute("email", dto.getEmail());
+			
 			session.setAttribute("seq", rdto.getCompanyMemberSeq());
-			session.setAttribute("managerName", rdto.getManagerName());
 			session.setAttribute("state", rdto.getState());
+			
+			System.out.println(rdto.getState());
+			
+			
+			//승인 여부에 따라 페이지 분기
+			if (rdto.getState().equals("1")) {
+				
+				//승인 O: 기업 관리 메인 페이지
+				resp.sendRedirect("/yaneodo/company/account/main.do");
+				return;
+				
+				//승인 X : 기업 메인
+			} else {
+				resp.sendRedirect("/yaneodo/company/main/index.do");
+				
+			}
 
-			resp.sendRedirect("/yaneodo/company/main/index.do");
-			//return;
 			
 		} else {
-			//해당 이메일 정보 없음 -> 회원가입
-			
+
 			resp.setCharacterEncoding("UTF-8");
 			PrintWriter writer = resp.getWriter();
 			
 			writer.print("<html><head><meta charset='utf-8'></head><body>");
 			writer.print("<script>");
-			writer.print("alert('입력한 이메일이 존재하지 않습니다.');");
+			writer.print("alert('아이디/비밀번호를 다시 확인해주세요.');");
 			writer.print("location.href='/yaneodo/company/main/index.do';"); 
 			writer.print("</script>");
 			writer.print("</body></html>");
 			
 			writer.close();
-			
-			//resp.sendRedirect("/yaneodo/member/register.do");
+
 
 		}
 

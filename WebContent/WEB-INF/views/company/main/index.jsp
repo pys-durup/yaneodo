@@ -10,6 +10,8 @@
 <title>Insert title here</title>
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
+<%@include file="/WEB-INF/views/company/main/login.jsp"%>
+<%@include file="/WEB-INF/views/company/main/join.jsp"%>
 
 <link rel="stylesheet" href="/yaneodo/css/company/main/main.css">
 <link rel="stylesheet" href="/yaneodo/css/company/main/header.css">
@@ -32,6 +34,7 @@
 				<span>연결</span>합니다
 			</p>
 		</div>
+		
 		<div class="section" id="section2">
 			<div class="section" id="subsection">
 				<h1>야너도 서비스</h1>
@@ -69,101 +72,9 @@
 	</div>
 
 
-
-
 	<!-- ########## 푸터 시작 -->
 	<%@include file="/WEB-INF/views/company/inc/regFooter.jsp"%>
 	<!-- ########## 푸터 끝 -->
-
-
-	<!-- 로그인 시작 -->
-
-	<form method="POST" action="ok" enctype="multipart/form-data" id="">
-		<div id="bLogin">
-			<div id="subbox">
-				<div id="title">관리자 계정 로그인</div>
-				<div class="glyphicon glyphicon-remove" id="bLoginClose"
-					style="color: gray; float: left;"></div>
-				<div style="clear: both;"></div>
-			</div>
-
-			<div id="box">
-				<div class="subbox">
-					<input type="text" id="email" name="email"
-						placeholder="회사 이메일(로그인 아이디로 사용됩니다.)" required>
-				</div>
-
-				<div class="subbox">
-					<input type="password" id="password" name="password"
-						placeholder="비밀번호" required>
-				</div>
-
-
-				<div>
-					<input type="submit" class="subbox" id="bLoginBtn2" value="로그인">
-				</div>
-				<div id="subTitle">
-					계정이 없으신가요? <a id="toBjoin"
-						style="text-decoration: none; cursor: pointer;">관리자 계정 만들기</a>
-				</div>
-			</div>
-		</div>
-	</form>
-
-	<!-- 로그인 끝 -->
-
-	<!-- 관리자 가입 시작 -->
-
-	<form method="POST" action="ok" enctype="multipart/form-data" id="">
-		<div id="bJoin">
-			<div id="subbox">
-				<div id="title">관리자 계정 만들기</div>
-				<div class="glyphicon glyphicon-remove" id="bJoinClose"
-					style="color: gray; float: left;"></div>
-				<div style="clear: both;"></div>
-			</div>
-
-			<hr>
-
-			<div id="box">
-				<div class="subbox">
-					<input type="text" id="managerName" name="managerName"
-						placeholder="담당자 성함" required>
-				</div>
-
-				<div id="box">
-					<div class="subbox">
-						<input type="text" id="managerPhone" name="managerPhone"
-							placeholder="연락처" required>
-					</div>
-
-					<hr>
-
-					<div class="subbox">
-						<input type="text" id="email" name="email"
-							placeholder="회사 이메일(로그인 아이디로 사용됩니다.)" required>
-					</div>
-
-					<div class="subbox">
-						<input type="password" id="password" name="password"
-							placeholder="6자리 이상 비밀번호" required>
-					</div>
-
-
-					<div>
-						<input type="submit" class="subbox" id="bJoinBtn2" value="로그인">
-					</div>
-					<div id="subTitle">
-						계정이 있으신가요? <a id="toBlogin"
-							style="text-decoration: none; cursor: pointer;">관리자 로그인</a>
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</form>
-	<!-- 관리자 가입 끝 -->
-
 
 
 

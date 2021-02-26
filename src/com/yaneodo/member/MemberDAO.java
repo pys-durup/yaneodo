@@ -220,6 +220,10 @@ public class MemberDAO {
 		try {
 			
 			String sql = "select count(*) as cnt from tblCustomer where email = ? and password = ?";
+			//String sql = "select count(*) as cnt from tblCustomer where email = 'mun7617@naver.com' and password = 'kownjuhong9325'";
+			
+//			stat = conn.createStatement();
+//			rs = stat.executeQuery(sql);
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getEmail());
