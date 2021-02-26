@@ -9,7 +9,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import com.yaneodo.DBUtil;
-import com.yaneodo.admin.gain.GainDTO;
 
 public class MatchupDAO {
 	
