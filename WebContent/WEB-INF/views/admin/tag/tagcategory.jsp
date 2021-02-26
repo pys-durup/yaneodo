@@ -40,6 +40,7 @@
 .one, .two, .three {
 	float: left;
 	text-align: center;
+	height:30px;
 }
 
 .one {
@@ -87,6 +88,17 @@
      height:910px;
      margin : -10px auto;
 }
+
+#subframe {
+	width: 800px;
+	height: 700px;
+	/* border : 1px solid black; */
+	overflow-y: scroll;
+}
+
+#subframe::-webkit-scrollbar {
+	display: none;
+}
 </style>
 
 </head>
@@ -112,7 +124,7 @@
 				</div>
 				<div style="clear: both;"></div>
 
-
+			<div id="subframe">
             <ul id="list1">
                 <li class="ui-state-disabled">
                     <div class="one">순서</div>
@@ -121,10 +133,10 @@
                 </li>
                 <c:forEach items="${list}" var="dto" >
 						<li>
-						<form method="POST" action="/yaneodo/admin/jobtype/jobtypeupdate.do">
+						<form method="POST" action="/yaneodo/admin/tag/tagcategoryupdate.do">
 							<div class="one" >${dto.seq}</div>
-							<div class="two">
-								<input type="text" name="jobtype" class="title" value="${dto.tagtitle}">
+							<div class="two">	
+								<input type="text" name="title" class="title" value="${dto.title}">
 							</div>
 							<div class="three">
 							
@@ -135,14 +147,9 @@
 						</form>
 						</li>
 						</c:forEach>
-                <li>
-                    <div class="one"></div>
-                    <div class="two"><input type="text" class="title" value="업계연봉수준"></div>
-                   <div class="three">
-                        <input type="button" id="btn" class="btns btn btn-primary" value="삭제">
-                    </div>
-                </li>
+                
         	</ul>
+        	</div>
 
         </div>
 	</div>
@@ -167,10 +174,12 @@
         box = document.createElement("li");
 
         box.className = "box";
-        box.innerHTML = "<form method='POST' action='/yaneodo/admin/tag/tagcategory.do'><div class='one'>"+ (num++) +"</div><div class='two'><input type='text' name='jobtype' class='title' value=''></div> <div class='three'><input type='hidden' name='jobseq' value='"+ num +"'><input type='hidden' name='jobcount' value='add'><input type='submit' id='btn' class='btn btns btn-primary' value='저장'></div></form>";
+        box.innerHTML = "<form method='POST' action='/yaneodo/admin/tag/tagcategoryupdate.do'><div class='one'>"+ (num++) +"</div><div class='two'><input type='text' name='title' class='title' value=''></div> <div class='three'><input type='hidden' name='tagtitleseq' value='"+ num +"'><input type='hidden' name='tagtitlecount' value='add'><input type='submit' id='btn' class='btn btns btn-primary' value='저장'></div></form>";
         
         // box.innerHTML = "테스트";
         list1.appendChild(box);
+        
+        $(".box .two input").focus();
 
     });
 

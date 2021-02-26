@@ -20,7 +20,16 @@ public class VolunteerViewDTO {
 	private String stock;
 	private String state;
 	
+	private String rseq; // 프로필에 등록된 이력서 번호
 	
+	
+	
+	public String getRseq() {
+		return rseq;
+	}
+	public void setRseq(String rseq) {
+		this.rseq = rseq;
+	}
 	
 	public String getReaddate() {
 		return readdate;
