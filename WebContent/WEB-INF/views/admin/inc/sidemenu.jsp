@@ -188,10 +188,10 @@
                     </div>
 
                     <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
-                        <div class="panel-body sname">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/codingtest/codingtest.do';">
                             문제관리
                         </div>
-                        <div class="panel-body sname">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/codingtest/codingtestadd.do';">
                             문제추가하기
                         </div>
                     </div>
