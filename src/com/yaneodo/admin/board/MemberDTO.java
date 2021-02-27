@@ -12,6 +12,17 @@ public class MemberDTO {
 	private String joinDate;
 	private String gender;
 	private String lastJoin;
+	private String resumeSeq;
+	private String orgfilename;
+	private String introduce;
+	private String writeDate;
+	private String editDate;
+	private int likeCnt;
+	private int bookMarkCnt;
+	private int boardCnt;
+	private int boardCommentCnt;
+	private int qnaCnt;
+	private int qnaCommentCnt;
 	
 	public String getCustomerSeq() {
 		return customerSeq;
@@ -73,5 +84,71 @@ public class MemberDTO {
 	public void setLastJoin(String lastJoin) {
 		this.lastJoin = lastJoin;
 	}
-	
+	public String getResumeSeq() {
+		return resumeSeq;
+	}
+	public void setResumeSeq(String resumeSeq) {
+		this.resumeSeq = resumeSeq;
+	}
+	public String getOrgfilename() {
+		return orgfilename;
+	}
+	public void setOrgfilename(String orgfilename) {
+		this.orgfilename = orgfilename;
+	}
+	public String getIntroduce() {
+		return introduce;
+	}
+	public void setIntroduce(String introduce) {
+		this.introduce = introduce;
+	}
+	public String getWriteDate() {
+		return writeDate;
+	}
+	public void setWriteDate(String writeDate) {
+		this.writeDate = writeDate;
+	}
+	public String getEditDate() {
+		return editDate;
+	}
+	public void setEditDate(String editDate) {
+		this.editDate = editDate;
+	}
+	public int getLikeCnt() {
+		return likeCnt;
+	}
+	public void setLikeCnt(int likeCnt) {
+		this.likeCnt = likeCnt;
+	}
+	public int getBookMarkCnt() {
+		return bookMarkCnt;
+	}
+	public void setBookMarkCnt(int bookMarkCnt) {
+		this.bookMarkCnt = bookMarkCnt;
+	}
+	public int getBoardCnt() {
+		return boardCnt;
+	}
+	public void setBoardCnt(int boardCnt) {
+		this.boardCnt = boardCnt;
+	}
+	public int getBoardCommentCnt() {
+		return boardCommentCnt;
+	}
+	public void setBoardCommentCnt(int boardCommentCnt) {
+		this.boardCommentCnt = boardCommentCnt;
+	}
+	public int getQnaCnt() {
+		return qnaCnt;
+	}
+	public void setQnaCnt(int qnaCnt) {
+		this.qnaCnt = qnaCnt;
+	}
+	public int getQnaCommentCnt() {
+		return qnaCommentCnt;
+	}
+	public void setQnaCommentCnt(int qnaCommentCnt) {
+		this.qnaCommentCnt = qnaCommentCnt;
+	}
+
 }

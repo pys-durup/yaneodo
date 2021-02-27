@@ -25,7 +25,7 @@ public class MemberList extends HttpServlet {
 		//페이징
 		int nowPage = 0; 		//현재 페이지 번호
 		int totalCount = 0;		//총 게시물 수
-		int pageSize = 8;		//한페이지 당 출력 개수
+		int pageSize = 10;		//한페이지 당 출력 개수
 		int totalPage = 0;		//총 페이지 수
 		int begin = 0;			//rnum 시작 번호
 		int end = 0;			//rnum 끝 번호
@@ -56,9 +56,9 @@ public class MemberList extends HttpServlet {
 		//1.5 날짜 자르기
 		for (MemberDTO dto : list) {
 		
-		//날짜에서 시간 잘라내기
-		dto.setJoinDate(dto.getJoinDate().substring(0, 10));
-		dto.setLastJoin(dto.getLastJoin().substring(0, 10));
+			//날짜에서 시간 잘라내기
+			dto.setJoinDate(dto.getJoinDate().substring(0, 10));
+			dto.setLastJoin(dto.getLastJoin().substring(0, 10));
 		
 		}
 		

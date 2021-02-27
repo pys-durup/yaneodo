@@ -2,14 +2,13 @@
 
 	#pageAll {
 	    width: 1200px;
-	    min-height: 1200px;
 	    margin-top: 50px;
 	    margin-bottom: 0px;
 	    margin-left: auto;
 	    margin-right: auto; 
 	    background-color: white;
 	}
-    
+	
     /* section */
     #contents {
         width: 990px;
@@ -27,6 +26,7 @@
     #subtitle {
         font-size: 2em;
         display: inline-block;
+        margin-bottom: 20px;
     }
 
     #select {
