@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>태그 관리</title>
+<title>코딩문제관리</title>
 
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
 <link rel="stylesheet" href="/yaneodo/css/admin/admin.css">
@@ -18,13 +18,30 @@
 
 <style>
 
+#tbl {
+	width: 600px;
+	height: 40px;
+	text-align: center;
+	margin: 90px auto;
+}
+
+th, td {
+	border-bottom: 2px solid #ccc;
+	text-align: center;
+}
+
+#tbl {
+	width: 600px;
+}
+
+
 
 #ctlBtn {
 	float: right;
 	margin: 20px 50px 0px 10px;
 }
 
-.btnq {
+#btn {
 	margin-right: 5px;
 }
 
@@ -92,47 +109,52 @@
 
 	<div id="outline">
 
-		<div id="leftSide" style="float: left; background-color: white;">
+		<div id="leftSide" style="float: left;">
 			<%@include file="/WEB-INF/views/admin/inc/sidemenu.jsp" %>
 		</div>
 
 		<div id="content">
 
-            <div id="jobtype">태그 카테고리 관리</div>
+			<div id="jobtype">코딩 문제 관리</div>
 			
-			<div id="ctlBtn">
+			
+				<div id="ctlBtn">
 					<input id="btnadd" type="button" value="추가하기" class="btn btn-primary">
 				</div>
 				<div style="clear: both;"></div>
 
-			<div id="subframe">
-            <ul id="list1">
-                <li class="ui-state-disabled">
-                    <div class="one">순서</div>
-                    <div class="two">태그카테고리</div>
-                    <div class="three">관리</div>
-                </li>
-                <c:forEach items="${list}" var="dto" >
+				<div id="subframe">
+					<ul id="list1">
+						<li class="ui-state-disabled">
+							<div class="one">번호</div>
+							<div class="two">문제</div>
+							<div class="three">관리</div>
+						</li>
+						<c:forEach items="${list}" var="dto" >
 						<li>
-						<form method="POST" action="/yaneodo/admin/tag/tagcategoryupdate.do">
+						<form method="POST" action="/yaneodo/admin/codingtest/codingtestupdate.do">
 							<div class="one" >${dto.seq}</div>
-							<div class="two">	
-								<input type="text" name="title" class="title" value="${dto.title}">
+							<div class="two">
+								<input type="text" name="name" class="title" value="${dto.name}">
 							</div>
 							<div class="three">
 							
-								<input type="hidden" name="tagtitleseq" value="${dto.seq}">
-								<input type="hidden" name="tagtitlecount" value="basic">
+								<input type="hidden" name="testseq" value="${dto.seq}">
+								<input type="hidden" name="testcount" value="basic">
+								<input type="button" class="btn btns btn-primary" value="문제보기">
 								<input type="submit" class="btn btns btn-primary" value="저장">
 							</div>
 						</form>
 						</li>
 						</c:forEach>
-                
-        	</ul>
-        	</div>
+						
 
-        </div>
+					</ul>
+				</div>
+
+			
+
+		</div>
 	</div>
 	<div style="clear:both;"></div>
 
@@ -144,27 +166,16 @@
 
 	<script>
         
-	var list1 = document.getElementById("list1");
-    var bar;
-    let num = ${list.size()+1};
+	  //$("#list1").sortable();
 
-    
-    
-    $("#btnadd").click(function() {
-        // alert();
-        box = document.createElement("li");
+	  
 
-        box.className = "box";
-        box.innerHTML = "<form method='POST' action='/yaneodo/admin/tag/tagcategoryupdate.do'><div class='one'>"+ (num++) +"</div><div class='two'><input type='text' name='title' class='title' value=''></div> <div class='three'><input type='hidden' name='tagtitleseq' value='"+ num +"'><input type='hidden' name='tagtitlecount' value='add'><input type='submit' id='btn' class='btn btns btn-primary' value='저장'></div></form>";
-        
-        // box.innerHTML = "테스트";
-        list1.appendChild(box);
-        
-        $(".box .two input").focus();
-        
-        $("#btnadd").attr("disabled","true");
-
-    });
+     
+      
+      $("#btnadd").click(function() {
+         location.href="/yaneodo/admin/codingtest/codingtestadd.do";
+      });
+      
 
 
     

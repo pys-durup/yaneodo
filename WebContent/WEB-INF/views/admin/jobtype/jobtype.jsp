@@ -17,6 +17,7 @@
 
 
 <style>
+
 #tbl {
 	width: 600px;
 	height: 40px;
@@ -33,10 +34,7 @@ th, td {
 	width: 600px;
 }
 
-#jobtype {
-	float: left;
-	margin-right: 10px;
-}
+
 
 #ctlBtn {
 	float: right;
@@ -98,11 +96,7 @@ th, td {
 	display: none;
 }
 
-#outline {
-     width: 1110px;
-     height:910px;
-     margin : -10px auto;
-}
+
 </style>
 
 </head>
@@ -115,7 +109,7 @@ th, td {
 
 	<div id="outline">
 
-		<div id="leftSide" style="float: left; background-color: white;">
+		<div id="leftSide" style="float: left;">
 			<%@include file="/WEB-INF/views/admin/inc/sidemenu.jsp" %>
 		</div>
 
@@ -192,6 +186,8 @@ th, td {
           list1.appendChild(box);
           
           $(".box .two input").focus();
+          
+          $("#btnadd").attr("disabled","true");
 
       });
       

@@ -19,17 +19,8 @@
 
 <style>
 
- 		#outline {
-            width: 1105px;
-            margin : -10px auto;
-        }
+ 		
 
-        
-        #jobtype {
-            float: left;
-            margin-right: 10px;
-        }
-        
         #ctlBtn {
             float: right;
             margin: 20px 50px 0px 10px;
@@ -187,7 +178,7 @@
           
           $(".box .two input").focus();
           
-         
+          $("#btnadd").attr("disabled","true");
 
           
           $("#btn3").click(function () {
