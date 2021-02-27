@@ -110,8 +110,7 @@
                         <div class="subInfo">${dto.school } <span>${dto.major }</span></div>
                         <div class="row">
                             <button class="btn btn-default col-md-offset-8">찜하기</button>
-                            <input type="button" class="btn btn-primary col-md-offset-0" data-toggle="modal"
-                                data-target="#modalResumePreview" value="이력서 미리보기">
+                            <input type="button" class="btn btn-primary col-md-offset-0" data-toggle="modal" data-profileseq="${dto.profileseq}" data-resumeseq="${dto.resumeseq }" data-target="#modalResumePreview" value="이력서 미리보기">
                         </div>
 
                     </div>
@@ -146,31 +145,15 @@
                     <h4 class="modal-title">이력서 미리보기</h4>
                 </div>
                 <div class="modal-body first-body">
-                    <div class="title">박OO</div>
-                    <div class="subtitle">이메일 : <span class="text masking">test@test.com</span></div>
-                    <div class="subtitle">연락처 : <span class="text masking">010-1234-5678</span></div>
-                    <div class="text"><span>착목한는 곳이 원대하고 그들은 피가 더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히
+                    <div class="title" id="mrpName">박OO</div>
+                    <div class="subtitle">이메일 : <span class="text masking" id="mrpEmail">test@test.com</span></div>
+                    <div class="subtitle">연락처 : <span class="text masking" id="mrpPhone">010-1234-5678</span></div>
+                    <div class="text" id="mrpIntro"><span>착목한는 곳이 원대하고 그들은 피가 더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히
                             품으며</span><span class="masking">그들의 이상은 아름답고 소담스러운 열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 !
                             그들의</span></div>
                 </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-3 subtitle">
-                            경력
-                        </div>
-                        <div class="col-md-9">
-                            <div class="subtitle">
-                                <div><span>쌍용교육센터</span></div>
-                                <div style="text-align: right;"><span>2015.4 ~ 현재까지</span></div>
-                            </div>
-                            <div class="text">교육 팀장</div>
-                            <div class="text"><span>착목한는 곳이 원대하고 그들은 피가 더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히 품으며
-                                    그들의 이상은 아름답고 소담스러운 열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 ! 그들의착목한는 곳이 원대하고 그들은 피가</span>
-                                <spa class="masking" n>더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히 품으며 그들의 이상은 아름답고 소담스러운
-                                    열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 ! 그들의</span>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-body" id="mrpResumeData">
+                	<!-- JSON으로 받아온 데이터  -->
                 </div>
                 <div class="modal-footer viewinfo">
                     <span class="modal-footer-text">상세이력 확인시, 열람권이 1회 차감됩니다</span>
@@ -215,75 +198,22 @@
                 <div class="modal-body first-body">
                     <div class="modal-content-top">
                         <div class="title">
-                            <span>박영수</span>
+                            <span id="mrdName">박영수</span>
                             <div class="downlaod">
                                 <span class="modal-body-title-download">이력서 다운로드하기</span>
                                 <span class="glyphicon glyphicon-download-alt"></span>   
                             </div>
                         </div>
-                        <div class="subtitle">이메일 : <span class="text ">test@test.com</span></div>
-                        <div class="subtitle">연락처 : <span class="text ">010-1234-5678</span></div>
-                        <div class="text"><span>착목한는 곳이 원대하고 그들은 피가 더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히
+                        <div class="subtitle">이메일 : <span class="text" id="mrdEmail">test@test.com</span></div>
+                        <div class="subtitle">연락처 : <span class="text" id="mrdPhone">010-1234-5678</span></div>
+                        <div class="text" id="mrd"><span>착목한는 곳이 원대하고 그들은 피가 더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히
                                 품으며</span><span>그들의 이상은 아름답고 소담스러운 열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 !
                                 그들의</span></div>
                     </div>
                     <div class="blue-masking">후보자가 제안을 수락할 경우 이름과 이메일, 연락처를 확인할 수 있습니다</div>
-                    <div class="modal-content-middle">
-                        <div class="row resume-info">
-                            <div class="col-md-3 subtitle">
-                                경력1
-                            </div>
-                            <div class="col-md-9">
-                                <div class="subtitle">
-                                    <div><span>쌍용교육센터</span></div>
-                                    <div style="text-align: right;"><span>2015.4 ~ 현재까지</span></div>
-                                </div>
-                                <div class="text">교육 팀장</div>
-                                <div class="text"><span>착목한는 곳이 원대하고 그들은 피가 더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히
-                                        품으며그들의 이상은 아름답고 소담스러운 열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 ! 그들의착목한는 곳이 원대하고 그들은
-                                        피가</span>
-                                    <span>더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히 품으며 그들의 이상은 아름답고 소담스러운
-                                        열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 ! 그들의</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row resume-info">
-                            <div class="col-md-3 subtitle">
-                                경력2
-                            </div>
-                            <div class="col-md-9">
-                                <div class="subtitle">
-                                    <div><span>쌍용교육센터</span></div>
-                                    <div style="text-align: right;"><span>2015.4 ~ 현재까지</span></div>
-                                </div>
-                                <div class="text">교육 팀장</div>
-                                <div class="text"><span>착목한는 곳이 원대하고 그들은 피가 더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히
-                                        품으며그들의 이상은 아름답고 소담스러운 열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 ! 그들의착목한는 곳이 원대하고 그들은
-                                        피가</span>
-                                    <span>더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히 품으며 그들의 이상은 아름답고 소담스러운
-                                        열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 ! 그들의</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row resume-info">
-                            <div class="col-md-3 subtitle">
-                                경력3
-                            </div>
-                            <div class="col-md-9">
-                                <div class="subtitle">
-                                    <div><span>쌍용교육센터</span></div>
-                                    <div style="text-align: right;"><span>2015.4 ~ 현재까지</span></div>
-                                </div>
-                                <div class="text">교육 팀장</div>
-                                <div class="text"><span>착목한는 곳이 원대하고 그들은 피가 더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히
-                                        품으며그들의 이상은 아름답고 소담스러운 열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 ! 그들의착목한는 곳이 원대하고 그들은
-                                        피가</span>
-                                    <span>더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은 이상의 보배를 능히 품으며 그들의 이상은 아름답고 소담스러운
-                                        열매를 맺어 우리 인생을 풍부하게 하는 것이다 보라 청춘을 ! 그들의</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="modal-content-middle" id="mrdResumeData">
+                       
+                   
                 </div>
 
 
@@ -438,10 +368,105 @@
         $("#jobtype").val("${jobtype}").prop("selected", true);
     });
     
-
-    
-    
+    var pseq;
+    var rseq;
  
+    //triggered when modal is 이력서 미리보기 to be shown
+    $('#modalResumePreview').on('show.bs.modal', function(e) {
+
+        //get data-id attribute of the clicked element
+        pseq = $(e.relatedTarget).data('profileseq');
+        rseq = $(e.relatedTarget).data('resumeseq');
+        
+        //populate the textbox
+        //$(e.currentTarget).find('input[name="bookId"]').val(bookId);
+        
+        //alert(pseq + ' ' +rseq);
+      
+        
+        //json ajax 요청 - 이력서 코드
+        $.ajax({
+        	type: "GET",
+        	url: "/yaneodo/company/match/resumedata.do",
+        	dataType: "text",
+        	data: "rseq=" + rseq,
+        	success: function(result) {
+        		console.log(result);
+        		$("#mrpResumeData").html(result);
+        		$("#mrpResumeData").children("div").nextAll("div").remove();
+       	},
+        	error: function(a,b,c) {
+        		console.log(a,b,c);
+        	}
+        })
+        
+        
+        //json ajax 요청 - 사용자정보
+        $.ajax({
+        	type: "GET",
+        	url: "/yaneodo/company/match/customerdata.do",
+        	dataType: "json",
+        	data: "pseq=" + pseq,
+        	success: function(result) {
+        		console.log(result);
+        		$("#mrpName").text(result.name);
+        		$("#mrpEmail").text(result.eamil);
+        		$("#mrpPhone").text(result.phone);
+        		$("#mrpIntro").text(result.intro);
+        		
+        	},
+        	error: function(a,b,c) {
+        		console.log(a,b,c);
+        	}
+        })
+        
+    });
+    
+    
+    
+    // 이력서 상세보기 Modal
+ 
+    $('#modalResumeDetail').on('show.bs.modal', function(e) {
+    
+    	//ar pseq = $(e.relatedTarget).data('profileseq');
+        //var rseq = $(e.relatedTarget).data('resumeseq');
+        
+      //json ajax 요청 - 이력서 코드
+        $.ajax({
+        	type: "GET",
+        	url: "/yaneodo/company/match/resumedata.do",
+        	dataType: "text",
+        	data: "rseq=" + rseq,
+        	success: function(result) {
+        		console.log(result);
+        		$("#mrdResumeData").html(result);
+       	},
+        	error: function(a,b,c) {
+        		console.log(a,b,c);
+        	}
+        })
+        
+        
+        //json ajax 요청 - 사용자정보
+        $.ajax({
+        	type: "GET",
+        	url: "/yaneodo/company/match/customerdata.do",
+        	dataType: "json",
+        	data: "pseq=" + pseq,
+        	success: function(result) {
+        		console.log(result);
+        		$("#mrdName").text(result.name);
+        		$("#mrdEmail").text(result.eamil);
+        		$("#mrdPhone").text(result.phone);
+        		$("#mrdIntro").text(result.intro);
+        		
+        	},
+        	error: function(a,b,c) {
+        		console.log(a,b,c);
+        	}
+        })
+    	
+    });
     
     
     </script>

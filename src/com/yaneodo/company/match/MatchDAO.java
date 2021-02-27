@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.yaneodo.DBUtil;
-import com.yaneodo.company.volunteer.VolunteerDTO;
 import com.yaneodo.member.profile.ProfileDTO;
+import com.yaneodo.member.resume.ResumeDetailDTO;
 
 public class MatchDAO {
 
@@ -264,5 +264,50 @@ public class MatchDAO {
 			System.out.println(e);
 		}
 		return 0;
+	}
+
+	/**
+	 * 프로필 번호로 해당 프로필의 모든 정보를 반환하는 메서드
+	 * @param pseq 프로필 번호
+	 * @return
+	 */
+	public ResumeDetailDTO getResumeDetail(String pseq) {
+		
+		try {
+			
+			String sql = "select * from vwResumeDetail where profileseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, pseq);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				ResumeDetailDTO dto = new ResumeDetailDTO();
+				
+				dto.setProfileseq(rs.getString("profileseq"));
+				dto.setResumeseq(rs.getString("resumeseq"));
+				dto.setJobtype(rs.getString("jobtype"));
+				dto.setSchool(rs.getString("school"));
+				dto.setMajor(rs.getString("major"));
+				dto.setCompany(rs.getString("company"));
+				dto.setCareer(rs.getString("career"));
+				dto.setIntroduction(rs.getString("introduction"));
+				
+				dto.setName(rs.getString("name"));
+				dto.setPhone(rs.getString("phone"));
+				dto.setEmail(rs.getString("email"));
+				
+				
+				return dto;
+				
+			}
+			
+		} catch (Exception e) {
+			
+			System.out.println(e);
+			
+		}
+		return null;
 	}
 }
