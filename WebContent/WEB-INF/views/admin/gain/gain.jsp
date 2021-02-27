@@ -19,11 +19,7 @@
 
 <style>
 
-   #outline {
-            width: 1110px;
-            margin : -10px auto;
-            
-        }
+  
 
         #tbl {
             width: 700px;
@@ -44,7 +40,7 @@
 
         #dateSelect input {
             margin-top: 10px; 
-            width: 155px;
+            width: 160px;
         } 
 
         #columnchart_values {

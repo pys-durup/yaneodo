@@ -1,4 +1,4 @@
-package com.yaneodo.admin.matchup;
+package com.yaneodo.admin.codingtest;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -10,36 +10,37 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/matchup/matchup_member.do")
-public class Matchup_member extends HttpServlet {
+
+@WebServlet("/admin/codingtest/codingtest.do")
+public class CodingTest extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 		
-		//
 		
-		//2. DB작업
 		
-		//3. 결과 출력
+		//1. 데이터 확인 -> seq -> 관리자 로그인 확인
+		
+		//2. DB작업 -> select
+		//3. 결과 처리
+		
+		
+		//1. 로그인 확인
+		
 		
 		//2.
+		CodingtestDAO dao = new CodingtestDAO();
 		
-		//2-1 회원의 총 목록수 가져오기
-		MatchupDAO dao = new MatchupDAO();
+		ArrayList<CodingtestDTO> list = dao.getlist();
+
 		
-		int all = dao.getcount();
-		
-		
-		
-		//2-2 회원의 매치업 정보 가져오기
-		
-		
-		ArrayList<MatchupDTO> list = dao.getmemberlist(all);
 		
 		req.setAttribute("list", list);
+
+			
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/matchup/matchup_member.jsp");
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/codingtest/codingtest.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

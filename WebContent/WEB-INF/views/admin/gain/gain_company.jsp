@@ -15,10 +15,7 @@
 
 <style>
 
-  #outline {
-            width: 1100px;
-            margin : -10px auto;
-        }
+  	
 
         #tbl {
             width: 850px;
@@ -88,12 +85,54 @@
                     <tr>
                         <td>${index.index+1}</td>
                         <td>${one.name}</td>
-                        <td>${one.a}</td>
-                        <td>${one.b}</td>
-                        <td>${one.c}</td>
-                        <td>${one.d}</td>
-                        <td>${one.e}</td>
-                        <td>${one.used}</td>
+                        <c:choose>
+						<c:when test="${empty one.a}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${one.a}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+	                    <c:choose>
+						<c:when test="${empty one.b}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${one.b}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+                        <c:choose>
+						<c:when test="${empty one.c}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${one.c}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+                        <c:choose>
+						<c:when test="${empty one.d}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${one.d}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+                        <c:choose>
+						<c:when test="${empty one.e}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${one.e}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+                        <c:choose>
+						<c:when test="${empty one.used}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${one.used}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
                         <td>${(one.a*50)+(one.b*110)+(one.c*170)+(one.d*270)+(one.e*400) - (one.used)}</td>
                     </tr>
                 </c:forEach>
