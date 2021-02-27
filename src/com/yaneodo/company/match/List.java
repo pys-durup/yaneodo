@@ -96,6 +96,7 @@ public class List extends HttpServlet {
 		//2. 
 		MatchDAO dao = new MatchDAO();
 		
+		// 페이징 - 페이지 수 계산
 		totalCount = dao.getTotalCount(map); // 총 게시물 수
 		System.out.println("게시물 수 : " + totalCount);
 		
@@ -104,6 +105,72 @@ public class List extends HttpServlet {
 		
 		String pagebar = "";
 		
+		
+		loop = 1;
+		//n = 1;
+		n = ((nowPage - 1) / blockSize) * blockSize + 1;
+		
+		// 상태 유지를 위한 코드
+		// search jobtype isdibs isread ismatch
+		if(jobtype == null) jobtype = "";
+		if(isread == null) isread = "";
+		if(search == null) search = "";
+		if(isdibs == null) isdibs = "";
+		if(ismatch == null) ismatch = "";
+		
+		
+		// 페이지 바 코드 동적으로 생성
+		
+		// 이전 페이지로 이동
+		if (n == 1) {
+			pagebar += String.format("<li class='disabled'>"
+					+ "	            <a href=\"#!\" aria-label=\"Previous\">"
+					+ "	                <span aria-hidden=\"true\">&laquo;</span>"
+					+ "	            </a>"
+					+ "	        </li>");
+			
+		} else {
+			pagebar += String.format("<li>"
+					+ "	            <a href=\"/yaneodo/company/match/list.do?page=%d&jobtype="+jobtype+"&isread="+isread+"&isdibs="+isdibs+"&ismatch="+ismatch+"&search="+search+"\" aria-label=\"Previous\">"
+					+ "	                <span aria-hidden=\"true\">&laquo;</span>"
+					+ "	            </a>"
+					+ "	        </li>", n-1);			
+		}
+		
+		
+		
+		
+		// 페이지 번호
+		while (!(loop > blockSize || n > totalPage)) {
+			
+			if (nowPage == n) {
+				pagebar += "<li class='active'>";				
+			} else {
+				pagebar += "<li>";
+			}
+			pagebar += String.format("<a href=\"/yaneodo/company/match/list.do?page=%d&jobtype="+jobtype+"&isread="+isread+"&isdibs="+isdibs+"&ismatch="+ismatch+"&search="+search+"\">%d</a></li> ",n, n);
+			
+			loop++;
+			n++;
+			
+		}
+		
+		
+		// 다음 10페이지로 이동
+		if (n > totalPage) {
+			pagebar += String.format("<li class='disabled'>"
+					+ "	            <a href=\"#!\" aria-label=\"Next\">"
+					+ "	                <span aria-hidden=\"true\">&raquo;</span>"
+					+ "	            </a>"
+					+ "	        </li>");
+			
+		} else {
+			pagebar += String.format("<li>"
+					+ "	            <a href=\"/yaneodo/company/match/list.do?page=%d&jobtype="+jobtype+"&isread="+isread+"&isdibs="+isdibs+"&ismatch="+ismatch+"&search="+search+"\" aria-label=\"Next\">"
+					+ "	                <span aria-hidden=\"true\">&raquo;</span>"
+					+ "	            </a>"
+					+ "	        </li>", n);			
+		}
 		
 		
 		
@@ -124,6 +191,7 @@ public class List extends HttpServlet {
 		req.setAttribute("isread", isread);
 		req.setAttribute("isdibs", isdibs);
 		req.setAttribute("ismatch", ismatch);
+		req.setAttribute("pagebar", pagebar);
 		
 		
 		
