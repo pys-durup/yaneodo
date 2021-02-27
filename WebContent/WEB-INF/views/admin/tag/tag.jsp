@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn"  uri="http://java.sun.com/jsp/jstl/functions" %>
 
-
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,17 +19,8 @@
 
 <style>
 
- 		#outline {
-            width: 1105px;
-            margin : -10px auto;
-        }
+ 		
 
-        
-        #jobtype {
-            float: left;
-            margin-right: 10px;
-        }
-        
         #ctlBtn {
             float: right;
             margin: 20px 50px 0px 10px;
@@ -49,6 +38,7 @@
         .one, .two, .three {
             float: left;
             text-align : center;
+            height:30px;
         }
         .one {
             width : 100px;
@@ -79,8 +69,18 @@
         
         #list1 {
             margin-left: 0px;
-            margin-top: -40px;
+            margin-top: 0px;
         }
+        #subframe {
+			width: 800px;
+			height: 700px;
+			/* border : 1px solid black; */
+			overflow-y: scroll;
+		}
+		
+		#subframe::-webkit-scrollbar {
+			display: none;
+		}
         
 }
 </style>
@@ -103,80 +103,43 @@
 
             <div id="jobtype">태그 카테고리 관리</div>
             
-            <form method="" action="">
 
             <div id="ctlBtn">
-            	<input type="button" id="btnadd" class="btnq btn btn-primary" value="추가하기">
-            	<input type="button"  class="btnq btn btn-primary" value="저장하기">
-            </div>
-            <div style="clear: both;"></div>
+					<input id="btnadd" type="button" value="추가하기" class="btn btn-primary">
+				</div>
+				<div style="clear: both;"></div>
 
-
+			<div id="subframe">
             <ul id="list1">
                 <li class="ui-state-disabled">
                     <div class="one">태그카테고리</div>
                     <div class="two">태그이름</div>
                     <div class="three">관리</div>
                 </li>
-                <li>
-                    <div class="one">인원성장률</div>
-                    <div class="two"><input type="text" class="title" value="#인원성장"></div>
-                   <div class="three">
-                       <input type="button" class="btns btn btn-primary" value="삭제">
-                   </div>
-                </li>
-                <li>
-                    <div class="one">업계연봉수준</div>
-                    <div class="two"><input type="text" class="title" value="#연봉상위1%"></div>
-                    <div class="three">
-                       <input type="button" class="btns btn btn-primary" value="삭제">
-                   </div>
-                </li>
-                <li>
-                    <div class="one">투자</div>
-                    <div class="two"><input type="text" class="title" value="#누적투자율100억이상"></div>
-                    <div class="three">
-                       <input type="button" class="btns btn btn-primary" value="삭제">
-                   </div>
-                </li>
-                <li>
-                    <div class="one">퇴사율</div>
-                    <div class="two"><input type="text" class="title" value="#퇴사율5%이하"></div>
-                    <div class="three">
-                       <input type="button" class="btns btn btn-primary" value="삭제">
-                   </div>
-                </li>
-                <li>
-                    <div class="one">인원수</div>
-                    <div class="two"><input type="text" class="title" value="#50명이하"></div>
-                    <div class="three">
-                       <input type="button" class="btns btn btn-primary" value="삭제">
-                   </div>
-                </li>
-                <li>
-                    <div class="one">근무/휴가</div>
-                    <div class="two"><input type="text" class="title" value="#야근없음"></div>
-                    <div class="three">
-                       <input type="button" class="btns btn btn-primary" value="삭제">
-                   </div>
-                </li>
-                <li>
-                    <div class="one">기업문화</div>
-                    <div class="two"><input type="text" class="title" value="#대기업"></div>
-                    <div class="three">
-                        <input type="button" class="btns btn btn-primary" value="삭제">
-                    </div>
-                </li>
-                <li>
-                    <div class="one">편의시설</div>
-                    <div class="two"><input type="text" class="title" value="#주차"></div>
-                    <div class="three">
-                        <input type="button" class="btns btn btn-primary" value="삭제">
-                    </div>
-                </li>
+                
+                <c:forEach items="${list}" var="dto" >
+					<li>
+					<form method="GET" action="/yaneodo/admin/tag/tagupdate.do">
+						<div class="one" >${dto.title}</div>
+						<div class="two">	
+							<input type="text" name="title" class="title" value="${dto.ttitle}">
+						</div>
+						<div class="three">
+						
+							<input type="hidden" name="ctitle" value="${dto.seq}">
+							<input type="hidden" name="ttitlecount" value="basic">
+							<input type="submit" class="btn btns btn-primary" value="저장">
+						</div>
+					</form>
+					</li>
+				</c:forEach>
+						
+						
+						
             </ul>
 
-		</form>
+			</div>
+
        
         </div>
 	</div>
@@ -190,34 +153,54 @@
 
 	<script>
         
-	  $("#list1").sortable();
-
+	 
 	  
+
 
       var list1 = document.getElementById("list1");
       var bar;
-
       
       
       $("#btnadd").click(function() {
-          // alert();
+
+    	  
+    	  
           box = document.createElement("li");
 
           box.className = "box";
-          box.innerHTML = "<div class='one'><select><option>" + 1+"</option></select></div><div class='two'><input type='text' class='title' value=''></div> <div class='three'><input type='button' id='btn' class='btn btns btn-primary' value='삭제'></div>";
           
-          // box.innerHTML = "테스트";
-          list1.appendChild(box);
+          
+          box.innerHTML = "<div class='one'><select id='addsel'><c:forEach items='${clist}' var='cdto' varStatus='status'><option value='1'>${cdto.title}</option></c:forEach></select></div><div class='two'><input type='text' id='ttitle' name='ttitle' class='title' value=''></div> <div class='three'><input type='hidden' name='tagtitleseq' value=''><input type='hidden' name='ttitlecount' value='add'><input type='button' id='btn3' class='btn btns btn-primary' value='저장'></div>";
+          
 
+         
+          list1.appendChild(box);
+          
+          $(".box .two input").focus();
+          
+          $("#btnadd").attr("disabled","true");
+
+          
+          $("#btn3").click(function () {
+        	  var title = $("#ttitle").val()
+        	  
+
+        	  location.href = "/yaneodo/admin/tag/tagupdate.do?ttitlecount=add&title="+title.replace("#","%23")+"&ctitle="+($("#addsel option").index($("#addsel option:selected"))+1);
+        	  
+        	 
+
+          });
+          
+          
+          
+          
+          
+
+          
+         
       });
       
-      $(window).click(function() {
-
-          $(".btns").click(function () {
-              $(this).parent().parent().remove();
-          });   
-      });
-
+    
 
     
     </script>

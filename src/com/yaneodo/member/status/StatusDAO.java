@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.yaneodo.DBUtil2;
+import com.yaneodo.DBUtil;
 
 public class StatusDAO {
 	private Connection conn;
@@ -16,11 +16,18 @@ public class StatusDAO {
 	private ResultSet rs;
 	
 	public StatusDAO() {
-		conn = DBUtil2.open();
+		conn = DBUtil.open();
 	}
 	
-	/*지원 목록 가져오기*/
-	public ArrayList<StatusDTO> list(HashMap<String, String> map) {
+
+	/**
+	 * 지원 목록 가져오기
+	 * @author 혜승
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
+	public ArrayList<StatusDTO> list(HashMap<String, String> map, String seq) {
 
 		try {
 			String where="";
@@ -30,10 +37,10 @@ public class StatusDAO {
 			} else if(map.get("status") == null) {
 				where = "and status != '작성중'";
 			}
-			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwApplyStatus where seq=? %s order by applydate desc) a ) where rnum between %s and %s;",where,map.get("begin"),map.get("end")) ;
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwApplyStatus where seq=? %s order by applydate desc) a ) where rnum between %s and %s",where,map.get("begin"),map.get("end")) ;
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, "2");
+			pstat.setString(1, seq);
 			rs = pstat.executeQuery();
 			ArrayList<StatusDTO> list = new ArrayList<StatusDTO>();
 			while(rs.next()) {
@@ -52,32 +59,20 @@ public class StatusDAO {
 		}
 		return null;
 	}
-	/*지원현황 전체 카운트 (작성중 제외)*/
-	public int cntAll() {
+	
+	/***
+	 * 지원현황 전체 카운트 (작성중 제외)
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int cntAll(String seq) {
 		try {
 		
 			String sql = String.format("select count(*) as cnt from vwApplyStatus where seq=? and status != '작성중'");
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, "2");
-			rs = pstat.executeQuery();
-			if(rs.next()) {
-				return rs.getInt("cnt");
-			}
-			
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return 0;
-	}
-	/*작성중 카운트*/
-	public int cntWriting() {
-		try {
-		
-			String sql = String.format("select count(*) as cnt from vwApplyStatus where seq=? and status = '작성중'");
-			
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, "2");
+			pstat.setString(1, seq);
 			rs = pstat.executeQuery();
 			if(rs.next()) {
 				return rs.getInt("cnt");
@@ -89,14 +84,44 @@ public class StatusDAO {
 		return 0;
 	}
 
-	/*지원 완료 카운트*/
-	public int cntComplete() {
+	/***
+	 * 작성중 카운트
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int cntWriting(String seq) {
+		try {
+		
+			String sql = String.format("select count(*) as cnt from vwApplyStatus where seq=? and status = '작성중'");
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+			if(rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+	
+	/***
+	 * 지원 완료 카운트
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int cntComplete(String seq) {
 		try {
 		
 			String sql = String.format("select count(*) as cnt from vwApplyStatus where seq=? and status ='지원 완료'");
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, "2");
+			pstat.setString(1, seq);
 			rs = pstat.executeQuery();
 			if(rs.next()) {
 				return rs.getInt("cnt");
@@ -107,14 +132,20 @@ public class StatusDAO {
 		}
 		return 0;
 	}
-	/*서류 통과 카운트*/
-	public int cntResumePass() {
+
+	/***
+	 * 서류 통과 카운트
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int cntResumePass(String seq) {
 		try {
 		
 			String sql = String.format("select count(*) as cnt from vwApplyStatus where seq=? and status ='서류 통과'");
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, "2");
+			pstat.setString(1, seq);
 			rs = pstat.executeQuery();
 			if(rs.next()) {
 				return rs.getInt("cnt");
@@ -126,14 +157,20 @@ public class StatusDAO {
 		return 0;
 	}
 	
-	/* 최종합격 카운트*/
-	public int cntPass() {
+
+	/***
+	 * 최종합격 카운트
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int cntPass(String seq) {
 		try {
 		
 			String sql = String.format("select count(*) as cnt from vwApplyStatus where seq=? and status ='최종 합격'");
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, "2");
+			pstat.setString(1, seq);
 			rs = pstat.executeQuery();
 			if(rs.next()) {
 				return rs.getInt("cnt");
@@ -145,14 +182,20 @@ public class StatusDAO {
 		return 0;
 	}
 	
-	/* 불합격 카운트*/
-	public int cntFail() {
+
+	/***
+	 * 불합격 카운트
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int cntFail(String seq) {
 		try {
 		
 			String sql = String.format("select count(*) as cnt from vwApplyStatus where seq=? and status ='불합격'");
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, "2");
+			pstat.setString(1, seq);
 			rs = pstat.executeQuery();
 			if(rs.next()) {
 				return rs.getInt("cnt");
@@ -164,8 +207,15 @@ public class StatusDAO {
 		return 0;
 	}
 	
-	/*지원현황 페이징위한 총 개시물 수 */
-	public int getTotalCount(HashMap<String, String> map) {
+
+	/***
+	 * 지원현황 페이징위한 총 게시물 수
+	 * @author 혜승
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
+	public int getTotalCount(HashMap<String, String> map,String seq) {
 		try {
 			String where ="";
 			
@@ -178,7 +228,7 @@ public class StatusDAO {
 			String sql = String.format("select count(*) as cnt from vwApplyStatus where seq=? %s", where);
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, "2");
+			pstat.setString(1, seq);
 			
 			rs = pstat.executeQuery();
 			if(rs.next()) {
@@ -189,6 +239,23 @@ public class StatusDAO {
 			System.out.println(e);
 		}
 		return 0;
+	}
+
+	/***
+	 *회원 매치업 현황 목록 조회
+	 * @author 혜승
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
+	public ArrayList<StatusDTO> mlist(HashMap<String, String> map, String seq) {
+		try {
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
 	}
 
 }

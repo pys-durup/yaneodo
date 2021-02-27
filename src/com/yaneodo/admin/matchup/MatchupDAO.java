@@ -1,15 +1,18 @@
 package com.yaneodo.admin.matchup;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.yaneodo.DBUtil2;
-import com.yaneodo.admin.gain.GainDTO;
+import com.yaneodo.DBUtil;
+
+import oracle.jdbc.OracleTypes;
 
 public class MatchupDAO {
 	
@@ -17,10 +20,11 @@ public class MatchupDAO {
 	private Statement stat;
 	private PreparedStatement pstat;
 	private ResultSet rs;
+	private CallableStatement cstat;
 	
 	public MatchupDAO() {
 		//DB 연결
-		conn = DBUtil2.open();
+		conn = DBUtil.open();
 	}
 	
 	
@@ -140,6 +144,149 @@ Calendar cal = Calendar.getInstance();
 						
 				return week;
 			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+
+	
+	//Matchup member -> 회원의 매치업정보 가져오기
+	public ArrayList<MatchupDTO> getmemberlist(int all) {
+		
+		try {
+			
+			ArrayList<MatchupDTO> list = new ArrayList<MatchupDTO>();
+			
+			for (int i =1; i<=all; i++) {
+		
+				String sql = "{ call procmatchupmember(?,?)}";
+				
+				cstat = conn.prepareCall(sql);
+				
+				cstat.setInt(1,i);		
+				cstat.registerOutParameter(2, OracleTypes.CURSOR);
+				cstat.executeQuery();
+				
+				rs = (ResultSet)cstat.getObject(2);
+				
+				
+				if(rs.next()) {
+					
+					MatchupDTO dto = new MatchupDTO();
+					
+					dto.setSeq(i+"");
+					dto.setName(rs.getString("name"));
+					dto.setSuggest(rs.getString("sug"));
+					dto.setIng(rs.getString("ing"));
+					dto.setSuccess(rs.getString("suc"));
+					dto.setAgree(rs.getString("agree"));
+					
+					list.add(dto);
+				}
+				
+			}
+			
+			return list;
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+
+
+	//member의 수 가져오기
+	public int getcount() {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from tblcustomer";
+			
+			stat = conn.createStatement();
+			
+			
+			rs = stat.executeQuery(sql);
+			
+			if(rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+
+	public int getcompanycount() {
+try {
+			
+			String sql = "select count(*) as cnt from tblcompanymember";
+			
+			stat = conn.createStatement();
+			
+			
+			rs = stat.executeQuery(sql);
+			
+			if(rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+
+	//기업회원 매치업 정보 가져오기
+	public ArrayList<MatchupDTO> getcompanylist(int all) {
+		
+		try {
+			
+			ArrayList<MatchupDTO> list = new ArrayList<MatchupDTO>();
+			
+			for (int i =1; i<=all; i++) {
+		
+				String sql = "{ call procmatchupcompany(?,?)}";
+				
+				cstat = conn.prepareCall(sql);
+				
+				cstat.setInt(1,i);		
+				cstat.registerOutParameter(2, OracleTypes.CURSOR);
+				cstat.executeQuery();
+				
+				rs = (ResultSet)cstat.getObject(2);
+				
+				
+				if(rs.next()) {
+					
+					MatchupDTO dto = new MatchupDTO();
+					
+					dto.setSeq(i+"");
+					dto.setName(rs.getString("name"));
+					dto.setRead(rs.getString("use"));
+					dto.setInter(rs.getString("inter"));
+					dto.setSuggest(rs.getString("sug"));
+					dto.setIng(rs.getString("ing"));
+					dto.setSuccess(rs.getString("suc"));
+					
+					list.add(dto);
+				}
+				
+			}
+			
+			return list;
+			
+			
 			
 		} catch (Exception e) {
 			System.out.println(e);

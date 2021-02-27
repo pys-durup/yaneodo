@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
-
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -38,8 +35,8 @@
 		
         <div id="content">
             <form action="" id="search">
-                <input type="text" class="searchbar" placeholder=" 이름">
-                <input type="button" value="검색" class="searchbar">
+                <input type="text" class="searchbar" placeholder=" 이름" style="display:none;">
+                <input type="button" value="검색" class="searchbar" style="display:none;">
             </form>
 
             <table id="tbl">
@@ -56,26 +53,61 @@
                     </tr>
                 </thead>
                 <tbody id="tbd">
+                <c:forEach items="${list}" var="dto">
                     <tr>
-                        <td>1</td>
-                        <td class="getname">박세인</td>
-                        <td>164</td>
-                        <td>53</td>
-                        <td>47</td>
-                        <td>12</td>
-                        <td>15</td>
-                        <td>17%</td>
+                        <td>${dto.seq}</td>
+                        <td class="getname">${dto.name}</td>
+                        <c:choose>
+						<c:when test="${empty dto.read}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${dto.read}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+	                    <c:choose>
+						<c:when test="${empty dto.suggest}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${dto.suggest}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+                        <c:choose>
+						<c:when test="${empty dto.inter}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${dto.inter}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+                        <c:choose>
+						<c:when test="${empty dto.ing}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${dto.ing}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+                        <c:choose>
+						<c:when test="${empty dto.success}"> 
+	                        <td>0</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${dto.success}</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+	                    <c:choose>
+						<c:when test="${empty dto.success}"> 
+	                        <td>0%</td>
+	                    </c:when>
+	                    <c:otherwise>
+	                    <td>${(dto.success/dto.suggest)}%</td>	                    
+	                    </c:otherwise>
+	                    </c:choose>
+                       
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td class="getname">홍길동</td>
-                        <td>281</td>
-                        <td>85</td>
-                        <td>85</td>
-                        <td>30</td>
-                        <td>34</td>
-                        <td>23%</td>
-                    </tr>
+                  </c:forEach>  
                 </tbody>
             </table>
 

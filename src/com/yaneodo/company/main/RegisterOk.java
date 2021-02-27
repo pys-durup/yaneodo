@@ -20,7 +20,7 @@ public class RegisterOk extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+
 		HttpSession session = req.getSession();
 		req.setCharacterEncoding("UTF-8");
 
@@ -107,7 +107,7 @@ public class RegisterOk extends HttpServlet {
 				
 				writer.print("<html><head><meta charset='utf-8'></head><body>");
 				writer.print("<script>");
-				writer.print("alert('기업 정보 제출이 완료되었습니다.관리자 승인 후 이용가능합니다.');");
+				writer.print("alert('기업 정보 제출이 완료되었습니다. 관리자 승인 후 이용가능합니다.');");
 				writer.print("location.href='/yaneodo/company/main/index.do';"); 
 				writer.print("</script>");
 				writer.print("</body></html>");
@@ -116,6 +116,7 @@ public class RegisterOk extends HttpServlet {
 
 				//resp.sendRedirect("/yaneodo/company/main/index.do");
 			
+
 			} else {
 				
 				resp.setCharacterEncoding("UTF-8");			
@@ -130,15 +131,14 @@ public class RegisterOk extends HttpServlet {
 				
 				writer.close();
 
-			}
+		}
 
-	
+
 //			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/company/main/index.jsp");
 //			dispatcher.forward(req, resp);
 	
 			
 	}
 	
-
 }
 

@@ -32,7 +32,12 @@ public class MemberDAO {
 	
 	
 
-	//회원정보 반환
+	/***
+	 * 회원정보반환
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
 	public MemberDTO get(String seq) {
 		
 		try {
@@ -72,17 +77,25 @@ public class MemberDAO {
 	
 
   
-	//Customer_editOk 서블릿 -> 회원정보수정
-	public int edit(MemberDTO dto) {
+	
+	/***
+	 * Customer_editOk 서블릿 -> 회원정보수정
+	 * @author 혜승
+	 * @param dto
+	 * @param seq
+	 * @return
+	 */
+	public int edit(MemberDTO dto, String seq) {
 		try {
 			
-			String sql ="update tblCustomer set name=?, nickName=?, birth=?, phone=? where customerseq=2";
+			String sql ="update tblCustomer set name=?, nickName=?, birth=?, phone=? where customerseq=?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getName());
 			pstat.setString(2, dto.getNickName());
 			pstat.setString(3, dto.getBirth());
 			pstat.setString(4, dto.getPhone());
+			pstat.setString(5, seq);
 			
 			
 			return pstat.executeUpdate();
@@ -92,14 +105,20 @@ public class MemberDAO {
 		return 0;
 	}
 
-	//Customer_edit 서블릿 -> 회원정보가져오기
-	public MemberDTO getInfo(int i) {
+
+	/***
+	 * Customer_edit 서블릿 -> 회원정보가져오기
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public MemberDTO getInfo(String seq) {
 		try {
 			
 			String sql = "select * from tblCustomer where customerSeq =?";
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setInt(1, i);
+			pstat.setString(1, seq);
 			
 			rs = pstat.executeQuery();
 			
@@ -124,6 +143,12 @@ public class MemberDAO {
 		return null;
 	}
 
+	/***
+	 * Customer_edit 닉네임중복검사
+	 * @author 혜승
+	 * @param nickName
+	 * @return
+	 */
 	public int checkNick(String nickName) {
 		try {
 			String sql = "select count(*) as cnt from tblCustomer where nickName=? ";

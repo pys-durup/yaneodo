@@ -42,20 +42,14 @@ public class JobtypeUpdate extends HttpServlet {
 //		
 //		
 		int count = dao.newlist(title, jobseq, add);
+		
 //		
-//		if (count == list.length) {
-//			//성공
-//			
-//		} else {
-//			// 실패
-//		}
+
+		resp.sendRedirect("/yaneodo/admin/jobtype/jobtype.do");
+			
+
 		
 		
 		
-		
-		
-		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/jobtype/jobtype.jsp");
-		dispatcher.forward(req, resp);
 	}
 }

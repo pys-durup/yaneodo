@@ -36,7 +36,7 @@ public class GainCompanyDAO {
 			
 			
 			
-				String sql = "select * from vwgainall";      
+				String sql = "select * from vwgainalls";      
 			
 
 				stat = conn.createStatement();
@@ -49,13 +49,13 @@ public class GainCompanyDAO {
 					
 					GainCompanyDTO dto = new GainCompanyDTO();
 				
-					dto.setName(rs.getString("name"));
-					dto.setA(rs.getString("a"));
-					dto.setB(rs.getString("b"));
-					dto.setC(rs.getString("c"));
-					dto.setD(rs.getString("d"));
-					dto.setE(rs.getString("e"));
-					dto.setUsed(rs.getString("used"));
+					dto.setName(rs.getString("managername"));
+					dto.setA(rs.getString("Atype"));
+					dto.setB(rs.getString("Btype"));
+					dto.setC(rs.getString("Ctype"));
+					dto.setD(rs.getString("Dtype"));
+					dto.setE(rs.getString("Etype"));
+					dto.setUsed(rs.getString("readcount"));
 					
 					list.add(dto);
 				}
@@ -76,7 +76,7 @@ public class GainCompanyDAO {
 			
 			name = "%" + name +"%";
 			
-			String sql = "select * from vwgainall where name like ?";
+			String sql = "select * from vwgainalls where managername like ?";
 
 			pstat = conn.prepareStatement(sql);
 			
@@ -91,13 +91,13 @@ public class GainCompanyDAO {
 				
 				GainCompanyDTO dto = new GainCompanyDTO();
 			
-				dto.setName(rs.getString("name"));
-				dto.setA(rs.getString("a"));
-				dto.setB(rs.getString("b"));
-				dto.setC(rs.getString("c"));
-				dto.setD(rs.getString("d"));
-				dto.setE(rs.getString("e"));
-				dto.setUsed(rs.getString("used"));
+				dto.setName(rs.getString("managername"));
+				dto.setA(rs.getString("Atype"));
+				dto.setB(rs.getString("Btype"));
+				dto.setC(rs.getString("Ctype"));
+				dto.setD(rs.getString("Dtype"));
+				dto.setE(rs.getString("Etype"));
+				dto.setUsed(rs.getString("readcount"));
 				
 				list.add(dto);
 			}

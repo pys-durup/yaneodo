@@ -38,7 +38,7 @@ public class Applied_status extends HttpServlet {
 		
 		
 		HttpSession session = req.getSession();
-		
+		String seq = (String)session.getAttribute("seq");
 
 		
 		//페이징
@@ -82,13 +82,13 @@ public class Applied_status extends HttpServlet {
 
 		StatusDAO dao = new StatusDAO();
 		
-		ArrayList<StatusDTO> list = dao.list(map);
-		int cntAll = dao.cntAll();
-		int cntWriting = dao.cntWriting();
-		int cntComplete = dao.cntComplete();
-		int cntResumePass = dao.cntResumePass();
-		int cntPass = dao.cntPass();
-		int cntFail = dao.cntFail();
+		ArrayList<StatusDTO> list = dao.list(map,seq);
+		int cntAll = dao.cntAll(seq);
+		int cntWriting = dao.cntWriting(seq);
+		int cntComplete = dao.cntComplete(seq);
+		int cntResumePass = dao.cntResumePass(seq);
+		int cntPass = dao.cntPass(seq);
+		int cntFail = dao.cntFail(seq);
 		
 		//1.5 데이터 조작
 //				for(StatusDTO dto:list) {
@@ -98,7 +98,7 @@ public class Applied_status extends HttpServlet {
 		
 				
 				//페이징 바 만들기
-				totalCount = dao.getTotalCount(map); //총게시물 수
+				totalCount = dao.getTotalCount(map,seq); //총게시물 수
 				System.out.println(totalCount);
 				
 				totalPage= (int)Math.ceil((double)totalCount/pageSize); //총 페이지 수 
@@ -131,10 +131,17 @@ public class Applied_status extends HttpServlet {
 						+ "                            </a>"
 						+ "                        </li>");
 				}else {
-				pagebar += String.format("<li><a href=\"/yaneodo/member/status/applied_status.do?status=%s&page=%d\" aria-label=\"Previous\">"
+					if(status == null || status == "") {
+						pagebar += String.format("<li><a href=\"/yaneodo/member/status/applied_status.do?page=%d\" aria-label=\"Previous\">"
+								+ "             <span aria-hidden=\"true\">&laquo;</span>"
+								+ "                            </a>"
+								+ "                        </li>",n-1);
+					} else {
+						pagebar += String.format("<li><a href=\"/yaneodo/member/status/applied_status.do?status=%s&page=%d\" aria-label=\"Previous\">"
 						+ "             <span aria-hidden=\"true\">&laquo;</span>"
 						+ "                            </a>"
 						+ "                        </li>",status,n-1);
+					}
 				}
 				
 			      
@@ -145,8 +152,12 @@ public class Applied_status extends HttpServlet {
 			         } else {
 			            pagebar += "<li>";
 			         }
+			         if(status == null || status == "") {
+			        	 pagebar += String.format("<a href=\"/yaneodo/member/status/applied_status.do?page=%d\">%d</a></li>",n, n);
+			         } else {
+			        	 pagebar += String.format("<a href=\"/yaneodo/member/status/applied_status.do?status=%s&page=%d\">%d</a></li>",status,n, n);	 
+			         }
 			         
-			         pagebar += String.format("<a href=\"/yaneodo/member/status/applied_status.do?status=%s&page=%d\">%d</a></li>",status,n, n);
 			         
 			         loop++;
 			         n++;
@@ -162,11 +173,19 @@ public class Applied_status extends HttpServlet {
 						+ "        </a>"
 						+ "    </li>");
 				} else {
-				pagebar += String.format("		<li>"
-						+ "        <a href=\"/yaneodo/member/status/applied_status.do?status=%s&page=%d\" aria-label=\"Next\">"
-						+ "            <span aria-hidden=\"true\">&raquo;</span>"
-						+ "        </a>"
-						+ "    </li>",status,n);
+					if(status == null || status == "") {
+						pagebar += String.format("		<li>"
+								+ "        <a href=\"/yaneodo/member/status/applied_status.do?page=%d\" aria-label=\"Next\">"
+								+ "            <span aria-hidden=\"true\">&raquo;</span>"
+								+ "        </a>"
+								+ "    </li>",n);
+					} else {
+						pagebar += String.format("		<li>"
+								+ "        <a href=\"/yaneodo/member/status/applied_status.do?status=%s&page=%d\" aria-label=\"Next\">"
+								+ "            <span aria-hidden=\"true\">&raquo;</span>"
+								+ "        </a>"
+								+ "    </li>",status,n);
+					}
 				}
 	
 		req.setAttribute("list",list);

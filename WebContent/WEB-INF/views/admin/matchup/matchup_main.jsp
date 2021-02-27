@@ -18,25 +18,18 @@
 
    <style>
 
-        #outline {
-            width: 1105px;
-            margin : -10px auto;
-        }
+             
 
-      
 
-        #dateSelect div, #dateSelect input {
+        
+          #dateSelect div, #dateSelect input {
             float : right;
             height: 30px;
-            margin-right: 10px;
-
         }
-            
 
         #dateSelect input {
             margin-top: 10px; 
-            margin-right: 50px;
-            width: 155px;
+            width: 160px;
         } 
 
         #columnchart_values {

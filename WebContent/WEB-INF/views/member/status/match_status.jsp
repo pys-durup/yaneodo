@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 
 
@@ -46,16 +47,16 @@
                 </div>
                 <table id="statusTable" class="table table-striped ">
                     <tr>
-                        <th>지원 회사</th>
-                        <th>지원 포지션</th>
-                        <th>작성일</th>
-                        <th>진행상태</th>
+                        <th>회사명</th>
+                        <th>지역</th>
+                        <th>일자</th>
+                        <th>상태</th>
                     </tr>
                     <tr class="tableSel">
                         <td>카카오</td>
                         <td>앱개발</td>
+                        <td>앱개발</td>
                         <td>2020-12-30</td>
-                        <td>불합격</td>
                     </tr>
 
                     <!-- <tr>
