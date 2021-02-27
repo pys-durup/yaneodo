@@ -9,6 +9,9 @@ public class ResumeDTO {
 	private String orgfileName;
 	private String fileName;
 	private String introduce;
+	private String name;
+	private String email;
+	private String phone;
 	
 	
 	public String getResumeSeq() {
@@ -52,6 +55,24 @@ public class ResumeDTO {
 	}
 	public void setIntroduce(String introduce) {
 		this.introduce = introduce;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 	

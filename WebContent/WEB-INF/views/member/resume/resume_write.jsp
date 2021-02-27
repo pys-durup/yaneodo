@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 
 
@@ -21,6 +22,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/member/inc/header.jsp" %>
+
 	   <div id="resume-app" class="react-container background-white" >
         <div class="container" >
             <div id="resume-detail" class="" >
@@ -44,25 +46,24 @@
                 <div class="resume-basic-info" >
                     <div class="resume-basic-header">
                         <div class="resume-input-form-group">
-                        <form method="POST" action="">
-                            <input class="resume-input resume_title" type="text" maxlength="100" placeholder="이력서 제목(필수)" name="title" value="${name}5" >
+					<form method="POST" action = "/yaneodo/memeber/resume/resume_editok.do"  enctype="multipart/form-data">
+                            <input class="resume-input resume_title" type="text" maxlength="100" placeholder="이력서 제목(필수)" name="title" value="${dto.orgfileName}" >
                         </div>
                     </div>
                     <div class="resume-input-form-group" >
-                        <input class="resume-input name" type="text" maxlength="100" placeholder="이름(필수)" name="name" value="${name}" disabled>
+                        <input class="resume-input name" type="text" maxlength="100" placeholder="이름(필수)" name="name" value="${dto.name}">
                     </div>
                     <div class="resume-input-form-group" >
-                        <input class="resume-input email" type="text" maxlength="120" placeholder="이메일(필수)" name="email" value="${email}" disabled>
+                        <input class="resume-input email" type="text" maxlength="120" placeholder="이메일(필수)" name="email" value="${dto.email}">
                     </div>
-                    <div class="resume-input-form-group"><input class="resume-input mobile" type="text" maxlength="200" placeholder="연락처(필수) ex) 010-0000-0000" name="mobile" value="${phone}" disabled>
+                    <div class="resume-input-form-group"><input class="resume-input mobile" type="text" maxlength="200" placeholder="연락처(필수) ex) 010-0000-0000" name="mobile" value="${dto.phone}">
                     </div>
                 </div>
                 <div class="resume-about-info">
                     <div class="resume-about-header" >간단 소개글</div>
                     <div class="resume-input-form-group">
                         <div class="dynamic-textarea">
-                            <textarea style="height:34px;" name="info" class="resume-input about" maxlength="4000" placeholder="간단한 자기소개를 통해 이력서를 돋보이게 만들어보세요. (5~10줄 권장)"></textarea>
-                            </form>
+                            <textarea style="height:120px;" name="info" class="resume-input about" maxlength="4000" placeholder="간단한 자기소개를 통해 이력서를 돋보이게 만들어보세요. (5~10줄 권장)">${dto.introduce}</textarea>
                             <textarea class="textarea-clone" readonly="" style="top: 0px; left: 0px; width: 900px; padding: 0px; font-size: 16px; line-height: 22.8571px; font-weight: 400; position: absolute; visibility: hidden; z-index: -9999; height: 0px;">간단한 자기소개를 통해 이력서를 돋보이게 만들어보세요. (3~5줄 권장)</textarea>
                         </div>
                     </div>
@@ -72,31 +73,279 @@
                         <div class="resume-list-header" >
                             <span>경력</span>
                         </div>
+                      
                         <div class="resume-list-body" id="careerBody">
-                            <button class="btn-add btn btn-default" type="button" id="careerAdd">+ 추가</button>
-                        </div>
-                    </div>
+                    	<form method="GET" action="/yaneodo/member/resume/experienceadd.do">
+                         <input type="hidden" id="rseq" name="rseq" value="${dto2.resumeSeq}">
+                        <c:if test="${exlist.size()==3}">
+                            <button class="btn-add btn btn-default" type="submit" id="careerAdd2" disabled>+ 추가</button>
+                        </c:if>    
+                        <c:if test="${exlist.size()<3}">
+                        
+                            <button class="btn-add btn btn-default" type="submit" id="careerAdd">+ 추가</button>
+                        </c:if> 
+                       
+                         </form> 
+                            
+                           <c:if test="${exlist.size()>0}"> 
+ 							<c:forEach items="${exlist}" var="exlist">
+                            	<ul id="no"  class="list-group sortable-list careers">
+                            		<li class="list-group-item sortable-item careers">
+                            			<div class="portlet-handler">
+                            				<div class="handler">
+                            				</div>
+                            				</div>
+                            				<div class="career-item clearfix">
+                            					<div class="col-sm-3">
+                            						<div class="period">
+                            							<div class="datetime">
+                            								<div class="start-time">
+                            									<div class="form-group">
+                            										<input style="border: 0px;"  name="exstartDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${exlist.startdate}">
+                            									</div>
+                            								</div>
+                            									<div class="end-time">
+                            										<span class="delimiter">-</span>
+                            										<div class="form-group">
+                            											<input style="border: 0px;" name="exendDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${exlist.enddate}">
+                            										</div>
+                            									</div>
+                            								</div>
+                            									<div class="form-group">
+                            										<div class="checkbox">
+                            											<label class="">
+                            												<input class="selectBtn" type="checkbox" label="현재 재직중" >
+                            													<span>현재 재직중</span>
+                            											</label>
+                            										</div>
+                            									</div>
+                            								</div>
+                            							</div>
+                            						<div class="col-sm-9">
+                            							<div class="search-input-box resume-input-form-group">
+                            								<input type="text" class="resume-input company_name" name="excompany" placeholder="회사명" value="${exlist.company}">
+                            							</div>
+                            								<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="부서명/직책" name="exfield" value="${exlist.field}">
+                            								</div>
+                            							<div class="dynamic-textarea">
+                        
+                            								<textarea style="height: 114px; width: 710px; margin-top:10px" name="exjob" class="resume-input description" placeholder="상세 업무 내용과 성과를 기입해주세요(600자이내)">${exlist.job}</textarea>
+                            							</div>
+                            						</div>
+                            					<form method="GET" action="/yaneodo/member/resume/experiencedelete.do">
+                            						 <input type="hidden" name="exseq" value="${exlist.experienceseq}">
+                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						</button>
+                            						
+                            						 </form>
+                            					</div>
+                            				</li>
+                            			</ul>
+                            	</c:forEach>
+                            	 </c:if>
+                            </div>
+                    	</div>
                     <div class="resume-list educations"><div class="resume-list-header">
                         <span>학력</span>
                     </div>
-                    <div class="resume-list-body" id="educationBody">
-                        <button class="btn-add btn btn-default" type="button" id="educationAdd">+ 추가</button>
+                   
+                    <div class="resume-list-body" id="educationBody">  
+                     <form method="GET" action="/yaneodo/member/resume/educationadd.do">
+            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+                    <c:if test="${edlist.size()==3}">
+                       	<button class="btn-add btn btn-default" type="button" id="educationAdd2" disabled>+ 추가</button>
+                    </c:if>    
+                    <c:if test="${edlist.size()<3}">
+                         <button class="btn-add btn btn-default" type="submit" id="educationAdd">+ 추가</button>
+                    </c:if>
+                    </form>
+                    <c:if test="${edlist.size()>0}"> 
+ 							<c:forEach items="${edlist}" var="edlist">
+                            	<ul id="no"  class="list-group sortable-list careers">
+                            		<li class="list-group-item sortable-item careers">
+                            			<div class="portlet-handler">
+                            				<div class="handler">
+                            				</div>
+                            				</div>
+                            				<div class="career-item clearfix">
+                            					<div class="col-sm-3">
+                            						<div class="period">
+                            							<div class="datetime">
+                            								<div class="start-time">
+                            									<div class="form-group">
+                            										<input style="border: 0px;"  name="edstartDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${edlist.startdate}">
+                            									</div>
+                            								</div>
+                            									<div class="end-time">
+                            										<span class="delimiter">-</span>
+                            										<div class="form-group">
+                            											<input style="border: 0px;" name="edendDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${edlist.enddate}">
+                            										</div>
+                            									</div>
+                            								</div>
+                            									<div class="form-group">
+                            										<div class="checkbox">
+                            											<label class="">
+                            												<input class="selectBtn" type="checkbox" label="현재 재학중" >
+                            													<span>현재 재학중</span>
+                            											</label>
+                            										</div>
+                            									</div>
+                            								</div>
+                            							</div>
+                            						<div class="col-sm-9">
+                            							<div class="search-input-box resume-input-form-group">
+                            								<input type="text" class="resume-input company_name" name="edschool" placeholder="학교명" value="${edlist.schoolname}">
+                            							</div>
+                            								<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="학위" name="eddegree" value="${edlist.schooltype}">
+                            								</div>
+                            							<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="전공" name="edmajor" value="${edlist.major}">
+                            								</div>
+                            									<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="졸업현황(졸업/자퇴/기타)" name="edstate" value="${edlist.state}">
+                            								</div>
+                            						</div>
+                            						<form method="GET" action="/yaneodo/member/resume/educationdelete.do">
+                            						 <input type="hidden" name="edseq" value="${edlist.educationseq}">
+                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						</button> 
+                            						
+                            						</form>
+                            					</div>
+                            				</li>
+                            			</ul>
+                            	</c:forEach>
+                            	 </c:if>
+                     
                     </div>
                 </div>
                 <div class="resume-list activities">
                     <div class="resume-list-header">
                         <span>자격증</span>
                     </div>
+                   
                     <div class="resume-list-body" id="certifiBody">
-                        <button class="btn-add btn btn-default" type="button" id="certifiAdd" >+ 추가</button>
+                    <form method="GET" action="/yaneodo/member/resume/certificateadd.do">
+            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+                    <c:if test="${celist.size()==3}">
+                       	<button class="btn-add btn btn-default" type="button" id="certifiAdd2" disabled>+ 추가</button>
+                    </c:if>    
+                    <c:if test="${celist.size()<3}">
+                         <button class="btn-add btn btn-default" type="submit" id="certifiAdd">+ 추가</button>
+                    </c:if>
+                    </form>
+                    <c:if test="${celist.size()>0}"> 
+ 							<c:forEach items="${celist}" var="celist">
+                            	<ul id="no"  class="list-group sortable-list careers">
+                            		<li class="list-group-item sortable-item careers">
+                            			<div class="portlet-handler">
+                            				<div class="handler">
+                            				</div>
+                            				</div>
+                            				<div class="career-item clearfix">
+                            					<div class="col-sm-3">
+                            						<div class="period">
+                            							<div class="datetime">
+                            								<div class="start-time">
+                            									<div class="form-group">
+                            										<input style="border: 0px;"  name="cegetDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${celist.getdate}">
+                            									</div>
+                            								</div>
+                     
+                            								</div>
+                            									
+                            								</div>
+                            							</div>
+                            						<div class="col-sm-9">
+                            							<div class="search-input-box resume-input-form-group">
+                            								<input type="text" class="resume-input company_name" name="cetype" placeholder="자격증명" value="${celist.type}">
+                            							</div>
+                            								<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="등급및점수" name="cegrade" value="${celist.grade}">
+                            								</div>
+                            							<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="발행기관" name="ceagency" value="${celist.agency}">
+                            								</div>
+                            									
+                            						</div>
+                            						<form method="GET" action="/yaneodo/member/resume/certificatedelete.do">
+                            						 <input type="hidden" name="ceseq" value="${celist.certificateseq}">
+                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						</button> 
+                            						
+                            						</form>
+                            					</div>
+                            				</li>
+                            			</ul>
+                            	</c:forEach>
+                            	 </c:if>
+                    
                     </div>
+                 
                 </div>
                 <div class="resume-list activities">
                     <div class="resume-list-header">
                         <span>수상</span>
                     </div>
                     <div class="resume-list-body" id="awardBody">
-                        <button class="btn-add btn btn-default" type="button" id="awardAdd">+ 추가</button>
+                     <form method="GET" action="/yaneodo/member/resume/awardadd.do">
+            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+                    <c:if test="${awlist.size()==3}">
+                       	<button class="btn-add btn btn-default" type="button" id="awardAdd2" disabled>+ 추가</button>
+                    </c:if>    
+                    <c:if test="${awlist.size()<3}">
+                         <button class="btn-add btn btn-default" type="submit" id="awardAdd">+ 추가</button>
+                    </c:if>
+                    </form>
+                    <c:if test="${awlist.size()>0}"> 
+ 							<c:forEach items="${awlist}" var="awlist">
+                            	<ul id="no"  class="list-group sortable-list careers">
+                            		<li class="list-group-item sortable-item careers">
+                            			<div class="portlet-handler">
+                            				<div class="handler">
+                            				</div>
+                            				</div>
+                            				<div class="career-item clearfix">
+                            					<div class="col-sm-3">
+                            						<div class="period">
+                            							<div class="datetime">
+                            								<div class="start-time">
+                            									<div class="form-group">
+                            										<input style="border: 0px;"  name="awgetDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${awlist.getdate}">
+                            									</div>
+                            								</div>
+                     
+                            								</div>
+                            									
+                            								</div>
+                            							</div>
+                            						<div class="col-sm-9">
+                            							<div class="search-input-box resume-input-form-group">
+                            								<input type="text" class="resume-input company_name" name="awname" placeholder="수상명" value="${awlist.awardname}">
+                            							</div>
+                            							<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="발행기관" name="awagency" value="${awlist.agency}">
+                            								</div>
+                            									
+                            						</div>
+                            						<form method="GET" action="/yaneodo/member/resume/awarddelete.do">
+                            						 <input type="hidden" name="awseq" value="${awlist.awardseq}">
+                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						</button> 
+                            						
+                            						</form>
+                            					</div>
+                            				</li>
+                            			</ul>
+                            	</c:forEach>
+                            	 </c:if>
                     </div>
                 </div>
                 <div class="resume-list activities">
@@ -104,31 +353,262 @@
                         <span>대외활동 및 교육</span>
                     </div>
                     <div class="resume-list-body" id="trainingBody">
-                        <button class="btn-add btn btn-default" type="button" id="trainingAdd">+ 추가</button>
-                    </div>
+                     <form method="GET" action="/yaneodo/member/resume/trainingadd.do">
+            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+                    <c:if test="${trlist.size()==3}">
+                       	<button class="btn-add btn btn-default" type="button" id="trainingAdd2" disabled>+ 추가</button>
+                    </c:if>    
+                    <c:if test="${trlist.size()<3}">
+                         <button class="btn-add btn btn-default" type="submit" id="trainingAdd">+ 추가</button>
+                    </c:if>
+                    </form>
+                   <c:if test="${trlist.size()>0}"> 
+ 							<c:forEach items="${trlist}" var="trlist">
+                            	<ul id="no"  class="list-group sortable-list careers">
+                            		<li class="list-group-item sortable-item careers">
+                            			<div class="portlet-handler">
+                            				<div class="handler">
+                            				</div>
+                            				</div>
+                            				<div class="career-item clearfix">
+                            					<div class="col-sm-3">
+                            						<div class="period">
+                            							<div class="datetime">
+                            								<div class="start-time">
+                            									<div class="form-group">
+                            										<input style="border: 0px;"  name="trstartDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${trlist.startDate}">
+                            									</div>
+                            								</div>
+                            									<div class="end-time">
+                            										<span class="delimiter">-</span>
+                            										<div class="form-group">
+                            											<input style="border: 0px;" name="trendDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${trlist.enddate}">
+                            										</div>
+                            									</div>
+                            								</div>
+                            									<div class="form-group">
+                            										<div class="checkbox">
+                            											<label class="">
+                            												<input class="selectBtn" type="checkbox" label="현재 진행중" >
+                            													<span>현재 진행중</span>
+                            											</label>
+                            										</div>
+                            									</div>
+                            								</div>
+                            							</div>
+                            						<div class="col-sm-9">
+                            							<div class="search-input-box resume-input-form-group">
+                            								<input type="text" class="resume-input company_name" name="trname" placeholder="활동명" value="${trlist.name}">
+                            							</div>
+                            								<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="종류" name="trtype" value="${trlist.type}">
+                            								</div>
+                            							<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="기관" name="tragency" value="${trlist.agency}">
+                            								</div>
+                            							
+                            						</div>
+                            						<form method="GET" action="/yaneodo/member/resume/trainingdelete.do">
+                            						 <input type="hidden" name="trseq" value="${trlist.trainingseq}">
+                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						</button> 
+                            						
+                            						</form>
+                            					</div>
+                            				</li>
+                            			</ul>
+                            	</c:forEach>
+                            	 </c:if>
+                       </div>
+                      
                 </div>
                 <div class="resume-list activities">
                     <div class="resume-list-header">
                         <span>해외연수</span>
                     </div>
-                    <div class="resume-list-body" id="abroadBody">
-                        <button class="btn-add btn btn-default" type="button" id="abroadAdd">+ 추가</button>
-                    </div>
+                     <div class="resume-list-body" id="abroadBody">
+                     <form method="GET" action="/yaneodo/member/resume/abroadadd.do">
+            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+                    <c:if test="${ablist.size()==3}">
+                       	<button class="btn-add btn btn-default" type="button" id="abroadAdd2" disabled>+ 추가</button>
+                    </c:if>    
+                    <c:if test="${ablist.size()<3}">
+                         <button class="btn-add btn btn-default" type="submit" id="abroadAdd">+ 추가</button>
+                    </c:if>
+                    </form>
+                   <c:if test="${ablist.size()>0}"> 
+ 							<c:forEach items="${ablist}" var="ablist">
+                            	<ul id=""  class="list-group sortable-list careers">
+                            		<li class="list-group-item sortable-item careers">
+                            			<div class="portlet-handler">
+                            				<div class="handler">
+                            				</div>
+                            				</div>
+                            				<div class="career-item clearfix">
+                            					<div class="col-sm-3">
+                            						<div class="period">
+                            							<div class="datetime">
+                            								<div class="start-time">
+                            									<div class="form-group">
+                            										<input style="border: 0px;"  name="abstartDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${ablist.startDate}">
+                            									</div>
+                            								</div>
+                            									<div class="end-time">
+                            										<span class="delimiter">-</span>
+                            										<div class="form-group">
+                            											<input style="border: 0px;" name="abendDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${ablist.endDate}">
+                            										</div>
+                            									</div>
+                            								</div>
+                            									<div class="form-group">
+                            										<div class="checkbox">
+                            											<label class="">
+                            												<input class="selectBtn" type="checkbox" label="현재 진행중" >
+                            													<span>현재 진행중</span>
+                            											</label>
+                            										</div>
+                            									</div>
+                            								</div>
+                            							</div>
+                            						<div class="col-sm-9">
+                            							<div class="search-input-box resume-input-form-group">
+                            								<input type="text" class="resume-input company_name" name="abtype" placeholder="해외연수명" value="${ablist.type}">
+                            							</div>
+                            								<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" name="abcountry" maxlength="255" placeholder="나라" value="${ablist.country}">
+                            								</div>
+                            							<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="비고" name="abnote" value="${ablist.note}">
+                            								</div>
+                            							
+                            						</div>
+                            						<form method="GET" action="/yaneodo/member/resume/abroaddelete.do">
+                            						 <input type="hidden" name="abseq" value="${ablist.abroadseq}">
+                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						</button> 
+                            						
+                            						</form>
+                            					</div>
+                            				</li>
+                            			</ul>
+                            	</c:forEach>
+                            	 </c:if>
+                       </div>
                 </div>
                 <div class="resume-list language_certs">
                     <div class="resume-list-header" >
                         <span>외국어</span>
                     </div>
                     <div class="resume-list-body" id="languageBody">
-                        <button class="btn-add btn btn-default" type="button" id="languageAdd">+ 추가</button>
-                    </div>
+                    <form method="GET" action="/yaneodo/member/resume/languageadd.do">
+            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+                    <c:if test="${lalist.size()==3}">
+                       	<button class="btn-add btn btn-default" type="button" id="languageAdd2" disabled>+ 추가</button>
+                    </c:if>    
+                    <c:if test="${lalist.size()<3}">
+                         <button class="btn-add btn btn-default" type="submit" id="languageAdd">+ 추가</button>
+                    </c:if>
+                    </form>
+  				<c:if test="${lalist.size()>0}"> 
+ 						<c:forEach items="${lalist}" var="lalist">
+					    <ul id="languageNo" class="list-group sortable-list careers">
+					        <li class="list-group-item sortable-item careers">
+					            <div class="portlet-handler">
+					                <div class="handler">
+					                </div>
+					            </div>
+					            <div class="career-item clearfix">
+					                <div class="col-sm-3">
+					                    <div class="period">
+					                        <div class="datetime">
+					
+					                        </div>
+					                    </div>
+					                    </div>
+					                    <div class="col-sm-9">
+					                    <div class="search-input-box resume-input-form-group">
+					                            <input type="text" name="language" class="resume-input company_name" placeholder="언어" value="${lalist.languagetype}">
+					                    </div>
+					                    <div class="resume-input-form-group">
+					                        <select name="level" class="form-control" style="margin-top: 10px; width:200px;" >
+					                        	<option value="">언어수준</option>
+					                            <option value="일상 회화">일상 회화</option>
+					                            <option value="비즈니스 회화">비즈니스 회화</option>
+					                            <option value="유창함">유창함</option>
+					                         
+					                        </select>
+					                        
+					                    </div>
+					                </div>
+					                </div>
+					            <form method="GET" action="/yaneodo/member/resume/abroaddelete.do">
+                            	<input type="hidden" name="laseq" value="${lalist.languageseq}">
+                            	<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            	<button  class="btn-delete btn"><i class="icon-close"></i>
+                            	</button> 
+                            	</form>
+					        </div>
+					    </li>
+					</ul>
+					</c:forEach>
+                   </c:if>
+					                
                 </div>
                 <div class="resume-list activities">
                     <div class="resume-list-header">
                         <span>취업우대사항</span>
                     </div>
                     <div class="resume-list-body" id="specialBody">
-                        <button class="btn-add btn btn-default" type="button" id="specialAdd">+ 추가</button>
+                       <form method="GET" action="/yaneodo/member/resume/preferenceadd.do">
+            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+                    <c:if test="${prlist.size()==3}">
+                       	<button class="btn-add btn btn-default" type="button" id="preferenceAdd2" disabled>+ 추가</button>
+                    </c:if>    
+                    <c:if test="${prlist.size()<3}">
+                         <button class="btn-add btn btn-default" type="submit" id="preferenceAdd">+ 추가</button>
+                    </c:if>
+                    </form>
+                    <c:if test="${prlist.size()>0}"> 
+ 							<c:forEach items="${prlist}" var="prlist">
+                            	<ul id="no"  class="list-group sortable-list careers">
+                            		<li class="list-group-item sortable-item careers">
+                            			<div class="portlet-handler">
+                            				<div class="handler">
+                            				</div>
+                            				</div>
+                            				<div class="career-item clearfix">
+                            					<div class="col-sm-3">
+                            						<div class="period">
+                            							<div class="datetime">
+                            								
+                     
+                            								</div>
+                            									
+                            								</div>
+                            							</div>
+                            						<div class="col-sm-9">
+                            							<div class="search-input-box resume-input-form-group">
+                            								<input type="text" class="resume-input company_name" name="prtype" placeholder="우대사항" value="${prlist.type}">
+                            							</div>
+                            							<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="text" maxlength="255" placeholder="비고" name="prnote" value="${prlist.note}">
+                            								</div>
+                            									
+                            						</div>
+                            						<form method="GET" action="/yaneodo/member/resume/preferencedelete.do">
+                            						 <input type="hidden" name="prseq" value="${prlist.preferenceseq}">
+                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						</button> 
+                            						
+                            						</form>
+                            					</div>
+                            				</li>
+                            			</ul>
+                            	</c:forEach>
+                            	 </c:if>
                     </div>
                 </div>
                 <div class="resume-list links">
@@ -136,8 +616,50 @@
                         <span>포트폴리오</span>
                     </div>
                     <div class="resume-list-body" id="portfolioBody">
-                        <button class="btn-add btn btn-default" type="button" id="portfolioAdd">+ 추가</button>
-                    </div>
+                     <form method="GET" action="/yaneodo/member/resume/portfolioadd.do">
+            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+                    <c:if test="${polist.size()==2}">
+                       	<button class="btn-add btn btn-default" type="button" id="portfolioAdd2" disabled>+ 추가</button>
+                    </c:if>    
+                    <c:if test="${polist.size()<2}">
+                         <button class="btn-add btn btn-default" type="submit" id="portfolioAdd">+ 추가</button>
+                    </c:if>
+                    </form>
+                    <c:if test="${polist.size()>0}"> 
+ 							<c:forEach items="${polist}" var="polist">
+                            	<ul id="no"  class="list-group sortable-list careers">
+                            		<li class="list-group-item sortable-item careers">
+                            			<div class="portlet-handler">
+                            				<div class="handler">
+                            				</div>
+                            				</div>
+                            				<div class="career-item clearfix">
+                            					<div class="col-sm-3">
+                            						
+                            							</div>
+                            						<div class="col-sm-9">
+                            							<div class="search-input-box resume-input-form-group">
+                            								<input type="url" class="resume-input company_name" name="pourl" placeholder="http://" value="${polist.url}">
+                            							</div>
+                            							<div class="resume-input-form-group">
+                            									<input class="resume-input title" type="file" maxlength="255"  name="attach" value="${polist.orgfilename}">
+                            								</div>
+                            									
+                            						</div>
+                            						<form method="GET" action="/yaneodo/member/resume/portfoliodelete.do">
+                            						 <input type="hidden" name="poseq" value="${polist.portfolioseq}">
+                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						</button> 
+                            						
+                            						</form>
+                            					</div>
+                            				</li>
+                            			</ul>
+                            	</c:forEach>
+                           	 </c:if>
+                           	 
+                    
                 </div>
             </div>
             <div class="resume-toolbar fixed-bottom" >
@@ -148,441 +670,24 @@
                     <div>
                         <button class="btn btn-primary" type="submit" >작성 완료</button>
                     </div>
+                    
                 </div>
             </div>
+              
         </div>
+          
     </div>
+  </form>
+</div>
 </div>
 
 <script>
 
-    //경력추가
-    $(function(){
-       var maxAppend =1;
-    $("#careerAdd").click (function(){
 
+$(".selectBtn").on("change", function(){
+	 $(this).parent().parent().parent().sibling(".end-time").css("display","none");
 
-        if ($("#careerBody").children().length > 5) {
-
-            return; 
-        }
-
-
-    var templete = "<form method='POST' action='/yaneodo/member/resume/careerok.do'><ul id='no"+maxAppend+"' class='list-group sortable-list careers'>"
-    + "<li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div>"
-    + "<div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'>"
-    +"<div class='start-time'><div class='form-group'>"
-    +"<input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div>"
-    +"<span><span>.</span><div class='form-group'>"
-    +"<input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div>"
-    +"<div class='end-time'><span class='delimiter'>-</span><div class='form-group'>"
-    +"<input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span>"
-    +"<div class='form-group'><input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div>"
-    +"<div class='form-group'><div class='checkbox'><label class=''>"
-    +"<input type='checkbox' label='현재 재직중' onchange='delEndTime("+maxAppend+")'><span>현재 재직중</span></label></div></div></div></div>"
-    +"<div class='col-sm-9'><div class='search-input-box resume-input-form-group'>"
-    +"<input type='text' class='resume-input company_name' name='company' placeholder='회사명'>"
-    +"</div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='부서명/직책' name='job'></div>"
-    +"<div class='dynamic-textarea'><textarea style='height: 114px; width: 710px; margin-top:10px' name='info' class='resume-input description' placeholder='상세 업무 내용과 성과를 기입해주세요'></textarea></div></div>"
-    +"<button id='btnNo"+maxAppend+"' class='btn-delete btn' onclick='delTest("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>"
-    
-  
- 
-    $("#careerBody").append(templete);
-  
-        maxAppend++;
-
-        if ($("#careerBody").children().length > 5) {
-            $("#careerAdd").attr("disabled",true);
-        }
-    });
-
-
-    });
-
-    //경력삭제
-    function delTest(no) {
-        $("#careerBody #no" + no).remove();
-        $("#careerAdd").attr("disabled",false);
-    }
-
-    //경력 현재 재직중
-    function delEndTime(no) {
-
-       
-            $("#careerBody #no" + no + " .end-time").toggle();
-       
-
-    }
-//----------------------------------------------------학력추가메뉴
-$(function(){
-       var maxAppend =1;
-    $("#educationAdd").click (function(){
-
-        console.log($("#educationBody").children().length);
-
-
-        if ($("#educationBody").children().length > 3) {
-            return; 
-        } 
-
-
-        var templete = "<form metod='POST' action='/yaneodo/member/resume/schoolok.do'><ul id='eno"+maxAppend+"' class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'>"
-        +"<div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'>"
-        +"<div class='start-time'><div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div>"
-        +"<span><span>.</span><div class='form-group'><input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div>"
-        +"<div class='end-time'><span class='delimiter'>-</span><div class='form-group'><input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'>"
-        +"<input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div>"
-        +"<div class='form-group'><div class='checkbox'><label class=''><input type='checkbox' label='현재 재학중' onchange='edelEndTime("+maxAppend+")'><span>현재 재학중</span></label></div></div></div></div>"
-        +"<div class='col-sm-9'><div class='search-input-box resume-input-form-group'><input type='text' name='school' class='resume-input company_name' placeholder='학교명'></div>"
-        +"<div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='학위' name='schoolType'>"
-        +"<input class='resume-input title' type='text' maxlength='255' placeholder='전공' name='major'>"
-        +"<input class='resume-input title' type='text' maxlength='255' placeholder='졸업현황(졸업/자퇴/기타)' name='state'></div></div></div>"
-        +"<button id='ebtnNo"+maxAppend+"' class='btn-delete btn' onclick='delEducation("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>"
-  
- 
-        $("#educationBody").append(templete);
-  
-        maxAppend++;
-
-
-        if ($("#educationBody").children().length > 3) {
-            $("#educationAdd").attr("disabled",true);
-        } 
-    });
-
-});
-   
-    //학력
-    function delEducation(no) {
-        $("#educationAdd").attr("disabled",false);
-        $("#educationBody #eno" + no).remove();
-   
-    }
-
-    //현재 재학중
-
-    function edelEndTime(no) {
-
-        //alert(no);
-       
-            $("#educationBody #eno" + no + " .end-time").toggle();
-      
-        
-    }
-
-
-//---------------------자격증
-
-$(function(){
-       var maxAppend =1;
-    $("#certifiAdd").click(function(){
-
-
-        if ($("#certifiBody").children().length > 5) {
-            return; 
-        }
-
-
-    var templete = "<form method='POST' action='/yaneodo/member/resume/certificationok.do'><ul id='cerno"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'>"
-    +"<div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'>"
-    +"<div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'>"
-    +"<input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span><span><span>.</span><div class='form-group'>"
-    +"<input name='startDay' type='text' maxlength='2' class='month form-control' placeholder='DD' value=''></div></span></div></div></div></div><div class='col-sm-9'>"
-    +"<div class='search-input-box resume-input-form-group'><input type='text' name='certification' class='resume-input company_name' placeholder='자격증명'></div><div class='resume-input-form-group'>"
-    +"<input class='resume-input title' type='text' maxlength='255' placeholder='등급및점수' name='score'></div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='발행기관' name='agency'></div></div></div>"
-    +"<button id='ebtnNo"+maxAppend+"' class='btn-delete btn' onclick='delCertifi("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
-
-    $("#certifiBody").append(templete);
-  
-        maxAppend++;
-
-        if ($("#certifiBody").children().length > 5) {
-            $("#certifiAdd").attr("disabled",true);
- 
-        }
-
-    
-    });
-
-});
-   
-    //자격증 추가메뉴 삭제
-    function delCertifi(no) {
-        $("#certifiBody #cerno" + no).remove();
-        $("#certifiAdd").attr("disabled",false);
-    }
-
-
-//---------------------------------수상
-
-
-$(function(){
-       var maxAppend =1;
-    $("#awardAdd").click(function(){
-
-
-        if ($("#awardBody").children().length > 5) {
-
-            return; 
-        }
-
-
-    var templete = "<form method='POST' action='/yaneodo/member/resume/awardok.do'><ul id='awardNo"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'>"
-    +"<div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'>"
-    +"<div class='form-group'><input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'>"
-    +"<input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span><span><span>.</span><div class='form-group'>"
-    +"<input name='startDay' type='text' maxlength='2' class='month form-control' placeholder='DD' value=''></div></span></div></div></div></div><div class='col-sm-9'>"
-    +"<div class='search-input-box resume-input-form-group'><input type='text' name='award'class='resume-input company_name' placeholder='수상명'></div>"
-    +"<div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='발행기관' name='agency'></div></div></div>"
-    +"<button id='awardBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delAward("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
-  
-    
-
-    $("#awardBody").append(templete);
-  
-        maxAppend++;
-
-        if ($("#awardBody").children().length > 5) {
-            $("#awardAdd").attr("disabled",true);
-           
-        }
-    
-    });
-
-});
-   
-    //수상 추가메뉴 삭제
-    function delAward(no) {
-        $("#awardBody #awardNo" + no).remove();
-        $("#awardAdd").attr("disabled",false);
-    }
-
-
-
-
-
-//----------------------------------------대외활동 및 교육
-$(function(){
-       var maxAppend =1;
-    $("#trainingAdd").click (function(){
-
-
-        if ($("#trainingBody").children().length > 5) {
-
-            return; 
-        }
-
-
-    var templete = "<form method='POST' action='/yaneodo/member/resume/trainingok.do'> <ul id='trainingNo"+maxAppend+"' class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'>"
-    +"<div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'><div class='form-group'>"
-    +"<input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'>"
-    +"<input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div><div class='end-time'>"
-    +"<span class='delimiter'>-</span><div class='form-group'><input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div>"
-    +"<span><span>.</span><div class='form-group'><input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div>"
-    +"<div class='form-group'><div class='checkbox'><label class=''><input type='checkbox' label='현재 진행중' onchange='tdelEndTime("+maxAppend+")'><span>현재 진행중</span></label>"
-    +"</div></div></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'>"
-    +"<input type='text' name='training'class='resume-input company_name' placeholder='활동명'></div><div class='resume-input-form-group'>"
-    +"<input class='resume-input title' type='text' maxlength='255' placeholder='종류' name='type'><input class='resume-input title' type='text' maxlength='255' placeholder='기관' name='agency'>"
-    +"</div></div></div><button id='tbtnNo"+maxAppend+"' class='btn-delete btn' onclick='delTraining("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
-  
- 
-    $("#trainingBody").append(templete);
-  
-        maxAppend++;
-        if ($("#trainingBody").children().length > 5) {
-            $("#trainingAdd").attr("disabled",true);
-        
-        }
-    });
-    
-  
-});
-   
-    //대외활동 및 교육
-    function delTraining(no) {
-        $("#trainingBody #trainingNo" + no).remove();
-        $("#trainingAdd").attr("disabled",false);
-    }
-
-    //현재 진행중
-
-    function tdelEndTime(no) {
-
-        $("#trainingBody #trainingNo" + no + " .end-time").toggle();
-    }
-
-
-
-
-    //----------------------------------------해외연수
-$(function(){
-       var maxAppend =1;
-    $("#abroadAdd").click (function(){
-
-
-        if ($("#abroadBody").children().length > 5) { 
-            return; 
-        }
-
-
-    var templete = "<form method='POST' action='/yaneodo/member/resume/abroadok.do'><ul id='abroadNo"+maxAppend+"' class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'>"
-    +"<div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'><div class='start-time'><div class='form-group'>"
-    +"<input name='startYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div><span><span>.</span><div class='form-group'>"
-    +"<input name='startMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div><div class='end-time'>"
-    +"<span class='delimiter'>-</span><div class='form-group'><input name='endYear' type='text' maxlength='4' class='year form-control' placeholder='YYYY' value=''></div>"
-    +"<span><span>.</span><div class='form-group'><input name='endMonth' type='text' maxlength='2' class='month form-control' placeholder='MM' value=''></div></span></div></div>"
-    +"<div class='form-group'><div class='checkbox'><label class=''><input type='checkbox' label='현재 진행중' onchange='abDelEndTime("+maxAppend+")'><span>현재 진행중</span></label>"
-    +"</div></div></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'><input type='text' name='abroad' class='resume-input company_name' placeholder='해외연수명'>"
-    +"</div><div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='나라' name='country'>"
-    +"<input class='resume-input title' type='text' maxlength='255' placeholder='비고' name='etc'></div></div></div>"
-    +"<button id='aBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delAbroad("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
-  
- 
-    $("#abroadBody").append(templete);
-  
-        maxAppend++;
-
-        if ($("#abroadBody").children().length > 5) {
-            $("#abroadAdd").attr("disabled",true);
-
-        }
-
-    });
-
-});
-   
-    //해외연수
-    function delAbroad(no) {
-        $("#abroadBody #abroadNo" + no).remove();
-        $("#abroadAdd").attr("disabled",false);
-    }
-
-    //현재 진행중
-    //var flag =true;
-    function abDelEndTime(no) {
-
-        $("#abroadBody #abroadNo" + no + " .end-time").toggle();
-       
-    }
-
-    
-
-
-    //---------------------------------외국어
-
-
-$(function(){
-       var maxAppend =1;
-    $("#languageAdd").click(function(){
-
-
-        if ($("#languageBody").children().length > 3) {
-            return; 
-        }
-
-
-    var templete = "<form method='POST' action='/yaneodo/member/resume/languageok.do'><ul id='languageNo"+maxAppend+"'class='list-group sortable-list careers'><li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'>"
-    +"</div></div><div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'></div></div><div class='col-sm-9'>"
-    +"<div class='search-input-box resume-input-form-group'><form action='.'><input type='text' name='language' class='resume-input company_name' placeholder='언어'></div>"
-    +"<div class='resume-input-form-group'><select name='level' class='form-control' style='margin-top: 10px;'><option value='일상 회화'>일상 회화</option><option value='비즈니스 회화'>비즈니스 회화</option><option value='유창함'>유창함</option></select></div>"
-    +"</div></div><button id='languageBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delLanguage("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
-  
-    
-
-    $("#languageBody").append(templete);
-  
-        maxAppend++;
-        if ($("#languageBody").children().length > 3) {
-            $("#languageAdd").attr("disabled",true);
-        }
-    
-    });
-
-});
-   
-    //외국어 추가메뉴 삭제
-    function delLanguage(no) {
-        $("#languageBody #languageNo" + no).remove();
-        $("#languageAdd").attr("disabled",false);
-    }
-
-
-    //---------------------------------취업 우대사항
-    $(function(){
-       var maxAppend =1;
-    $("#specialAdd").click(function(){
-
-
-        if ($("#specialBody").children().length > 3) {
-            return; 
-        }
-
-
-    var templete = "<form method='POST' action='/yaneodo/member/resume/preferenceok.do'><ul id='specialNo"+maxAppend+"'class='list-group sortable-list careers'>"
-    +"<li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div><div class='career-item clearfix'><div class='col-sm-3'>"
-    +"<div class='period'><div class='datetime'></div></div><div class='col-sm-9'><div class='search-input-box resume-input-form-group'>"
-    +"<input type='text' name='preference'class='resume-input company_name' placeholder='우대사항'></div>"
-    +"<div class='resume-input-form-group'><input class='resume-input title' type='text' maxlength='255' placeholder='비고' name='etc'></div></div></div>"
-    +"<button id='specialBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delSpecial("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
-  
-    
-
-    $("#specialBody").append(templete);
-  
-        maxAppend++;
-
-        if ($("#specialBody").children().length > 3) {
-            $("#specialAdd").attr("disabled",true);
-        }
-    
-    });
-
-});
-   
-    //우대사항 추가메뉴 삭제
-    function delSpecial(no) {
-        $("#specialBody #specialNo" + no).remove();
-        $("#specialAdd").attr("disabled",false);
-    }
-
-//---------------------------------포트폴리오
-     $(function(){
-       var maxAppend =1;
-    $("#portfolioAdd").click(function(){
-
-
-        if ($("#portfolioBody").children().length > 3) {
-            return; 
-        }
-
-
-    var templete = "<form method='POST' action='/yaneodo/member/resume/portfoliook.do'><ul id='portfolioNo"+maxAppend+"'class='list-group sortable-list careers'>"
-    +"<li class='list-group-item sortable-item careers'><div class='portlet-handler'><div class='handler'></div></div>"
-    +"<div class='career-item clearfix'><div class='col-sm-3'><div class='period'><div class='datetime'></div></div><div class='col-sm-9'>"
-    +"<div class='resume-input-form-group'><input class='resume-input title' type='url' maxlength='255' placeholder='http://' name='linkName'></div>"
-    +"<div class='resume-input-form-group'><input class='resume-input title' type='file' maxlength='255' name='fileName' style='width: 300px;'></div></div></div>"
-    +"<button id='portfolioBtnNo"+maxAppend+"' class='btn-delete btn' onclick='delPortfolio("+maxAppend+");'><i class='icon-close'></i></button></div></li></ul></form>";
-  
-    
-
-    $("#portfolioBody").append(templete);
-  
-        maxAppend++;
-
-        if ($("#portfolioBody").children().length > 3) {
-            $("#portfolioAdd").attr("disabled",true);
-        }
-    
-    });
-
-});
-   
-    //포트폴리오 추가메뉴 삭제
-    function delPortfolio(no) {
-        $("#portfolioBody #portfolioNo" + no).remove();
-        $("#portfolioAdd").attr("disabled",false);
-    }
+ });
 
 </script>
 </body>

@@ -61,10 +61,10 @@
                         
                         </c:if>
 						<c:forEach items="${list}" var="dto">
-                        <div class="resume-box">
+                        <div class="resume-box" style="cursor: pointer;"onclick ="location.href='/yaneodo/member/resume/resume_write.do?rseq=${dto.resumeSeq}'">
                             <div class="resume-preview notcompleted">
 
-                                <h3 id="resume-name" class="resume-name">${dto.fileName}</h3>
+                                <h3 id="resume-name" class="resume-name">${dto.orgfileName}</h3>
                                 <p class="resume-date">작성일 : ${dto.writeDate}</p>
 
                             </div>
