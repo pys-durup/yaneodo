@@ -17,16 +17,22 @@
 				<li><a href="/yaneodo/company/main/logout.do"class="bmenuLink" id="bLogoutBtn">로그아웃</a></li>
 				
 				<!-- 로그인 & 기업 미등록 -->
-				<c:if test="${cmstate == '0' || cmstate == null}">
+				<c:if test="${cmstate == null}">
 				<li><a href="/yaneodo/company/main/register.do" class="bmenuLink" id="regCompany">기업등록</a></li>
 				</c:if>
-					
+				
+				<!-- 로그인 & 기업 등록 & 미승인 -->
+				<c:if test="${cmstate == '0'}">
+				<li><a href="/yaneodo/company/main/registered.do?seq=${cmseq}" class="bmenuLink" id="regCompany">기업등록</a></li>
+				</c:if>
+
 			</c:if>
 	
 	
 			<!-- 공통 -->
 			<li><a href="/yaneodo/index.do" class="bmenuLink" id="home">야너도 홈</a></li>
 			<div style="clear: both;"></div>
+			
 		</ul>
 	</nav>
 </div>

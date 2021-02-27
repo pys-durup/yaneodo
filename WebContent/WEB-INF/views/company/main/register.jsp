@@ -31,9 +31,21 @@
 
 	<form method="POST" action="/yaneodo/company/main/registerok.do" enctype="multipart/form-data" id="companyJoin">
 		<div class="box" id="title">
-			<p>회사 정보를 등록해 주세요.</p>
-			<p>야너도는 추천인/후보자들에게 좋은 일자리를 제공하기 위해, 다음 정보를 리뷰하여 회사등록을 승인하고 있습니다.</p>
+		
+			<c:if test="${dto.state == null}">
+				<p>회사 정보를 등록해 주세요.</p>
+				<p>야너도는 추천인/후보자들에게 좋은 일자리를 제공하기 위해, 다음 정보를 리뷰하여 회사등록을 승인하고 있습니다.</p>
+			</c:if>
+			
+			<c:if test="${dto.state == 0}">
+				<p></p>
+				<p style="font-weight:bold">회사정보가 아래와 같이 등록 완료되었습니다. <br>
+					기업 승인 후 기업 정보 서비스를 이용하실 수 있습니다.</p>
+			</c:if>
+			
 		</div>
+		
+		
 		<div class="subbox" style="width: 750px;">
 			<label for="inputAddress">회사이름*</label> <input type="text"
 				class="form-control" id="name" name="name" placeholder="회사 이름"
@@ -42,36 +54,34 @@
 
 		<div class="box">
 			<div class="withFloat subbox" style="width: 350px;">
-				<label for="inputState">국가*</label> <select class="form-control"
-					id="country" name="country">
-					<option selected>한국</option>
-					<option disabled>대만</option>
-					<option>싱가폴</option>
-					<option>일본</option>
-					<option>홍콩</option>
-					<option>기타</option>
+				<label for="country">국가*</label> <select class="form-control" id="country" name="country">
+					<option value="한국">한국</option>
+					<option value="대만" disabled>대만</option>
+					<option value="싱가폴" disabled>싱가폴</option>
+					<option value="일본" disabled>일본</option>
+					<option value="홍콩" disabled>홍콩</option>
+					<option value="기타" disabled>기타</option>
 				</select>
 			</div>
 			<div class="withFloat subbox" style="width: 350px;">
-				<label for="inputState">지역*</label> <select class="form-control"
-					id="region" name="region">
-					<option selected>서울</option>
-					<option>부산</option>
-					<option>대구</option>
-					<option>인천</option>
-					<option>광주</option>
-					<option>대전</option>
-					<option>울산</option>
-					<option>세종</option>
-					<option>경기</option>
-					<option>강원</option>
-					<option>충북</option>
-					<option>충남</option>
-					<option>전북</option>
-					<option>전남</option>
-					<option>경북</option>
-					<option>경남</option>
-					<option>제주</option>
+				<label for="region">지역*</label> <select class="form-control" id="region" name="region">
+					<option value="서울">서울</option>
+					<option value="부산">부산</option>
+					<option value="대구">대구</option>
+					<option value="인천">인천</option>
+					<option value="광주">광주</option>
+					<option value="대전">대전</option>
+					<option value="울산">울산</option>
+					<option value="세종">세종</option>
+					<option value="경기">경기</option>
+					<option value="강원">강원</option>
+					<option value="충북">충북</option>
+					<option value="충남">충남</option>
+					<option value="전북">전북</option>
+					<option value="전남">전남</option>
+					<option value="경북">경북</option>
+					<option value="경남">경남</option>
+					<option value="제주">제주</option>
 				</select>
 			</div>
 		</div>
@@ -121,16 +131,19 @@
 
 
 		<div class="box">
+		
 			<div class="withFloat subbox" style="width: 350px;">
-				<label for="establishment">설립연도*</label> <select
-					class="form-control" id="establishment" name="establishment">
-					<option selected>ex)2012년</option>
+				<label for="establishment">설립연도*</label> 
+				<select class="form-control" id="establishment" name="establishment">
+					<option selected disabled>ex)2012년</option>
 				</select>
 			</div>
+			
 			<div class="withFloat subbox" style="width: 350px;">
 				<label for="email">정보수신 이메일*</label> <input type="text"
 					class="form-control" id="email" name="email" required>
 			</div>
+			
 		</div>
 
 
@@ -173,7 +186,7 @@
 
 
 	<script>
-		
+
 	    var establishment = document.getElementById("establishment");
 	
 	    for (var i = 1900; i <= 2021; i++) {
@@ -182,6 +195,30 @@
 	        op.text = i + "년";
 	        establishment.options.add(op);
 	    }
+	    
+	    <c:if test="${dto.state == '0'}">
+	    	$("input[name=checked]").prop("checked", true);
+	    	$("input[class=form-control]").prop("disabled", true);
+	    	$("textarea[class=form-control]").prop("disabled", true);
+	    	$("select[class=form-control]").prop("disabled", true);
+	    	$("input[name=checked]").prop("disabled", true);
+	    	
+	    	
+	    	$("input[name=name]").val("${dto.name}");
+	    	$("select[name=country]").val("${dto.country}").prop("selected", true);
+	    	$("select[name=region]").val("${dto.region}").prop("selected", true);
+	    	$("input[name=address]").val("${dto.address}");
+	    	$("input[name=regNum]").val("${dto.regNum}");
+	    	$("input[name=sales]").val("${dto.sales}");
+	    	//$("select[name=industry]").val("${dto.industry}").prop("selected", true);
+	    	$("input[name=employeeNum]").val("${dto.employeeNum}");
+	    	$("textarea[name=introduction]").val("${dto.introduction}");
+	    	$("select[name=establishment]").val("${dto.establishment}").prop("selected", true);
+	    	$("input[name=email]").val("${dto.email}");
+	    	$("input[name=webAddress]").val("${dto.webAddress}");
+	    	$("input[name=photo]").val("${dto.photo}");
+	     
+	    </c:if>
 	    
 	    
 	    /* 입력한 정보 유효성 검사 */
@@ -199,10 +236,16 @@
 				alert("주소는 30자 이내로 입력해주세요.");
 				$("#address").focus();
 				evt.preventDefault();
-				return false;		
+				return false;
+			}		
+			
+			if(isNaN($("#regNum").val())) {
+				alert("사업자 등록 번호는 숫자로 입력해주세요.");
+				$("#regNum").focus();
+				evt.preventDefault();
+				return false;
 			}
-		
-
+			
 			if ($("#regNum").val().trim().replace(/-/gi, "").length > 10) {
 				alert("사업자 등록 번호는 '-' 제외 10자입니다.");
 				$("#regNum").focus();
@@ -210,7 +253,20 @@
 				return false;
 			}
 			
-	
+			if(isNaN($("#sales").val())) {
+				alert("매출액/투자금액은 숫자만 입력해주세요.(단위: 원)");
+				$("#sales").focus();
+				evt.preventDefault();
+				return false;
+			}
+			
+ 			if(isNaN($("#employeeNum").val())) {
+				alert("직원수는 숫자만 입력해주세요.");
+				$("#employeeNum").focus();
+				evt.preventDefault();
+				return false;
+			}
+			
 			if ($("#introduction").val().length > 1300) {
 				alert("회사/서비스소개는 1300자 이내로 입력해주세요.");
 				$("#introduction").focus();

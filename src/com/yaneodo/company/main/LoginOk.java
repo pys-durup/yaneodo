@@ -18,9 +18,6 @@ public class LoginOk extends HttpServlet {
 
 		String email = req.getParameter("email");
 		String password = req.getParameter("password");
-		
-		System.out.println(email);
-		//System.out.println(password);
 
 		CmemberDAO dao = new CmemberDAO();
 		CmemberDTO dto = new CmemberDTO();

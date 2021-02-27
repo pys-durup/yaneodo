@@ -42,6 +42,8 @@
 
 					<hr>
 
+					<!-- <div id="result"></div> -->
+					<span id="result" style="color: red;"></span>
 					<div class="subbox">
 						<input type="text" id="companyEmail" name="email"
 							placeholder="회사 이메일(로그인 아이디로 사용됩니다.)" required>
@@ -75,11 +77,13 @@
 
 	<script>
 
+		let rtn = false;
+		
 		/* 입력한 정보 유효성 검사 */
 		$("#formJoin").submit(function(evt) {
 			
 			var managerName = $("#managerName").val().trim();
-
+			
 			if (managerName.length < 2 || managerName.length > 5) {
 				alert("이름은 2자 이상 5자 이내로 입력해주세요.");
 				//$("#managerName").val("");
@@ -88,7 +92,7 @@
 				return false;
 			}           
 	
-			for (var i = 0; i < name.length; i++) {
+			for (var i = 0; i < managerName.length; i++) {
 				if (managerName.charAt(i) < '가' || managerName.charAt(i) > '힣') {
 					alert("이름은 한글로 입력해주세요.");
 					$("#managerName").focus();
@@ -96,7 +100,7 @@
 					return false;
 				}			
 			}
-		
+			
 			//휴대폰 번호
 			if ($("#managerPhone").val().trim().replace(/-/gi, "").length > 11) {
 				alert("휴대폰 번호는 '-' 제외 11자 이내로 입력해주세요.");
@@ -106,6 +110,30 @@
 			}
 			
 	
+			//이메일 중복 검사
+			$.ajax({
+				type: "GET",
+				url: "/yaneodo/company/main/joincheck.do",
+				data: "email=" + $("#companyEmail").val(),
+				success: function(result) {
+					//콜백함수
+					if (result != 0) {					
+						$("#result").css("color", "red");
+						$("#result").text("이미 등록된 이메일입니다.");
+						rtn = true;
+						
+					} else {
+						$("#result").text("사용 가능한 아이디입니다.");
+						rtn = false;
+					}
+					
+				},
+				error: function(a,b,c) {
+					console.log(a,b,c)
+				}
+			});
+	
+			
 			if ($("#companyPassword").val().trim().length < 6) {
 				alert("비밀번호는 6자 이상 입력해주세요.");
 				$("#password").focus();
@@ -120,6 +148,13 @@
 				return false;
 			}
 	
+			
+			if (!rtn) {
+				evt.preventDefault();
+				return false;
+			}
+			
+			
 		});
 	
 	

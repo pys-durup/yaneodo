@@ -96,10 +96,12 @@ public class RegisterOk extends HttpServlet {
 			
 			result = dao.add(dto);
 			//System.out.println(result);
-			
-			
+				
 			if (result == 1) {
-		
+				
+				//기업 등록 후 세션 값 변경(null -> 0)
+				session.setAttribute("cmstate", "0");
+				
 				resp.setCharacterEncoding("UTF-8");				
 				PrintWriter writer = resp.getWriter();
 				
@@ -122,8 +124,7 @@ public class RegisterOk extends HttpServlet {
 				writer.print("<html><head><meta charset='utf-8'></head><body>");
 				writer.print("<script>");
 				writer.print("alert('기업 등록에 실패했습니다.');");
-				//writer.print("location.href='/yaneodo/company/main/index.do';"); 
-				
+				writer.print("location.href='/yaneodo/company/main/register.do';"); 	
 				writer.print("</script>");
 				writer.print("</body></html>");
 				
@@ -131,8 +132,6 @@ public class RegisterOk extends HttpServlet {
 
 			}
 
-			
-			//req.setAttribute("dto", dto);
 	
 //			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/company/main/index.jsp");
 //			dispatcher.forward(req, resp);

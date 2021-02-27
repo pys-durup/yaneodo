@@ -49,8 +49,10 @@
 			
 			     
 			     
-			  <button type="button" onclick="test('sein22@gmail.com', 'sein123456');">승인X</button>
-			  <button type="button" onclick="test('muscle9897@naver.com', 'proteinbest9897');">승인O</button>
+			<!-- 			  
+			<button type="button" onclick="test('sein22@gmail.com', 'sein123456');">승인X</button>
+			<button type="button" onclick="test('muscle9897@naver.com', 'proteinbest9897');">승인O</button>
+			-->
 
 			
 		</div>
@@ -61,12 +63,13 @@
 
 	<script>
 	
+	/* 
 		function test(email, password) {
 			$("#email").val(email);
 			$("#password").val(password);
 			$("#form1").submit();
 		}	
-	
+	 */
 	
 	</script>
 </body>

@@ -17,6 +17,7 @@ public class CompanyDTO {
 	private String email;
 	private String webAddress;
 	private String photo;
+	private String state;
 	
 	public String getCompanySeq() {
 		return companySeq;
@@ -107,6 +108,12 @@ public class CompanyDTO {
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	public String getState() {
+		return state;
+	}
+	public void setState(String state) {
+		this.state = state;
 	}
 	
 	
