@@ -67,13 +67,12 @@
                 <div><input type="button" value="서비스 결제하기" class="btn btn-primary btn-middle" data-toggle="modal"
                         data-target="#service"></div>
                 <ul>
-                    <li class="side-list-item side-list-item-selected" onclick="location.href='search.html';"> 목록전체
+                    <li class="side-list-item side-list-item-selected" onclick="location.href='/yaneodo/company/match/list.do';"> 목록전체
                     </li>
-                    <li class="side-list-item">요청 후 받은 이력서</li>
-                    <li class="side-list-item">찜한 목록</li>
-                    <li class="side-list-item">미열람 목록</li>
-                    <li class="side-list-item">열람한 목록</li>
-                    <li class="side-list-item">면접 제안한 목록</li>
+                    <li class="side-list-item" onclick="location.href='/yaneodo/company/match/list.do?isdibs=1';" >찜한 목록</li>
+                    <li class="side-list-item" onclick="location.href='/yaneodo/company/match/list.do?isread=0';">미열람 목록</li>
+                    <li class="side-list-item" onclick="location.href='/yaneodo/company/match/list.do?isread=1';">열람한 목록</li>
+                    <li class="side-list-item" onclick="location.href='/yaneodo/company/match/list.do?ismatch=1';">면접 제안한 목록</li>
                 </ul>
             </div>
         </div>
