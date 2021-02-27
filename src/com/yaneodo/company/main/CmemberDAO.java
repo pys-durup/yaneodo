@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import com.yaneodo.DBUtil;
-import com.yaneodo.member.MemberDTO;
 
 public class CmemberDAO {
 
@@ -21,6 +20,7 @@ public class CmemberDAO {
 	
 	
 	public void close() {
+
 		try {
 			conn.close();
 		} catch (Exception e) {
@@ -34,7 +34,7 @@ public class CmemberDAO {
 		
 		try {
 			
-			String sql = "select count(*) as cnt from tblCompanyMember where email = ? and password = ?";
+			String sql = "select count(*) as cnt from tblCompanyMember where email = ? and password = ?"; 
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getEmail());
@@ -42,13 +42,8 @@ public class CmemberDAO {
 			rs = pstat.executeQuery();
 			
 			if (rs.next()) {
-				
-				int result =  rs.getInt("cnt");
-				System.out.println(result);
-				return result;
-
-				//return rs.getInt("cnt");
-						
+				return rs.getInt("cnt");
+	
 			}
 			
 		} catch (Exception e) {
@@ -57,24 +52,28 @@ public class CmemberDAO {
 
 		return 0;
 	}
+	
 
 	//LoginOk Servlet -> 기업회원 정보 가져오기
 	public CmemberDTO getMember(String email) {
 		
+		System.out.println(email);
+		
 		try {
 			
-			String sql = "select companyMemberSeq, managerName, state from tblCustomer where email = ?";
+			//기업회원 번호, 승인여부
+			String sql = "select c.companyMemberSeq as companyMemberSeq, (select state from tblCompany where companyMemberSeq = c.companyMemberSeq) as state from tblCompanyMember c where email = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, email);
 			rs = pstat.executeQuery();
 			
+
 			if (rs.next()) {
 				
 				CmemberDTO dto = new CmemberDTO();
 				
 				dto.setCompanyMemberSeq(rs.getString("companyMemberSeq"));
-				dto.setManagerName(rs.getString("managerName"));
 				dto.setState(rs.getString("state"));
 				
 				return dto;
@@ -86,10 +85,37 @@ public class CmemberDAO {
 		
 			return null;
 		}
+
+	
+	//Join servlet -> 기업회원 회원가입
+	public int join(CmemberDTO dto) {
 		
+		try {
+			
+			String sql = "insert into tblCompanyMember (companyMemberSeq, managerName, managerPhone, email, password, pass) "
+						+ "values (companyMemberSeq.nextVal, ?, ?, ?, ?, 0)";	
+			
+			pstat = conn.prepareStatement(sql);
+			
+			pstat.setString(1, dto.getManagerName());
+			pstat.setString(2, dto.getManagerPhone());
+			pstat.setString(3, dto.getEmail());
+			pstat.setString(4, dto.getPassword());
+			
+			return pstat.executeUpdate();
+			
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+
 	
 	
-	
+
 	
 	
 	
