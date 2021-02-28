@@ -59,8 +59,12 @@
     }
 
     #businessList .profile {
-        width: 150px;
-        height: 150px; /* 프로필 사진을 뭘 넣을지에 따라서 여기를 건들 것 */
+        width: 200px;
+        padding-left: 10px;
+    }
+
+    #businessList .profile img {
+        width: 200px;
     }
 
     #businessList .business-name {
@@ -92,9 +96,13 @@
         border: 1px solid #CCC;
     }
 
-    #business img{
+    #business img {
         display: block;
-        margin: 0px auto;
+        margin: 10px 10px;
+        margin-right: 30px;
+        width: 400px;
+        height: 250px;
+        float: left;
     }
 
     #business #business-name {
@@ -104,29 +112,53 @@
     }
 
     .business-info {
-        margin-bottom: 10px;
-        font-size: 1.5em;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 30px;
+        font-size: 2em;
+    }
+
+    .state span {
+        display: inline-block;
+        width: 300px;
+        font-size: 1.0em;
+        color: #333;
     }
 
     .state {
-        color: #777;
+        margin-left: 30px;
+        margin-bottom: 20px;
         font-size: 1.2em;
-        
+        color: #888;
     }
 
     .business-state {
         margin-top: 10px;
         padding-bottom: 5px;
+        margin-left: 30px;
+        margin-right: 30px;
         padding-left: 20px;
         border-bottom: 1px solid #CCC;
+        font-size: 1.2em;
     }
 
-    .business-count {
+    .business-introduce {
+        margin-top: 10px;
+        padding-bottom: 20px;
+        padding-left: 30px;
         font-size: 1.2em;
-        padding: 10px
+    }
+
+    .business-date {
+        display: inline-block;
+        margin-left: 30px;
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 20px;
     }
 
     .btn {
         margin: 10px;
         float: right;
     }
+
