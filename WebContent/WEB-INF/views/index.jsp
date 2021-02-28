@@ -53,6 +53,8 @@
 	<div id="section">
 		<div id="recommend">
 			<div class="title">추천 공고</div>
+			
+			
 			<div class="details">
 				<div>
 					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
@@ -82,6 +84,10 @@
 				<div class="desc sm">깃컴퍼니</div>
 			</div>
 			<div style="clear: both;"></div>
+			
+			
+			
+			
 		</div>
 
 		<div id="new">

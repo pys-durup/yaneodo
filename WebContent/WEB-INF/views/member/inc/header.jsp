@@ -15,7 +15,7 @@
                 <li><a class="menuLink" href="#">커뮤니티</a></li>
                 
                 <!-- <li><span class="menuLink2 glyphicon glyphicon-search" id="search"></span></li> -->
-                <li><button type="button" class="searchButton"><span class="glyphicon glyphicon-search"></span></button></li>
+                <li><button type="button" class="searchButton" id="search"><span class="glyphicon glyphicon-search"></span></button></li>
                 
                 
                 <!-- 로그인 전 -->
