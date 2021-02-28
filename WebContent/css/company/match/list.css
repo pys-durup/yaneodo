@@ -136,6 +136,16 @@
     margin-left: 10px;
 }
 
+.matchList .matchTitle {
+	font-weight: bold;
+	font-size: 1.1em;
+	color: #444;
+}
+
+.matchList .subInfo {
+	color: #777;
+}
+
 /* 이미지 컨테이너 */
 #search-reasult .pic {
     position: relative;
@@ -215,6 +225,11 @@
     background-color: #2886FA;
 }
 
+#modalResumePreview #mrpResumeData {
+	height: 200px;
+	overflow: hidden;
+}
+
 
 /* 이력서 상세보기 Modal */
 
@@ -258,7 +273,7 @@
 }
 
 #modalResumeDetail .modal-content-middle {
-    height: 250px;
+    height: 400px;
     overflow-y: auto;
 }
 
