@@ -11,6 +11,17 @@
 <%@include file="/WEB-INF/views/company/inc/asset.jsp"%>
 <link rel="stylesheet" href="/yaneodo/css/company/match/list.css">
 <style>
+	.modal-body .row {
+		margin-top: 30px;
+	}
+	
+	#search-reasult .glyphicon-star .glyphicon-star-empty {
+		color: blue;
+		font-size: 15px;
+		line-height: 30px;
+	}
+	
+	
 </style>
 </head>
 <body>
@@ -127,11 +138,30 @@
 								<span>${dto.major }</span>
 							</div>
 							<div class="row">
-								<button class="btn btn-default col-md-offset-8">찜하기</button>
-								<input type="button" class="btn btn-primary col-md-offset-0"
+								<c:if test="${dto.isdibs.equals('1')}">
+                        			<button class="btn btn-default col-md-offset-7" onclick="location.href='/yaneodo/company/match/dibsdeleteok.do?pseq=${dto.profileseq}&isdibs=${isdibs}&jobtype=${jobjype }&isread=${isread}&ismatch=${ismatch}&search=${search}&page=${pate}'" >
+                        			<span class="glyphicon glyphicon-star" style="color:#2886FA; font-size:12px;"></span>&nbsp;찜하기 취소</button>
+                        		</c:if>
+                        		
+                       		<c:if test="${dto.isdibs.equals('0')}">
+                        			<button class="btn btn-default col-md-offset-8" onclick="location.href='/yaneodo/company/match/dibsaddok.do?pseq=${dto.profileseq}&isdibs=${isdibs}&jobtype=${jobjype }&isread=${isread}&ismatch=${ismatch}&search=${search}&page=${pate}'"><span class="glyphicon glyphicon-star-empty" style="color:#2886FA; font-size:12px;"></span>&nbsp;찜하기</button>
+                        		</c:if>
+
+								
+								<c:if test="${dto.isread.equals('1')}">
+									<input type="button" class="btn btn-primary col-md-offset-0"
+										data-toggle="modal" data-profileseq="${dto.profileseq}"
+										data-resumeseq="${dto.resumeseq }"
+										data-target="#modalResumeDetail" value="이력서 상세보기">
+								</c:if>
+								
+								<c:if test="${dto.isread.equals('0')}">
+									<input type="button" class="btn btn-primary col-md-offset-0"
 									data-toggle="modal" data-profileseq="${dto.profileseq}"
 									data-resumeseq="${dto.resumeseq }"
 									data-target="#modalResumePreview" value="이력서 미리보기">
+								</c:if>
+								
 							</div>
 
 						</div>
@@ -237,22 +267,20 @@
 				<div class="modal-body first-body">
 					<div class="modal-content-top">
 						<div class="title">
-							<span id="mrdName">박영수</span>
+							<span id="mrdName"></span>
 							<div class="downlaod">
 								<span class="modal-body-title-download">이력서 다운로드하기</span> <span
 									class="glyphicon glyphicon-download-alt"></span>
 							</div>
 						</div>
 						<div class="subtitle">
-							이메일 : <span class="text" id="mrdEmail">test@test.com</span>
+							이메일 : <span class="text" id="mrdEmail"></span>
 						</div>
 						<div class="subtitle">
-							연락처 : <span class="text" id="mrdPhone">010-1234-5678</span>
+							연락처 : <span class="text" id="mrdPhone"></span>
 						</div>
-						<div class="text" id="mrd">
-							<span>착목한는 곳이 원대하고 그들은 피가 더운지라 실현에 대한 자신과 용기가 있다 그러므로 그들은
-								이상의 보배를 능히 품으며</span><span>그들의 이상은 아름답고 소담스러운 열매를 맺어 우리 인생을 풍부하게
-								하는 것이다 보라 청춘을 ! 그들의</span>
+						<div class="text" id="mrdIntro">
+							
 						</div>
 					</div>
 					<div class="blue-masking">후보자가 제안을 수락할 경우 이름과 이메일, 연락처를 확인할 수
@@ -407,9 +435,9 @@
 		<%@include file="/WEB-INF/views/company/inc/footer.jsp"%>
 		<!-- ########## 상단 헤더 끝 -->
 
-		<script>
+<script>
     
-    
+	
 
 
     // modal 창 조작
@@ -428,6 +456,14 @@
         
         // 직무선택 select 유지
         $("#jobtype").val("${jobtype}").prop("selected", true);
+        
+       	// 사이드 메뉴 클릭
+    	$(".sideGroup ul li").click(function() {
+   		  //alert(this);
+   		  this.addClass("side-list-item-selected");
+   		});
+
+
     });
     
     var pseq;
@@ -489,9 +525,9 @@
     // 이력서 상세보기 Modal
  
     $('#modalResumeDetail').on('show.bs.modal', function(e) {
-    
-    	//ar pseq = $(e.relatedTarget).data('profileseq');
-        //var rseq = $(e.relatedTarget).data('resumeseq');
+    	
+    	pseq = $(e.relatedTarget).data('profileseq');
+        rseq = $(e.relatedTarget).data('resumeseq');
         
       //json ajax 요청 - 이력서 코드
         $.ajax({

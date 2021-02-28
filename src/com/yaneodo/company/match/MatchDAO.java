@@ -310,4 +310,201 @@ public class MatchDAO {
 		}
 		return null;
 	}
+
+	/**
+	 * 찜하기를 등록하는 메서드
+	 * @param pseq 프로필번호
+	 * @param session 기업 회원 seq
+	 * @return
+	 */
+	public int addDibs(String pseq, String session) {
+		
+		try {
+
+			String sql = "insert into tblDibs(dibsSeq, profileSeq, companyMemberSeq, dibDate) values (DIBSSEQ.nextval, ?, ?, sysdate)";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, pseq);
+			pstat.setString(2, session);
+
+			return pstat.executeUpdate(); // 1 or 0
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return 0;
+	}
+
+	/**
+	 * 찜하기를 취소하는 메서드
+	 * @param pseq 프로필번호
+	 * @param session 기업 회원 seq
+	 * @return
+	 */
+	public int deleteDibs(String pseq, String session) {
+		try {
+
+			String sql = "delete from tblDibs where profileseq = ? and companymemberseq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, pseq);
+			pstat.setString(2, session);
+
+			return pstat.executeUpdate(); // 1 or 0
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+		return 0;
+	}
+	
+	
+	/**
+	 * 찜목록 리스트를 가져오는 메서드
+	 * @param tempSession 기업회원 번호
+	 * @return
+	 */
+	public ArrayList<DibsDTO> listDibs(String session) {
+		
+		try {
+			
+			String sql = "select * from tblDibs where companyMemberSeq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, session);
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<DibsDTO> list = new ArrayList<DibsDTO>();
+			
+			while (rs.next()) {
+				DibsDTO dto = new DibsDTO();
+				
+				dto.setDibsseq(rs.getString("dibsseq"));
+				dto.setProfileseq(rs.getString("profileseq"));
+				dto.setCompanyMemberseq(rs.getString("companymemberseq"));
+				dto.setDibdate(rs.getString("dibdate"));
+				
+				list.add(dto);
+				
+			}
+			
+			return list;
+					
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * 열람한 목록 리스트를 가져오는 메서드
+	 * @param tempSession 기업회원 번호
+	 * @return
+	 */
+	public ArrayList<ResumeReadDTO> listRead(String session) {
+		
+		try {
+			
+			String sql = "select * from tblResumeRead where companyMemberSeq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, session);
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<ResumeReadDTO> list = new ArrayList<ResumeReadDTO>();
+			
+			while (rs.next()) {
+				ResumeReadDTO dto = new ResumeReadDTO();
+				
+				dto.setResumereadseq(rs.getString("resumereadseq"));
+				dto.setProfileseq(rs.getString("profileseq"));
+				dto.setCompanymemberseq(rs.getString("companymemberseq"));
+				dto.setReaddate(rs.getString("readdate"));
+				
+				list.add(dto);
+				
+			}
+			
+			return list;
+					
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+	
+	/**
+	 * 면접제안 목록 리스트를 가져오는 메서드
+	 * @param tempSession 기업회원 번호
+	 * @return
+	 */
+	public ArrayList<MatchupDTO> listMatchup(String session) {
+		
+		try {
+			
+			String sql = "select m.*, (select profileseq from tblResumeRead where resumereadseq = m.resumereadseq) as profileseq from tblMatchup m where m.resumeReadSeq in (select resumereadseq from tblResumeRead where companyMemberSeq = ?)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, session);
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<MatchupDTO> list = new ArrayList<MatchupDTO>();
+			
+			while (rs.next()) {
+				MatchupDTO dto = new MatchupDTO();
+				
+				dto.setMatchupseq(rs.getString("matchupseq"));
+				dto.setResumereadseq(rs.getString("resumereadseq"));
+				dto.setMessage(rs.getString("message"));
+				dto.setSuggestdate(rs.getString("suggestdate"));
+				dto.setRank(rs.getString("rank"));
+				dto.setIncome(rs.getString("income"));
+				dto.setPosition(rs.getString("position"));
+				dto.setArea(rs.getString("area"));
+				dto.setStockoption(rs.getString("stockoption"));
+				dto.setState(rs.getString("state"));
+				dto.setProfileseq(rs.getString("profileseq"));
+				
+				
+				list.add(dto);
+				
+			}
+			
+			return list;
+					
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

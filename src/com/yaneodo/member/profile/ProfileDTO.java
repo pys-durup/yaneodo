@@ -11,7 +11,32 @@ public class ProfileDTO {
 	private String company;
 	private String career;
 	private String introduction;
+	private String isdibs;
+	private String isread;
+	private String ismatch;
 	
+	
+	
+	
+	
+	public String getIsread() {
+		return isread;
+	}
+	public void setIsread(String isread) {
+		this.isread = isread;
+	}
+	public String getIsmatch() {
+		return ismatch;
+	}
+	public void setIsmatch(String ismatch) {
+		this.ismatch = ismatch;
+	}
+	public String getIsdibs() {
+		return isdibs;
+	}
+	public void setIsdibs(String isdibs) {
+		this.isdibs = isdibs;
+	}
 	public String getProfileseq() {
 		return profileseq;
 	}

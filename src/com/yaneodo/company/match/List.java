@@ -179,8 +179,35 @@ public class List extends HttpServlet {
 		
 		ArrayList<String> jlist = dao.listJob(); // 직무목록
 		ArrayList<ProfileDTO> list = dao.listProfile(map); // 프로필 목록
+		ArrayList<DibsDTO> dlist = dao.listDibs(tempSession); // 찜목록
+		ArrayList<ResumeReadDTO> rlist = dao.listRead(tempSession); //열람 or 미열람
+		ArrayList<MatchupDTO> mlist = dao.listMatchup(tempSession); //면접제안
+		
+		// 찜하기 인지? 아닌지?
+		// 프로필 목록에서 사용할 정보는 profileseq
+		for (ProfileDTO pdto : list ) {
+			pdto.setIsdibs("0");
+			for (DibsDTO ddto : dlist) {
+				if(ddto.getProfileseq().equals(pdto.getProfileseq())) {
+					pdto.setIsdibs("1");
+				}
+			}
+		}
+		
+		// 열람인지? 아닌지?
+		for (ProfileDTO pdto : list ) {
+			pdto.setIsread("0");
+			for (ResumeReadDTO rdto : rlist) {
+				if(rdto.getProfileseq().equals(pdto.getProfileseq())) {
+					pdto.setIsread("1");
+				}
+			}
+		}
+		
+		// 면접제안 했는지 안 했는지
 		
 		
+
 		
 		
 		//3.
