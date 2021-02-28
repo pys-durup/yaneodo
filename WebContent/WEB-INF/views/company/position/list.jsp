@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -34,47 +35,24 @@
         <!-- section-body -->
         <div id="section-body">
             <div class="row">
+            <c:forEach items="${list}" var="dto">
                 <div class="col-md-4" >
                   <div class="thumbnail position-item" onclick="location.href='/yaneodo/company/position/view.do'">
                     <img src="/yaneodo/images/company/matchup_image.jpg" alt="...">
-                    <div class="caption">
-                      <h3>Android developer</h3>
-                      <p>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내</p>
-                      <p><a href="#" class="btn btn-primary" role="button">수정하기</a> <a href="#" class="btn btn-default" role="button">삭제하기</a></p>
+                    <div class="caption" style="text-align: left;">
+                      <h3>${dto.title }</h3>
+                      <p>채용직무 : ${dto.job}</p>
+                      <p>채용시작일 : ${dto.startdate}</p>
+                      <p>채용마감일 : ${dto.enddate}</p>
                     </div>
                   </div>
+                  <p>
+                     <a href="#" class="btn btn-primary" role="button" onclick="location.href='/yaneodo/company/position/edit.do'")>수정하기</a> 
+                     <a href="#" class="btn btn-default" role="button">삭제하기</a>
+                   </p>
                 </div>
-                <div class="col-md-4" >
-                  <div class="thumbnail position-item" onclick="location.href='/yaneodo/company/position/view.do'">
-                    <img src="/yaneodo/images/company/matchup_image.jpg" alt="...">
-                    <div class="caption">
-                      <h3>Android developer</h3>
-                      <p>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내</p>
-                      <p><a href="#" class="btn btn-primary" role="button">수정하기</a> <a href="#" class="btn btn-default" role="button">삭제하기</a></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4" >
-                  <div class="thumbnail position-item" onclick="location.href='/yaneodo/company/position/view.do'">
-                    <img src="/yaneodo/images/company/matchup_image.jpg" alt="...">
-                    <div class="caption">
-                      <h3>Android developer</h3>
-                      <p>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내</p>
-                      <p><a href="#" class="btn btn-primary" role="button">수정하기</a> <a href="#" class="btn btn-default" role="button">삭제하기</a></p>
-                    </div>
-                  </div>
-                </div>
-                  <div class="col-md-4 position-item" >
-                    <div class="thumbnail finished">
-                      <img src="/project/views/image/matchup_image.jpg" alt="...">
-                      <div class="caption">
-                        <h3>Android developer</h3>
-                        <p>내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내내용내</p>
-                        <p><a href="#" class="btn btn-primary" role="button">수정하기</a> <a href="#" class="btn btn-default" role="button">삭제하기</a> </p>
-                      </div>
-                    </div>
-                  </div>
-              </div>
+            </c:forEach>
+                
         </div>
         <!-- section-body end -->
 
