@@ -11,6 +11,7 @@
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
 
 <link rel="stylesheet" href="/yaneodo/css/member/header.css">
+<link rel="stylesheet" href="/yaneodo/css/main/list.css">
 
 <style>
 

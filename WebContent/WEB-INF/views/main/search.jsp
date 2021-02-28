@@ -18,7 +18,7 @@
 
 	<!-- 검색 시작 -->
 
-	<form method="GET" action="/yaneodo/main/search.do" id="searchForm">
+	<form method="GET" action="/yaneodo/main/list.do" id="searchForm">
 		<div id="searchBox1" style="display: none;">
 			<div id="searchBox2">
 				<span class="glyphicon glyphicon-search" id="searchCon" style="outline: none";></span> 
