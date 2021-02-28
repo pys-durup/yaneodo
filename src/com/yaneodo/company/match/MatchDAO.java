@@ -488,6 +488,80 @@ public class MatchDAO {
 		
 		return null;
 	}
+
+	/**
+	 * 보유한 열람권 개수 리턴
+	 * @param session 기업회원번호
+	 * @return
+	 */
+	public String getPassCount(String session) {
+		
+		try {
+			
+			String sql = "Select pass from tblCompanyMember where companyMemberSeq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, session);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("pass");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+
+	/**
+	 * 열람권 개수 - 1
+	 * @param tempsession
+	 */
+	public void updatePassCount(String session) {
+		
+		try {
+			
+			String sql = "update tblcompanyMember set pass = pass - 1 where companymemberseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, session);
+			
+			pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+
+	/**
+	 * 열람 목록에 추가(읽은 이력서)
+	 * @param tempsession
+	 * @param pseq 
+	 */
+	public void AddResumeRead(String session, String pseq) {
+		
+		try {
+	
+			String sql = "insert into tblResumeRead (resumereadseq, profileseq, companymemberseq, readDate) values (resumeReadSeq.nextVal, ?, ?, sysdate)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, pseq);
+			pstat.setString(2, session);
+			
+			pstat.executeUpdate();
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		
+	}
+
+
 }
 
 

@@ -242,7 +242,7 @@ public class ResumeData extends HttpServlet {
 		//pdto 와 resumeData에 데이터를 받아서 넣어놓은 상태
 		
 
-		System.out.println(resumeData);
+		//System.out.println(resumeData);
 		
 		PrintWriter writer = resp.getWriter();
 		

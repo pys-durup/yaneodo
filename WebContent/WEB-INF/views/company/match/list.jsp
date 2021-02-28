@@ -11,17 +11,15 @@
 <%@include file="/WEB-INF/views/company/inc/asset.jsp"%>
 <link rel="stylesheet" href="/yaneodo/css/company/match/list.css">
 <style>
-	.modal-body .row {
-		margin-top: 30px;
-	}
-	
-	#search-reasult .glyphicon-star .glyphicon-star-empty {
-		color: blue;
-		font-size: 15px;
-		line-height: 30px;
-	}
-	
-	
+.modal-body .row {
+	margin-top: 30px;
+}
+
+#search-reasult .glyphicon-star .glyphicon-star-empty {
+	color: blue;
+	font-size: 15px;
+	line-height: 30px;
+}
 </style>
 </head>
 <body>
@@ -139,29 +137,36 @@
 							</div>
 							<div class="row">
 								<c:if test="${dto.isdibs.equals('1')}">
-                        			<button class="btn btn-default col-md-offset-7" onclick="location.href='/yaneodo/company/match/dibsdeleteok.do?pseq=${dto.profileseq}&isdibs=${isdibs}&jobtype=${jobjype }&isread=${isread}&ismatch=${ismatch}&search=${search}&page=${pate}'" >
-                        			<span class="glyphicon glyphicon-star" style="color:#2886FA; font-size:12px;"></span>&nbsp;찜하기 취소</button>
-                        		</c:if>
-                        		
-                       		<c:if test="${dto.isdibs.equals('0')}">
-                        			<button class="btn btn-default col-md-offset-8" onclick="location.href='/yaneodo/company/match/dibsaddok.do?pseq=${dto.profileseq}&isdibs=${isdibs}&jobtype=${jobjype }&isread=${isread}&ismatch=${ismatch}&search=${search}&page=${pate}'"><span class="glyphicon glyphicon-star-empty" style="color:#2886FA; font-size:12px;"></span>&nbsp;찜하기</button>
-                        		</c:if>
+									<button class="btn btn-default col-md-offset-7"
+										onclick="location.href='/yaneodo/company/match/dibsdeleteok.do?pseq=${dto.profileseq}&isdibs=${isdibs}&jobtype=${jobjype }&isread=${isread}&ismatch=${ismatch}&search=${search}&page=${pate}'">
+										<span class="glyphicon glyphicon-star"
+											style="color: #2886FA; font-size: 12px;"></span>&nbsp;찜하기 취소
+									</button>
+								</c:if>
 
-								
+								<c:if test="${dto.isdibs.equals('0')}">
+									<button class="btn btn-default col-md-offset-8"
+										onclick="location.href='/yaneodo/company/match/dibsaddok.do?pseq=${dto.profileseq}&isdibs=${isdibs}&jobtype=${jobjype }&isread=${isread}&ismatch=${ismatch}&search=${search}&page=${pate}'">
+										<span class="glyphicon glyphicon-star-empty"
+											style="color: #2886FA; font-size: 12px;"></span>&nbsp;찜하기
+									</button>
+								</c:if>
+
+
 								<c:if test="${dto.isread.equals('1')}">
 									<input type="button" class="btn btn-primary col-md-offset-0"
 										data-toggle="modal" data-profileseq="${dto.profileseq}"
 										data-resumeseq="${dto.resumeseq }"
 										data-target="#modalResumeDetail" value="이력서 상세보기">
 								</c:if>
-								
+
 								<c:if test="${dto.isread.equals('0')}">
 									<input type="button" class="btn btn-primary col-md-offset-0"
-									data-toggle="modal" data-profileseq="${dto.profileseq}"
-									data-resumeseq="${dto.resumeseq }"
-									data-target="#modalResumePreview" value="이력서 미리보기">
+										data-toggle="modal" data-profileseq="${dto.profileseq}"
+										data-resumeseq="${dto.resumeseq }"
+										data-target="#modalResumePreview" value="이력서 미리보기">
 								</c:if>
-								
+
 							</div>
 
 						</div>
@@ -216,9 +221,8 @@
 				</div>
 				<div class="modal-footer viewinfo">
 					<span class="modal-footer-text">상세이력 확인시, 열람권이 1회 차감됩니다</span>
-					<button type="button" class="btn btn-info" data-toggle="modal"
-						data-target="#modalReading">이력서
-						상세보기</button>
+					<button type="button" class="btn btn-info" name="btnresumedetail" data-toggle="modal"
+						data-target="#modalReading">이력서 상세보기</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -243,7 +247,7 @@
 					열람권을 사용하시겠습니까?</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-					<button type="button" id="btnReading" class="btn btn-primary"
+					<button type="button" name="btnReading" id="btnReading" class="btn btn-primary"
 						data-toggle="modal" data-target="#modalResumeDetail">사용하기</button>
 				</div>
 			</div>
@@ -279,9 +283,7 @@
 						<div class="subtitle">
 							연락처 : <span class="text" id="mrdPhone"></span>
 						</div>
-						<div class="text" id="mrdIntro">
-							
-						</div>
+						<div class="text" id="mrdIntro"></div>
 					</div>
 					<div class="blue-masking">후보자가 제안을 수락할 경우 이름과 이메일, 연락처를 확인할 수
 						있습니다</div>
@@ -295,7 +297,7 @@
 								보관됩니다</p>
 						</div>
 						<div class="footer-right">
-							<button type="button" class="btn btn-info" data-toggle="modal"
+							<button type="button" class="btn btn-info" data-toggle="modal" name="btnoffer"
 								data-target="#interview" id="btnInterview">제안 보내러 가기</button>
 						</div>
 					</div>
@@ -305,137 +307,137 @@
 			<!-- /.modal-dialog -->
 		</div>
 		<!-- /.modal -->
-		</div>
+	</div>
 
 
-		<!-- 면접제안 Modal -->
-		<div class="modal modal-center fade" id="interview" tabindex="-1"
-			role="dialog">
-			<div class="modal-dialog modal-center modal-60size " role="document">
-				<div class="modal-content modal-60size">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title">면접 제안</h4>
+	<!-- 면접제안 Modal -->
+	<div class="modal modal-center fade" id="interview" tabindex="-1"
+		role="dialog">
+		<div class="modal-dialog modal-center modal-60size " role="document">
+			<div class="modal-content modal-60size">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">면접 제안</h4>
+				</div>
+				<div class="modal-body">
+					<div class="modal-body-title">제안 메세지</div>
+					<div>
+						<textarea class="form-control" rows="8"></textarea>
 					</div>
-					<div class="modal-body">
-						<div class="modal-body-title">제안 메세지</div>
-						<div>
-							<textarea class="form-control" rows="8"></textarea>
+					<div class="row">
+						<div class="col-md-4">
+							<div class="modal-body-title">직급</div>
 						</div>
-						<div class="row">
-							<div class="col-md-4">
-								<div class="modal-body-title">직급</div>
-							</div>
-							<div class="col-md-8">
-								<div class="modal-body-title">
-									연봉<span style="font-size: 0.7em;"> (단위:만원)</span>
-								</div>
+						<div class="col-md-8">
+							<div class="modal-body-title">
+								연봉<span style="font-size: 0.7em;"> (단위:만원)</span>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-md-4">
+					</div>
+					<div class="row">
+						<div class="col-md-4">
+							<input type="text" class="form-control">
+						</div>
+						<div class="col-md-8">
+							<div class="col-md-5">
 								<input type="text" class="form-control">
 							</div>
-							<div class="col-md-8">
-								<div class="col-md-5">
-									<input type="text" class="form-control">
-								</div>
-								<div class="col-md-1">~</div>
-								<div class="col-md-5">
-									<input type="text" class="form-control">
-								</div>
-							</div>
-						</div>
-						<div class="modal-body-title">포지션 선택</div>
-						<select name="" id="" class="form-control">
-							<option value="test">test</option>
-						</select>
-						<div class="modal-body-title">근무 지역</div>
-						<input type="text" class="form-control">
-						<div class="modal-body-title">스톡옵션 여부</div>
-						<input type="text" class="form-control">
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-						<button type="button" class="btn btn-primary">보내기</button>
-					</div>
-				</div>
-				<!-- /.modal-content -->
-			</div>
-			<!-- /.modal-dialog -->
-		</div>
-		<!-- /.modal -->
-
-		<!-- 서비스 플랜 Modal -->
-		<div class="modal modal-center fade" id="service" tabindex="-1"
-			role="dialog">
-			<div class="modal-dialog modal-center modal-70size" role="document">
-				<div class="modal-content modal-70size">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-						<h4 class="modal-title">서비스 플랜</h4>
-					</div>
-					<div class="modal-body">
-						<div class="container">
-							<div class="col-md-5 service-box basic">
-								<div class="top">
-									<p class="title">베이직
-									<p>
-									<p class="subtitle">1,000,000 원</p>
-									<p class="detail">부가세 별도</p>
-								</div>
-								<div class="bottom">
-									<p class="subtitle">30일간 최대 100건의 이력서 열람 및 면접제안</p>
-									<p class="detail">채용 수수료 무료</p>
-									<p class="detail">학력/경력 등 상세 이력 확인</p>
-									<p class="detail">100건 상세 이력서 열람</p>
-									<p class="detail">100회 제안 보내기 기능</p>
-									<p class="detail">유효기간 : 구매일로부터 30일</p>
-								</div>
-
-
-							</div>
-							<div class="col-md-5 service-box lite">
-								<div class="top">
-									<p class="title">라이트
-									<p>
-									<p class="subtitle">500,000 원</p>
-									<p class="detail">부가세 별도</p>
-								</div>
-								<div class="bottom">
-									<p class="subtitle">30일간 최대 30건의 이력서 열람 및 면접제안</p>
-									<p class="detail">채용 수수료 무료</p>
-									<p class="detail">학력/경력 등 상세 이력 확인</p>
-									<p class="detail">30건 상세 이력서 열람</p>
-									<p class="detail">30회 제안 보내기 기능</p>
-									<p class="detail">유효기간 : 구매일로부터 30일</p>
-								</div>
-
+							<div class="col-md-1">~</div>
+							<div class="col-md-5">
+								<input type="text" class="form-control">
 							</div>
 						</div>
 					</div>
-					<div class="modal-footer container">
-						<button type="button" class="btn btn-primary col-md-12">선택하기</button>
+					<div class="modal-body-title">포지션 선택</div>
+					<select name="" id="" class="form-control">
+						<option value="test">test</option>
+					</select>
+					<div class="modal-body-title">근무 지역</div>
+					<input type="text" class="form-control">
+					<div class="modal-body-title">스톡옵션 여부</div>
+					<input type="text" class="form-control">
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+					<button type="button" class="btn btn-primary">보내기</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
+
+	<!-- 서비스 플랜 Modal -->
+	<div class="modal modal-center fade" id="service" tabindex="-1"
+		role="dialog">
+		<div class="modal-dialog modal-center modal-70size" role="document">
+			<div class="modal-content modal-70size">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">서비스 플랜</h4>
+				</div>
+				<div class="modal-body">
+					<div class="container">
+						<div class="col-md-5 service-box basic">
+							<div class="top">
+								<p class="title">베이직
+								<p>
+								<p class="subtitle">1,000,000 원</p>
+								<p class="detail">부가세 별도</p>
+							</div>
+							<div class="bottom">
+								<p class="subtitle">30일간 최대 100건의 이력서 열람 및 면접제안</p>
+								<p class="detail">채용 수수료 무료</p>
+								<p class="detail">학력/경력 등 상세 이력 확인</p>
+								<p class="detail">100건 상세 이력서 열람</p>
+								<p class="detail">100회 제안 보내기 기능</p>
+								<p class="detail">유효기간 : 구매일로부터 30일</p>
+							</div>
+
+
+						</div>
+						<div class="col-md-5 service-box lite">
+							<div class="top">
+								<p class="title">라이트
+								<p>
+								<p class="subtitle">500,000 원</p>
+								<p class="detail">부가세 별도</p>
+							</div>
+							<div class="bottom">
+								<p class="subtitle">30일간 최대 30건의 이력서 열람 및 면접제안</p>
+								<p class="detail">채용 수수료 무료</p>
+								<p class="detail">학력/경력 등 상세 이력 확인</p>
+								<p class="detail">30건 상세 이력서 열람</p>
+								<p class="detail">30회 제안 보내기 기능</p>
+								<p class="detail">유효기간 : 구매일로부터 30일</p>
+							</div>
+
+						</div>
 					</div>
 				</div>
-				<!-- /.modal-content -->
+				<div class="modal-footer container">
+					<button type="button" class="btn btn-primary col-md-12">선택하기</button>
+				</div>
 			</div>
-			<!-- /.modal-dialog -->
+			<!-- /.modal-content -->
 		</div>
-		<!-- /.modal -->
+		<!-- /.modal-dialog -->
+	</div>
+	<!-- /.modal -->
 
 
-		<!-- ########## 상단 헤더 시작 -->
-		<%@include file="/WEB-INF/views/company/inc/footer.jsp"%>
-		<!-- ########## 상단 헤더 끝 -->
+	<!-- ########## 상단 헤더 시작 -->
+	<%@include file="/WEB-INF/views/company/inc/footer.jsp"%>
+	<!-- ########## 상단 헤더 끝 -->
 
-<script>
+	<script>
     
 	
 
@@ -465,11 +467,17 @@
 
 
     });
+    /*
+    let pseq = $('#btnresumedetail');
+    console.log(pseq);
+    let rseq = $('#btnresumedetail').data('resumeseq');
+    */
     
-    var pseq;
-    var rseq;
+    let pseq;
+    let rseq;
+    
  
-    //triggered when modal is 이력서 미리보기 to be shown
+    //이력서 미리보기 Modal
     $('#modalResumePreview').on('show.bs.modal', function(e) {
 
         //get data-id attribute of the clicked element
@@ -489,7 +497,7 @@
         	dataType: "text",
         	data: "rseq=" + rseq,
         	success: function(result) {
-        		console.log(result);
+        		//console.log(result);
         		$("#mrpResumeData").html(result);
         		$("#mrpResumeData").children("div").nextAll("div").remove();
        	},
@@ -506,7 +514,7 @@
         	dataType: "json",
         	data: "pseq=" + pseq,
         	success: function(result) {
-        		console.log(result);
+        		//console.log(result);
         		$("#mrpName").text(result.name);
         		$("#mrpEmail").text(result.eamil);
         		$("#mrpPhone").text(result.phone);
@@ -520,14 +528,50 @@
         
     });
     
+    //onclick="location.href='/yaneodo/company/match/resumedetailok.do'"
+    
+    // 이력서 상세보기 확인 Modal - 열람권 차감
+    $('#modalReading').on('show.bs.modal', function(e) {
+    	
+    	//pseq = $(e.relatedTarget).data('profileseq');
+        //rseq = $(e.relatedTarget).data('resumeseq');
+        
+        
+    	 $('#btnReading').click(function() {
+    		//json ajax 요청 - 열람권 1회 차감 + resumeread 테이블에 추가
+    	        $.ajax({
+    	        	type: "GET",
+    	        	url: "/yaneodo/company/match/resumedetailok.do",
+    	        	dataType: "text",
+    	        	data: "pseq=" + pseq,
+    	        	success: function(result) {
+    	        		console.log(result);
+    	        		if (result == 1) {
+	    	        		alert("열람권 1개가 차감되었습니다.")
+	    	        		
+    	        		} else {
+    	        			alert("열람권이 부족합니다")
+    	        			return;
+    	        		}
+    	       	},
+				error: function(a,b,c) {
+    	        		console.log(a,b,c);
+    	        	}
+    	        })
+    	        
+    	 });
+    	 
+    });
     
     
     // 이력서 상세보기 Modal
  
     $('#modalResumeDetail').on('show.bs.modal', function(e) {
     	
-    	pseq = $(e.relatedTarget).data('profileseq');
-        rseq = $(e.relatedTarget).data('resumeseq');
+    	//pseq = $(e.relatedTarget).data('profileseq');
+        //rseq = $(e.relatedTarget).data('resumeseq');
+        
+       
         
       //json ajax 요청 - 이력서 코드
         $.ajax({
@@ -536,7 +580,7 @@
         	dataType: "text",
         	data: "rseq=" + rseq,
         	success: function(result) {
-        		console.log(result);
+        		//console.log(result);
         		$("#mrdResumeData").html(result);
        	},
         	error: function(a,b,c) {
@@ -552,7 +596,7 @@
         	dataType: "json",
         	data: "pseq=" + pseq,
         	success: function(result) {
-        		console.log(result);
+        		//console.log(result);
         		$("#mrdName").text(result.name);
         		$("#mrdEmail").text(result.eamil);
         		$("#mrdPhone").text(result.phone);
