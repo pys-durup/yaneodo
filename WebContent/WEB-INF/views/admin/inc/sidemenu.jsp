@@ -48,7 +48,7 @@
                     </div>
 
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/business/businesslist.do'">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/company/companylist.do'">
                             기업회원 승인관리
                         </div>
                         <div class="panel-body sname">

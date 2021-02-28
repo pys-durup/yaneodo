@@ -27,7 +27,7 @@
 
         <section id="contents" style="height: 1200px;">
             <div id="memberManager">
-                <div id="subtitle">회원 목록</div>
+                <div id="subtitle">휴면회원 목록</div>
                 <div id="select">
                     <select name="order" id="order" style="width: 120px; height: 30px; font-size: 1.0em;">
                         <option value="이름순">이름순</option>
@@ -58,11 +58,11 @@
                     
                     	<c:forEach items="${list}" var="dto">
                         <tr onclick="location.href='/yaneodo/admin/member/member.do?customerseq=${dto.customerSeq}&page=${nowPage}'">
-                        	<c:if test="${dto.photo eq '(null)'}">
-                            	<td class="profile"><img src="/yaneodo/images/admin/company.png" alt="기본" style="width: 80px; height: 80px;"></td>
+                        	<c:if test="${dto.photo eq 'null'}">
+                            	<td class="profile"><img src="/yaneodo/images/admin/user.png" alt="기본" style="width: 80px; height: 80px;"></td>
                             </c:if>
-                            <c:if test="${dto.photo ne '(null)'}">
-                            	<td class="profile"><img src="/yaneodo/images/admin/${dto.photo}" alt="${dto.photo}" style="width: 80px; height: 80px;"></td>
+                            <c:if test="${dto.photo ne 'null'}">
+                            	<td class="profile"><img src="/yaneodo/images/admin/${dto.photo}" alt="${dto.photo}"></td>
                             </c:if>
                             <td class="name">${dto.name}</td>
                             <td class="nick">${dto.nickname}</td>
