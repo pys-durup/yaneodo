@@ -21,11 +21,11 @@
 	</div>
 	<div style="clear:both;"></div>
 
-    <div id="pageAll">
-    
+    <div id="pageAll" style="height: 1200px;">
+	    
     	<%@include file="/WEB-INF/views/admin/inc/sidemenu.jsp" %>
 
-        <section id="contents">
+        <section id="contents" style="height: 1200px;">
             <div id="memberManager">
                 <div id="subtitle">회원 목록</div>
                 <div id="select">
@@ -88,7 +88,7 @@
     </div>
     
     <!-- footer -->
-	<div id="footer" >
+	<div id="footer">
 	
 		<%@include file="/WEB-INF/views/admin/form/footer.jsp" %>
 	
