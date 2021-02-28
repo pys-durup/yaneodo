@@ -5,7 +5,8 @@ public class PortfolioDTO {
 	private String portfolioseq;
 	private String resumeseq;
 	private String url;
-	private String pfile;
+	private String filename;
+	private String orgfilename;
 	
 	public String getPortfolioseq() {
 		return portfolioseq;
@@ -25,13 +26,19 @@ public class PortfolioDTO {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public String getPfile() {
-		return pfile;
+	public String getFilename() {
+		return filename;
 	}
-	public void setPfile(String pfile) {
-		this.pfile = pfile;
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
-	
+	public String getOrgfilename() {
+		return orgfilename;
+	}
+	public void setOrgfilename(String orgfilename) {
+		this.orgfilename = orgfilename;
+	}
+
 	
 	
 }

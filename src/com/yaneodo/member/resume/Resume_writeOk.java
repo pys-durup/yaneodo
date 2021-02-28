@@ -26,17 +26,17 @@ HttpSession session = req.getSession();
 //req.setCharacterEncoding("UTF-8");
 		String seq = (String)(session.getAttribute("seq"));
 		
-		
 		MemberDAO dao = new MemberDAO();
 		MemberDTO dto = dao.get(seq);
 		ResumeDAO dao2 = new ResumeDAO();
-		int result = dao2.resumeWrite(dto,seq);
+		String num = dao2.num(seq);
+		String rseq = dao2.newResume(seq);
+		
+		int result = dao2.resumeWrite(dto,seq,num);
 		
 		if(result ==1) {
 		
-		String rseq = dao2.newResume(seq);
-		
-		resp.sendRedirect("/yaneodo/member/resume/resume_write.do?rseq=" + rseq);
+		resp.sendRedirect("/yaneodo/member/resume/resume_write.do?rseq=" +rseq);
 		
 		}
 		
