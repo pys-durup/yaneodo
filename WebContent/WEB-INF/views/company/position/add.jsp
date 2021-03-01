@@ -86,10 +86,10 @@
 								class="glyphicon glyphicon-remove remove"></span></span> -->
 						</div>
 						<div id="selectd-result-data">
-						<input type="hidden" name="tag" value="#태그명1"> 
+<!-- 					<input type="hidden" name="tag" value="#태그명1"> 
 						<input type="hidden" name="tag" value="#태그명2"> 
 						<input type="hidden" name="tag" value="#태그명3"> 
-						<input type="hidden" name="tag" value="#태그명4">
+						<input type="hidden" name="tag" value="#태그명4"> -->
 						</div>
 					</div>
 					<div class="row">
@@ -320,9 +320,9 @@
 							
 							let temp = "";
 							
-							temp += "<span class='label label-primary tagitem'";
-							temp += "data-value=" + item.tagname;
-							temp += ">";
+							temp += "<span class='label label-primary tagitem' ";
+							temp += "data-value='" + item.tagseq
+							temp += "'>";
 							temp += item.tagname;
 							temp += "</span>";
 							

@@ -226,21 +226,122 @@ public class PositionDAO {
 		return null;
 	}
 
+
+
+	/**
+	 * 기업회원 번호로 기업 번호를 반환하는 메서드
+	 * @param tempsession 기업회원 번호
+	 * @return
+	 */
+	public String getCompanySeq(String session) {
+		
+		try {
+			
+			String sql = "select companyseq from tblcompany where companymemberseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, session);
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getString("companyseq");
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+	
+	
 	/**
 	 * 기업 모집 공고를 등록하는 메서드
 	 * @param dto
 	 */
-	public void AddPosition(JobOpeningDTO dto) {
+	public int AddPosition(JobOpeningDTO dto) {
 		
 		try {
 			
-			String sql = "";
+			String sql = "INSERT INTO tblJobOpening (jobOpeningSeq, companySeq, title, startDate, endDate, job, place, description, photo) VALUES (jobOpeningSeq.nextVal, ?, ?, sysdate, ?, ?, ?, ?, ?)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getCompanyseq());
+			pstat.setString(2, dto.getTitle());
+			pstat.setString(3, dto.getEnddate());
+			pstat.setString(4, dto.getJob());
+			pstat.setString(5, dto.getPlace());
+			pstat.setString(6, dto.getDescription());
+			pstat.setString(7, dto.getPhoto());
+			
+			return pstat.executeUpdate();
+			
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	/**
+	 * 등록한 공고의 공고번호를 가져오는 메서드
+	 * @param dto 
+	 * @return
+	 */
+	public String getJobOpeningSeq(JobOpeningDTO dto) {
+		
+		try {
+			
+			String sql = "select jobopeningseq from tbljobopening where companyseq = ? and title = ? and job = ? and place = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getCompanyseq());
+			pstat.setString(2, dto.getTitle());
+			pstat.setString(3, dto.getJob());
+			pstat.setString(4, dto.getPlace());
+			
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) { 
+				
+				return rs.getString("jobopeningseq");
+				
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+	
+	/**
+	 * 기업 모집공고의 태그를 등록하는 메서드
+	 * @param jobOpeningSeq 모집공고 번호
+	 * @param tagseq 태그 번호
+	 */
+	public void AddPositionTag(String jobOpeningSeq, String tagseq) {
+		
+		try {
+			
+			String sql = "INSERT INTO tblSelTag (selTagSeq,jobOpeningSeq,tagSeq) VALUES (selTagSeq.nextVal,?,?)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, jobOpeningSeq);
+			pstat.setString(2, tagseq);
+			
+			pstat.executeUpdate();
+			
 			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		
 	}
+	
 }
 
 

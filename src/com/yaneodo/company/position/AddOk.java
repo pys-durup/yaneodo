@@ -29,7 +29,7 @@ public class AddOk extends HttpServlet {
 		String enddate = "";
 		String image = "";
 		String job = "";
-		String[] tag;
+		String[] tag = null;
 		String place = "";
 		String description = "";
 		
@@ -68,7 +68,16 @@ public class AddOk extends HttpServlet {
 		JobOpeningDTO dto = new JobOpeningDTO();
 		PositionDAO dao = new PositionDAO();
 		
+		
+		
+		
+		// 기업회원 번호로 기업번호를 가져온다
+		String companyseq = dao.getCompanySeq(tempsession);
+		//System.out.println(companyseq);
+		
+		
 		dto.setTitle(title);
+		dto.setCompanyseq(companyseq);
 		dto.setEnddate(enddate);
 		dto.setPhoto(image);
 		dto.setJob(job);
@@ -76,14 +85,21 @@ public class AddOk extends HttpServlet {
 		dto.setDescription(description);
 		
 		
-		// 공고 DB에 등록
-		dao.AddPosition();
+		int result = 1;
 		
+		// 공고 DB에 등록
+		result = dao.AddPosition(dto);
+		
+		
+		// 등록한 공고의 공고번호를 가져와야 함.
+		String jobOpeningSeq = dao.getJobOpeningSeq(dto);
+		//System.out.println("공고번호 : " + jobOpeningSeq);
 		
 		// 태그 DB에 등록
-		
-		
-		int result = 1;
+		for (int i=0 ; i<tag.length ; i++) {
+			System.out.println(tag[i]);
+			dao.AddPositionTag(jobOpeningSeq, tag[i]);
+		}
 		
 		
 		if (result == 1) {

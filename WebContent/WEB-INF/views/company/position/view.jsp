@@ -41,16 +41,17 @@
 		<!-- section-header end -->
 
 		<div class="section-body">
-			<div class="section-image">이미지</div>
+			<div class="section-image">
+				<img src='/yaneodo/files/${pdto.photo}' style="width: 795px; height: 595px;">
+			</div>
 			<div class="title">${pdto.title}</div>
 			<div class="subtitle">${pdto.name}/${pdto.region}</div>
 			<div class="tag">
 				<c:forEach items="${taglist}" var="tag">
-					<span class="label label-default">${tag}</span> 
+					<span class="label label-default">${tag}</span>
 				</c:forEach>
 			</div>
-			<div class="content detail">
-				${fn:replace(pdto.description, replaceChar, "<br/>")}
+			<div class="content detail">${fn:replace(pdto.description, replaceChar, "<br/>")}
 			</div>
 		</div>
 
@@ -109,14 +110,15 @@
         level: 3 // 지도의 확대 레벨
     };  
 
-// 지도를 생성합니다    
-var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-// 주소-좌표 변환 객체를 생성합니다
-var geocoder = new kakao.maps.services.Geocoder();
-
-// 주소로 좌표를 검색합니다
-geocoder.addressSearch('경기도 군포시 산본동', function(result, status) {
+	// 지도를 생성합니다    
+	var map = new kakao.maps.Map(mapContainer, mapOption); 
+	
+	// 주소-좌표 변환 객체를 생성합니다
+	var geocoder = new kakao.maps.services.Geocoder();
+	
+	// 주소로 좌표를 검색합니다
+	// var place = ${pdto.place} + '';
+	geocoder.addressSearch('${pdto.place}', function(result, status) {
 
     // 정상적으로 검색이 완료됐으면 
      if (status === kakao.maps.services.Status.OK) {
@@ -131,7 +133,7 @@ geocoder.addressSearch('경기도 군포시 산본동', function(result, status)
 
         // 인포윈도우로 장소에 대한 설명을 표시합니다
         var infowindow = new kakao.maps.InfoWindow({
-            content: '<div style="width:150px;text-align:center;padding:6px 0;">${pdto.name}</div>'
+            content: '<div style="width:150px;text-align:center;padding:6px 0;">${pdto.place}<br>${pdto.name}</div>'
         });
         infowindow.open(map, marker);
 

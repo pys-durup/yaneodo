@@ -38,7 +38,7 @@
     height: 600px;
     border: 1px solid black;
     margin-bottom: 20px;
-    background-image: url('/yaneodo/images/company/matchup_image.jpg');
+    /* background-image: url('/yaneodo/images/company/matchup_image.jpg'); */
 }
 
 .section-body .title {
