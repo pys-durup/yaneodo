@@ -1,16 +1,38 @@
-       
+
+
+
+        #tbl #th1 {
+        	width : 100px; 
+        }
+
+        #tbl #th2 {
+        	width : 100px; 
+        }
+
+        #tbl .ths {
+        	width : 110px; 
+        }       
+        
+        #tbl .thm {
+        	width : 130px; 
+        }       
         
 
         #tbl {
-            width: 850px;
+            width: 950px;
             height: 40px;
             text-align: center;
-            margin : 90px auto;
+            margin : 0px auto;
         }
         
         #tbl th, #tbl td { 
             border-bottom: 2px solid #ccc;
             text-align: center;            
+        }
+        
+        #tbl th { 
+            border-top: 2px solid #ccc;
+                        
         }
 
         #tbl tr td:nth-child(2):hover {

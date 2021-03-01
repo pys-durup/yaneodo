@@ -34,6 +34,9 @@
 			</div>
 		
 			 <div id="content">
+			 
+			 <div id="jobtype">매칭 관리</div>
+			 
             <form action="" id="search">
                 <input type="text" class="searchbar" placeholder=" 이름" style="display:none;">
                 <input type="button" value="검색" class="searchbar"style="display:none;">
@@ -42,20 +45,20 @@
             <table id=tbl>
                 <thead>
                     <tr>
-                        <th>순서</th>
-                        <th>이름</th>
-                        <th>면접제안</th>
-                        <th>면접응시</th>
-                        <th>면접응시율</th>
-                        <th>진행중</th>
-                        <th>취업</th>
+                        <th id="th1">순서</th>
+                        <th id="th2">이름</th>
+                        <th class="thm">면접제안</th>
+                        <th class="thm">면접응시</th>
+                        <th class="thm">면접응시율</th>
+                        <th class="thm">진행중</th>
+                        <th class="thm">취업</th>
                     </tr>
                 </thead>
                 <tbody id="tbd">
 					<c:forEach items="${list}" var="dto">
                     <tr>
                         <td>${dto.seq}</td>
-                        <td class="getname">${dto.name}</td>
+                        <td class="getname" id="${dto.seq}">${dto.name}</td>
 						<c:choose>
 						<c:when test="${empty dto.suggest}"> 
 	                        <td>0</td>
@@ -77,7 +80,7 @@
 	                        <td>0%</td>
 	                    </c:when>
 	                    <c:otherwise>
-	                    <td>${(dto.agree/dto.suggest)}%</td>	                    
+	                    <td>${(dto.agree/dto.suggest)*100}%</td>	                    
 	                    </c:otherwise>
 	                    </c:choose>
                         <c:choose>
@@ -153,6 +156,7 @@
             
             forinfo.appendChild(box);
             box.innerHTML = "<a href='http://www.naver.com'>프로필보기</a>";
+            //alert(event.srcElement.id);
             
             flag = true;
             //alert(flag);

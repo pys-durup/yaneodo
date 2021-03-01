@@ -18,15 +18,19 @@
   	
 
         #tbl {
-            width: 850px;
+            width: 950px;
             height: 40px;
             text-align: center;
-            margin : 90px auto;
+            margin : 0px auto;
         }
         
         #tbl th, #tbl td { 
             border-bottom: 2px solid #ccc;
             text-align: center;            
+        }
+        #tbl th { 
+            border-top: 2px solid #ccc;
+                        
         }
 
         #content #search {
@@ -40,6 +44,24 @@
             float: left;
             line-height: 5px;
         }
+        
+        #tbl #th1 {
+        	width : 100px; 
+        }
+
+        #tbl #th2 {
+        	width : 120px; 
+        }
+
+        #tbl .ths {
+        	width : 80px; 
+        }
+        
+        
+        
+        
+        
+        
 
 	
 	
@@ -60,6 +82,8 @@
 			</div>
 		
          <div id="content">
+         
+         <div id="jobtype">수익 관리</div>
 
             <form method="GET" action="/yaneodo/admin/gain/gain_company_search.do" id="search">
                 <input type="text" class="searchbar" name ="searchname" id="searchname" placeholder=" 이름">
@@ -69,13 +93,13 @@
             <table id=tbl>
                 <thead>
                     <tr>
-                        <th>순서</th>
-                        <th>이름</th>
-                        <th>a타입</th>
-                        <th>b타입</th>
-                        <th>c타입</th>
-                        <th>d타입</th>
-                        <th>e타입</th>
+                        <th id="th1">순서</th>
+                        <th id="th2">이름</th>
+                        <th class="ths">A타입</th>
+                        <th class="ths">B타입</th>
+                        <th class="ths">C타입</th>
+                        <th class="ths">D타입</th>
+                        <th class="ths">E타입</th>
                         <th>사용한 열람 횟수</th>
                         <th>잔여 열람 가능 횟수</th>
                     </tr>

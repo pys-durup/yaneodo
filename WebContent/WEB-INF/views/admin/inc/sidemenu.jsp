@@ -84,7 +84,7 @@
                     <div class="panel-heading" role="tab" id="headingNine">
                         <h4 class="panel-title">
                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                                게시판
+                                커뮤니티
                             </a>
                         </h4>
                     </div>
@@ -110,9 +110,9 @@
                     </div>
 
                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_main.do';">
+                       <!--  <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_main.do';">
               메인
-            </div>
+            </div> -->
                         <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_company.do';">
                             기업 회원별
                         </div>
