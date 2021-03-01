@@ -22,7 +22,8 @@
                 <c:if test="${empty email}">
                 	<li><a class="menuLink2" id="login">로그인/회원가입</a></li>
          		</c:if>
-         		
+
+
                 <!-- 로그인 후 -->
                 <c:if test="${not empty email}">
 					<li><a class="menuLink2" id="alarm"><img src="">알람</a></li>

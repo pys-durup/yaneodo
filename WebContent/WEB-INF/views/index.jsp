@@ -16,8 +16,8 @@
 <link rel="stylesheet" href="/yaneodo/css/main/main.css">
 <link rel="stylesheet" href="/yaneodo/css/main/search.css">
 <!-- <link rel="stylesheet" href="/yaneodo/css/member/member-main.css"> -->
-<link rel="stylesheet" href="/yaneodo/css/member/header.css">
-<link rel="stylesheet" href="/yaneodo/css/member/footer.css">
+<link rel="stylesheet" href="/yaneodo/css/member/mainheader.css">
+<link rel="stylesheet" href="/yaneodo/css/member/mainfooter.css">
 <link rel="stylesheet" href="/yaneodo/css/member/login.css">
 
 
@@ -175,24 +175,6 @@
 
         });
 
-		
-        //이메일으로 시작
-        $("#btn1").click(function() {
-            // 비밀번호 입력창 바로 보여주지 않고, 일치하는 이메일 있으면 비밀번호 입력창
-            //일치하는 이메일 없으면 회원가입 페이지로 이동
-            //location.href="register.html"
-            // $("#clogin").hide();
-            // $("#cpassword").show();
-        });
-
-        /* 로그인 */
-        $("#btn2").click(function() {
-            location.href="main.html";
-        });
-
-        $("#cpasswordClose").click(function() {
-            $("#cpassword").hide();
-        });
 
         $("#bSearchClose").click(function() {
             $("#searchBox1").hide();

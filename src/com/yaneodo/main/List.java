@@ -18,19 +18,23 @@ public class List extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		  String searchKey = req.getParameter("searchKey");
-		    
+		  //System.out.println(searchKey); 
+		  
 		  SearchDAO dao = new SearchDAO(); 
 		  
 		  //회사명 검색 -> 기업 리스트 
-		  ArrayList<SearchDTO> cdto = dao.clist(searchKey);
+		  ArrayList<SearchDTO> clist = dao.clist(searchKey);
 		  
 		  //position 검색 -> 직무 리스트 
-		  ArrayList<SearchDTO> jdto = dao.jlist(searchKey);
+		  ArrayList<SearchDTO> jlist = dao.jlist(searchKey);
 		  
-		  req.setAttribute("jdto", jdto); //jobOpeningSeq, companyName, title, job, place, jobPhoto
-		  req.setAttribute("cdto", cdto); //companySeq, companyName, industry, companyPhoto
+		  req.setAttribute("searchKey", searchKey);	  
+		  req.setAttribute("clist", clist); //companySeq, companyName, industry, companyPhoto
+		  req.setAttribute("jlist", jlist); //jobOpeningSeq, companyName, title, job, place, jobPhoto
 
-		
+		  //System.out.println(clist.get(0).getCompanyPhoto());
+		  
+		  
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/main/list.jsp");
 		dispatcher.forward(req, resp);
 

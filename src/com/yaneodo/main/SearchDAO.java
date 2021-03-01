@@ -39,15 +39,15 @@ public class SearchDAO {
 	public ArrayList<SearchDTO> clist(String searchKey) {
 		
 		try {
-			
-			String sql = String.format("select companySeq, companyName, industry, companyPhoto from vwSearch where name like '%%%s%';", searchKey);
+					
+			String sql = String.format("select companySeq, companyName, industry, companyPhoto from vwSearch where companyName like '%%%s%%'", searchKey);
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 
 			ArrayList<SearchDTO> list = new ArrayList<SearchDTO>();
 			
-			if (rs.next()) {
+			while (rs.next()) {
 				
 				SearchDTO dto = new SearchDTO();
 				
@@ -74,14 +74,15 @@ public class SearchDAO {
 		
 		try {
 			
-			String sql = String.format("select jobOpeningSeq, companyName, title, job, place, jobPhoto from vwSearch where title like '%%%s%' or job like '%%%s%';", searchKey, searchKey);
+			String sql = String.format("select jobOpeningSeq, companyName, title, job, place, jobPhoto from vwSearch where title like '%%%s%%' or job like '%%%s%%'", searchKey, searchKey);
+		
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
 
 			ArrayList<SearchDTO> list = new ArrayList<SearchDTO>();
 			
-			if (rs.next()) {
+			while (rs.next()) {
 				
 				SearchDTO dto = new SearchDTO();
 				

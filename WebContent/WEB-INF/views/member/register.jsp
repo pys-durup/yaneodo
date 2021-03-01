@@ -12,8 +12,7 @@
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
 
 <link rel="stylesheet" href="/yaneodo/css/member/register.css">
-<link rel="stylesheet" href="/yaneodo/css/member/header.css">
-<link rel="stylesheet" href="/yaneodo/css/member/footer.css">
+<link rel="stylesheet" href="/yaneodo/css/member/mainheader.css">
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
