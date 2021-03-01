@@ -34,9 +34,10 @@ public class View extends HttpServlet {
 		// 공고 번호의 공고 데이터를 DTO에 담음
 		JobOpeningDTO pdto = pdao.getPositionView(jseq); 
 		
+		
 		// 공고의 태그 리스트를 가져온다
 		ArrayList<String> taglist = pdao.getTagList(pdto.getJobopeningseq());
-		System.out.println(taglist);
+		
 		
 		
 		

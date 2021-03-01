@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 
 <!DOCTYPE html>
 <html>
@@ -47,7 +49,9 @@
 					<span class="label label-default">${tag}</span> 
 				</c:forEach>
 			</div>
-			<div class="content detail">${pdto.description}</div>
+			<div class="content detail">
+				${fn:replace(pdto.description, replaceChar, "<br/>")}
+			</div>
 		</div>
 
 		<div class="section-body">
