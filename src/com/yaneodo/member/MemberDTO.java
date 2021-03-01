@@ -24,6 +24,7 @@ public class MemberDTO {
 	private String major;
 	private String company;
 	private String career;
+	private String introduction;
 	
 	
 	public String getCustomerSeq() {
@@ -139,6 +140,12 @@ public class MemberDTO {
 	}
 	public void setCareer(String career) {
 		this.career = career;
+	}
+	public String getIntroduction() {
+		return introduction;
+	}
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
 	}
 
 }
