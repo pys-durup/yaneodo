@@ -11,6 +11,25 @@ public class JobOpeningDTO {
 	private String place;
 	private String description;
 	private String photo;
+	
+	private String name; // 회사이름
+	private String region; // 회사지역
+	
+	
+	
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getRegion() {
+		return region;
+	}
+	public void setRegion(String region) {
+		this.region = region;
+	}
 	public String getJobopeningseq() {
 		return jobopeningseq;
 	}
