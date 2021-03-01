@@ -27,7 +27,7 @@
 
         <section id="contents">
             <div id="businessManager">
-                <div id="subtitle">기업회원 목록</div>
+                <div id="subtitle">기업회원 승인목록</div>
             </div>
             <div>
                 <table id="businessList">
@@ -41,15 +41,15 @@
                         </tr>
                     </thead>
                     <tbody>
-                    	<c:if test="${list.size() == 1}">
+                    	<c:if test="${list.size() == 0}">
                     	<tr>
                     		<td colspan="5" style="text-align:center;">회원이 없습니다.</td>
                     	</tr>
                     	</c:if>
                     
                     	<c:forEach items="${list}" var="dto">
-                    	<c:if test="${dto.state == 1}">
-                        <tr onclick="location.href='/yaneodo/admin/company/company.do?companyseq=${dto.companySeq}&page=${nowPage}'">
+                    	<c:if test="${dto.state == 0}">
+                        <tr onclick="location.href='/yaneodo/admin/company/companyapprove.do?companyseq=${dto.companySeq}&page=${nowPage}'">
                         	<c:if test="${empty dto.companyPhoto}">
                             	<td class="profile"><img src="/yaneodo/images/admin/company.png" alt="기본" style="width: 200px;"></td>
                             </c:if>

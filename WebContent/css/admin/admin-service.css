@@ -2,14 +2,13 @@
 
 	#pageAll {
 	    width: 1200px;
-	    min-height: 1500px;
 	    margin: 50px auto 0px auto;
 	    background-color: white;
 	}
 
     /* manager-serviceCenter */
     .back-img{
-        background-image: url(../images/sky.jpg);
+        background-image: url(/yaneodo/images/admin/sky.jpg);
         background-position: 0px -200px;
         width: 100%;
         height: 500px;
@@ -36,13 +35,14 @@
     #question li {
         border: 1px solid #CCC;
         list-style: none;
+        padding: 10px 0px;
     }
 
     #question li h3, #question li p  {
         color: #434343;
     }
 
-    #question li h3:hover, #question li p:hover  {
+    #question li h3:hover, #question li a:hover  {
         color: #888;
     }
 

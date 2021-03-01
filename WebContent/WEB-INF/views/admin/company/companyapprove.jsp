@@ -30,6 +30,7 @@
         <section id="contents">
             <div id="subtitle">기업 정보</div>
             <div id="business">
+            	<form method="POST" action="/yaneodo/admin/company/companyapproveok.do">
                 <div><img src="/yaneodo/images/admin/company.png" alt="회사" style="display: block; margin: 10px 10px; margin-right: 30px; width: 400px; height: 250px; float: left;"></div>
                 <div class="state">기&nbsp업&nbsp명&nbsp&nbsp&nbsp&nbsp <span>${companydto.companyName}</span></div>
                 <div class="state">주&nbsp&nbsp&nbsp&nbsp&nbsp소&nbsp&nbsp&nbsp&nbsp <span>${companydto.address}</span></div>
@@ -60,23 +61,16 @@
                 <br>
                 <div class="state">회사/서비스소개</div>
                 <div class="business-state">${companydto.introduction}</div>
-                <br>
-                <c:forEach items="${jobopeningList}" var="jobopeningdto">
-                <div class="business-info">공고</div>
-                <div class="business-date">${jobopeningdto.startDate} ~ ${jobopeningdto.endDate}</div>
-                <div class="state">제목</div>
-                <div class="business-introduce">${jobopeningdto.title}</div>
-                <div class="state">직무</div>
-                <div class="business-introduce">${jobopeningdto.job}</div>
-                <div class="state">장소</div>
-                <div class="business-introduce">${jobopeningdto.place}</div>
-                <div class="state">상세설명</div>
-                <div class="business-introduce">${jobopeningdto.description}</div>
-               	</c:forEach>
+                 
             </div>
             <div>
-                <input type="button" value="목록" class="btn btn-default" onclick="location.href='/yaneodo/admin/company/companylist.do?&page=${page}'">
+                <input type="button" value="목록" class="btn btn-default" onclick="location.href='/yaneodo/admin/company/companyapprovelist.do?&page=${page}'">
+                <input type="submit" value="승인" class="btn btn-primary"> 
+                
+                <input type="hidden" name="companyseq" value="${companydto.companySeq}">
+                <input type="hidden" name="page" value="${page}">
             </div>
+            </form>
         </section>
     </div>
     

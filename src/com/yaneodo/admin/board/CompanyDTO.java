@@ -22,6 +22,7 @@ public class CompanyDTO {
 	private String title;
 	private String startDate;
 	private String endDate;
+	private String job;
 	private String place;
 	private String description;
 	
@@ -144,6 +145,12 @@ public class CompanyDTO {
 	}
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
+	}
+	public String getJob() {
+		return job;
+	}
+	public void setJob(String job) {
+		this.job = job;
 	}
 	public String getPlace() {
 		return place;

@@ -151,4 +151,75 @@ public class CompanyDAO {
 		return null;
 	}
 
+	public ArrayList<CompanyDTO> jobOpening(String seq) {
+		
+		try {
+
+			String sql = String.format("select * from tbljobOpening where companyseq = %s", seq);
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+			
+			ArrayList<CompanyDTO> jobOpeningList = new ArrayList<CompanyDTO>();
+			
+			while (rs.next()) {
+				
+				CompanyDTO dto = new CompanyDTO();
+				
+				dto.setTitle(rs.getString("title"));
+				dto.setStartDate(rs.getString("startdate"));
+				dto.setEndDate(rs.getString("enddate"));
+				dto.setJob(rs.getString("job"));
+				dto.setPlace(rs.getString("place"));
+				dto.setDescription(rs.getString("description"));
+				
+				jobOpeningList.add(dto);
+				
+			}
+			
+			return jobOpeningList;
+
+		} catch (Exception e) {
+			System.out.println("CompanyDAO.resume()");
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	public int editState(CompanyDTO dto) {
+		
+		try {
+
+			String sql = "update tblCompany set state = ? where companyseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getState());
+			pstat.setString(2, dto.getCompanySeq());
+			
+			return pstat.executeUpdate(); //1 or 0
+
+		} catch (Exception e) {
+			System.out.println("CompanyDAO.editState()");
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
