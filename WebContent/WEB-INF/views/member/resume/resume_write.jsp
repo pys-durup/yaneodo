@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="/yaneodo/css/member/member-main.css">
 <link rel="stylesheet" href="/yaneodo/css/member/member-menu.css">
 <link rel="stylesheet" href="/yaneodo/css/member/resume.css">
+
 <style>
 
 </style>
@@ -38,27 +39,32 @@
                         <i class="icon-arrow_bottom_fill"></i>
                     </div> -->
                     <div class="other-btns">
+                    <!-- <a class="btn" href="/yaneodo/member/resume/resume_write.do" download>PDF 다운로드</a>
                         <button class="border-gray btn btn-default" type="button" >
-                            <i class="icon-download"></i>
+                            <i class="icon-download"></i> -->
                         </button>
                     </div>
                 </div>
                 <div class="resume-basic-info" >
                     <div class="resume-basic-header">
                         <div class="resume-input-form-group">
-					<form method="POST" action = "/yaneodo/memeber/resume/resume_editok.do"  enctype="multipart/form-data">
-                            <input class="resume-input resume_title" type="text" maxlength="100" placeholder="이력서 제목(필수)" name="title" value="${dto.orgfileName}" >
+					<form method="GET" action = "/yaneodo/memeber/resume/resumeedit.do" > 
+				
+					 <input type="hidden" id="rseq" name="rseq" value="${dto.resumeSeq}">
+                            <input class="resume-input resume_title" type="text" maxlength="100" placeholder="이력서 제목(필수)" name="title" value="${dto.orgfileName}" required>
                         </div>
                     </div>
                     <div class="resume-input-form-group" >
-                        <input class="resume-input name" type="text" maxlength="100" placeholder="이름(필수)" name="name" value="${dto.name}">
+                        <input class="resume-input name" type="text" maxlength="100" placeholder="이름(필수)" name="name" value="${dto.name}" required>
                     </div>
                     <div class="resume-input-form-group" >
-                        <input class="resume-input email" type="text" maxlength="120" placeholder="이메일(필수)" name="email" value="${dto.email}">
+                        <input class="resume-input email" type="text" maxlength="120" placeholder="이메일(필수)" name="email" value="${dto.email}" required>
                     </div>
-                    <div class="resume-input-form-group"><input class="resume-input mobile" type="text" maxlength="200" placeholder="연락처(필수) ex) 010-0000-0000" name="mobile" value="${dto.phone}">
+                    <div class="resume-input-form-group"><input class="resume-input mobile" type="text" maxlength="200" placeholder="연락처(필수) ex) 010-0000-0000" name="phone" value="${dto.phone}" required>
                     </div>
                 </div>
+            
+                        
                 <div class="resume-about-info">
                     <div class="resume-about-header" >간단 소개글</div>
                     <div class="resume-input-form-group">
@@ -66,6 +72,11 @@
                             <textarea style="height:120px;" name="info" class="resume-input about" maxlength="4000" placeholder="간단한 자기소개를 통해 이력서를 돋보이게 만들어보세요. (5~10줄 권장)">${dto.introduce}</textarea>
                             <textarea class="textarea-clone" readonly="" style="top: 0px; left: 0px; width: 900px; padding: 0px; font-size: 16px; line-height: 22.8571px; font-weight: 400; position: absolute; visibility: hidden; z-index: -9999; height: 0px;">간단한 자기소개를 통해 이력서를 돋보이게 만들어보세요. (3~5줄 권장)</textarea>
                         </div>
+                        <div style="margin-left:900px;">
+                        <button type="submit" class="btn btn-default smbtn" >저장하기</button>
+                        </div>
+                         </form>
+                        
                     </div>
                 </div>
                 <div class="resume-lists" >
@@ -76,7 +87,7 @@
                       
                         <div class="resume-list-body" id="careerBody">
                     	<form method="GET" action="/yaneodo/member/resume/experienceadd.do">
-                         <input type="hidden" id="rseq" name="rseq" value="${dto2.resumeSeq}">
+                         <input type="hidden" id="rseq" name="rseq" value="${dto.resumeSeq}">
                         <c:if test="${exlist.size()==3}">
                             <button class="btn-add btn btn-default" type="submit" id="careerAdd2" disabled>+ 추가</button>
                         </c:if>    
@@ -100,14 +111,16 @@
                             						<div class="period">
                             							<div class="datetime">
                             								<div class="start-time">
-                            									<div class="form-group">
-                            										<input style="border: 0px;"  name="exstartDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${exlist.startdate}">
+                            									<div>
+                            									<input type="hidden" name="exseq" value="${exlist.experienceseq}">
+                            									<input type="hidden" name="rseq" value="${dto.resumeSeq}">
+                            										<input style="border: 0px; width:120px; "  name="exstartDate" type="text"  placeholder="YYYY-MM-DD" class="form-control" value="${exlist.startdate}">
                             									</div>
                             								</div>
                             									<div class="end-time">
-                            										<span class="delimiter">-</span>
-                            										<div class="form-group">
-                            											<input style="border: 0px;" name="exendDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${exlist.enddate}">
+                            										<span class="delimiter" style="margin-left:30px;">~</span>
+                            										<div>
+                            											<input style="border: 0px; width:120px;" name="exendDate" type="text" placeholder="YYYY-MM-DD" class=" form-control" value="${exlist.enddate}">
                             										</div>
                             									</div>
                             								</div>
@@ -121,8 +134,11 @@
                             									</div>
                             								</div>
                             							</div>
+                            							<form method="GET" action = "/yaneodo/memeber/resume/experienceedit.do" > 
                             						<div class="col-sm-9">
                             							<div class="search-input-box resume-input-form-group">
+                            							<input type="hidden" name="exseq" value="${exlist.experienceseq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             								<input type="text" class="resume-input company_name" name="excompany" placeholder="회사명" value="${exlist.company}">
                             							</div>
                             								<div class="resume-input-form-group">
@@ -133,9 +149,13 @@
                             								<textarea style="height: 114px; width: 710px; margin-top:10px" name="exjob" class="resume-input description" placeholder="상세 업무 내용과 성과를 기입해주세요(600자이내)">${exlist.job}</textarea>
                             							</div>
                             						</div>
+                            						 <div style="margin-left:900px;">
+								                        <button type="submit" class="btn btn-default smbtn" >저장하기</button>
+								                       </div> 
+								                       </form>
                             					<form method="GET" action="/yaneodo/member/resume/experiencedelete.do">
                             						 <input type="hidden" name="exseq" value="${exlist.experienceseq}">
-                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             						<button  class="btn-delete btn"><i class="icon-close"></i>
                             						</button>
                             						
@@ -153,7 +173,7 @@
                    
                     <div class="resume-list-body" id="educationBody">  
                      <form method="GET" action="/yaneodo/member/resume/educationadd.do">
-            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+            		<input type="hidden"  name="rseq" value="${dto.resumeSeq}">  
                     <c:if test="${edlist.size()==3}">
                        	<button class="btn-add btn btn-default" type="button" id="educationAdd2" disabled>+ 추가</button>
                     </c:if>    
@@ -170,18 +190,20 @@
                             				</div>
                             				</div>
                             				<div class="career-item clearfix">
+                            				<form method="GET" action = "/yaneodo/memeber/resume/educationedit.do" > 
                             					<div class="col-sm-3">
                             						<div class="period">
                             							<div class="datetime">
                             								<div class="start-time">
-                            									<div class="form-group">
-                            										<input style="border: 0px;"  name="edstartDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${edlist.startdate}">
+                            									<div>
+                            									 <input type="hidden" id="rseq" name="rseq" value="${dto.resumeSeq}">
+                            										<input style="border: 0px; width:120px; "  name="edstartDate" type="text"  placeholder="YYYY-MM-DD" class="form-control"  value="${edlist.startdate}">
                             									</div>
                             								</div>
                             									<div class="end-time">
-                            										<span class="delimiter">-</span>
-                            										<div class="form-group">
-                            											<input style="border: 0px;" name="edendDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${edlist.enddate}">
+                            										<span class="delimiter" style="margin-left:30px;">~</span>
+                            										<div>
+                            											<input style="border: 0px; width:120px;" name="edendDate" type="text" placeholder="YYYY-MM-DD" class=" form-control"  value="${edlist.enddate}">
                             										</div>
                             									</div>
                             								</div>
@@ -197,6 +219,8 @@
                             							</div>
                             						<div class="col-sm-9">
                             							<div class="search-input-box resume-input-form-group">
+                            							<input type="hidden" name="edseq" value="${edlist.educationseq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             								<input type="text" class="resume-input company_name" name="edschool" placeholder="학교명" value="${edlist.schoolname}">
                             							</div>
                             								<div class="resume-input-form-group">
@@ -209,9 +233,13 @@
                             									<input class="resume-input title" type="text" maxlength="255" placeholder="졸업현황(졸업/자퇴/기타)" name="edstate" value="${edlist.state}">
                             								</div>
                             						</div>
+                            						   <div style="margin-left:900px;">
+								                        <button type="submit" class="btn btn-default smbtn" >저장하기</button>
+								                       </div> 
+								                       </form>
                             						<form method="GET" action="/yaneodo/member/resume/educationdelete.do">
                             						 <input type="hidden" name="edseq" value="${edlist.educationseq}">
-                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             						<button  class="btn-delete btn"><i class="icon-close"></i>
                             						</button> 
                             						
@@ -231,7 +259,7 @@
                    
                     <div class="resume-list-body" id="certifiBody">
                     <form method="GET" action="/yaneodo/member/resume/certificateadd.do">
-            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+            		<input type="hidden"  name="rseq" value="${dto.resumeSeq}">  
                     <c:if test="${celist.size()==3}">
                        	<button class="btn-add btn btn-default" type="button" id="certifiAdd2" disabled>+ 추가</button>
                     </c:if>    
@@ -248,12 +276,13 @@
                             				</div>
                             				</div>
                             				<div class="career-item clearfix">
+                            				<form method="GET" action = "/yaneodo/memeber/resume/certificateedit.do" >
                             					<div class="col-sm-3">
                             						<div class="period">
                             							<div class="datetime">
                             								<div class="start-time">
                             									<div class="form-group">
-                            										<input style="border: 0px;"  name="cegetDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${celist.getdate}">
+                            										<input style="border: 0px; width:120px;"  name="cegetDate" type="text"  class="year form-control" placeholder="YYYY-MM-DD" value="${celist.getdate}">
                             									</div>
                             								</div>
                      
@@ -263,6 +292,8 @@
                             							</div>
                             						<div class="col-sm-9">
                             							<div class="search-input-box resume-input-form-group">
+                            							<input type="hidden" name="ceseq" value="${celist.certificateseq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             								<input type="text" class="resume-input company_name" name="cetype" placeholder="자격증명" value="${celist.type}">
                             							</div>
                             								<div class="resume-input-form-group">
@@ -273,9 +304,13 @@
                             								</div>
                             									
                             						</div>
+                            						 <div style="margin-left:900px;">
+								                        <button type="submit" class="btn btn-default smbtn" >저장하기</button>
+								                       </div> 
+								                       </form>
                             						<form method="GET" action="/yaneodo/member/resume/certificatedelete.do">
                             						 <input type="hidden" name="ceseq" value="${celist.certificateseq}">
-                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             						<button  class="btn-delete btn"><i class="icon-close"></i>
                             						</button> 
                             						
@@ -295,7 +330,7 @@
                     </div>
                     <div class="resume-list-body" id="awardBody">
                      <form method="GET" action="/yaneodo/member/resume/awardadd.do">
-            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+            		<input type="hidden"  name="rseq" value="${dto.resumeSeq}">  
                     <c:if test="${awlist.size()==3}">
                        	<button class="btn-add btn btn-default" type="button" id="awardAdd2" disabled>+ 추가</button>
                     </c:if>    
@@ -312,12 +347,13 @@
                             				</div>
                             				</div>
                             				<div class="career-item clearfix">
+                            				<form method="GET" action = "/yaneodo/memeber/resume/awardedit.do" >
                             					<div class="col-sm-3">
                             						<div class="period">
                             							<div class="datetime">
                             								<div class="start-time">
                             									<div class="form-group">
-                            										<input style="border: 0px;"  name="awgetDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${awlist.getdate}">
+                            										<input style="border: 0px; width:120px;"  name="awgetDate" type="text"  class="year form-control" placeholder="YYYY-MM-DD" value="${awlist.getdate}">
                             									</div>
                             								</div>
                      
@@ -327,6 +363,8 @@
                             							</div>
                             						<div class="col-sm-9">
                             							<div class="search-input-box resume-input-form-group">
+                            							<input type="hidden" name="awseq" value="${awlist.awardseq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             								<input type="text" class="resume-input company_name" name="awname" placeholder="수상명" value="${awlist.awardname}">
                             							</div>
                             							<div class="resume-input-form-group">
@@ -334,9 +372,13 @@
                             								</div>
                             									
                             						</div>
+                            						  <div style="margin-left:900px;">
+								                        <button type="submit" class="btn btn-default smbtn" >저장하기</button>
+								                       </div> 
+								                       </form>
                             						<form method="GET" action="/yaneodo/member/resume/awarddelete.do">
                             						 <input type="hidden" name="awseq" value="${awlist.awardseq}">
-                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             						<button  class="btn-delete btn"><i class="icon-close"></i>
                             						</button> 
                             						
@@ -354,7 +396,7 @@
                     </div>
                     <div class="resume-list-body" id="trainingBody">
                      <form method="GET" action="/yaneodo/member/resume/trainingadd.do">
-            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+            		<input type="hidden"  name="rseq" value="${dto.resumeSeq}">  
                     <c:if test="${trlist.size()==3}">
                        	<button class="btn-add btn btn-default" type="button" id="trainingAdd2" disabled>+ 추가</button>
                     </c:if>    
@@ -371,22 +413,28 @@
                             				</div>
                             				</div>
                             				<div class="career-item clearfix">
+                            				
                             					<div class="col-sm-3">
-                            						<div class="period">
+                            						
+                                     				<div class="period">
                             							<div class="datetime">
                             								<div class="start-time">
-                            									<div class="form-group">
-                            										<input style="border: 0px;"  name="trstartDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${trlist.startDate}">
+                            								<form method="GET" action="/yaneodo/member/resume/trainingedit.do">
+                            									<div>
+                            										<input style="border: 0px; width:120px; "  name="trstartDate" type="text"  placeholder="YYYY-MM-DD" class="form-control"  value="${trlist.startDate}">
+                            										
                             									</div>
+                            									
                             								</div>
                             									<div class="end-time">
-                            										<span class="delimiter">-</span>
-                            										<div class="form-group">
-                            											<input style="border: 0px;" name="trendDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${trlist.enddate}">
-                            										</div>
+                            										<span class="delimiter" style="margin-left:30px;">~</span>
+                            										<div>
+                            										
+                            											<input style="border: 0px; width:120px;" name="trendDate" type="text"  placeholder="YYYY-MM-DD" class="form-control"  value="${trlist.enddate}">
+                            										</div>  
                             									</div>
                             								</div>
-                            									<div class="form-group">
+                            								<div class="form-group">
                             										<div class="checkbox">
                             											<label class="">
                             												<input class="selectBtn" type="checkbox" label="현재 진행중" >
@@ -406,22 +454,30 @@
                             							<div class="resume-input-form-group">
                             									<input class="resume-input title" type="text" maxlength="255" placeholder="기관" name="tragency" value="${trlist.agency}">
                             								</div>
-                            							
+                            							</div>
                             						</div>
+                            						   <div style="margin-left:900px;">
+                            						   <input type="hidden" name="trseq" value="${trlist.trainingseq}">
+                            						   <input type="hidden" name="rseq" value="${dto.resumeSeq}">
+								                        <button type="submit" class="btn btn-default smbtn" >저장하기</button>
+								                       </div>
+								                        
+								                     </form>
                             						<form method="GET" action="/yaneodo/member/resume/trainingdelete.do">
                             						 <input type="hidden" name="trseq" value="${trlist.trainingseq}">
-                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             						<button  class="btn-delete btn"><i class="icon-close"></i>
                             						</button> 
                             						
                             						</form>
-                            					</div>
+                            						</div>
+                            					 
                             				</li>
                             			</ul>
                             	</c:forEach>
                             	 </c:if>
                        </div>
-                      
+                    
                 </div>
                 <div class="resume-list activities">
                     <div class="resume-list-header">
@@ -429,7 +485,7 @@
                     </div>
                      <div class="resume-list-body" id="abroadBody">
                      <form method="GET" action="/yaneodo/member/resume/abroadadd.do">
-            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+            		<input type="hidden"  name="rseq" value="${dto.resumeSeq}">  
                     <c:if test="${ablist.size()==3}">
                        	<button class="btn-add btn btn-default" type="button" id="abroadAdd2" disabled>+ 추가</button>
                     </c:if>    
@@ -446,18 +502,19 @@
                             				</div>
                             				</div>
                             				<div class="career-item clearfix">
+                            				<form method="GET" action="/yaneodo/member/resume/abroadedit.do">
                             					<div class="col-sm-3">
                             						<div class="period">
                             							<div class="datetime">
                             								<div class="start-time">
-                            									<div class="form-group">
-                            										<input style="border: 0px;"  name="abstartDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${ablist.startDate}">
+                            									<div>
+                            										<input style="border: 0px; width:120px; "  name="abstartDate" type="text"  placeholder="YYYY-MM-DD" class="form-control"  value="${ablist.startDate}">
                             									</div>
                             								</div>
                             									<div class="end-time">
-                            										<span class="delimiter">-</span>
-                            										<div class="form-group">
-                            											<input style="border: 0px;" name="abendDate" type="date"  class="year form-control" placeholder="YYYY-mm-dd" value="${ablist.endDate}">
+                            										<span class="delimiter" style="margin-left:30px;">~</span>
+                            										<div>
+                            											<input style="border: 0px; width:120px;" name="abendDate" type="text" placeholder="YYYY-MM-DD" class="form-control"  value="${ablist.endDate}">
                             										</div>
                             									</div>
                             								</div>
@@ -483,9 +540,15 @@
                             								</div>
                             							
                             						</div>
+                            						   <div style="margin-left:900px;">
+                            						   <input type="hidden" name="abseq" value="${ablist.abroadseq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
+								                        <button type="submit" class="btn btn-default smbtn" >저장하기</button>
+								                       </div> 
+								                       </form>
                             						<form method="GET" action="/yaneodo/member/resume/abroaddelete.do">
                             						 <input type="hidden" name="abseq" value="${ablist.abroadseq}">
-                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             						<button  class="btn-delete btn"><i class="icon-close"></i>
                             						</button> 
                             						
@@ -503,7 +566,7 @@
                     </div>
                     <div class="resume-list-body" id="languageBody">
                     <form method="GET" action="/yaneodo/member/resume/languageadd.do">
-            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+            		<input type="hidden"  name="rseq" value="${dto.resumeSeq}">  
                     <c:if test="${lalist.size()==3}">
                        	<button class="btn-add btn btn-default" type="button" id="languageAdd2" disabled>+ 추가</button>
                     </c:if>    
@@ -528,7 +591,9 @@
 					                    </div>
 					                    </div>
 					                    <div class="col-sm-9">
+					                   
 					                    <div class="search-input-box resume-input-form-group">
+					                     <form method="GET" action="/yaneodo/member/resume/languageedit.do">
 					                            <input type="text" name="language" class="resume-input company_name" placeholder="언어" value="${lalist.languagetype}">
 					                    </div>
 					                    <div class="resume-input-form-group">
@@ -542,19 +607,25 @@
 					                        
 					                    </div>
 					                </div>
-					                </div>
-					            <form method="GET" action="/yaneodo/member/resume/abroaddelete.do">
+					                       <div style="margin-left:900px;">
+					                       <input type="hidden" name="laseq" value="${lalist.languageseq}">
+                            			<input type="hidden" name="rseq" value="${dto.resumeSeq}">
+								              <button type="submit" class="btn btn-default smbtn" >저장하기</button>
+								          </div> 
+								          </form>
+					            <form method="GET" action="/yaneodo/member/resume/languagedelete.do">
                             	<input type="hidden" name="laseq" value="${lalist.languageseq}">
-                            	<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            	<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             	<button  class="btn-delete btn"><i class="icon-close"></i>
                             	</button> 
                             	</form>
 					        </div>
+					        
 					    </li>
 					</ul>
 					</c:forEach>
                    </c:if>
-					                
+					
                 </div>
                 <div class="resume-list activities">
                     <div class="resume-list-header">
@@ -562,7 +633,7 @@
                     </div>
                     <div class="resume-list-body" id="specialBody">
                        <form method="GET" action="/yaneodo/member/resume/preferenceadd.do">
-            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+            		<input type="hidden"  name="rseq" value="${dto.resumeSeq}">  
                     <c:if test="${prlist.size()==3}">
                        	<button class="btn-add btn btn-default" type="button" id="preferenceAdd2" disabled>+ 추가</button>
                     </c:if>    
@@ -588,6 +659,7 @@
                             									
                             								</div>
                             							</div>
+                            							<form method="GET" action="/yaneodo/member/resume/preferenceedit.do">
                             						<div class="col-sm-9">
                             							<div class="search-input-box resume-input-form-group">
                             								<input type="text" class="resume-input company_name" name="prtype" placeholder="우대사항" value="${prlist.type}">
@@ -597,9 +669,13 @@
                             								</div>
                             									
                             						</div>
+                            						  <div style="margin-left:900px;">
+								                        <button type="submit" class="btn btn-default smbtn" >저장하기</button>
+								                       </div> 
+								                       </form>
                             						<form method="GET" action="/yaneodo/member/resume/preferencedelete.do">
                             						 <input type="hidden" name="prseq" value="${prlist.preferenceseq}">
-                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             						<button  class="btn-delete btn"><i class="icon-close"></i>
                             						</button> 
                             						
@@ -617,7 +693,7 @@
                     </div>
                     <div class="resume-list-body" id="portfolioBody">
                      <form method="GET" action="/yaneodo/member/resume/portfolioadd.do">
-            		<input type="hidden"  name="rseq" value="${dto2.resumeSeq}">  
+            		<input type="hidden"  name="rseq" value="${dto.resumeSeq}">  
                     <c:if test="${polist.size()==2}">
                        	<button class="btn-add btn btn-default" type="button" id="portfolioAdd2" disabled>+ 추가</button>
                     </c:if>    
@@ -637,18 +713,35 @@
                             					<div class="col-sm-3">
                             						
                             							</div>
+                            							<form method="POST" action= "/yaneodo/member/resume/portfolioedit.do" enctype="multipart/form-data">
                             						<div class="col-sm-9">
                             							<div class="search-input-box resume-input-form-group">
                             								<input type="url" class="resume-input company_name" name="pourl" placeholder="http://" value="${polist.url}">
                             							</div>
                             							<div class="resume-input-form-group">
                             									<input class="resume-input title" type="file" maxlength="255"  name="attach" value="${polist.orgfilename}">
+                            									 <c:if test="${not empty polist.orgfilename}">
+												                    <tr>
+												                        <td>
+												                            <span class="glyphicon glyphicon-floppy-disk"></span> <a href="/yaneodo/member/resume/downloadpo.do?filename=${polist.filename}&orgfilename=${polist.orgfilename}&portfolioseq=${polist.portfolioseq}">${polist.orgfilename}</a>
+												                            
+												                        </td>
+												                    </tr>
+												                 </c:if>
                             								</div>
+                            								
+									               
                             									
                             						</div>
-                            						<form method="GET" action="/yaneodo/member/resume/portfoliodelete.do">
+                            						   <div style="margin-left:900px;">
+                            						    <input type="hidden" name="poseq" value="${polist.portfolioseq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
+								                        <button type="submit" class="btn btn-default smbtn" >저장하기</button>
+								                       </div> 
+								                       </form>
+                            						<form method="GET" action="/yaneodo/member/resume/portfoliodelete.do" >
                             						 <input type="hidden" name="poseq" value="${polist.portfolioseq}">
-                            						<input type="hidden" name="rseq" value="${dto2.resumeSeq}">
+                            						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
                             						<button  class="btn-delete btn"><i class="icon-close"></i>
                             						</button> 
                             						
@@ -658,7 +751,7 @@
                             			</ul>
                             	</c:forEach>
                            	 </c:if>
-                           	 
+                     
                     
                 </div>
             </div>
@@ -668,18 +761,18 @@
                         <button class="border-primary btn btn-default" type="button">임시 저장</button>
                     </div> -->
                     <div>
-                        <button class="btn btn-primary" type="submit" >작성 완료</button>
+                        <button class="btn btn-primary" type="submit" onclick="location.href='/yaneodo/member/resume/resume_list.do?seq=${seq}';">작성 완료</button>
                     </div>
                     
                 </div>
             </div>
-              
-        </div>
-          
+                   	 </div>
+       		 </div>
+          </div>
     </div>
-  </form>
-</div>
-</div>
+
+
+
 
 <script>
 

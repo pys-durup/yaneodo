@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	
      <!-- header -->
-     <div id="headerContainer">
+     <div id="headerContainer" style=" z-index:10;">
         <nav id="nav">
             <ul>
                 <li id="logo"><img src="" id="logo">yaneoDO</li>
@@ -27,7 +27,9 @@
                 <c:if test="${not empty email}">
 					<li><a class="menuLink2" id="alarm"><img src="">알람</a></li>
 	                <li style="margin-bottom: -10px;"> 
-	                    <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/man_01.png')"></li>
+	                    <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto">
+	                    <input id="headerPhoto" type="hidden" value="${photo}">
+	                    </li>
 				</c:if>
                    	 
                 <!-- 공통 -->
@@ -66,8 +68,7 @@
     
 
     <script>
-    
-    
+ 
 	/* 로그인/회원가입 버튼 클릭 */
     $("#login").click(function() {
         $("#clogin").show();
@@ -79,7 +80,7 @@
         $("#container").css("opacity", ".7");
     });
 
-    
+    $("#myYaneodo-menu").css("background-image","url('/yaneodo/images/member/"+ $("#headerPhoto").val()+"')");
     
     
     /* 로그인 후 myYaneodo 메뉴 */
@@ -109,6 +110,7 @@
     });
  
 
+    
     $(window).click(function(){
         $("#myMenu-container").hide();
          $("#myYaneodo-menu").removeClass("borderLine");

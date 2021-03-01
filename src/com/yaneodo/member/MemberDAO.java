@@ -205,7 +205,7 @@ public class MemberDAO {
 		
 		try {
 			
-			String sql = "select customerSeq, email, name, nickName, lastJoin from tblCustomer where email = ?";
+			String sql = "select * from tblCustomer where email = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, email);
@@ -217,9 +217,12 @@ public class MemberDAO {
 				
 				dto.setCustomerSeq(rs.getString("customerSeq"));
 				dto.setEmail(rs.getString("email"));
-				dto.setPhoto(rs.getString("name"));
+				dto.setPhoto(rs.getString("photo"));
+				dto.setName(rs.getString("name"));
+				dto.setPhone(rs.getString("phone"));
 				dto.setNickName(rs.getString("nickName"));
 				dto.setLastJoin(rs.getString("lastJoin"));
+				dto.setPassword(rs.getString("password"));
 				
 				return dto;
 			}
@@ -258,6 +261,56 @@ public class MemberDAO {
 		}
 		
 		
+		return 0;
+	}
+
+
+	/***
+	 * 비밀번호 수정 
+	 * @author 혜승
+	 * @param dto
+	 * @return
+	 */
+	public int checkPW(MemberDTO dto) {
+		try {
+			
+			String sql ="update tblCustomer set password=? where customerseq=? and password=?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getNewpw());
+			pstat.setString(2, dto.getCustomerSeq());
+			pstat.setString(3, dto.getPassword());
+			
+			return pstat.executeUpdate();
+
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+
+/***
+ * 회원탈퇴
+ * @author 혜승
+ * @param seq
+ * @return
+ */
+	public int delaccount(String seq) {
+		
+		try {
+			
+			String sql = "update tblCustomer set photo='', name='', nickname='', email='', phone='', birth='', gender='',password='', joindate='', lastjoin='' where customerseq=?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+				
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 		return 0;
 	}
 

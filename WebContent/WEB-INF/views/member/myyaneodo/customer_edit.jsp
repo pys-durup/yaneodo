@@ -24,43 +24,15 @@
 <%@include file="/WEB-INF/views/member/inc/header.jsp" %>
  <section class="container" > 
         <div class="title">프로필</div>
-        <div id="customerInfo" style="height: 640px;">
-            <div id="customer">
-                <dl id="info">
-  					<label for="customerPhoto" type="button" style="margin-top: -50px; margin-bottom: -30px;">
-  					${dto.photo}
-  					    <c:if test="${empty dto.photo}">
-                            <div class="photoPic"" style="background-image: url('/yaneodo/images/member/man_01.png')">a
-                        </c:if> 
-  						<c:if test="${not empty dto.photo}">
-                            <div class="photoPic"" style="background-image: url('/yaneodo/images/member/${dto.photo}')">b
-                         </c:if>
-
-                         
-                            	<div id="cameraIcon"> 
-                                    <span class="glyphicon glyphicon-camera" style="margin-top: 5px;"></span>
-                                </div>
-                            </div>
-                        </label>
-                            <input type="file" id="customerPhoto" style="display: none;">
-                         
-                        <dt id="name">${dto.name}</dt>
-                        <dd id="eamil">${dto.email}</dd>
-                        <dd id="tel">${dto.phone}</dd>
-                    </dl>
-                    <span class="edit">
-                        <a class="editSel" href="/yaneodo/member/myyaneodo/myyaneodo.do">기본정보 수정</a>
-                    </span>
-                </div>
-                
-                <div class="secondMenu">
-                        <a class="mMenus" href="#"><span>원해요</span> <strong>0</strong></a>
-                        <a class="mMenus" href="#"><span>열람</span> <strong>0</strong></a>
-                        <a class="mMenus" href="#"><span>받은 제안</span> <strong>0</strong></a>
-                </div>
-               
-            </div>
-
+<%@include file="/WEB-INF/views/member/inc/mymenu.jsp" %>
+   
+   
+   <script>
+		$("#customerInfo").css("height","640px");
+		$("#editInfo").addClass("editSel");
+		$("#editInfo").removeClass("editInfo");
+		$("#account").css("display","none");
+	</script>
        
 
         <div id="infoEditContainer">
@@ -72,7 +44,7 @@
 		                <label for="name" class="infomations"><h6>이름</h6><input style="width:200px;" id="name" name="name" type="text" autocomplete="off" value="${dto.name}">
 		                </label> 
 		                <label for="nickName" class="infomations"><h6>별명</h6><input style="width:200px;" id="nickName" name="nickName" type="text" autocomplete="off" value="${dto.nickName}">
-		                </label><input type="button" id="btnNick" class="btn btn-default" value="중복확인"><span id="checkNick"></span>
+		               </label> <input type="button" id="btnNick" class="btn btn-default" value="중복확인" style="margin-left:140px;"><span id="checkNick" style="padding-left:15px;"></span>
 		                <label for="birth" class="infomations"><h6>생년월일</h6><input style="width:200px;" id="birth" name="birth" type="date" autocomplete="off" value="${dto.birth}">
 		                </label>
 		                <div class="infomations"><h6>연락처</h6><div class="MobileInput-body">
@@ -81,7 +53,7 @@
 		                    </div>
 		                </div>
 		                <div class="footerButton">
-		                    <button id="btnSubmit" type="submit" >확인</button>
+		                    <button id="btnSubmit" type="submit" style="background-color:#DDDDDD">확인</button>
 		             </div>
                 </form>
             </div>

@@ -2,13 +2,13 @@ package com.yaneodo.member.resume;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
@@ -154,7 +154,7 @@ public class Resume_editOk extends HttpServlet {
 			  dao.resumeEdit(dto);
 			
 			ArrayList<ExperienceDTO> exlist = new ArrayList<ExperienceDTO>();
-			
+			HashMap<String, String> map = new HashMap<String,String>();
 					
 			for( ExperienceDTO exdto : exlist ) {
 				

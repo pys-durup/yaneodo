@@ -32,6 +32,7 @@ public class Resume_list extends HttpServlet {
 		
 		
 		req.setAttribute("list", list);
+		req.setAttribute("rseq", dto2.getResumeSeq());
 		req.setAttribute("name", dto2.getName());
 		req.setAttribute("email",dto2.getEmail());
 		req.setAttribute("phone", dto2.getPhone());
