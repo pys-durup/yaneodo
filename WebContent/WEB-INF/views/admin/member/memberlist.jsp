@@ -62,7 +62,7 @@
                             	<td class="profile"><img src="/yaneodo/images/admin/user.png" alt="기본" style="width: 80px; height: 80px;"></td>
                             </c:if>
                             <c:if test="${dto.photo ne 'null'}">
-                            	<td class="profile"><img src="/yaneodo/images/admin/${dto.photo}" alt="${dto.photo}"></td>
+                            	<td class="profile"><img src="/yaneodo/images/admin/${dto.photo}" alt="${dto.photo}" style="width: 80px; height: 80px;"></td>
                             </c:if>
                             <td class="name">${dto.name}</td>
                             <td class="nick">${dto.nickname}</td>
