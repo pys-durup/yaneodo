@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/admin/company/companylist.do")
-public class CompanyList extends HttpServlet {
+@WebServlet("/admin/company/companyapprovelist.do")
+public class CompanyApproveList extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -112,7 +112,7 @@ public class CompanyList extends HttpServlet {
 		req.setAttribute("pagebar", pagebar);
 		req.setAttribute("nowPage", nowPage);
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/company/companylist.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/company/companyapprovelist.jsp");
 		dispatcher.forward(req, resp);
 
 	}
