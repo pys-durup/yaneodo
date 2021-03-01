@@ -152,6 +152,95 @@ public class PositionDAO {
 		
 		return null;
 	}
+
+	/**
+	 * 태그의 카테고리 목록정보를 반환한다
+	 * @return
+	 */
+	public ArrayList<TagCategoryDTO> listTagCategory() {
+		
+		try {
+			
+			String sql = "select * from tblTagCategory";
+			
+			pstat = conn.prepareStatement(sql);
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<TagCategoryDTO> list = new ArrayList<TagCategoryDTO>();
+			
+			while (rs.next()) {
+				TagCategoryDTO dto = new TagCategoryDTO();
+				
+				dto.setTagcategoryseq(rs.getString("tagcategoryseq"));
+				dto.setTagcategoryname(rs.getString("tagcategoryname"));
+				
+				list.add(dto);
+			}
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+	
+	/**
+	 * 태그 카테고리를 매개변수로 받아서 해당 카테고리의 태그 리스트를 리턴한다
+	 * @param tagcate 태그 카테고리 번호
+	 * @return 태그 리스트
+	 */
+	public ArrayList<TagDTO> getCateTagList(String tagcate) {
+		
+		try {
+			
+			String sql = "select * from tblTag where tagCategorySeq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, tagcate);
+			
+			rs = pstat.executeQuery();
+			
+			ArrayList<TagDTO> list = new ArrayList<TagDTO>();
+			
+			while (rs.next()) {
+				TagDTO dto = new TagDTO();
+				
+				dto.setTagcategoryseq(rs.getString("tagcategoryseq"));
+				dto.setTagseq(rs.getString("tagseq"));
+				dto.setTagname(rs.getString("tagname"));
+				
+				list.add(dto);				
+			}
+			
+			return list;
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return null;
+	}
+
+	/**
+	 * 기업 모집 공고를 등록하는 메서드
+	 * @param dto
+	 */
+	public void AddPosition(JobOpeningDTO dto) {
+		
+		try {
+			
+			String sql = "";
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
 }
 
 

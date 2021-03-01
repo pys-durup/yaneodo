@@ -1,6 +1,7 @@
 package com.yaneodo.company.position;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,6 +26,7 @@ public class AddOk extends HttpServlet {
 		String tempsession = "1"; //기업회원 번호
 		
 		String title = "";
+		String enddate = "";
 		String image = "";
 		String job = "";
 		String[] tag;
@@ -43,6 +45,7 @@ public class AddOk extends HttpServlet {
 
 			
 			title = multi.getParameter("title");
+			enddate = multi.getParameter("enddate");
 			job = multi.getParameter("job");
 			tag = multi.getParameterValues("tag");
 			place = multi.getParameter("place");
@@ -62,10 +65,47 @@ public class AddOk extends HttpServlet {
 		}
 		
 		
+		JobOpeningDTO dto = new JobOpeningDTO();
+		PositionDAO dao = new PositionDAO();
+		
+		dto.setTitle(title);
+		dto.setEnddate(enddate);
+		dto.setPhoto(image);
+		dto.setJob(job);
+		dto.setPlace(place);
+		dto.setDescription(description);
 		
 		
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/company/position/addok.jsp");
-		dispatcher.forward(req, resp);
+		// 공고 DB에 등록
+		dao.AddPosition();
+		
+		
+		// 태그 DB에 등록
+		
+		
+		int result = 1;
+		
+		
+		if (result == 1) {
+			// 성공
+			resp.sendRedirect("/yaneodo/company/position/list.do");
+		} else {
+			// 실패 -> 경고 + 뒤로가기
+			PrintWriter writer = resp.getWriter();
+
+			writer.print("<html><body>");
+			writer.print("<script>");
+			writer.print("alert('failed');");
+			writer.print("history.back();");
+			writer.print("</script>");
+			writer.print("</body></html>");
+
+			writer.close();
+
+		}
+		
+		
+
 	}
 
 }

@@ -20,14 +20,17 @@ public class Add extends HttpServlet {
 
 		
 		//1. DB 접속 Select 로 
-		MatchDAO dao = new MatchDAO();
+		MatchDAO mdao = new MatchDAO();
+		PositionDAO pdao = new PositionDAO();
 		
-		ArrayList<String> jlist = dao.listJob(); // 직무목록
+		ArrayList<String> jlist = mdao.listJob(); // 직무목록
 		
+		ArrayList<TagCategoryDTO> tclist = pdao.listTagCategory(); //태그 카테고리 목록
 		
 		
 		//2. jsp 페이지에 리턴
 		req.setAttribute("jlist", jlist);
+		req.setAttribute("tclist", tclist);
 		
 		
 		

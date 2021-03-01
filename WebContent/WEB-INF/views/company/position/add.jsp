@@ -73,8 +73,8 @@
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-9 tag">
-							<span class="label label-primary">#선택<span
+						<div id="seleted-result" class="col-md-9">
+<!-- 							<span class="label label-primary">#선택<span
 								class="glyphicon glyphicon-remove remove"></span></span> <span
 								class="label label-primary">#선택<span
 								class="glyphicon glyphicon-remove remove"></span></span> <span
@@ -83,13 +83,14 @@
 								class="label label-primary">#선택<span
 								class="glyphicon glyphicon-remove remove"></span></span> <span
 								class="label label-primary">#선택<span
-								class="glyphicon glyphicon-remove remove"></span></span>
+								class="glyphicon glyphicon-remove remove"></span></span> -->
 						</div>
-
-						<input type="hidden" name="tag" value="#태그명1"> <input
-							type="hidden" name="tag" value="#태그명2"> <input
-							type="hidden" name="tag" value="#태그명3"> <input
-							type="hidden" name="tag" value="#태그명4">
+						<div id="selectd-result-data">
+						<input type="hidden" name="tag" value="#태그명1"> 
+						<input type="hidden" name="tag" value="#태그명2"> 
+						<input type="hidden" name="tag" value="#태그명3"> 
+						<input type="hidden" name="tag" value="#태그명4">
+						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-2 title">마감일</div>
@@ -104,14 +105,14 @@
 							<input type="text" class="form-control" id="sample6_postcode" placeholder="우편번호" style="background-color: white;" disabled > 
 							
 						</div>
-						<div calss="col-md-2">
+						<div class="col-md-2">
 							<input type="button" class="btn btn-default" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br> 
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-md-2 title" >근무 지역</div>
 						<div class="col-md-6 content">
-							<input type="text" class="form-control" id="sample6_address" name="place" placeholder="주소" style="background-color: white;" disabled ><br>
+							<input type="text" class="form-control" id="sample6_address" name="place" placeholder="주소" style="background-color: white;" ><br>
 						</div>
 					</div>
 					<div class="row">
@@ -157,19 +158,20 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-md-5 input-group search">
-							<input type="text" class="form-control"
-								placeholder="검색할 태그명을 입력하세요" aria-describedby="basic-addon2"
-								id="search" name="search" required> <span
-								class="input-group-addon" style="cursor: pointer;"
-								id="basic-addon2"><span
-								class="glyphicon glyphicon-search"></span></span>
+						<div class="title">태그 카테고리</div>
+						<div class="col-md-6">
+						<select class="form-control" id="tagcate" name="tagcate">
+							<c:forEach items="${tclist}" var="tcdto">
+								<option value="${tcdto.tagcategoryseq}">${tcdto.tagcategoryname}</option>
+							</c:forEach>
+						</select>
 						</div>
 					</div>
 					<div class="row">
-						<div class="search-result">
-							<div class="title">검색 결과</div>
-							<span class="label label-primary">#칼퇴보장</span> <span
+						<div class="title">검색 결과</div>
+						<div id="search-result" class="search-result">
+							<!-- 검색 결과도 동적으로 표시해야 한다 -->
+<!-- 							<span class="label label-primary">#칼퇴보장</span> <span
 								class="label label-primary">#간식</span> <span
 								class="label label-primary">#커피</span> <span
 								class="label label-primary">#50명이내</span> <span
@@ -177,40 +179,21 @@
 								class="label label-primary">#중식</span> <span
 								class="label label-primary">#이벤트</span> <span
 								class="label label-primary">#태그입니다1</span> <span
-								class="label label-primary">#태그입니다2</span>
+								class="label label-primary">#태그입니다2</span> -->
 						</div>
 					</div>
 					<div class="row">
 						<div class="title">선택한 태그(최대 10개)</div>
-						<div class="seleted-tag">
-							<span class="label label-primary">#선택명<sapn
-									class="glyphicon glyphicon-remove remove"> </sapn></span> <span
-								class="label label-primary">#선택태<sapn
-									class="glyphicon glyphicon-remove remove"> </sapn></span> <span
-								class="label label-primary">#선택<sapn
-									class="glyphicon glyphicon-remove remove"></sapn>
-							</span> <span class="label label-primary">#선택태그<sapn
-									class="glyphicon glyphicon-remove remove"> </sapn></span> <span
-								class="label label-primary">#선택태그명<sapn
-									class="glyphicon glyphicon-remove remove"> </sapn></span> <span
-								class="label label-primary">#선택태그<sapn
-									class="glyphicon glyphicon-remove remove"> </sapn></span> <span
-								class="label label-primary">#선택태<sapn
-									class="glyphicon glyphicon-remove remove"> </sapn></span> <span
-								class="label label-primary">#선택<sapn
-									class="glyphicon glyphicon-remove remove"></sapn>
-							</span> <span class="label label-primary">#선택태<sapn
-									class="glyphicon glyphicon-remove remove"> </sapn></span> <span
-								class="label label-primary">#선택태그<sapn
-									class="glyphicon glyphicon-remove remove"> </sapn></span>
-
+						<div id="seleted-tag" class="seleted-tag">
+<!-- 							<span class="label label-primary">#선택명<sapn
+									class="glyphicon glyphicon-remove remove"></sapn></span> -->
 						</div>
 					</div>
 
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-					<button type="button" class="btn btn-primary">등록완료</button>
+					<button type="button" class="btn btn-primary" id="btnAddTag">등록완료</button>
 				</div>
 			</div>
 			<!-- /.modal-content -->
@@ -307,6 +290,128 @@
 				}
 			}).open();
 		}
+		
+		
+		$("#addTag").on('show.bs.modal', function (e) {
+			
+			// 초기화
+			$("#seleted-tag").html('');
+			$("#seleted-tag").append($("#seleted-result").html());
+			
+			
+			// 카테고리 변경시 카테고리에 맞는 태그를 불러온다
+			$("#tagcate").on('change', function(e) {
+				//alert($("#tagcate").val());
+				
+				$.ajax({
+		        	type: "GET",
+		        	url: "/yaneodo/company/position/tagdata.do",
+		        	dataType: "JSON",
+		        	data: "tagcate=" + $("#tagcate").val(),
+		        	success: function(result) {
+		        		console.log(result);
+		        		
+		        		// 초기화
+						$("#search-result").html(""); 
+		        		
+		        		//<span class="label label-primary">#칼퇴보장</span>
+		        		
+						$(result).each(function(index, item) {
+							
+							let temp = "";
+							
+							temp += "<span class='label label-primary tagitem'";
+							temp += "data-value=" + item.tagname;
+							temp += ">";
+							temp += item.tagname;
+							temp += "</span>";
+							
+							console.log(temp);
+							
+							$("#search-result").append(temp);
+						});
+		        		
+		        	},
+		        	error: function(a,b,c) {
+		        		console.log(a,b,c);
+		        	}
+		        })
+				
+			});
+			
+			
+			// 등록하기 버튼을 눌렀을때
+			$("#btnAddTag").on('click', function(e) {
+				console.log(e);
+				$("#seleted-result").html($("#seleted-tag").html());
+				$('#addTag').modal('hide');
+			});
+			
+			
+			
+		});
+		
+		
+		// 검색 결과의 태그를 선택했을때
+		$(document).on("click",".tagitem",function(e){ 
+			
+			//console.log(e);
+			//console.log(e.target);
+			//console.log(this);
+			//console.log(e.currentTarget);
+			
+			console.log($(this).attr('selected'));
+			
+			if ($(this).attr('selected') == 'selected') {
+				return;
+			}
+			
+			 
+			
+			
+
+			console.log($(this).attr('data-value'));
+			
+			let selected = "";
+			
+			selected += "<span class='label label-primary' name='tag'";
+			selected += "data-value=" + $(this).attr('data-value');
+			selected += ">";
+			selected += $(this).html();
+			selected += "<sapn class='glyphicon glyphicon-remove remove'></sapn></span>";
+			
+			
+			// <input type="hidden" name="tag" value="#태그명1">
+			let data = "";
+			
+			data += "<input type='hidden' name='tag' value=";
+			data += $(this).attr('data-value');
+			data += ">";
+			
+		
+			// 선택한 태그에 추가
+			$("#seleted-tag").append(selected);
+			$("#seleted-tag").append(data);
+			$(this).attr('selected', true);
+			
+		}); 
+		
+		// 선택된 태그의 x 표시를 눌렀을때 제거
+		$(document).on("click",".remove",function(e){ 
+			
+			let temp = $(this).parent().attr('data-value');
+			//console.log(temp);
+		
+			//console.log($(this).parent());
+			//$("#seleted-tag span[data-value="+temp+"]").attr('selected', false);
+			console.log($("#search-result").children("span[data-value='"+temp+"']"));
+			$("#search-result").children("span[data-value='"+temp+"']").attr('selected', false);
+			
+			$(this).parent().next().detach();
+			$(this).parent().detach();
+			
+		}); 
+		
 		
 	</script>
 </body>
