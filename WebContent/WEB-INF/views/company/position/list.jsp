@@ -53,7 +53,7 @@
 						<div class="thumbnail position-item">
 							<div onclick="location.href='/yaneodo/company/position/view.do?jseq=${dto.jobopeningseq}'">
 								<div style="padding: 10px">
-									<img src="/yaneodo/images/company/matchup_image.jpg" alt="...">
+									<img src="/yaneodo/files/${dto.photo}" alt="...">
 								</div>
 								<div class="caption">
 									<h3>${dto.title }</h3>
