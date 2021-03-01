@@ -78,6 +78,11 @@
 
 </head>
 <body>
+
+
+
+
+
 	    <div id=container>
 
         <div id="top">
@@ -86,12 +91,37 @@
         </div>
         <div style="clear:both;"></div>
         <div id="core">
+        
+        
             <div>
                 <span>문제설명</span>
-                <span>정답입력</span>
+                
+                
             </div>
-            <div id="left"><textarea class="form-control" id="qcontent" placeholder="문제를 입력하세요" name="qcontent" style="border:0px;outline:none; width:540px; height: 594px;resize: none;"required ></textarea> </div>
-            <div id="right"><textarea class="form-control" id="acontent" placeholder="코드를 입력하세요" name="acontent" style="border:0px;outline:none; width:534px; height: 594px;resize: none;"required ></textarea></div>
+            <div id="left"><textarea class="form-control" id="content" placeholder="문제를 입력하세요" name="content" style="border:0px;outline:none; width:540px; height: 600px;resize: none;"required >ANIMAL_INS 테이블은 동물 보호소에 들어온 동물의 정보를 담은 테이블입니다. ANIMAL_INS 테이블 구조는 다음과 같으며, ANIMAL_ID, ANIMAL_TYPE, DATETIME, INTAKE_CONDITION, NAME, SEX_UPON_INTAKE는 각각 동물의 아이디, 생물 종, 보호 시작일, 보호 시작 시 상태, 이름, 성별 및 중성화 여부를 나타냅니다.
+
+
+
+
+
+
+
+
+
+                동물 보호소에 들어온 모든 동물의 정보를 ANIMAL_ID순으로 조회하는 SQL문을 작성해주세요. SQL을 실행하면 다음과 같이 출력되어야 합니다.
+                
+                </textarea> </div>
+            <div id="right">
+                <div id="rightUp">
+                    <div id="uptext" style="border-bottom: 3px solid #ccc; ">코드</div>
+                    <textarea class="form-control" id="qcontent" placeholder="코드를 입력하세요" name="qcontent" style="border:0px;outline:none; width:540px; height: 284px;resize: none; border-bottom: 3px solid #ccc;" required ></textarea>
+                </div>
+                <div id="rightDown">
+                    <div id="downtext" style="border-bottom: 3px solid #ccc; ">결과</div>
+                    <div class="form-control" id="acontent" style="border:0px;outline:none; width:540px; height: 255px; resize: none;" >실행 결과가 여기에 표시됩니다.</div>
+                </div>
+                
+            </div>
             
         </div>
         <div style="clear:both;"></div>
@@ -99,8 +129,8 @@
         
         <div id="btns">
             <form action="">
-                <input type="button" id="next" name="next" value="돌아가기" class="btn btn-primary" onclick="location.href='/yaneodo/admin/codingtest/codingtestadd.do';">
-                <input type="button" id="regist" name="regist" value="등록하기" class="btn btn-primary"onclick="location.href='project_admin_codingtest.html';">
+                <input type="button" id="next" name="next" value="저장하기" class="btn btn-primary" onclick="location.href='project_admin_codingtest_add.html';">
+                <input type="button" id="regist" name="regist" value="실행하기" class="btn btn-primary"onclick="location.href='project_admin_codingtest.html';">
             </form>
 
         </div>
@@ -109,15 +139,6 @@
 
 	<script>
         
-	  //$("#list1").sortable();
-
-	  
-
-    
-      
-
-
-    
     </script>
 </body>
 </html>

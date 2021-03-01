@@ -29,11 +29,15 @@
 	
 	<div id = "outline">
 	
+	
+	
 			<div id="leftSide" style="float:left; background-color: white;">
 			<%@include file="/WEB-INF/views/admin/inc/sidemenu.jsp" %>
 			</div>
 		
         <div id="content">
+        
+        <div id="jobtype">매칭 관리</div>
             <form action="" id="search">
                 <input type="text" class="searchbar" placeholder=" 이름" style="display:none;">
                 <input type="button" value="검색" class="searchbar" style="display:none;">
@@ -42,21 +46,21 @@
             <table id="tbl">
                 <thead>
                     <tr>
-                        <th>순서</th>
-                        <th>이름</th>
-                        <th>사용한 열람 횟수</th>
-                        <th>면접제안</th>
-                        <th>면접성사</th>
-                        <th>진행중</th>
-                        <th>채용</th>
-                        <th>채용률</th>
+                        <th id="th1">순서</th>
+                        <th id="th2">이름</th>
+                        <th >사용한 열람 횟수</th>
+                        <th class="ths">면접제안</th>
+                        <th class="ths">면접성사</th>
+                        <th class="ths">진행중</th>
+                        <th class="ths">채용</th>
+                        <th class="ths">채용률</th>
                     </tr>
                 </thead>
                 <tbody id="tbd">
                 <c:forEach items="${list}" var="dto">
                     <tr>
                         <td>${dto.seq}</td>
-                        <td class="getname">${dto.name}</td>
+                        <td class="getname" id="${dto.seq}">${dto.name}</td>
                         <c:choose>
 						<c:when test="${empty dto.read}"> 
 	                        <td>0</td>
@@ -102,7 +106,7 @@
 	                        <td>0%</td>
 	                    </c:when>
 	                    <c:otherwise>
-	                    <td>${(dto.success/dto.suggest)}%</td>	                    
+	                    <td>${(dto.success/dto.suggest)*100}%</td>	                    
 	                    </c:otherwise>
 	                    </c:choose>
                        
@@ -162,6 +166,7 @@
             
             forinfo.appendChild(box);
             box.innerHTML = "<a href='http://www.naver.com'>면접제안 회원보기</a>";
+            //alert(event.srcElement.id);
             
             flag = true;
             //alert(flag);

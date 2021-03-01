@@ -26,12 +26,29 @@
             height: 40px;
             text-align: center;
             margin : 90px auto;
+            /* border : 2px solid black; */
         }
         
         th, td { 
             border-bottom: 2px solid #ccc;
-            text-align: center;            
+            text-align: center;
+                        
         }
+        
+        #tbl th {
+	        background-color : #8A2BE2;
+	        color : white;
+        }
+        
+        #tbl td {
+            border-bottom : 1px solid black;
+        	
+        }
+        #tbl tr {
+            border-left : 1px solid black;
+            border-right : 1px solid black;
+        }
+        
 
         #dateSelect div, #dateSelect input {
             float : right;
@@ -73,7 +90,7 @@
 			<%@include file="/WEB-INF/views/admin/inc/sidemenu.jsp" %>
 			</div>
 		
-			         <div id="content">
+			<div id="content">
 
             <div id="dateSelect">
                 
@@ -81,7 +98,7 @@
                 <div>날짜 선택 : </div> 
             </div>
 
-            <table id=tbl>
+            <table id=tbl class="border">
                 <thead>
                     <tr>
                         <th>기간</th>
@@ -95,7 +112,7 @@
                 </thead>
                 <tbody id="tbd">
                     <tr>
-                        <td>오늘</td>
+                        <td>Today</td>
                         <td> ${dto.a}</td>
                         <td> ${dto.b}</td>
                         <td> ${dto.c}</td>
@@ -104,7 +121,7 @@
                         <td id="tsum"></td>
                     </tr>
                     <tr>
-                        <td>한주</td>
+                        <td>Week</td>
                         <td> ${dtoweek.a}</td>
                         <td> ${dtoweek.b}</td>
                         <td> ${dtoweek.c}</td>
@@ -113,7 +130,7 @@
                         <td id="wsum"></td>
                     </tr>
                     <tr>
-                        <td>한달</td>
+                        <td>Month</td>
                         <td> ${dtomonth.a}</td>
                         <td>${dtomonth.b}</td>
                         <td>${dtomonth.c}</td>
@@ -124,18 +141,32 @@
                 </tbody>
             </table>
 
-             <div id="chart1"></div>
+             <div id="chart1" style="border:1px solid #999;"></div>
   
   <script type="text/javascript">
+  
+  	let m;
+	m = ${pickdate}+"";
+	
+	let d;
+
+	if ( m == null ||  m =="" ) {
+		d = new Date().toISOString().substring(0, 10);
+	} else {			
+		d = '${pickdate}';
+	}
+  
+  
+  
     Highcharts.chart('chart1', {
         chart: {
             type: 'bar'
         },
         title: {
-            text: '오늘'
+            text: d
         },
         xAxis: {
-            categories: ['오늘', '한주', '한달'],
+            categories: ['Today', 'Week', 'Month'],
             title: {
                 text: null
             }
@@ -205,8 +236,7 @@
 	</div>
 	
 <script>
-		let m;
-		m = ${pickdate}+"";
+
 
 		if ( m == null ||  m =="" ) {
 			document.getElementById("datePicker").value = new Date().toISOString().substring(0, 10);
