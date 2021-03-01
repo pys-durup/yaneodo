@@ -145,9 +145,9 @@
         }
 
  
-        #box2{
-            height: 400px;
-            margin-top: 0px;
+     #box2 {
+            height: auto;
+            /* margin-top: 30px; */
             padding: 20px 20px;
         }
 
@@ -159,37 +159,83 @@
         }
 
         .form-subtitle {
-      
+            font-size: 1.1em;
             margin: 10px 0px;
+            display: inline-block;
+            width: 150px;
+            float: left;
+
+        }
+
+        #selResume {
+            width: 150px;
+            margin: 10px 0;
+           
         }
 
         .item {
-            margin-left: 30px;
-            margin-bottom: 10px;
+            text-align: center;
+            cursor:default;
+            
         }
         
         .underline-box {
+            margin-top: 10px;
+            margin-right:10px;
             display: inline-block;
-            border-bottom: 1px solid #444;
-            width : 100px;
+            border-bottom: 1px solid #CCC;
+            min-width : 100px;
             text-align: center;
+            padding-bottom: 2px;
+            
         }
 
 
         #box3 {
             padding: 20px 20px;
+     
             height: auto;
-            margin: 30px 0px;
+  
+            margin: 20px 0px;
      
         }
 
         #box4 {
             padding: 20px 20px;
+
             height: auto;
-            margin-bottom: 30px;
+            
+            margin: 20px 0px;
           
         }
 
+        .btn-default {
+            font-size: 15px;
+        }
+        
+        input {
+        	font-size: 15px;
+        }
+        
+        
+    	.skill {
+            padding: 5px 10px;
+            margin: 10px 5px;
+            border: 1px solid #CCC;
+            color: #999;
+            background-color: white;
+        }
+
+        .skill-selected {
+            background-color: #CCC;
+            border: 1px solid #CCC;
+            color: #666;
+        }
+        
+        button:focus {
+        	outline: none;
+        }
+        
 
 
  
@@ -261,31 +307,32 @@
          
 			<form method="POST" action="/yaneodo/member/profile/editok.do">
 
-            <div id="box2" class="rightbox">
-            
-                <div class="form-title">학교·직장 등록</div>
+             <div id="box2" class="rightbox">
 
-                
-                <div class="form-subtitle">학교</div>
-                <input type="text" placeholder="학교입력"  class="form-control" name="school" value="${dto.school }">
-                 <input type="text" placeholder="전공입력"  class="form-control"  name="major" value="${dto.major }">  
+                   <div class="form-title">학교·직장 등록</div>
+                   
+                   <div class="form-subtitle">학교</div>
+                       <div class="underline-box">
+                       <input type="text" class="item" placeholder="학교 미입력" name="school" value="${pdto.school }" >
+                       </div>
+                       <div class="underline-box">
+                       <input type="text" class="item" placeholder="전공 미입력" name="major" value="${pdto.major }">
+                       </div>
+                       <div style="clear: both;"></div>  
+                       
+                   <div class="form-subtitle">직장</div>
+                       <div class="underline-box">
+                           <input type="text" class="item" placeholder="직장 미입력" name="company" value="${pdto.company}">
+                       </div>
+                       <div style="clear: both;"></div>  
 
+                   <div class="form-subtitle" style="display:block; width:100%; margin-top:20px;">간단소개글</div>
+                   <div style="color:#999; font-size:14px;">직무 내용, 경험, 목표 등을 추가해서 더욱 멋진 소개글을 작성해보세요.</div>
+                       <div class=item> 
+                           <textarea class="form-control" style="height:100px" placeholder="간단 소개글을 작성하세요." name="introduction">${pdto.introduction }</textarea>
+                       </div>
 
-                <div class="form-subtitle">직장</div>
-                <input type="text" placeholder="직장입력"  class="form-control" name="company" value="${dto.company }">
-                
-
-                <!-- <select class="item">
-                    <option>이력서1</option>
-                </select> -->
-                    
-
-
-                <div class="form-subtitle">간단소개글</div>
-                <span style="color:#999; font-size:14px;">직무 내용, 경험, 목표 등을 추가해서 더욱 멋진 소개글을 작성해보세요.</span>
-                <textarea class="form-control" style="height:100px; resize: none;" placeholder="간단 소개글을 작성하세요." ></textarea>
-			
-            </div>
+               </div>
 	
 
             <div id="box3" class="rightbox">
@@ -295,29 +342,29 @@
                 <div class="form-subtitle">직군</div>
                 <select class="form-control">
                     <option>개발</option>
-                    <option>기타</option>
                 </select>
                
                 <div class="form-subtitle">직무</div>
-                <select class="form-control">
-                    <option>웹개발자</option>
-                    <option>서버개발자</option>
-                    <option>프론트엔드개발자</option>
+                <select name="selJobtype" class="form-control">
+                
+	             	<c:forEach items="${jlist}" var="jdto">
+	                    <option value="${jdto.seq}">${jdto.jobtype}</option>
+	             	</c:forEach>
                 </select>
             
                 <div class="form-subtitle">경력</div>
-                <select class="form-control">
-                    <option>신입</option>
-                    <option>1년</option>
-                    <option>2년</option>
-                    <option>3년</option>
-                    <option>4년</option>
-                    <option>5년</option>
-                    <option>6년</option>
-                    <option>7년</option>
-                    <option>8년</option>
-                    <option>9년</option>
-                    <option>10년이상</option>
+                <select name="selCareer" class="form-control">
+                    <option value="0">신입</option>
+                    <option value="1">1년</option>
+                    <option value="2">2년</option>
+                    <option value="3">3년</option>
+                    <option value="4">4년</option>
+                    <option value="5">5년</option>
+                    <option value="6">6년</option>
+                    <option value="7">7년</option>
+                    <option value="8">8년</option>
+                    <option value="9">9년</option>
+                    <option value="10">10년이상</option>
                 </select>
             
             </div>
@@ -330,12 +377,14 @@
                 <div class="form-subtitle">현재 연봉</div>
                 <input type="text" placeholder="" class="form-control">
                
-                <div class="form-subtitle">스킬</div>
-                <select class="form-control">
-                    <option>java</option>
-                    <option>javascript</option>
-                    
-                </select>
+                <div class="form-subtitle" style="display:block; width:100%;">스킬</div>
+                
+               <div>
+              		<c:forEach items="${slist}" var="sdto">
+                    <button type="button" class="skill" name="${sdto.skillSeq}">${sdto.languageName}</button>
+                   
+               		</c:forEach>
+               </div>
             
        
             </div>
@@ -343,26 +392,28 @@
             <div style="clear: both;"></div>   
 
          
+			<input type="hidden" name="customerSeq" value="${pdto.customerSeq }">
 			<button type="submit" class="btn btn-primary" style="float: right;" >작성완료</button>
 			
-			<input type="hidden" name="customerSeq" value="${dto.customerSeq }">
 			</form>
+			
+	</div>
 
     </section>
 
 
-    
     <script>
 
-    var btn1 = document.getElementById("btn-school");
-    var child;
 
-    btn1.onclick = function() {
+      $(".skill").click(function() {
 
-        child = window.open("p02-1_school.html", "child", "width=400, height=300, left=100, top=100");
+          $(this).toggleClass("skill-selected");
 
-    }
-    </script>
+      });
+
+   </script>
+	
+   
 
     
 </body>

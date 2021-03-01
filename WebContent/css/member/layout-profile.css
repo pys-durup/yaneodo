@@ -36,7 +36,7 @@
     html>body {
         overflow-y: scroll;
         height: 100%;
-  /*       background-color: #EEEEEE; */
+ 		 /*  background-color: #EEEEEE; */
     }
 
     div {
@@ -125,3 +125,41 @@
     border-radius: 30px;
 }
 /*-------------------------------header CSS END ---------------------------*/
+
+
+
+
+
+    /* 버튼 관련 */
+
+
+    
+    /* 
+    O : #B6B7D3
+    E : #7F5899
+    F : #BA9AC1
+    A : #462456 
+    */
+
+
+    .btn:focus {
+        outline: none!important;
+    }
+    
+        
+   .btn-primary {
+        background-color: #a4a6d4;
+        border: 1px solid #a4a6d4;
+        outline: none;
+    
+    }
+
+    .btn-primary:hover{
+        
+
+        background-color: #898bcf;
+        border: 1px solid #898bcf; 
+        outline: none;
+        
+    }
+

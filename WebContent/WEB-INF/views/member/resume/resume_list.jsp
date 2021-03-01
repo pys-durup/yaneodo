@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 
 
@@ -27,7 +26,7 @@
             <div class="resume-item">
                 <div class="resume-box">
                     <label class="resumeWrite btn btn-default" type="button">
-                        <a class="wrapper linkFont" href="/yaneodo/member/resume/resume_writeok.do">
+                        <a class="wrapper linkFont" href="/yaneodo/member/resume/resume_write.do">
                             <div class="box blue">
                                 <i class="far fa-clone"></i>
                             </div>
@@ -54,23 +53,17 @@
                         
         
                         </div>
-                        <c:if test="${empty list.size()}">
-                        <div>
-                        	<span>이력서를 작성해주세요</span>
-                        </div>
-                        
-                        </c:if>
-						<c:forEach items="${list}" var="dto">
-                        <div class="resume-box" style="cursor: pointer;"onclick ="location.href='/yaneodo/member/resume/resume_write.do?rseq=${dto.resumeSeq}'">
+
+                        <div class="resume-box">
                             <div class="resume-preview notcompleted">
 
-                                <h3 id="resume-name" class="resume-name">${dto.orgfileName}</h3>
-                                <p class="resume-date">작성일 : ${dto.writeDate}</p>
+                                <h3 id="resume-name" class="resume-name">hyeseung Cho</h3>
+                                <p class="resume-date">2021.02.11</p>
 
                             </div>
                             <div class="resume-info">
 
-                                <span class="notcompleted">최종 수정일 : ${dto.editDate} </span>
+                                <span class="notcompleted">작성 중</span>
                                 <input type="button" class="btn btn-default more" value="더보기">
 
                             </div>
@@ -87,17 +80,51 @@
                                     </li>
     
                                 </ul>
+    
+    
                             </div>
-                        </div>
-					</c:forEach>
-                        
+                   
 
-                  
+                        </div>
+
+                        <div class="resume-box">
+                            <div class="resume-preview notcompleted">
+
+                                <h3 id="resume-name" class="resume-name">hyeseung Cho</h3>
+                                <p class="resume-date">2021.02.11</p>
+
+                            </div>
+                            <div class="resume-info">
+
+                                <span class="notcompleted">작성 중</span>
+                                <input type="button" class="btn btn-default more" value="더보기">
+
+                            </div>
+                            <div id="drop-down-menu" class="drop-down-menu" style="display: none;" >
+                                <ul>
+                                    <li>
+                                        <a id="title-change" onclick="changeTitle();">이름변경</a>
+                                    </li>
+                                    <li>
+                                        <a href="">다운로드</a>
+                                    </li>
+                                    <li>
+                                        <a class="resume-delete">삭제</a>
+                                    </li>
+    
+                                </ul>
+     
+                            </div>
+                   
+                        </div>
+
+                   
             </div>
 
         </div>            
 
-
+      
+        </div>
 
         <!-- <div id="delete-background" class="delete-background container" stype="position:absolute">
 
@@ -133,22 +160,8 @@
             // function changeTitle(){
             //     $(this).parent().parent().next().children(".resume-name")
             // }
-           /*  var rseq = ${rseq};
-            window.onload=function(){
-            	
-				
-            	if(rseq == null || rseq ==""){
-            		return;
-            	} else{
-            		location.href="/yaneodo/member/resume/resume_write.do?rseq="${rseq} "&name=" ${name} "&phone="escape(${phone});
-            	}
-            	
-            }; */
-            
-          
 
              var flag=true;
-           
 
 
              //더보기메뉴보이기

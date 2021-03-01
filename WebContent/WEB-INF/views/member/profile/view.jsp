@@ -143,8 +143,8 @@
         }
 
  
-        #box2{
-            height: 350px;
+      #box2 {
+            height: auto;
             margin-top: 30px;
             padding: 20px 20px;
         }
@@ -157,19 +157,35 @@
         }
 
         .form-subtitle {
+            font-size: 1.1em;
             margin: 10px 0px;
+            display: inline-block;
+            width: 150px;
+            float: left;
+
+        }
+
+        #selResume {
+            width: 150px;
+            margin: 10px 0;
+           
         }
 
         .item {
-            margin-left: 30px;
-            margin-bottom: 10px;
+            text-align: center;
+            cursor:default;
+            
         }
         
         .underline-box {
+            margin-top: 10px;
+            margin-right:10px;
             display: inline-block;
-            border-bottom: 1px solid #444;
-            width : 100px;
+            border-bottom: 1px solid #CCC;
+            min-width : 100px;
             text-align: center;
+            padding-bottom: 2px;
+            
         }
 
 
@@ -191,6 +207,18 @@
           
         }
 
+        .btn-default {
+            font-size: 16px;
+        }
+        
+        input {
+        	font-size: 16px;
+        }
+        
+        .form-control[readonly] {
+        	cursor:default;
+        	background-color: white;
+       	}
 
 
  
@@ -255,94 +283,147 @@
 
 
 
-       <div id="rightContainer">
-        
-           <div id="box1" class="rightbox"> 
 
-               <span>입력을 완료하면 매치업 등록이 가능합니다. </span>
-               <input type="button" value="입력하기" style="float:right;" class="btn btn-default" 
-               onclick="location.href='/yaneodo/member/profile/edit.do?seq=${dto.customerSeq}'">
-               
-           </div>
-      
+           <div id="rightContainer">
+            
+               <div id="box1" class="rightbox"> 
 
-           <div id="box2" class="rightbox">
-
-               <div class="form-title">기본 이력서</div>
-               
-               <div class="form-subtitle">기본 이력서 선택</div>
-
-               <div>
-                   <select class="item">
-                       <option>이력서1</option>
-                   </select>
-               </div>
-
-               <div class="form-subtitle">학교</div>
-                   <div class="item underline-box" style="color:red">${dto.school }</div>
-                   <div class="item underline-box" style="color:red">${dto.major }</div>
-               <div class="form-subtitle">직장</div>
-                   <div class="item underline-box">${dto.company }</div>
+                   <span>입력을 완료하면 매치업 등록이 가능합니다. </span>
+                   <input type="button" value="입력하기" style="float:right;" class="btn btn-default" onclick="location.href='/yaneodo/member/profile/edit.do?seq=${dto.customerSeq}'">
                    
-               <div class="form-subtitle">간단소개글</div>
-                   <div class=item> </div>
+               </div>
+          
 
-           </div>
+               <div id="box2" class="rightbox">
 
+                   <div class="form-title">기본 이력서</div>
+                   
+                   <div class="form-subtitle">기본 이력서 선택</div>
 
+                   <select id="selResume" class="form-control" name="selResume">
+                   
+					   <c:forEach items="${rlist}" var="rdto">
+                       <option value="${rdto.resumeSeq}">${rdto.orgfileName}</option>
+		               </c:forEach>
+                   </select>
+                   
+                   <div style="clear: both;"></div> 
 
-           <div id="box3" class="rightbox">
+                   <div class="form-subtitle">학교</div>
+                       <div class="underline-box">
+                       <input type="text" class="item" placeholder="학교 미입력" value="${dto.school }" >
+                       </div>
+                       <div class="underline-box">
+                       <input type="text" class="item" placeholder="전공 미입력" value="${dto.major }">
+                       </div>
+                       <div style="clear: both;"></div>  
+                       
+                   <div class="form-subtitle">직장</div>
+                       <div class="underline-box">
+                           <input type="text" class="item" placeholder="직장 미입력" value="${dto.company}">
+                       </div>
+                       <div style="clear: both;"></div>  
 
-               <div class="form-title">전문분야설정</div>
+                   <div class="form-subtitle">간단소개글</div>
+                       <div class=item> 
+                           <textarea class="form-control" style="height:100px" placeholder="간단 소개글을 작성하세요." readonly>${dto.introduction}</textarea>
+                       </div>
 
-               <div class="form-subtitle">직군</div>
-               <div class="item underline-box">학교 미입력</div>
-  
-               <div class="form-subtitle">직무</div>
-               <div class="item underline-box">직장 미입력</div>
-           
-               <div class="form-subtitle">경력</div>
-               <div class="item underline-box">직장 미입력</div>
-           
-           </div>
-
-
-           <div id="box4" class="rightbox">
-
-               <div>
-                   <div class="form-subtitle" style="float:left; margin-right:30px;">제외기업 설정</div>
-                   <input type="button" value="선택하기" style="margin-top:6px;">
-
-                   <div style="clear: both;"></div>
                </div>
 
 
-               <div style="float:left;">
+
+               <div id="box3" class="rightbox">
+
+                   <div class="form-title">전문분야설정</div>
+
+                   <div class="form-subtitle">직군</div>
+                   <div class="underline-box">
+                       <input type="text" class="item" placeholder="직군 미입력" >
+                   </div>
+                   <div style="clear: both;"></div>  
+      
+                   <div class="form-subtitle">직무</div>
+                   <div class="underline-box">
+                       <input type="text" class="item" placeholder="직무 미입력" >
+                   </div>
+                   <div style="clear: both;"></div>  
+               
+                   <div class="form-subtitle">경력</div>
+                   <div class="underline-box">
+                       <input type="text" class="item" placeholder="경력 미입력" >
+                   </div>
+                   <div style="clear: both;"></div>  
+               
+               </div>
+   
+   
+               <div id="box4" class="rightbox">
+   
+                   <div>
+                       <div class="form-subtitle" style="float:left; margin-right:30px;">제외기업 설정</div>
+                       <input type="button" class="btn btn-default" value="선택하기" style="margin-top:6px;">
+   
+                       <div style="clear: both;"></div>
+                   </div>
+                   
+                   <div style="float:left;"></div>
+   
+                   
                    <div class="form-subtitle" style="float:left; margin-right:30px;">구직여부 설정</div>
-                  
-                   <select class="item form-control" style="width: 300px; margin: 6px 0px; margin-right: 30px; float:left;">
-                       <option>관심없음</option>
-                       <option>관심있음</option>
-                       <option>현재 구직중</option>
+              
+                   <select id="selMatchUp" class="item form-control" style="width: 300px; margin: 6px 0px; margin-right: 30px; float:left;">
+                       <option value="3" selected>관심없음</option>
+                       <option value="2">관심있음</option>
+                       <option value="1">현재 구직중</option>
                    </select>
 
-                   <div style="float:left; margin-top: 10px;">이력서 비공개</div>           
+                   <input id="sidetxt" type="text" style="float:left; margin-top: 10px;"value="이력서 비공개">  
+                       
+                   
                </div>
-
-           </div>
-
-
-           <div style="clear: both;"></div>
-
-       </div>
 
        
 
 
+               <div style="clear: both;"></div>
+
+           </div>
+
+        </section>
 
 
-   </section>
+        <script>
 
-    
+        var selMatchUp = document.getElementById("selMatchUp")
+        var sidetxt = document.getElementById("sidetxt")
+
+
+        selMatchUp.onchange = function() {
+        
+        
+            // console.log(selMatchUp.value);
+
+            if(selMatchUp.value == 3) {
+                sidetxt.style.color = "#666";
+                sidetxt.value = "이력서 비공개"
+            } else if(selMatchUp.value == 2) {
+                sidetxt.style.color = "#666";
+                sidetxt.value = "이력서 공개"
+            } else if(selMatchUp.value == 1) {
+                sidetxt.style.color = "blueviolet";
+                sidetxt.value = "이력서 공개 (매치업 등록)"
+
+            }
+        
+        
+        };
+
+
+
+        </script>
+
+
+
 </body>
 </html>
