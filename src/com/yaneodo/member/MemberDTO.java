@@ -13,6 +13,7 @@ public class MemberDTO {
 	private String gender; //성별
 	private String joinDate; //가입일
 	private String lastJoin; //마지막 접속일
+	private String newpw; //새비밀번호
 	
 	
 	//프로필 정보
@@ -139,6 +140,12 @@ public class MemberDTO {
 	}
 	public void setCareer(String career) {
 		this.career = career;
+	}
+	public String getNewpw() {
+		return newpw;
+	}
+	public void setNewpw(String newpw) {
+		this.newpw = newpw;
 	}
 
 }

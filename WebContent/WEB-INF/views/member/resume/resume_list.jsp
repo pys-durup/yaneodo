@@ -61,20 +61,23 @@
                         
                         </c:if>
 						<c:forEach items="${list}" var="dto">
-                        <div class="resume-box" style="cursor: pointer;"onclick ="location.href='/yaneodo/member/resume/resume_write.do?rseq=${dto.resumeSeq}'">
-                            <div class="resume-preview notcompleted">
+                        <div class="resume-box" style="cursor: pointer;">
+                            <div class="resume-preview notcompleted" onclick ="location.href='/yaneodo/member/resume/resume_write.do?rseq=${dto.resumeSeq}'">
 
                                 <h3 id="resume-name" class="resume-name">${dto.orgfileName}</h3>
-                                <p class="resume-date">작성일 : ${dto.writeDate}</p>
+                                <p class="resume-date">작성일 </p>
+                                <p>: ${dto.writeDate}</p>
+                                  <p class="notcompleted">최종 수정일  </p>
+ 									<p>: ${dto.editDate}</p>
+                            </div>
+                            
+                              <div class="resume-info">
+
+                                <input type="button" onclick ="location.href='/yaneodo/member/resume/resumedel.do?rseq=${dto.resumeSeq}'" class="btn btn-default" style="margin-left: 150px; margin-top: -8px; border:0px;" value="삭제">
 
                             </div>
-                            <div class="resume-info">
 
-                                <span class="notcompleted">최종 수정일 : ${dto.editDate} </span>
-                                <input type="button" class="btn btn-default more" value="더보기">
-
-                            </div>
-                            <div id="drop-down-menu" class="drop-down-menu" style="display: none;"  >
+                            <!-- <div id="drop-down-menu" class="drop-down-menu" style="display: none;"  >
                                 <ul>
                                     <li>
                                         <a class="title-change">이름변경</a>
@@ -87,8 +90,9 @@
                                     </li>
     
                                 </ul>
-                            </div>
-                        </div>
+                            </div>-->
+                        </div> 
+
 					</c:forEach>
                         
 

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.yaneodo.DBUtil;
+import com.yaneodo.admin.matchup.MatchupDTO;
 
 public class StatusDAO {
 	private Connection conn;
@@ -219,7 +220,7 @@ public class StatusDAO {
 		try {
 			String where ="";
 			
-			if(map.get("status")==null || map.get("status") =="") {
+			if(map.get("status").equals(null)) {
 				where = "and status !='지원중'";
 			} else {
 				where = String.format("and status = '%s'",map.get("status"));
@@ -240,22 +241,190 @@ public class StatusDAO {
 		}
 		return 0;
 	}
+	
 
 	/***
-	 *회원 매치업 현황 목록 조회
+	 *회원 원해요 목록 조회
 	 * @author 혜승
 	 * @param map
 	 * @param seq
 	 * @return
 	 */
-	public ArrayList<StatusDTO> mlist(HashMap<String, String> map, String seq) {
+	public ArrayList<MatchDTO> wantList(HashMap<String, String> map, String seq) {
 		try {
 			
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwwanted where mseq=? order by dibdate desc) a ) where rnum between %s and %s",map.get("begin"),map.get("end"));
 			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+		ArrayList<MatchDTO> wantlist = new ArrayList<MatchDTO>(); 
+			while(rs.next()) {
+				MatchDTO dto = new MatchDTO();
+				dto.setDibDate(rs.getString("dibdate"));
+				dto.setCname(rs.getString("cname"));
+				dto.setRegion(rs.getString("region"));
+				dto.setCseq(rs.getString("cseq"));
+				
+				wantlist.add(dto);
+				
+			}
+			
+			return wantlist;
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		return null;
 	}
+	
+	
+	/***
+	 * 원해요 위한 목록전체수
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
+	public int wantedCount(String seq) {
+	try {	
+		String sql = String.format("select count(*) as cnt from vwWanted where mseq=? ");
+		
+		pstat = conn.prepareStatement(sql);
+		pstat.setString(1, seq);
+		
+		rs = pstat.executeQuery();
+		if(rs.next()) {
+			return rs.getInt("cnt");
+		}
+		
+	} catch (Exception e) {
+		System.out.println(e);
+	}
+		return 0;
+	}
+	
+	
+	/***
+	 *회원 이력서 열람기업 목록 조회
+	 * @author 혜승
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
+	public ArrayList<MatchDTO> readList(HashMap<String, String> map, String seq) {
+		try {
+			
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwResumeRead where mseq=? order by readdate desc) a ) where rnum between %s and %s",map.get("begin"),map.get("end"));
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+		ArrayList<MatchDTO> readlist = new ArrayList<MatchDTO>(); 
+			while(rs.next()) {
+				MatchDTO dto = new MatchDTO();
+			
+				dto.setCname(rs.getString("cname"));
+				dto.setRegion(rs.getString("region"));
+				dto.setCseq(rs.getString("cseq"));
+				dto.setReadDate(rs.getString("readdate"));
+				readlist.add(dto);
+				
+			}
+			
+			return readlist;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	
+	/***
+	 * 이력서 열람기업 목록전체수
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
+	public int readCount(String seq) {
+	try {	
+		String sql = String.format("select count(*) as cnt from vwResumeRead where mseq=? ");
+		
+		pstat = conn.prepareStatement(sql);
+		pstat.setString(1, seq);
+		
+		rs = pstat.executeQuery();
+		if(rs.next()) {
+			return rs.getInt("cnt");
+		}
+		
+	} catch (Exception e) {
+		System.out.println(e);
+	}
+		return 0;
+	}
+	/***
+	 *회원 이력서 면접제안 목록 조회
+	 * @author 혜승
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
+	public ArrayList<MatchDTO> matchList(HashMap<String, String> map, String seq) {
+		try {
+			
+			String sql = String.format("select * from (select a.*, rownum as rnum from (select * from vwMatchup where mseq=? order by matchdate desc) a ) where rnum between %s and %s",map.get("begin"),map.get("end"));
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+		ArrayList<MatchDTO> matchlist = new ArrayList<MatchDTO>(); 
+			while(rs.next()) {
+				MatchDTO dto = new MatchDTO();
+				dto.setMatchDate(rs.getString("matchdate"));
+				dto.setCname(rs.getString("cname"));
+				dto.setRegion(rs.getString("region"));
+				dto.setPosition(rs.getString("position"));
+				dto.setRank(rs.getNString("rank"));
+				dto.setIncome(rs.getString("income"));
+				dto.setCseq(rs.getString("cseq"));
+				
+				matchlist.add(dto);
+				
+			}
+			
+			return matchlist;
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return null;
+	}
+	
+	
+	/***
+	 * 이력서 면접제안 목록전체수
+	 * @param map
+	 * @param seq
+	 * @return
+	 */
+	public int matchCount(String seq) {
+	try {	
+		String sql = String.format("select count(*) as cnt from vwResumeRead where mseq=? ");
+		
+		pstat = conn.prepareStatement(sql);
+		pstat.setString(1, seq);
+		
+		rs = pstat.executeQuery();
+		if(rs.next()) {
+			return rs.getInt("cnt");
+		}
+		
+	} catch (Exception e) {
+		System.out.println(e);
+	}
+		return 0;
+	}
+
 
 }

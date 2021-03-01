@@ -84,11 +84,17 @@
                 </div>
                  </form>
                  
-                <nav class="pagebar">
+                <nav id="pagebar" class="pagebar">
                     <ul class="pagination">
                         ${pagebar}
                     </ul>
                 </nav>
+                
+<%--                  <nav id="pagebar2" class="pagebar">
+                    <ul class="pagination">
+                        ${pagebar}
+                    </ul>
+                </nav> --%>
             </div>
         
         </div>
@@ -134,6 +140,15 @@
    $("#applied").addClass("aside-nav-item");
 
    </c:if>
+/*    <c:if test="${status == null}">
+   $("#pagebar").css("display","block");
+   $("#pagebar2").css("display","none");
+   </c:if>
+   
+   <c:if test="${status != null}">
+   $("#pagebar").css("display","none");
+   $("#pagebar2").css("display","block");
+   </c:if> */
    
    <c:if test="${status != '작성중'}">
    $("#status-items").css("display","block");

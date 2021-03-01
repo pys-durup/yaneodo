@@ -1033,29 +1033,440 @@ public class ResumeDAO {
 		}
 		return 0;
 	}
+
+	/***
+	 * 교육 및 대외활동 수정
+	 * @author 혜승
+	 * @param dto
+	 * @return
+	 */
+	public int trainingEdit(TrainingDTO dto) {
+		try {
+			
+			String sql ="update tbltraining set type=?, name=?, startdate=?, enddate=?, agency=? where trainingseq=?";
+		
+			pstat  = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getType());
+			pstat.setString(2, dto.getName());
+			pstat.setString(3, dto.getStartDate());
+			pstat.setString(4, dto.getEnddate());
+			pstat.setString(5, dto.getAgency());
+			pstat.setString(6, dto.getTrainingseq());
+
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+
+			System.out.println(e);
+		}
+		return 0;
+	}
+
 	/***
 	 * 경력 수정
 	 * @author 혜승
-	 * @param exlist
+	 * @param dto
+	 * @return
 	 */
-	public int experienceEdit(ArrayList<ExperienceDTO> exlist) {
+	public int experienceEdit(ExperienceDTO dto) {
+	try {
+			
+			String sql ="update tblexperience set company=?, field=?, job=? ,startdate=?, enddate=?  where experienceseq=?";
+		
+			pstat  = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getCompany());
+			pstat.setString(2, dto.getField());
+			pstat.setString(3, dto.getJob());
+			pstat.setString(4, dto.getStartdate());
+			pstat.setString(5, dto.getEnddate());
+			pstat.setString(6, dto.getExperienceseq());
+
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+	
+	/***
+	 * 학력 수정
+	 * @author 혜승
+	 * @param dto
+	 * @return
+	 */
+	public int educationEdit(EducationDTO dto) {
+	try {
+			
+			String sql ="update tbleducation set schooltype=?, schoolName=?, major=? ,startdate=?, enddate=?, state=?  where educationseq=?";
+		
+			pstat  = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getSchooltype());
+			pstat.setString(2, dto.getSchoolname());
+			pstat.setString(3, dto.getMajor());
+			pstat.setString(4, dto.getStartdate());
+			pstat.setString(5, dto.getEnddate());
+			pstat.setString(6, dto.getState());
+			pstat.setString(7, dto.getEducationseq());
+
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+
+	public int languageEdit(LanguageDTO dto) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	/***
+	 * 수정시간 업데이트
+	 * @author 혜승
+	 * @param rseq
+	 * @return
+	 */
+	public int editDate(String rseq) {
 		
 		try {
+			String sql = "update tblresume set editdate = default where resumeseq = ?";
+			pstat.setString(1, rseq);
 			
-			String sql = "update tblexperience set company =?, field =?, job =?, startdate=? enddate=? where experienceseq=?";
+			return pstat.executeUpdate();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+	/***
+	 * 취업우대사항 수정
+	 * @author 혜승
+	 * @param dto
+	 * @return
+	 */
+	public int preferenceEdit(PreferenceDTO dto) {
+	try {
 			
-			
+			String sql ="update tblpreference set type=?, note=? where preferenceseq=?";
 		
+			pstat  = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getType());
+			pstat.setString(2, dto.getNote());
+			pstat.setString(3, dto.getPreferenceseq());
+
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+	/***
+	 * 자격증 수정
+	 * @author 혜승
+	 * @param dto
+	 * @return
+	 */
+	public int certificateEdit(CertificateDTO dto) {
+		try {
+			
+			String sql ="update tblcertificate set type=?, grade=?, getDate=?, agency=? where certificateseq=?";
+		
+			pstat  = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getType());
+			pstat.setString(2, dto.getGrade());
+			pstat.setString(3, dto.getGetdate());
+			pstat.setString(4, dto.getAgency());
+			pstat.setString(5, dto.getCertificateseq());
+
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+	/***
+	 * 수상내역 수정
+	 * @author 혜승
+	 * @param dto
+	 * @return
+	 */
+	public int AwardEdit(AwardDTO dto) {
+		try {
+			
+			String sql ="update tblaward set awardname=?, getDate=?, agency=? where awardseq=?";
+		
+			pstat  = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getAwardname());
+			pstat.setString(2, dto.getGetdate());
+			pstat.setString(3, dto.getAgency());
+			pstat.setString(4, dto.getAwardseq());
+
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+	/***
+	 * 해외연수 수정
+	 * @author 혜승
+	 * @param dto
+	 * @return
+	 */
+
+	public int AbroadEdit(AbroadDTO dto) {
+
+		try {
+				
+				String sql ="update tblabroad set type=?, country=?, startdate=?, enddate=?, note=? where abroadseq=?";
+			
+				pstat  = conn.prepareStatement(sql);
+				pstat.setString(1, dto.getType());
+				pstat.setString(2, dto.getCountry());
+				pstat.setString(3, dto.getStartDate());
+				pstat.setString(4, dto.getEndDate());
+				pstat.setString(5, dto.getNote());
+				pstat.setString(6, dto.getAbroadseq());
+
+				
+				return pstat.executeUpdate();
+				
+			} catch (Exception e) {
+
+				System.out.println(e);
+			}
+			return 0;
+		
+	}
+
+	/***
+	 * 포트폴리오 수정
+	 * @author 혜승
+	 * @param dto
+	 * @return
+	 */
+	public int portfolioEdit(PortfolioDTO dto) {
+	try {	
+		
+		String sql ="update tblportfolio set url=?, filename=?, orgfilename=? where portfolioseq=?";
+		
+		pstat  = conn.prepareStatement(sql);
+		pstat.setString(1, dto.getUrl());
+		pstat.setString(2, dto.getFilename());
+		pstat.setString(3, dto.getOrgfilename());
+		pstat.setString(4, dto.getPortfolioseq());
+		
+		
+		return pstat.executeUpdate();
+		
+	} catch (Exception e) {
+
+		System.out.println(e);
+	}
+	return 0;
+
+}	
+
+	/***
+	 * 이력서 삭제를위한 경력 삭제
+	 * @author 혜승
+	 * @param rseq
+	 * @return
+	 */
+	public int rexperienceDelete(String rseq) {
+
+		try {
+			
+			String sql = "delete from tblexperience where resumeseq =" + rseq;
+			
+			stat = conn.createStatement();
+			return stat.executeUpdate(sql);
 			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		
 		return 0;
-		
+	}
+	/***
+	 * 이력서 삭제위한 학력 삭제
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int reducationDelete(String rseq) {
+		try {
+			
+			String sql = "delete from tbleducation where resumeseq =" + rseq;
+			
+			stat = conn.createStatement();
+			return stat.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	
+	/***
+	 * 이력서 삭제위한 자격증 삭제
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int rcertificateDelete(String rseq) {
+		try {
+			
+			String sql = "delete from tblcertificate where resumeseq =" + rseq;
+			
+			stat = conn.createStatement();
+			return stat.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	/***
+	 * 이력서 삭제위한 수상 삭제
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int rawardDelete(String rseq) {
+		try {
+			
+			String sql = "delete from tblaward where resumeseq =" + rseq;
+			
+			stat = conn.createStatement();
+			return stat.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+/***
+	 * 이력서 삭제위한 대외활동 및 교육 삭제
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int rtrainingDelete(String rseq) {
+		try {
+			
+			String sql = "delete from tbltraining where resumeseq =" + rseq;
+			
+			stat = conn.createStatement();
+			return stat.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+
+	/***
+	 * 이력서 삭제위한 해외연수 삭제
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int rabroadDelete(String rseq) {
+		try {
+			
+			String sql = "delete from tblabroad where resumeseq ="+rseq;
+			
+			stat = conn.createStatement();
+			return stat.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
 	}
 
 
+	/***
+	 * 이력서 삭제위한 외국어 삭제
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int rlanguageDelete(String rseq) {
+		try {
+			
+			String sql = "delete from tbllanguage where resumeseq =" + rseq;
+			
+			stat = conn.createStatement();
+			return stat.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
 
+	/***
+	 * 이력서 삭제위한 포트폴리오 삭제
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int rportfolioDelete(String rseq) {
+		try {
+			
+			String sql = "delete from tblportfolio where resumeseq =" + rseq;
+			
+			stat = conn.createStatement();
+			return stat.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
+	/***
+	 * 이력서 삭제
+	 * @author 혜승
+	 * @param seq
+	 * @return
+	 */
+	public int resumeDelete(String rseq) {
+		try {
+			
+			String sql = "delete from tblresume where resumeseq =" + rseq;
+			
+			stat = conn.createStatement();
+			return stat.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+	}
 	
 }

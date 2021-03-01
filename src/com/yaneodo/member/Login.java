@@ -15,13 +15,14 @@ public class Login extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		req.setCharacterEncoding("UTF-8");
+		
 		String email = req.getParameter("email");	
 		String password = req.getParameter("password");
 		
 		MemberDAO dao = new MemberDAO();
 		MemberDTO dto = new MemberDTO();
-		
+
 		dto.setEmail(email);
 		dto.setPassword(password);
 		
@@ -40,6 +41,9 @@ public class Login extends HttpServlet {
 			session.setAttribute("name", rdto.getName());
 			session.setAttribute("email", rdto.getEmail());
 			session.setAttribute("nickName", rdto.getNickName());
+			session.setAttribute("photo", rdto.getPhoto());
+			session.setAttribute("phone",rdto.getPhone());
+			session.setAttribute("password", rdto.getPassword());
 			/* session.setAttribute("lastJoin", rdto.getLastJoin()); */
 
 			resp.sendRedirect("/yaneodo/index.do");
