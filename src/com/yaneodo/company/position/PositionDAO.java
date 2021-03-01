@@ -125,22 +125,27 @@ public class PositionDAO {
 	 * @param jobopeningseq 모집공고 번호
 	 * @return
 	 */
-	public ArrayList<String> getTagList(String jseq) {
+	public ArrayList<TagDTO> getTagList(String jseq) {
 		
 		try {
 			
-			String sql = "select tagname from tblseltag st inner join tblTag t on st.tagseq = t.tagseq where jobopeningseq = ?";
+			String sql = "select tagname, st.tagseq as tagseq from tblseltag st inner join tblTag t on st.tagseq = t.tagseq where jobopeningseq = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, jseq);
 			
 			rs = pstat.executeQuery();
 			
-			ArrayList<String> list = new ArrayList<String>();
+			ArrayList<TagDTO> list = new ArrayList<TagDTO>();
 			
 			while (rs.next()) {
 				
-				list.add(rs.getString("tagname"));
+				TagDTO dto = new TagDTO();
+				
+				dto.setTagseq(rs.getString("tagseq"));
+				dto.setTagname(rs.getString("tagname"));
+				
+				list.add(dto);
 				
 			}
 			
@@ -341,6 +346,90 @@ public class PositionDAO {
 		}
 		
 	}
+
+	/**
+	 * 모집 공고를 수정하는 메서드
+	 * @param dto 
+	 * @return
+	 */
+	public int editPosition(JobOpeningDTO dto) {
+		
+		try {
+
+			String sql = "update tblJobOpening set title = ?, enddate = ?, job = ?, place = ?, description = ?, photo = ? where jobopeningseq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getTitle());
+			pstat.setString(2, dto.getEnddate());
+			pstat.setString(3, dto.getJob());
+			pstat.setString(4, dto.getPlace());
+			pstat.setString(5, dto.getDescription());
+			pstat.setString(6, dto.getPhoto());
+			pstat.setString(7, dto.getJobopeningseq());
+
+			return pstat.executeUpdate(); // 1 or 0
+
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+
+	/**
+	 * 기업 공고의 모든 태그를 삭제하는 메서드
+	 * @param jseq 기업 공고 번호
+	 */
+	public int deletePositionTag(String jseq) {
+		
+		try {
+			
+			String sql = "delete from tblseltag where jobopeningseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, jseq);
+			
+			return pstat.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return 0;
+		
+	}
+
+	/**
+	 * 모집 공고를 삭제하는 메서드
+	 * @param jseq 모집 공고 번호
+	 * @return
+	 */
+	public int deletePosition(String jseq) {
+		
+		try {
+			
+			String sql = "delete from tbljobopening where jobopeningseq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, jseq);
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }
 

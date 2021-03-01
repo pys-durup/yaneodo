@@ -31,7 +31,7 @@
 						<h1>모집공고 조회</h1>
 					</div>
 					<div class="btn btn-primary col-md-1"
-						onclick="location.href='/yaneodo/company/position/edit.do'">수정하기
+						onclick="location.href='/yaneodo/company/position/edit.do?jseq=${jseq}'">수정하기
 					</div>
 					<div class="btn btn-danger col-md-1" data-toggle="modal"
 						data-target="#positionDelete">삭제하기</div>
@@ -48,7 +48,7 @@
 			<div class="subtitle">${pdto.name}/${pdto.region}</div>
 			<div class="tag">
 				<c:forEach items="${taglist}" var="tag">
-					<span class="label label-default">${tag}</span>
+					<span class="label label-default">${tag.tagname}</span>
 				</c:forEach>
 			</div>
 			<div class="content detail">${fn:replace(pdto.description, replaceChar, "<br/>")}
@@ -68,7 +68,7 @@
 
 		<div class="section-footer">
 			<div>
-				<a class="btn btn-default" onclick="history.back();">돌아가기</a>
+				<a class="btn btn-default" onclick="location.href='/yaneodo/company/position/list.do'">돌아가기</a>
 			</div>
 		</div>
 	</div>
@@ -88,7 +88,7 @@
 				<div class="modal-body">정말 이 모집공고를 삭제하시겠습니까?</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-					<button type="button" id="btnReading" class="btn btn-danger">삭제하기</button>
+					<button type="button" id="btnReading" class="btn btn-danger" onclick="location.href='/yaneodo/company/position/deleteok.do?jseq=${jseq}'">삭제하기</button>
 				</div>
 			</div>
 		</div>

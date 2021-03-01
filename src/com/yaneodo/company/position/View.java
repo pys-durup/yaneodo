@@ -36,7 +36,7 @@ public class View extends HttpServlet {
 		
 		
 		// 공고의 태그 리스트를 가져온다
-		ArrayList<String> taglist = pdao.getTagList(pdto.getJobopeningseq());
+		ArrayList<TagDTO> taglist = pdao.getTagList(pdto.getJobopeningseq());
 		
 		
 		
@@ -45,6 +45,7 @@ public class View extends HttpServlet {
 		//3. 
 		
 		req.setAttribute("pdto", pdto);
+		req.setAttribute("jseq", jseq);
 		req.setAttribute("taglist", taglist);
 		
 		
