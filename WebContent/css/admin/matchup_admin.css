@@ -69,3 +69,14 @@
             width: 250px;
             float : right;
         }
+
+          #subframe {
+			width: 950px;
+			height: 1000px;
+			/* border : 1px solid black; */
+			overflow-y: scroll;
+		}
+
+		#subframe::-webkit-scrollbar {
+			display: none;
+		}

@@ -26,7 +26,7 @@
             <div class="resume-item">
                 <div class="resume-box">
                     <label class="resumeWrite btn btn-default" type="button">
-                        <a class="wrapper linkFont" href="/yaneodo/member/resume/resume_write.do">
+                        <a class="wrapper linkFont" href="/yaneodo/member/resume/resume_writeok.do">
                             <div class="box blue">
                                 <i class="far fa-clone"></i>
                             </div>
@@ -100,7 +100,7 @@
                         
 
 
-                        <div class="resume-box">
+<!--                         <div class="resume-box">
                             <div class="resume-preview notcompleted">
 
                                 <h3 id="resume-name" class="resume-name">hyeseung Cho</h3>
@@ -129,7 +129,7 @@
      
                             </div>
                    
-                        </div>
+                        </div> -->
 
                    
             </div>
@@ -137,7 +137,7 @@
         </div>            
 
       
-        </div>
+     
 
         <!-- <div id="delete-background" class="delete-background container" stype="position:absolute">
 

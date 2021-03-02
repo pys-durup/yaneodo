@@ -22,9 +22,9 @@ public class PreferenceEdit extends HttpServlet {
 		
 		
 		
-		dto.setPreferenceseq("prseq");
-		dto.setType("prtype");
-		dto.setNote("prnote");
+		dto.setPreferenceseq(req.getParameter("prseq"));
+		dto.setType(req.getParameter("prtype"));
+		dto.setNote(req.getParameter("prnote"));
 		
 		int result2 = dao.editDate(rseq);
 		int result = dao.preferenceEdit(dto);

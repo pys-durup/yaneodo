@@ -49,10 +49,10 @@ public class portfolioEdit extends HttpServlet {
 		dto.setPortfolioseq(seq);
 		dto.setOrgfilename(orgfilename);
 		dto.setUrl(url);
-		
+		int result2 = dao.editDate(rseq);
 		int result = dao.portfolioEdit(dto);
 		
-		if(result==1) {
+		if(result==1 && result2==2) {
 			resp.sendRedirect("/yaneodo/member/resume/resume_write.do?rseq="+rseq);
 		} else {
 			

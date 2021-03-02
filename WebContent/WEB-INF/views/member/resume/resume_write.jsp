@@ -48,10 +48,10 @@
                 <div class="resume-basic-info" >
                     <div class="resume-basic-header">
                         <div class="resume-input-form-group">
-					<form method="GET" action = "/yaneodo/memeber/resume/resumeedit.do" > 
+					<form method="GET" action = "/yaneodo/member/resume/resumeedit.do" > 
 				
 					 <input type="hidden" id="rseq" name="rseq" value="${dto.resumeSeq}">
-                            <input class="resume-input resume_title" type="text" maxlength="100" placeholder="이력서 제목(필수)" name="title" value="${dto.orgfileName}" required>
+                            <input class="resume-input resume_title" type="text" maxlength="100" placeholder="이력서 제목(필수)" name="title" value="${dto.fileName}" required>
                         </div>
                     </div>
                     <div class="resume-input-form-group" >
@@ -134,7 +134,7 @@
                             									</div>
                             								</div>
                             							</div>
-                            							<form method="GET" action = "/yaneodo/memeber/resume/experienceedit.do" > 
+                            							<form method="GET" action = "/yaneodo/member/resume/experienceedit.do" > 
                             						<div class="col-sm-9">
                             							<div class="search-input-box resume-input-form-group">
                             							<input type="hidden" name="exseq" value="${exlist.experienceseq}">
@@ -156,7 +156,7 @@
                             					<form method="GET" action="/yaneodo/member/resume/experiencedelete.do">
                             						 <input type="hidden" name="exseq" value="${exlist.experienceseq}">
                             						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
-                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						<button  class="btn-delete btn glyphicon glyphicon-remove" style="width:20px; height:20px">
                             						</button>
                             						
                             						 </form>
@@ -190,7 +190,7 @@
                             				</div>
                             				</div>
                             				<div class="career-item clearfix">
-                            				<form method="GET" action = "/yaneodo/memeber/resume/educationedit.do" > 
+                            				<form method="GET" action = "/yaneodo/member/resume/educationedit.do" > 
                             					<div class="col-sm-3">
                             						<div class="period">
                             							<div class="datetime">
@@ -240,7 +240,7 @@
                             						<form method="GET" action="/yaneodo/member/resume/educationdelete.do">
                             						 <input type="hidden" name="edseq" value="${edlist.educationseq}">
                             						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
-                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						<button  class="btn-delete btn glyphicon glyphicon-remove" style="width:20px; height:20px">
                             						</button> 
                             						
                             						</form>
@@ -276,7 +276,7 @@
                             				</div>
                             				</div>
                             				<div class="career-item clearfix">
-                            				<form method="GET" action = "/yaneodo/memeber/resume/certificateedit.do" >
+                            				<form method="GET" action = "/yaneodo/member/resume/certificateedit.do" >
                             					<div class="col-sm-3">
                             						<div class="period">
                             							<div class="datetime">
@@ -311,7 +311,7 @@
                             						<form method="GET" action="/yaneodo/member/resume/certificatedelete.do">
                             						 <input type="hidden" name="ceseq" value="${celist.certificateseq}">
                             						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
-                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						<button  class="btn-delete btn glyphicon glyphicon-remove" style="width:20px; height:20px">
                             						</button> 
                             						
                             						</form>
@@ -347,7 +347,7 @@
                             				</div>
                             				</div>
                             				<div class="career-item clearfix">
-                            				<form method="GET" action = "/yaneodo/memeber/resume/awardedit.do" >
+                            				<form method="GET" action = "/yaneodo/member/resume/awardedit.do" >
                             					<div class="col-sm-3">
                             						<div class="period">
                             							<div class="datetime">
@@ -379,7 +379,7 @@
                             						<form method="GET" action="/yaneodo/member/resume/awarddelete.do">
                             						 <input type="hidden" name="awseq" value="${awlist.awardseq}">
                             						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
-                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						<button  class="btn-delete btn glyphicon glyphicon-remove" style="width:20px; height:20px">
                             						</button> 
                             						
                             						</form>
@@ -466,7 +466,7 @@
                             						<form method="GET" action="/yaneodo/member/resume/trainingdelete.do">
                             						 <input type="hidden" name="trseq" value="${trlist.trainingseq}">
                             						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
-                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						<button  class="btn-delete btn glyphicon glyphicon-remove" style="width:20px; height:20px">
                             						</button> 
                             						
                             						</form>
@@ -549,7 +549,7 @@
                             						<form method="GET" action="/yaneodo/member/resume/abroaddelete.do">
                             						 <input type="hidden" name="abseq" value="${ablist.abroadseq}">
                             						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
-                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						<button  class="btn-delete btn glyphicon glyphicon-remove" style="width:20px; height:20px">
                             						</button> 
                             						
                             						</form>
@@ -597,7 +597,7 @@
 					                            <input type="text" name="language" class="resume-input company_name" placeholder="언어" value="${lalist.languagetype}">
 					                    </div>
 					                    <div class="resume-input-form-group">
-					                        <select name="level" class="form-control" style="margin-top: 10px; width:200px;" >
+					                        <select name="level" value="${lalist.grade}" class="form-control" style="margin-top: 10px; width:200px;" >
 					                        	<option value="">언어수준</option>
 					                            <option value="일상 회화">일상 회화</option>
 					                            <option value="비즈니스 회화">비즈니스 회화</option>
@@ -616,7 +616,7 @@
 					            <form method="GET" action="/yaneodo/member/resume/languagedelete.do">
                             	<input type="hidden" name="laseq" value="${lalist.languageseq}">
                             	<input type="hidden" name="rseq" value="${dto.resumeSeq}">
-                            	<button  class="btn-delete btn"><i class="icon-close"></i>
+                            	<button  class="btn-delete btn glyphicon glyphicon-remove" style="width:20px; height:20px">
                             	</button> 
                             	</form>
 					        </div>
@@ -625,7 +625,7 @@
 					</ul>
 					</c:forEach>
                    </c:if>
-					
+					</div>
                 </div>
                 <div class="resume-list activities">
                     <div class="resume-list-header">
@@ -676,7 +676,7 @@
                             						<form method="GET" action="/yaneodo/member/resume/preferencedelete.do">
                             						 <input type="hidden" name="prseq" value="${prlist.preferenceseq}">
                             						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
-                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						<button  class="btn-delete btn glyphicon glyphicon-remove" style="width:20px; height:20px">
                             						</button> 
                             						
                             						</form>
@@ -742,7 +742,7 @@
                             						<form method="GET" action="/yaneodo/member/resume/portfoliodelete.do" >
                             						 <input type="hidden" name="poseq" value="${polist.portfolioseq}">
                             						<input type="hidden" name="rseq" value="${dto.resumeSeq}">
-                            						<button  class="btn-delete btn"><i class="icon-close"></i>
+                            						<button  class="btn-delete btn glyphicon glyphicon-remove" style="width:20px; height:20px">
                             						</button> 
                             						
                             						</form>
@@ -760,15 +760,16 @@
                     <!-- <div>
                         <button class="border-primary btn btn-default" type="button">임시 저장</button>
                     </div> -->
+                   
                     <div>
                         <button class="btn btn-primary" type="submit" onclick="location.href='/yaneodo/member/resume/resume_list.do?seq=${seq}';">작성 완료</button>
                     </div>
-                    
-                </div>
-            </div>
-                   	 </div>
+                    </div>
+           
+            	</div>
        		 </div>
           </div>
+    </div>
     </div>
 
 
