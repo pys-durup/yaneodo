@@ -31,8 +31,6 @@ public class Index extends HttpServlet {
 		req.setAttribute("reclist", reclist); // jobOpeningSeq, companyName, title, job, jobPhoto, 공고링크
 		req.setAttribute("newlist", newlist); // jobOpeningSeq, companyName, title, job, jobPhoto, 공고링크
 
-		// System.out.println(clist.get(0).getCompanyPhoto());
-
 		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/index.jsp");
 		dispatcher.forward(req, resp);

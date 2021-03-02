@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Insert title here</title>
+<title>yaneodo</title>
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
 <%@include file="/WEB-INF/views/member/auth/login.jsp"%>
@@ -60,18 +60,18 @@
 				<c:forEach items="${reclist}" var="reclist" varStatus="status">
 					<div class="details">
 						<div>
-							<img src="/yaneodo/images/company/jobopening/${reclist.jobphoto}" class="companyPic">
+							<img src="/yaneodo/images/jobopening/${reclist.jobPhoto}" class="companyPic">
 						</div>
 						<div class="desc">${reclist.job}</div>
 						<div class="desc sm">${reclist.companyName}</div>
 					</div>
 				
-		                <c:if test="${status.index + 1 % 4 == 0}">           
-		                		<div style="clear: both;"></div>
-						</c:if>
-
 				</c:forEach>
-	            </c:if>   
+				
+				<div style="clear: both;"></div>
+		
+		
+			</c:if>	  
 	            
             </c:if>
             
@@ -84,21 +84,23 @@
 						<div class="details">
 						
 							<div>
-								<img src="/yaneodo/images/company/jobopening/${newlist.jobPhoto}" class="companyPic">
+								<img src="/yaneodo/images/jobopening/${newlist.jobPhoto}" class="companyPic">
 							</div>
 							<div class="desc">${newlist.job}</div>
 							<div class="desc sm">${newlist.companyName}</div>
-								
-							<c:if test="${status.index + 1 % 3 == 0}">
-			                		<div style="clear: both;"></div>
-							</c:if>
-							
+
+
 						</div>
 	
 					 </c:if>   
 				</c:forEach>
+				
+				<div style="clear: both;"></div>
 		
-			</c:if>			
+		
+			</c:if>	
+			
+					
 
 		</div>
 
@@ -113,19 +115,17 @@
 					<div class="details">
 					
 						<div>
-							<img src="/yaneodo/images/company/jobopening/${newlist.jobPhoto}" class="companyPic">
+							<img src="/yaneodo/images/jobopening/${newlist.jobPhoto}" class="companyPic">
 						</div>
 						<div class="desc">${newlist.job}</div>
 						<div class="desc sm">${newlist.companyName}</div>
-							
-						<c:if test="${status.index + 1 % 3 == 0}">
-		                		<div style="clear: both;"></div>
-						</c:if>
-						
+
 					</div>
 
 				 </c:if>   
 			</c:forEach>
+			
+			<div style="clear: both;"></div>
 			
 		</div>
 		
@@ -141,18 +141,20 @@
 			</div>
 			<div class="details">
 				<div>
-					<img src="/yaneodo/images/company/snow.jpg" class="themePic">
+					<img src="/yaneodo/images/mainSlider/4work.png" class="themePic">
 				</div>
-				<div class="desc">포스트 코로나 시대에도 유망할 언택트 기업</div>
-				<div class="desc sm">포스트 코로나 시대, 비대면 서비스를 제공하는 기업을 소개합니다.</div>
+				<div class="desc">주말 3일! 주 4일 근무 기업</div>
+				<div class="desc sm">일과 삶의 균형을 찾을 수 있는 기업을 소개합니다.</div>
 			</div>
+
 			<div class="details">
 				<div>
-					<img src="/yaneodo/images/company/snow.jpg" class="themePic">
+					<img src="/yaneodo/images/mainSlider/jataek.png" class="themePic">
 				</div>
-				<div class="desc">포스트 코로나 시대에도 유망할 언택트 기업</div>
-				<div class="desc sm">포스트 코로나 시대, 비대면 서비스를 제공하는 기업을 소개합니다.</div>
+				<div class="desc">재택/원격 근무 활발한 기업</div>
+				<div class="desc sm">장소에 구애받지 않고, 효율적으로 일하는 기업을 소개합니다.</div>
 			</div>
+
 			<div style="clear: both;"></div>
 		</div>
 	</div>

@@ -110,7 +110,7 @@ public class SearchDAO {
 	
 		try {
 			
-			String sql = "select * from (select jobOpeningSeq, companyName, title, job, jobPhoto from vwRecommend where customerSeq = ?) vw where rownum <= 4";
+			String sql = "select * from (select jobOpeningSeq, companyName, title, job, jobPhoto from vwRecommend where customerSeq = ? order by jobOpeningSeq asc) vw where rownum <= 4";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, seq);
@@ -150,13 +150,13 @@ public class SearchDAO {
 			
 			String sql = "select * from (select jobOpeningSeq, companyName, title, job, jobPhoto from vwSearch order by startDate desc) vw where rownum <= 4";		
 			
-			pstat = conn.prepareStatement(sql);
-			rs = pstat.executeQuery();
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
 	
 			ArrayList<SearchDTO> list = new ArrayList<SearchDTO>();
 			
 			while (rs.next()) {
-				
+
 				SearchDTO dto = new SearchDTO();
 				
 				dto.setJobOpeningSeq(rs.getString("jobOpeningSeq"));
