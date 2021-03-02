@@ -70,7 +70,7 @@ public class CompanyApproveList extends HttpServlet {
 					+ "        </li>");
 		} else {
 			pagebar += String.format("<li>"
-					+ "            <a href=\"/yaneodo/admin/member/memberlist.do?page=%d\" aria-label=\"Previous\">"
+					+ "            <a href=\"/yaneodo/admin/company/companyapprovelist.do?page=%d\" aria-label=\"Previous\">"
 					+ "                <span aria-hidden=\"true\">&laquo;</span>"
 					+ "            </a>"
 					+ "        </li>", n - 1);
@@ -84,7 +84,7 @@ public class CompanyApproveList extends HttpServlet {
 				pagebar += "<li>";
 			}
 			
-			pagebar += String.format("<a href=\"/yaneodo/admin/member/memberlist.do?page=%d\">%d</a><li>", n, n);
+			pagebar += String.format("<a href=\"/yaneodo/admin/company/companyapprovelist.do?page=%d\">%d</a><li>", n, n);
 			
 			loop++;
 			n++;
@@ -99,7 +99,7 @@ public class CompanyApproveList extends HttpServlet {
 				+ "        </li>");
 		} else {
 		pagebar += String.format("<li>"
-				+ "            <a href=\"/yaneodo/admin/member/memberlist.do?page=%d\" aria-label=\"Next\">"
+				+ "            <a href=\"/yaneodo/admin/company/companyapprovelist.do?page=%d\" aria-label=\"Next\">"
 				+ "                <span aria-hidden=\"true\">&raquo;</span>"
 				+ "            </a>"
 				+ "        </li>", n);

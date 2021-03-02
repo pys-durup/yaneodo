@@ -63,7 +63,7 @@
                     </div>
                 </div>
         
-        
+        		<!-- 
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingThree">
                         <h4 class="panel-title">
@@ -74,11 +74,12 @@
                     </div>
 
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                        <div class="panel-body sname">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/service/servicelist.do'">
                             고객센터 답변
                         </div>
                     </div>
                 </div>
+                -->
         
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingNine">
