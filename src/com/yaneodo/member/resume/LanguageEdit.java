@@ -17,14 +17,15 @@ public class LanguageEdit extends HttpServlet {
 
 
 			String rseq = req.getParameter("rseq");
+			
 			LanguageDTO dto = new LanguageDTO();
 			ResumeDAO dao = new ResumeDAO();
 			
 			
 			
-			dto.setLanguageseq("laseq");
-			dto.setLanguagetype("language");
-			dto.setGrade("level");
+			dto.setLanguageseq(req.getParameter("laseq"));
+			dto.setLanguagetype(req.getParameter("language"));
+			dto.setGrade(req.getParameter("level"));
 			
 			int result2 = dao.editDate(rseq);
 			int result = dao.languageEdit(dto);

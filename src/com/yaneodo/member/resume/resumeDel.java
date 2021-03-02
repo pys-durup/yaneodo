@@ -20,16 +20,14 @@ public class resumeDel extends HttpServlet {
 	String rseq = req.getParameter("rseq");
 	ResumeDAO dao = new ResumeDAO();
 
-	dao.rabroadDelete(rseq);
-	dao.rawardDelete(rseq);
-	dao.rcertificateDelete(rseq);
-	dao.reducationDelete(rseq);
-	dao.rexperienceDelete(rseq);
-	dao.rlanguageDelete(rseq);
-	dao.rportfolioDelete(rseq);
-	dao.rtrainingDelete(rseq);
+	/*
+	 * dao.rabroadDelete(rseq); dao.rawardDelete(rseq);
+	 * dao.rcertificateDelete(rseq); dao.reducationDelete(rseq);
+	 * dao.rexperienceDelete(rseq); dao.rlanguageDelete(rseq);
+	 * dao.rportfolioDelete(rseq); dao.rtrainingDelete(rseq);
+	 */
 	
-
+		dao.profilenull(rseq);
 
 		int result = dao.resumeDelete(rseq);
 		if(result==1) {

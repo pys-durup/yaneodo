@@ -21,7 +21,7 @@ public class ExperienceEdit extends HttpServlet {
 			ResumeDAO dao = new ResumeDAO();
 			
 			
-			dto.setStartdate("exstartDate");
+			dto.setStartdate(req.getParameter("exstartDate"));
 			dto.setEnddate(req.getParameter("exendDate"));
 			dto.setCompany(req.getParameter("excompany"));
 			dto.setField(req.getParameter("exfield"));

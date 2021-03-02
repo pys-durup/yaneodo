@@ -21,16 +21,16 @@ public class ResumeEdit extends HttpServlet {
 			ResumeDAO dao = new ResumeDAO();
 			
 			
-			dto.setOrgfileName("title");
+			dto.setOrgfileName(req.getParameter("title"));
 			dto.setFileName(req.getParameter("title"));
 			dto.setIntroduce(req.getParameter("info"));
 			dto.setPhone(req.getParameter("phone"));
 			dto.setName(req.getParameter("name"));
 			dto.setEmail(req.getParameter("email"));
-			
+			int result2 = dao.editDate(rseq);
 			int result = dao.resumeEdit(dto);
 			//결과처리
-			if(result==1) {
+			if(result==1 && result2==1) {
 				resp.sendRedirect("/yaneodo/member/resume/resume_write.do?rseq="+rseq);
 			} else {
 				

@@ -20,7 +20,7 @@ public class AwardEdit extends HttpServlet {
 		ResumeDAO dao = new ResumeDAO();
 		
 		
-		dto.setAwardname("awname");
+		dto.setAwardname(req.getParameter("awname"));
 		dto.setGetdate(req.getParameter("awgetDate"));
 		dto.setAgency(req.getParameter("awagency"));
 		dto.setAwardseq(req.getParameter("awseq"));

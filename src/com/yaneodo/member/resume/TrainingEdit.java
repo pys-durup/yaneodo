@@ -14,20 +14,21 @@ public class TrainingEdit extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println(req.getParameter("rseq"));
+
 		String rseq = req.getParameter("rseq");
 		TrainingDTO dto = new TrainingDTO();
 		ResumeDAO dao = new ResumeDAO();
+		
 		dto.setTrainingseq(req.getParameter("trseq"));
 		dto.setAgency(req.getParameter("tragency"));
 		dto.setName(req.getParameter("trname"));
 		dto.setStartDate(req.getParameter("trstartDate"));
 		dto.setEnddate(req.getParameter("trenddate"));
 		dto.setType(req.getParameter("trtype"));
-		
+		int result2 = dao.editDate(rseq);
 		int result = dao.trainingEdit(dto);
 		//결과처리
-		if(result==1) {
+		if(result==1 && result2 ==1) {
 			resp.sendRedirect("/yaneodo/member/resume/resume_write.do?rseq="+rseq);
 		} else {
 			

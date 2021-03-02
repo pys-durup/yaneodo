@@ -21,7 +21,7 @@ public class EducationEdit extends HttpServlet {
 			ResumeDAO dao = new ResumeDAO();
 			
 			dto.setEducationseq(req.getParameter("edseq"));
-			dto.setStartdate("edstartDate");
+			dto.setStartdate(req.getParameter("edstartDate"));
 			dto.setEnddate(req.getParameter("edendDate"));
 			dto.setSchoolname(req.getParameter("edschool"));
 			dto.setSchooltype(req.getParameter("eddegree"));
