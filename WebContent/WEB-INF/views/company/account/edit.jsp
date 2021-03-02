@@ -26,7 +26,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10">
-                        <div class="section-title" onclick="location.href='/project/views/account/main.html';"><h1>계정관리</h1></div>
+                        <div class="section-title" onclick="location.href='/yaneodo/company/account/main.do';"><h1>계정관리</h1></div>
                     </div>
                 </div>
             </div>

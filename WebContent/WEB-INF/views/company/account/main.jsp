@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 <%@include file="/WEB-INF/views/company/inc/asset.jsp"%>
 <link rel="stylesheet" href="/yaneodo/css/company/account/account.css">
-<link rel="stylesheet" href="/yaneodo/css/company/account/main.css">
+<link rel="stylesheet" href="/yaneodo/css/company/account/edit.css">
 <style>
 </style>
 </head>
@@ -27,7 +27,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-10">
-                        <div class="section-title" onclick="location.href='/project/views/account/main.html';"><h1>계정관리</h1></div>
+                        <div class="section-title" onclick="location.href='/yaneodo/company/account/main.do';"><h1>계정관리</h1></div>
                     </div>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="profile-name"><span>홍길동</span></div>
             <div class="profile-info"><span>test@test.com</span></div>
             <div class="profile-info"><span>010-1234-5678</span></div>
-            <div class="profile-btn"><input type="button" class="btn btn-default" value="기본정보 수정"></div>
+            <div class="profile-btn"><input type="button" class="btn btn-default" value="기본정보 수정" onclick="location.href='/yaneodo/company/account/edit.do';"></div>
         </div>
         <div class="side-menu-info container">
             <div class="row">
@@ -68,10 +68,11 @@
             </div>
 
         </div>
+        <!-- onclick="location.href='/yaneodo/company/account/main.do';" -->
         <div class="side-menu-info-link container">
             <div class="row">
                 <div class="col-md-9">
-                    <a href="#">받은알림</a>
+                    <a href="/yaneodo/company/account/noti.do">받은알림</a>
                 </div>
             </div>
             <div class="row">
