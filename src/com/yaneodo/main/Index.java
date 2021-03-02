@@ -23,12 +23,12 @@ public class Index extends HttpServlet {
 		SearchDAO dao = new SearchDAO();
 
 		// 추천 공고
-		//ArrayList<SearchDTO> reclist = dao.reclist(seq);
+		ArrayList<SearchDTO> reclist = dao.reclist(seq);
 
 		// 신규 채용
 		ArrayList<SearchDTO> newlist = dao.newlist();
 
-		//req.setAttribute("reclist", reclist); // jobOpeningSeq, companyName, title, job, jobPhoto, 공고링크
+		req.setAttribute("reclist", reclist); // jobOpeningSeq, companyName, title, job, jobPhoto, 공고링크
 		req.setAttribute("newlist", newlist); // jobOpeningSeq, companyName, title, job, jobPhoto, 공고링크
 
 		// System.out.println(clist.get(0).getCompanyPhoto());
