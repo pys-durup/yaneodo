@@ -45,24 +45,24 @@
                     <div class="title2">추천포지션</div>
                <div class="recoList">
                 <div class="details">
-                    <div><img src="snow.jpg" class="companyPic"></div>
-                    <div class="desc">SCM 매니저</div>
-                    <div class="desc sm">깃컴퍼니</div>
+                    <div><img src="/yaneodo/images/company/company.png" class="companyPic"></div>
+                    <div class="desc">프론트엔드 개발자</div>
+                    <div class="desc sm">(주)한동디벨로프</div>
                 </div>
                 <div class="details">
-                    <div><img src="snow.jpg" class="companyPic"></div>
-                    <div class="desc">SCM 매니저</div>
-                    <div class="desc sm">깃컴퍼니</div>
+                    <div><img src="/yaneodo/images/company/company01.png" class="companyPic"></div>
+                    <div class="desc">프론트엔드 개발자</div>
+                    <div class="desc sm">메가존클라우드(주)</div>
                 </div>
                 <div class="details">
-                    <div><img src="snow.jpg" class="companyPic"></div>
-                    <div class="desc">SCM 매니저</div>
-                    <div class="desc sm">깃컴퍼니</div>
+                    <div><img src="/yaneodo/images/company/company02.png" class="companyPic"></div>
+                    <div class="desc">프론트엔드 엔지니어</div>
+                    <div class="desc sm">엔에이치엔(주)</div>
                 </div>
                 <div class="details">
-                    <div><img src="snow.jpg" class="companyPic"></div>
-                    <div class="desc">SCM 매니저</div>
-                    <div class="desc sm">깃컴퍼니</div>
+                    <div><img src="/yaneodo/images/company/company03.png" class="companyPic"></div>
+                    <div class="desc">프론트엔드 개발자</div>
+                    <div class="desc sm">(주)바바리퍼블리카</div>
                 </div>
                 <div style="clear: both;"></div>
         	</div>

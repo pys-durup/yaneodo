@@ -12,7 +12,7 @@
                             <div id="photoPic" class="photoPic" style="background-image: url('/yaneodo/images/member/${photo}')">
                          </c:if>
                          <c:if test="${empty photo}">
-                            <div id="photoPic" class="photoPic" style="background-image: url('/yaneodo/images/member/man_01.png')">
+                            <div id="photoPic" class="photoPic" style="background-image: url('/yaneodo/images/member/man_06.png')">
                          </c:if>
                          <form method="POST" action= "/yaneodo/member/myyaneodo/photoupload.do" enctype="multipart/form-data">
                          	<input name="seq" type="hidden" value="${seq}">

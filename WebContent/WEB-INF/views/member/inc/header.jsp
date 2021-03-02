@@ -31,7 +31,7 @@
                             <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/${photo}')">
                          </c:if>
                          <c:if test="${empty photo}">
-                            <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/man_01.png')">
+                            <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/pic3.jpg')">
                          </c:if>
 	                    
 	                   
