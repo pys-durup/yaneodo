@@ -73,27 +73,31 @@ public class RegisterOk extends HttpServlet {
 			
 			if (result == 1) {
 				
+				resp.setCharacterEncoding("UTF-8");
+				
 				PrintWriter writer = resp.getWriter();
 				
-				writer.print("<html><body>");
+			    writer.print("<html><head><meta charset='utf-8'></head><body>");
 				writer.print("<script>");
 				writer.print("alert('회원가입이 완료되었습니다.');");
-				/* writer.print("location.href='/codestudy/board/list.do;'"); */
+				writer.print("location.href='/yaneodo/main/index.do';"); 
 				writer.print("</script>");
 				writer.print("</body></html>");
 				
 				writer.close();
 				
-				resp.sendRedirect("/index.do");
+				//resp.sendRedirect("/index.do");
 				
 			} else {
 				
+				resp.setCharacterEncoding("UTF-8");
+				
 				PrintWriter writer = resp.getWriter();
 				
-				writer.print("<html><body>");
+				writer.print("<html><head><meta charset='utf-8'></head><body>");
 				writer.print("<script>");
 				writer.print("alert('회원가입에 실패했습니다. 고객센터로 문의바랍니다.');");
-				writer.print("history.back();");
+				//writer.print("history.back();");
 				writer.print("</script>");
 				writer.print("</body></html>");
 				

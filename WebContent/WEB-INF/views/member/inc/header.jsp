@@ -116,6 +116,41 @@
          flag=false;
         
     });
+    
+    
+    
+	/* 검색창 */
+    $(function(){
+        $(document).mousedown(function( e ){
+            if( $("#searchBox1").is(":visible") ) {
+                $("#searchBox1").each(function(){
+                    var l_position = $(this).offset();
+                    l_position.right = parseInt(l_position.left) + ($(this).width());
+                    l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                    if( ( l_position.left <= e.pageX && e.pageX <= l_position.right )
+                        && ( l_position.top <= e.pageY && e.pageY <= l_position.bottom ) ) {
+                    } else {
+                        $(this).hide();
+                    }
+                });
+
+            $("#container").css("opacity", "1");
+            
+            }
+        });
+        
+        $("#search").click(function(){
+            if( !$("#searchBox1").is(":visible") ) {
+                $("#searchBox1").show();
+
+                $("#container").css("opacity", ".7");
+            }
+        });
+    });
+    
+    
+    
 
     </script>
 

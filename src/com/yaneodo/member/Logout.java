@@ -20,7 +20,7 @@ public class Logout extends HttpServlet {
 		HttpSession session = req.getSession();
 		session.invalidate();
 		
-		resp.sendRedirect("/yaneodo/index.do");
+		resp.sendRedirect("/yaneodo/main/index.do");
 		
 	}
 }

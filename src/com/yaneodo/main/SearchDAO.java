@@ -91,11 +91,84 @@ public class SearchDAO {
 				dto.setTitle(rs.getString("title"));
 				dto.setJob(rs.getString("job"));
 				dto.setPlace(rs.getString("place"));
-				dto.setJobPhoto(rs.getString("jobPhoto"));
+				dto.setJobPhoto(rs.getString("jobphoto"));
 
 				list.add(dto);		
 				
 			}		
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return null;
+	}
+
+	//main.index.do servlet -> 추천 공고
+	public ArrayList<SearchDTO> reclist(String seq) {
+	
+		try {
+			
+			String sql = "select * from (select jobOpeningSeq, companyName, title, job, jobPhoto from vwRecommend where customerSeq = ?) vw where rownum <= 4";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			rs = pstat.executeQuery();
+	
+			ArrayList<SearchDTO> list = new ArrayList<SearchDTO>();
+			
+			while (rs.next()) {
+				
+				SearchDTO dto = new SearchDTO();
+				
+				dto.setJobOpeningSeq(rs.getString("jobOpeningSeq"));
+				dto.setCompanyName(rs.getString("companyName"));
+				dto.setTitle(rs.getString("title"));
+				dto.setJob(rs.getString("job"));
+				dto.setJobPhoto(rs.getString("jobPhoto"));
+	
+				list.add(dto);		
+				
+			}		
+			
+			return list;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+
+		return null;
+	}
+
+
+	
+	//main.index.do servlet -> 신규 공고
+	public ArrayList<SearchDTO> newlist() {
+		
+		try {
+			
+			String sql = "select * from (select jobOpeningSeq, companyName, title, job, jobPhoto from vwSearch order by startDate desc) vw where rownum <= 4";		
+			
+			pstat = conn.prepareStatement(sql);
+			rs = pstat.executeQuery();
+	
+			ArrayList<SearchDTO> list = new ArrayList<SearchDTO>();
+			
+			while (rs.next()) {
+				
+				SearchDTO dto = new SearchDTO();
+				
+				dto.setJobOpeningSeq(rs.getString("jobOpeningSeq"));
+				dto.setCompanyName(rs.getString("companyName"));
+				dto.setTitle(rs.getString("title"));
+				dto.setJob(rs.getString("job"));
+				dto.setJobPhoto(rs.getString("jobPhoto"));
+	
+				list.add(dto);		
+				
+			}		
+			
 			return list;
 			
 		} catch (Exception e) {

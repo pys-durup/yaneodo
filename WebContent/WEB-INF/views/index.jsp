@@ -54,74 +54,82 @@
 		<div id="recommend">
 			<div class="title">추천 공고</div>
 			
+			<c:if test="${not empty id}">
 			
-			<div class="details">
-				<div>
-					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
-				</div>
-				<div class="desc">SCM 매니저</div>
-				<div class="desc sm">깃컴퍼니</div>
-			</div>
-			<div class="details">
-				<div>
-					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
-				</div>
-				<div class="desc">SCM 매니저</div>
-				<div class="desc sm">깃컴퍼니</div>
-			</div>
-			<div class="details">
-				<div>
-					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
-				</div>
-				<div class="desc">SCM 매니저</div>
-				<div class="desc sm">깃컴퍼니</div>
-			</div>
-			<div class="details">
-				<div>
-					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
-				</div>
-				<div class="desc">SCM 매니저</div>
-				<div class="desc sm">깃컴퍼니</div>
-			</div>
-			<div style="clear: both;"></div>
-			
-			
-			
-			
+				<c:if test="${reclist.jobphoto.toLowerCase().endsWith('jpg') || reclist.jobphoto.toLowerCase().endsWith('gif') || reclist.jobphoto.toLowerCase().endsWith('png') }">
+				<c:forEach items="${reclist}" var="reclist" varStatus="status">
+					<div class="details">
+						<div>
+							<img src="/yaneodo/images/company/jobopening/${reclist.jobphoto}" class="companyPic">
+						</div>
+						<div class="desc">${reclist.job}</div>
+						<div class="desc sm">${reclist.companyName}</div>
+					</div>
+				
+		                <c:if test="${status.index + 1 % 4 == 0}">           
+		                		<div style="clear: both;"></div>
+						</c:if>
+
+				</c:forEach>
+	            </c:if>   
+	            
+            </c:if>
+            
+            
+            
+            <c:if test="${empty id}">
+            
+	            <c:forEach items="${newlist}" var="newlist" varStatus="status">
+					<c:if test="${newlist.jobPhoto.toLowerCase().endsWith('jpg') || newlist.jobPhoto.toLowerCase().endsWith('gif') || newlist.jobPhoto.toLowerCase().endsWith('png') }">			
+						<div class="details">
+						
+							<div>
+								<img src="/yaneodo/images/company/jobopening/${newlist.jobPhoto}" class="companyPic">
+							</div>
+							<div class="desc">${newlist.job}</div>
+							<div class="desc sm">${newlist.companyName}</div>
+								
+							<c:if test="${status.index + 1 % 3 == 0}">
+			                		<div style="clear: both;"></div>
+							</c:if>
+							
+						</div>
+	
+					 </c:if>   
+				</c:forEach>
+		
+			</c:if>			
+
 		</div>
+
+
+
 
 		<div id="new">
 			<div class="title">신규 채용 회사</div>
-			<div class="details">
-				<div>
-					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
-				</div>
-				<div class="desc">SCM 매니저</div>
-				<div class="desc sm">깃컴퍼니</div>
-			</div>
-			<div class="details">
-				<div>
-					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
-				</div>
-				<div class="desc">SCM 매니저</div>
-				<div class="desc sm">깃컴퍼니</div>
-			</div>
-			<div class="details">
-				<div>
-					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
-				</div>
-				<div class="desc">SCM 매니저</div>
-				<div class="desc sm">깃컴퍼니</div>
-			</div>
-			<div class="details">
-				<div>
-					<img src="/yaneodo/images/company/snow.jpg" class="companyPic">
-				</div>
-				<div class="desc">SCM 매니저</div>
-				<div class="desc sm">깃컴퍼니</div>
-			</div>
-			<div style="clear: both;"></div>
+			
+			<c:forEach items="${newlist}" var="newlist" varStatus="status">
+				<c:if test="${newlist.jobPhoto.toLowerCase().endsWith('jpg') || newlist.jobPhoto.toLowerCase().endsWith('gif') || newlist.jobPhoto.toLowerCase().endsWith('png') }">			
+					<div class="details">
+					
+						<div>
+							<img src="/yaneodo/images/company/jobopening/${newlist.jobPhoto}" class="companyPic">
+						</div>
+						<div class="desc">${newlist.job}</div>
+						<div class="desc sm">${newlist.companyName}</div>
+							
+						<c:if test="${status.index + 1 % 3 == 0}">
+		                		<div style="clear: both;"></div>
+						</c:if>
+						
+					</div>
+
+				 </c:if>   
+			</c:forEach>
+			
 		</div>
+		
+		
 
 		<div id="theme">
 			<div class="title">

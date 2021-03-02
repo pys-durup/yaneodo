@@ -61,7 +61,7 @@
 
     /* 로그인 창, 검색창 숨기기 */
     $(document).ready(function() {
-        //$("#clogin").hide();
+        $("#clogin").hide();
         $("#searchBox1").hide();
     });
 

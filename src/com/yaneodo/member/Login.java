@@ -38,11 +38,11 @@ public class Login extends HttpServlet {
 			
 			session.setAttribute("seq", rdto.getCustomerSeq());
 			session.setAttribute("name", rdto.getName());
-			session.setAttribute("email", rdto.getEmail());
+			/* session.setAttribute("email", rdto.getEmail()); */
 			session.setAttribute("nickName", rdto.getNickName());
 			/* session.setAttribute("lastJoin", rdto.getLastJoin()); */
 
-			resp.sendRedirect("/yaneodo/index.do");
+			resp.sendRedirect("/yaneodo/main/index.do");
 			//return;
 			
 		} else {

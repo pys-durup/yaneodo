@@ -9,9 +9,11 @@
 <title>Insert title here</title>
 
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
+<%@include file="/WEB-INF/views/main/search.jsp"%>
 
 <link rel="stylesheet" href="/yaneodo/css/member/mainheader.css">
 <link rel="stylesheet" href="/yaneodo/css/main/list.css">
+<link rel="stylesheet" href="/yaneodo/css/main/search.css">
 
 <style>
 
@@ -37,7 +39,7 @@
 
             <ul id="companyList" style="list-style: none;">
             
-            <c:forEach items="${clist}" var="clist">
+            <c:forEach items="${clist}" var="clist" varStatus="status">
             	<c:if test="${clist.companyPhoto.toLowerCase().endsWith('jpg') || clist.companyPhoto.toLowerCase().endsWith('gif') || clist.companyPhoto.toLowerCase().endsWith('png') }">
 	                <li class="clist">
 	                    <div>
@@ -49,7 +51,7 @@
 	                    </div>
 	                </li>
 	                
-	                <c:if test="${status.index + 1 % 4 == 0}">           
+	                <c:if test="${status.index + 1 % 2 == 0}">           
 	                		<div style="clear: both;"></div>
 					</c:if>
  

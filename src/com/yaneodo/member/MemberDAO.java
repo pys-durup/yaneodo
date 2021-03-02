@@ -330,11 +330,32 @@ public class MemberDAO {
 	}
 
 
+	//register servlet -> 아이디 중복검사 요청
+	public int checkId(String email) {
+		
+		try {
+			
+			String sql = "select count(*) as cnt from tblCustomer where email = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, email);
+			rs = pstat.executeQuery();
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return 0;
+	}
+	
+	}
 
-	
-	
-	
-}
+
 
 
 
