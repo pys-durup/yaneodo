@@ -315,6 +315,32 @@ public class MemberDAO {
 	}
 
 
+/***
+ * 회원사진올리기
+ * @author 혜승
+ * @param dto
+ * @param seq
+ * @return
+ */
+public int photoEdit(MemberDTO dto) {
+	try {
+		
+		String sql = "update tblcustomer set photo =? where customerseq = ?";
+		
+		pstat= conn.prepareStatement(sql);
+		pstat.setString(1, dto.getPhoto());
+		pstat.setString(2, dto.getCustomerSeq());
+		
+		return pstat.executeUpdate();
+		
+		
+	} catch (Exception e) {
+		System.out.println(e);
+	}
+	return 0;
+}
+
+
 
 	
 	

@@ -54,9 +54,10 @@ public class Login extends HttpServlet {
 			
 			PrintWriter writer = resp.getWriter();
 			
-			writer.print("<html><body>");
+			writer.print("<html><head><meta charset='utf-8'></head><body>");
 			writer.print("<script>");
 			writer.print("alert('입력된 정보가 없습니다.');");
+			writer.print("history.back();");
 			writer.print("</script>");
 			writer.print("</body></html>");
 			

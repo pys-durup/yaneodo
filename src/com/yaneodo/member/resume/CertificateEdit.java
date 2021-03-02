@@ -20,7 +20,7 @@ public class CertificateEdit extends HttpServlet {
 		ResumeDAO dao = new ResumeDAO();
 		
 		
-		dto.setType("cetype");
+		dto.setType(req.getParameter("cetype"));
 		dto.setGrade(req.getParameter("cegrade"));
 		dto.setGetdate(req.getParameter("cegetDate"));
 		dto.setAgency(req.getParameter("ceagency"));
