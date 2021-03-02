@@ -42,7 +42,8 @@
                 <input type="text" class="searchbar" placeholder=" 이름" style="display:none;">
                 <input type="button" value="검색" class="searchbar" style="display:none;">
             </form>
-
+	
+			<div id="subframe">
             <table id="tbl">
                 <thead>
                     <tr>
@@ -106,7 +107,7 @@
 	                        <td>0%</td>
 	                    </c:when>
 	                    <c:otherwise>
-	                    <td>${(dto.success/dto.suggest)*100}%</td>	                    
+	                    <td>${((dto.success/dto.suggest)*100)-((dto.success/dto.suggest)*100)%1}%</td>	                    
 	                    </c:otherwise>
 	                    </c:choose>
                        
@@ -114,6 +115,7 @@
                   </c:forEach>  
                 </tbody>
             </table>
+            </div>
 
            
         </div>
