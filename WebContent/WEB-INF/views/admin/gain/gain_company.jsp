@@ -57,6 +57,18 @@
         	width : 80px; 
         }
         
+        #subframe {
+			width: 950px;
+			height: 1000px;
+			/* border : 1px solid black; */
+			overflow-y: scroll;
+		}
+
+		#subframe::-webkit-scrollbar {
+			display: none;
+		}
+	        
+        
         
         
         
@@ -90,6 +102,7 @@
                 <input type="submit" value="검색" class="searchbar">
             </form>
 
+          <div id="subframe">
             <table id=tbl>
                 <thead>
                     <tr>
@@ -163,6 +176,7 @@
                     
                 </tbody>
             </table>
+              </div>
 
   
         </div>

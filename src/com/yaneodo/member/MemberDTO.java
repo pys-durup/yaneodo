@@ -148,6 +148,7 @@ public class MemberDTO {
 	}
 	public void setNewpw(String newpw) {
 		this.newpw = newpw;
+	}
 
 	public String getIntroduction() {
 		return introduction;
