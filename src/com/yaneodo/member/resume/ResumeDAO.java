@@ -1468,5 +1468,26 @@ public class ResumeDAO {
 		}
 		return 0;
 	}
+
+	/***
+	 * profile에 있는 fk resume null로 업데이트
+	 * @author 혜승
+	 * @param rseq
+	 * @return 
+	 */
+	public int profilenull(String rseq) {
+		try {
+			
+			String sql = "update tblprofile set resumeseq='' where resumeseq=" + rseq;
+			
+			stat = conn.createStatement();
+			return stat.executeUpdate(sql);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return 0;
+		
+	}
 	
 }
