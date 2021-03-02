@@ -297,7 +297,7 @@
         <div id="jobOpening">
 
             <div id="company-photo">
-                <img class="img-thumbnail" src="${jdto.photo }" style="width:700px; height:500px;">
+                <img class="img-thumbnail" src="/yaneodo/images/jobOpening/${jdto.photo }" style="width:700px; height:500px;">
             </div>
 
             <div style="margin-bottom: 30px;">
@@ -346,7 +346,7 @@
             
             <div id="company-info">
                 <a href="/yaneodo/jobnotice/company/view.do?seq=${jdto.companySeq}">
-                <div><img src="img/nopic.png" style="width:50px; height:50px;"></div>
+                <div><img src="/yaneodo/images/company/${jdto.cphoto }" style="width:50px; height:50px;"></div>
                 <div>${jdto.name }</div>
                 <div>${jdto.industry }</div>
                 </a>

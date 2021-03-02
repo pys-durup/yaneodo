@@ -69,6 +69,7 @@ public class View extends HttpServlet {
 		ResumeDAO rdao = new ResumeDAO();
 		ArrayList<ResumeDTO> rlist = rdao.list(cseq); //이력서목록정보 받아오기
 		
+
 		
 		jdao.close();
 		mdao.close();

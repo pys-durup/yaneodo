@@ -206,7 +206,7 @@
         <!-- 기업로고 -->
         <div id="company-title" style=" padding: 10px 0;">
 
-            <div id=""> <img src="../images/cat02.jpg" style="width:50px; height: 50px; float:left;margin-right:10px;"></div>
+            <div id=""> <img src="/yaneodo/images/company/${dto.photo }" style="width:50px; height: 50px; float:left;margin-right:10px;"></div>
             <div id="company-name" style="font-size:25px;float:left; margin-top:10px;">${dto.name }</div>
 
             <div style="clear: both;"></div> 
@@ -283,7 +283,7 @@
 
                 
                 <div id="company-photo" >
-                    <img class="img-thumbnail" src="${dto.photo }" style="width:200px; height:100px; margin-bottom:10px">
+                    <img class="img-thumbnail" src="/yaneodo/images/company/${dto.photo }" style="width:200px; height:100px; margin-bottom:10px">
                 </div>
 
 
