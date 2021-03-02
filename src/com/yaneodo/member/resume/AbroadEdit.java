@@ -20,7 +20,7 @@ public class AbroadEdit extends HttpServlet {
 		ResumeDAO dao = new ResumeDAO();
 		
 		
-		dto.setType("abtype");
+		dto.setType(req.getParameter("abtype"));
 		dto.setCountry(req.getParameter("abcountry"));
 		dto.setStartDate(req.getParameter("abstartDate"));
 		dto.setEndDate(req.getParameter("abendDate"));

@@ -1,4 +1,4 @@
-package com.yaneodo.member.resume;
+package com.yaneodo.member.myyaneodo;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,52 +8,51 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+import com.yaneodo.member.MemberDAO;
+import com.yaneodo.member.MemberDTO;
 
-@WebServlet("/member/resume/portfolioedit.do")
-public class portfolioEdit extends HttpServlet {
+@WebServlet("/member/myyaneodo/photoupload.do")
+public class PhotoUpload extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
 		
 		req.setCharacterEncoding("UTF-8");
-		String rseq = "";
-		String filename="";
-		String orgfilename="";
-		String url="";
-		String seq="";
+		HttpSession session = req.getSession();
+		String seq = "";
+		String photo="";
+
 		try {
 			MultipartRequest multi = new MultipartRequest(
 										req,
-										req.getRealPath("/files"),
+										req.getRealPath("/images"),
 										1024 * 1024 * 100,
 										"UTF-8",
 										new DefaultFileRenamePolicy()
 									);
-			
-			System.out.println(req.getRealPath("/files"));
-			filename = multi.getFilesystemName("attach");
-			orgfilename = multi.getOriginalFileName("attach");
-			url = multi.getParameter("url");
-			seq = multi.getParameter("poseq");
-			rseq = multi.getParameter("rseq");
+
+			seq = multi.getParameter("seq");
+			photo = multi.getFilesystemName("pic") != null?
+					multi.getFilesystemName("pic") : "man_01.png";
+	
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 		
-		PortfolioDTO dto = new PortfolioDTO();
-		ResumeDAO dao = new ResumeDAO();
-		dto.setFilename(filename);
-		dto.setPortfolioseq(seq);
-		dto.setOrgfilename(orgfilename);
-		dto.setUrl(url);
-		int result2 = dao.editDate(rseq);
-		int result = dao.portfolioEdit(dto);
+		MemberDTO dto = new MemberDTO();
+		MemberDAO dao = new MemberDAO(); 
+		dto.setPhoto(photo);
+		dto.setCustomerSeq(seq);
+	
+		int result = dao.photoEdit(dto);
 		
-		if(result==1 && result2==2) {
-			resp.sendRedirect("/yaneodo/member/resume/resume_write.do?rseq="+rseq);
+		if(result==1) {
+			resp.sendRedirect("/yaneodo/member/myyaneodo/myyaneodo.do");
 		} else {
 			
 			resp.setCharacterEncoding("UTF-8");
@@ -69,7 +68,8 @@ public class portfolioEdit extends HttpServlet {
 
 		
 	}
+	
+		
+
 	}
 }
-	
-

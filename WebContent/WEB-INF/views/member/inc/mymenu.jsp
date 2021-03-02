@@ -1,6 +1,6 @@
-     <%@ page language="java" contentType="text/html; charset=UTF-8"
+   <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
             <div class="title">MY야너두</div>
             <div id="customerInfo">
                 <div id="customer">
@@ -8,16 +8,22 @@
                     <dl id="info">
                       
                         <label for="customerPhoto" type="button" style="margin-top: -50px; margin-bottom: -30px;"> 
-                            <div id="photoPic" class="photoPic">
-                            <input id="photo" type="hidden" value="${photo}">
+                        <c:if test="${not empty photo}">
+                            <div id="photoPic" class="photoPic" style="background-image: url('/yaneodo/images/member/${photo}')">
+                         </c:if>
+                         <c:if test="${empty photo}">
+                            <div id="photoPic" class="photoPic" style="background-image: url('/yaneodo/images/member/man_01.png')">
+                         </c:if>
+                         <form method="POST" action= "/yaneodo/member/myyaneodo/photoupload.do" enctype="multipart/form-data">
+                         	<input name="seq" type="hidden" value="${seq}">
+                            <input id="photo" type="hidden" name="photo" value="${photo}">
                             	<div id="cameraIcon"> 
                                     <span class="glyphicon glyphicon-camera" style="margin-top: 5px;"></span>
                                 </div>
                             </div>
                         </label>
-                        
                             <input type="file" id="customerPhoto" style="display: none;">
-                           
+                           </form>
                         <dt id="name">${name}<small>(${nickName})</small></dt>
                         <dd id="eamil">${email}</dd>
                         <dd id="tel">${phone}</dd>
@@ -37,5 +43,5 @@
                 </div>
             </div>
 		<script>
-		$("#photoPic").css("background-image","url('/yaneodo/images/member/"+ $("#photo").val()+"')");
+
 		</script>

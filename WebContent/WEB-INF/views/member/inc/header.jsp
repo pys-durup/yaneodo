@@ -6,7 +6,7 @@
      <div id="headerContainer" style=" z-index:10;">
         <nav id="nav">
             <ul>
-                <li id="logo"><img src="" id="logo">yaneoDO</li>
+                <li id="logo" style="cursor: pointer;" onclick="location.href='/yaneodo/index.do'"><img src="" id="logo">yaneoDO</li>
                 <li><a class="menuLink" href="#">탐색</a></li>
                 <li><a class="menuLink" href="#">직무별연봉</a></li>
                 <li><a class="menuLink" href="/yaneodo/member/resume/resume_list.do">이력서</a></li>
@@ -27,8 +27,18 @@
                 <c:if test="${not empty email}">
 					<li><a class="menuLink2" id="alarm"><img src="">알람</a></li>
 	                <li style="margin-bottom: -10px;"> 
-	                    <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto">
+	                <c:if test="${not empty photo}">
+                            <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/${photo}')">
+                         </c:if>
+                         <c:if test="${empty photo}">
+                            <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/man_01.png')">
+                         </c:if>
+	                    
+	                   
 	                    <input id="headerPhoto" type="hidden" value="${photo}">
+	                    
+	                    
+	                
 	                    </li>
 				</c:if>
                    	 
@@ -80,7 +90,7 @@
         $("#container").css("opacity", ".7");
     });
 
-    $("#myYaneodo-menu").css("background-image","url('/yaneodo/images/member/"+ $("#headerPhoto").val()+"')");
+    //$("#myYaneodo-menu").css("background-image","url('/yaneodo/images/member/"+ $("#headerPhoto").val()+"')");
     
     
     /* 로그인 후 myYaneodo 메뉴 */
