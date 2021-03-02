@@ -43,7 +43,7 @@ public class List extends HttpServlet {
 		String isread = req.getParameter("isread");
 		String job = req.getParameter("job");
 		
-		System.out.println(isread);
+//		System.out.println(isread);
 		
 		if (!(search == null || search.equals(""))) {
 			// 검색중일 때
@@ -100,7 +100,7 @@ public class List extends HttpServlet {
 		// 총 게시물 수 = 274개
 		// 총 페이지수 = 274 / 10 -> 27.4 -> 무조건 올림 28페이지
 		
-		VolunteerDAO dao = new VolunteerDAO();
+		VolunteerDAO dao = new VolunteerDAO(); 
 		
 		totalCount = dao.getTotalCount(map); // 총 게시물 수
 		System.out.println("게시물 수 : " + totalCount);
