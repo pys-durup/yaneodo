@@ -37,6 +37,11 @@ public class MatchupDAO {
 	}
 
 
+	/**
+	 * 달력으로 선택한 날짜에 매치업 현황
+	 * @param date
+	 * @return today
+	 */
 	public String getgaintoday(String date) {
 		
 		String days = date.substring(2,4) +"/"+ date.substring(5,7)+"/"+date.substring(8);
@@ -70,6 +75,11 @@ public class MatchupDAO {
 	}
 
 
+	/**
+	 * 달력으로 선택한 날짜의 어제의 매치업
+	 * @param date
+	 * @return yest
+	 */
 	public String getgainyest(String date) {
 Calendar cal = Calendar.getInstance();
 		
@@ -110,6 +120,11 @@ Calendar cal = Calendar.getInstance();
 	}
 
 
+	/**
+	 * 달력으로 선택한 주의 매치업
+	 * @param date
+	 * @return week
+	 */
 	public String getgainweek(String date) {
 		
 		Calendar cal = Calendar.getInstance();
@@ -152,7 +167,12 @@ Calendar cal = Calendar.getInstance();
 	}
 
 	
-	//Matchup member -> 회원의 매치업정보 가져오기
+	
+	/**
+	 * Matchup member 회원의 매치업정보 가져오기
+	 * @param all
+	 * @return list
+	 */
 	public ArrayList<MatchupDTO> getmemberlist(int all) {
 		
 		try {
@@ -199,7 +219,11 @@ Calendar cal = Calendar.getInstance();
 	}
 
 
-	//member의 수 가져오기
+
+	/**
+	 * member의 수 가져오기
+	 * @return  rs.getInt("cnt")
+	 */
 	public int getcount() {
 		
 		try {
@@ -247,7 +271,11 @@ try {
 	}
 
 
-	//기업회원 매치업 정보 가져오기
+	/**
+	 * 기업회원 매치업 정보 가져오기
+	 * @param all
+	 * @return list
+	 */
 	public ArrayList<MatchupDTO> getcompanylist(int all) {
 		
 		try {

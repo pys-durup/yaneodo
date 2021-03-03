@@ -31,6 +31,11 @@ public class GainDAO {
 		}
 	}
 
+	/**
+	 * 날짜에 따른 상품 판매 상황을 요청하는 메소드
+	 * @param date
+	 * @return dto
+	 */
 	public GainDTO getgainday(String date) {
 
 		//String days = "2021/02/02";
@@ -69,6 +74,11 @@ public class GainDAO {
 	}
 
 
+	/**
+	 * 날짜에 따른 상품 판매 상황을 요청하는 메소드 (주)
+	 * @param date
+	 * @return dto
+	 */
 	public GainDTO getgainweek(String date) {
 		
 		Calendar cal = Calendar.getInstance();
@@ -117,6 +127,11 @@ public class GainDAO {
 	}
 
 
+	/**
+	 * 날짜에 따른 상품 판매 상황을 요청하는 메소드(달)
+	 * @param date
+	 * @return dto
+	 */
 	public GainDTO getgainmonth(String date) {
 Calendar cal = Calendar.getInstance();
 		

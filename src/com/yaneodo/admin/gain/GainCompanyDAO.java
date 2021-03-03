@@ -8,6 +8,8 @@ import java.util.ArrayList;
 
 import com.yaneodo.DBUtil;
 
+
+
 public class GainCompanyDAO {
 
 	private Connection conn;
@@ -30,6 +32,10 @@ public class GainCompanyDAO {
 	}
 
 
+	/**
+	 * 기업 전체 수익 요청하는 메소드
+	 * @return list
+	 */
 	public ArrayList<GainCompanyDTO> getGainCompanys() {
 
 		try {
@@ -71,6 +77,11 @@ public class GainCompanyDAO {
 	}
 
 
+	/**
+	 * 검색한 기업의 수익만 요청하는 메소드
+	 * @param name
+	 * @return list
+	 */
 	public ArrayList<GainCompanyDTO> getGainCompany(String name) {
 		try {
 			

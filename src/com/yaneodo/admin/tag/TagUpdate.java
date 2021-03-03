@@ -8,6 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 태그 이름을 수정하는 서블릿
+ * @author 윤지봉
+ *
+ */
 @WebServlet("/admin/tag/tagupdate.do")
 public class TagUpdate extends HttpServlet {
 

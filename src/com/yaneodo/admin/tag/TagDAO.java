@@ -36,7 +36,11 @@ public class TagDAO {
 
 
 	
-	//tagcategory 서블릿 -> 태그카테고리 종류를 주세요
+	
+	/**
+	 * tagcategory 서블릿  태그카테고리 종류를 주세요
+	 * @return list
+	 */
 	public ArrayList<TagDTO> getlist() {
 		
 		try {
@@ -67,7 +71,14 @@ public class TagDAO {
 	}
 
 	
-	//tagcategoryupdate 서블릿 -> 확인해서 추가 / 수정하기
+	
+	/**
+	 * tagcategoryupdate 서블릿 확인해서 추가 / 수정하기
+	 * @param title
+	 * @param tagseq
+	 * @param add
+	 * @return count
+	 */
 	public int newlist(String title, String tagseq, String add) {
 		
 		try {
@@ -110,7 +121,11 @@ public class TagDAO {
 		return 0;
 	}
 
-	//tag 서블릿 -> 태그 종류를 주세요
+	
+	/**
+	 *  tag 서블릿  태그 종류를 주세요
+	 * @return list
+	 */
 	public ArrayList<TagDTO> gettaglist() {
 			
 		try {
@@ -144,6 +159,13 @@ public class TagDAO {
 	}
 
 
+	/**
+	 * 태그를 추가
+	 * @param ttitle
+	 * @param ctitle
+	 * @param add
+	 * @return count
+	 */
 	public int getnewtaglist(String ttitle, String ctitle, String add) {
 		
 		//ttitle : 태그이름

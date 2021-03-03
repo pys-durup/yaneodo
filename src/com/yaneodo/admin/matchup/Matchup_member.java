@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 일반회원의 매치업 상황을 요청하는 서블릿
+ * @author 윤지봉
+ *
+ */
 @WebServlet("/admin/matchup/matchup_member.do")
 public class Matchup_member extends HttpServlet {
 

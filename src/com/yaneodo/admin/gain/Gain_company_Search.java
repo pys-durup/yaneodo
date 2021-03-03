@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 기업별로 이름 검색으로 수익을 찾는 서블릿
+ * @author 윤지봉
+ *
+ */
 @WebServlet("/admin/gain/gain_company_search.do")
 public class Gain_company_Search extends HttpServlet {
 

@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.yaneodo.admin.gain.GainDAO;
 import com.yaneodo.admin.gain.GainDTO;
 
+/**
+ * 전체 매치업 현황을 요청하는 서블릿 
+ * @author 윤지봉
+ *
+ */
 @WebServlet("/admin/matchup/matchup_main.do")
 public class Matchup_main extends HttpServlet {
 

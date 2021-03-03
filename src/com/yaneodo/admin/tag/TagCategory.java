@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+/**
+ * 태그카테고리를 요청하는 서블릿
+ * @author 윤지봉
+ *
+ */
 @WebServlet("/admin/tag/tagcategory.do")
 public class TagCategory extends HttpServlet {
 

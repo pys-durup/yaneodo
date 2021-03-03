@@ -10,6 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 기업별로 수익 요청하는 서블릿
+ * @author 윤지봉
+ *
+ */
 @WebServlet("/admin/gain/gain_company.do")
 public class Gain_company extends HttpServlet {
 

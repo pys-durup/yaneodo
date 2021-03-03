@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
+/**
+ * 직무 종류를 요청하는 서블릿
+ * @author 윤지봉
+ *
+ */
 @WebServlet("/admin/jobtype/jobtype.do")
 public class Jobtype extends HttpServlet {
 

@@ -10,6 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 태그 이름을 요청하는 서블릿
+ * 
+ * @author 윤지봉
+ *
+ */
 @WebServlet("/admin/tag/tag.do")
 public class Tag extends HttpServlet {
 

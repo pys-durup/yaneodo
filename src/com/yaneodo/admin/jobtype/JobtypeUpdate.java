@@ -9,6 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 직무를 수정하면 처리하는 서블릿
+ * @author 윤지봉
+ *
+ */
 @WebServlet("/admin/jobtype/jobtypeupdate.do")
 public class JobtypeUpdate extends HttpServlet {
 

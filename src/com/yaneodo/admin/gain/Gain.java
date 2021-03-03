@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.yaneodo.admin.matchup.MatchupDAO;
 import com.yaneodo.admin.matchup.MatchupDTO;
 
+/**
+ * 수익 메인 서블릿
+ * @author 윤지봉
+ *
+ */
 @WebServlet("/admin/gain/gain.do")
 public class Gain extends HttpServlet {
 

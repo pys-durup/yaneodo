@@ -37,6 +37,10 @@ public class JobtypeDAO {
 
 	
 	//Jobtype 서블릿 -> 직무 종류를 주세요
+	/**
+	 * 
+	 * @return list
+	 */
 	public ArrayList<JobtypeDTO> getlist() {
 		
 		try {
@@ -68,6 +72,12 @@ public class JobtypeDAO {
 
 	
 	//jobtypeupdate 서블릿 -> 리스트 삭제하고 다시 올리기
+	/**
+	 * @param title
+	 * @param jobseq
+	 * @param add
+	 * @return count
+	 */
 	public int newlist(String title, String jobseq, String add) {
 		
 		try {
