@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- <% pageContext.setAttribute("replaceChar", "\n"); %> --%>	
 
 <!DOCTYPE html>
 <html>
@@ -156,7 +157,7 @@
         .box {
             border: 1px solid #CCC;
             width: 700px;
-            height: 100px;
+            height: auto;
             margin: 20px 0;
             color: #CCC;
         }
@@ -323,6 +324,7 @@
             <div>
                 <div id="description" class="">
                     ${jdto.description}
+                    <%-- ${fn:replace(${jdto.description}, replaceChar, "<br/>")} --%>
                 </div>
            
 
@@ -340,7 +342,9 @@
             </div>
 
             <div>
-                <div id="map" class="box">지도</div>
+                <div id="" class="box">
+                <div id="map" style="width:100%;height:200px;"></div>
+                </div>
             </div>
 
             
@@ -455,6 +459,12 @@
     </div>
 
 
+	<script type="text/javascript"
+      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=950df7fcc5aace4db5b109e8c92b5034&libraries=services"></script>
+
+
+
+
     <script>
 
         $("#apply-btn").click(function() {
@@ -487,12 +497,25 @@
         });
 
 
+        
+        var postLat = 37.499343405328595;
+        var postLng = 127.03321257686713;      
+
+        var container = document.getElementById('map');
+        var options = {
+           center : new kakao.maps.LatLng(postLat, postLng),
+           level : 4
+        };
+
+        var map = new kakao.maps.Map(container, options);
+        var marker1 = new daum.maps.Marker({
+        position: new daum.maps.LatLng(postLat, postLng)
+     });
+
+     marker1.setMap(map);
 
        
     </script>
-
-
-
 
 
     
