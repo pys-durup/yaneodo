@@ -115,16 +115,17 @@
 				type: "GET",
 				url: "/yaneodo/company/main/joincheck.do",
 				data: "email=" + $("#companyEmail").val(),
+				async: false,
 				success: function(result) {
 					//콜백함수
 					if (result != 0) {					
 						$("#result").css("color", "red");
 						$("#result").text("이미 등록된 이메일입니다.");
-						rtn = true;
+						rtn = false;	
 						
 					} else {
-						$("#result").text("사용 가능한 아이디입니다.");
-						rtn = false;
+						//$("#result").text("사용 가능한 이메일입니다.");
+						rtn = true;
 					}
 					
 				},

@@ -175,7 +175,7 @@
 	
 	                   <div>
 	                   		<a href="/yaneodo/jobnotice/view.do?seq=${dto.jobOpeningSeq}">
-	                   		<img src="/yaneodo/images/jobOpening/${dto.photo }" class="companyPic">
+	                   		<img src="/images/cat03.jpg" class="companyPic">
 	                   		</a>
                 		</div>
 	                   

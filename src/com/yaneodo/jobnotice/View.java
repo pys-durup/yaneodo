@@ -46,22 +46,19 @@ public class View extends HttpServlet {
 		
 		
 		
-		
-		
-		
 		//1. 데이터 가져오기(seq) : 공고번호
 		//2. DB 작업 -> select
 		//3. 결과 반환 -> JSP 호출하기 + 전달
 
 
 		//1.
+		String seq = req.getParameter("seq"); 
 		String cseq = (String)session.getAttribute("cseq"); //회원번호
-		String seq = req.getParameter("seq"); //선택한 공고번호
 				
 		
 		//2.
-		JobNoticeDAO jdao = new JobNoticeDAO();
-		JobNoticeDTO jdto = jdao.get(seq); //공고 정보 받아오기
+		JobNoticeDAO dao = new JobNoticeDAO();
+		JobNoticeDTO dto = dao.get(seq);
 
 		MemberDAO mdao = new MemberDAO(); 
 		MemberDTO mdto = mdao.get(cseq); //회원 정보 받아오기
@@ -69,21 +66,20 @@ public class View extends HttpServlet {
 		ResumeDAO rdao = new ResumeDAO();
 		ArrayList<ResumeDTO> rlist = rdao.list(cseq); //이력서목록정보 받아오기
 		
-
 		
-		jdao.close();
+		dao.close();//*****
 		mdao.close();
 		rdao.close();
 
 		
 		//2.1 데이터 조작
 		//개행 문자 출력하기
-		jdto.setDescription(jdto.getDescription().replace("\r\n", "<br>"));
+		dto.setDescription(dto.getDescription().replace("\r\n", "<br>"));
 
 		
 		
 		//3.
-		req.setAttribute("jdto", jdto);
+		req.setAttribute("dto", dto);
 		req.setAttribute("mdto", mdto);
 		req.setAttribute("rlist", rlist);
 

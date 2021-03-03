@@ -1,38 +1,16 @@
-
-
-
-        #tbl #th1 {
-        	width : 100px; 
-        }
-
-        #tbl #th2 {
-        	width : 100px; 
-        }
-
-        #tbl .ths {
-        	width : 110px; 
-        }       
-        
-        #tbl .thm {
-        	width : 130px; 
-        }       
+       
         
 
         #tbl {
-            width: 950px;
+            width: 850px;
             height: 40px;
             text-align: center;
-            margin : 0px auto;
+            margin : 90px auto;
         }
         
         #tbl th, #tbl td { 
             border-bottom: 2px solid #ccc;
             text-align: center;            
-        }
-        
-        #tbl th { 
-            border-top: 2px solid #ccc;
-                        
         }
 
         #tbl tr td:nth-child(2):hover {
@@ -69,14 +47,3 @@
             width: 250px;
             float : right;
         }
-
-          #subframe {
-			width: 950px;
-			height: 1000px;
-			/* border : 1px solid black; */
-			overflow-y: scroll;
-		}
-
-		#subframe::-webkit-scrollbar {
-			display: none;
-		}

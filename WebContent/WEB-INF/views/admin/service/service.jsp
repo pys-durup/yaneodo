@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
-    <link rel="stylesheet" href="/yaneodo/css/admin/admin-service.css?ver=1.1">
+    <link rel="stylesheet" href="/yaneodo/css/admin/admin-service.css">
 
     
 </head>
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </section>
-        <section id="pageAll" style="background-color: transparent; height: 800px;">
+        <section id="pageAll" style="background-color: transparent;">
             <section>
                 <div class="col-sm-12 col sx-12 col-md-12" id="question">
                     <ul class="category-list navigator text-center" id="with-id">
@@ -88,13 +88,5 @@
             </section>
         </section>
     </div>
-    
-    <!-- footer -->
-	<div id="footer">
-	
-		<%@include file="/WEB-INF/views/admin/form/footer.jsp" %>
-	
-	</div>
-	
 </body>
 </html>

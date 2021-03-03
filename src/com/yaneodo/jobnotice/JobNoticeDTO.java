@@ -16,7 +16,6 @@ public class JobNoticeDTO {
 	private String name;
 	private String industry;
 	private String address;
-	private String cphoto;
 	
 	
 	public String getJobOpeningSeq() {
@@ -90,12 +89,6 @@ public class JobNoticeDTO {
 	}
 	public void setAddress(String address) {
 		this.address = address;
-	}
-	public String getCphoto() {
-		return cphoto;
-	}
-	public void setCphoto(String cphoto) {
-		this.cphoto = cphoto;
 	}
 	
 	

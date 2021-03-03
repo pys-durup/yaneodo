@@ -30,7 +30,7 @@
 	
 	
 			<!-- 공통 -->
-			<li><a href="/yaneodo/index.do" class="bmenuLink" id="home">야너도 홈</a></li>
+			<li><a href="/yaneodo/main/index.do" class="bmenuLink" id="home">야너도 홈</a></li>
 			<div style="clear: both;"></div>
 			
 		</ul>

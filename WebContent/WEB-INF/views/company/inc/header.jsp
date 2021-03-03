@@ -7,7 +7,7 @@
         <div id="header">
             <div id="logo">Yaneodo</div>
             <div id="aside">
-                <div class="pic"><img src="/yaneodo/images/company/man_06.png" alt=""></span></div>
+                <div class="pic"><img src="/project/views/image/man_04.png" alt=""></span></div>
                 <div><span>이름</span></div>
                 <div class="mypage">
                     <span class="glyphicon glyphicon-chevron-down" style="padding-top: 10px;"></span>
@@ -43,8 +43,8 @@
 	            <li><a href="/yaneodo/company/volunteer/list.do">지원자</a></li>
 				<li><a href="/yaneodo/company/match/main.do">매치업</a></li>
 				<li><a href="/yaneodo/company/position/list.do">포지션</a></li>
-				<!-- <li><a href="/yaneodo/company/info/view.do">회사정보</a></li> -->
-				<li><a href="/yaneodo/company/account/main.do">계정관리</a></li>
+				<li><a href="/yaneodo/company/info/view.do">회사정보</a></li>
+				<li><a href="/yaneodo/company/account/account.do">계정관리</a></li>
             </ul>
             <div style="clear: both;"></div>
         </div>

@@ -11,8 +11,6 @@ public class ProfileDTO {
 	private String company;
 	private String career;
 	private String introduction;
-	
-	
 	private String isdibs;
 	private String isread;
 	private String ismatch;

@@ -43,15 +43,13 @@ public class Applied_status extends HttpServlet {
 		
 		//페이징
 		int nowPage = 0;		//현재 페이지번호
-		int totalCount = 0;		//전체현황 총 게시물 수 
+		int totalCount = 0;		//총 게시물 수 
 		int pageSize = 10;		//한 페이지 당 출력개수
-		int totalPage = 0;		//전체 현황 총 페이지수
+		int totalPage = 0;		//총 페이지수
 		int begin = 0;			//rnum 시작번호
 		int end = 0;			//rnum 끝번호
-		int n = 0;				//전체 현황 페이지바 관련변수
-		int loop = 0;			//전체 현황 페이지바 관련변수
-		int n2 = 0;				//지원중 페이지바 관련변수
-		int loop2 = 0;			//지원중 페이지바 관련변수
+		int n = 0;				//페이지바 관련변수
+		int loop = 0;			//페이지바 관련변수
 		int blockSize = 10;		//페이지바 관련변수
 		
 		
@@ -104,7 +102,7 @@ public class Applied_status extends HttpServlet {
 				System.out.println(totalCount);
 				
 				totalPage= (int)Math.ceil((double)totalCount/pageSize); //총 페이지 수 
-
+				System.out.println(totalPage);
 				
 				String pagebar ="";
 				
@@ -121,11 +119,10 @@ public class Applied_status extends HttpServlet {
 			
 				
 				loop =1;
-
 				//n=1;
 				
 				n=((nowPage-1)/blockSize) * blockSize +1;
-	
+				
 				
 				//이전 10페이지
 				if(n==1) {
@@ -157,15 +154,13 @@ public class Applied_status extends HttpServlet {
 			         }
 			         if(status == null || status == "") {
 			        	 pagebar += String.format("<a href=\"/yaneodo/member/status/applied_status.do?page=%d\">%d</a></li>",n, n);
-			        
 			         } else {
-			        	 pagebar += String.format("<a href=\"/yaneodo/member/status/applied_status.do?status=%s&page=%d\">%d</a></li>",status,n, n);
-			        	 
+			        	 pagebar += String.format("<a href=\"/yaneodo/member/status/applied_status.do?status=%s&page=%d\">%d</a></li>",status,n, n);	 
 			         }
-			    	 loop++;
-		        	 n++;
-	
-	
+			         
+			         
+			         loop++;
+			         n++;
 			      }
 
 				

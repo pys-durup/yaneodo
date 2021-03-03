@@ -3,10 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 	
      <!-- header -->
-     <div id="headerContainer" style=" z-index:10;">
+     <div id="headerContainer">
         <nav id="nav">
             <ul>
-                <li id="logo" style="cursor: pointer;" onclick="location.href='/yaneodo/index.do'"><img src="" id="logo">yaneoDO</li>
+                <li id="logo"><img src="" id="logo">yaneoDO</li>
                 <li><a class="menuLink" href="#">탐색</a></li>
                 <li><a class="menuLink" href="#">직무별연봉</a></li>
                 <li><a class="menuLink" href="/yaneodo/member/resume/resume_list.do">이력서</a></li>
@@ -15,31 +15,20 @@
                 <li><a class="menuLink" href="#">커뮤니티</a></li>
                 
                 <!-- <li><span class="menuLink2 glyphicon glyphicon-search" id="search"></span></li> -->
-                <li><button type="button" class="searchButton"><span class="glyphicon glyphicon-search"></span></button></li>
+                <li><button type="button" class="searchButton" id="search"><span class="glyphicon glyphicon-search"></span></button></li>
                 
                 
                 <!-- 로그인 전 -->
                 <c:if test="${empty email}">
                 	<li><a class="menuLink2" id="login">로그인/회원가입</a></li>
          		</c:if>
-         		
+
+
                 <!-- 로그인 후 -->
                 <c:if test="${not empty email}">
 					<li><a class="menuLink2" id="alarm"><img src="">알람</a></li>
 	                <li style="margin-bottom: -10px;"> 
-	                <c:if test="${not empty photo}">
-                            <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/${photo}')">
-                         </c:if>
-                         <c:if test="${empty photo}">
-                            <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/man_06.png')">
-                         </c:if>
-	                    
-	                   
-	                    <input id="headerPhoto" type="hidden" value="${photo}">
-	                    
-	                    
-	                
-	                    </li>
+	                    <input id="myYaneodo-menu" type="button" class="searchButton headerPhoto" style="background-image: url('/yaneodo/images/member/man_01.png')"></li>
 				</c:if>
                    	 
                 <!-- 공통 -->
@@ -78,7 +67,8 @@
     
 
     <script>
- 
+    
+    
 	/* 로그인/회원가입 버튼 클릭 */
     $("#login").click(function() {
         $("#clogin").show();
@@ -90,7 +80,7 @@
         $("#container").css("opacity", ".7");
     });
 
-    //$("#myYaneodo-menu").css("background-image","url('/yaneodo/images/member/"+ $("#headerPhoto").val()+"')");
+    
     
     
     /* 로그인 후 myYaneodo 메뉴 */
@@ -120,13 +110,47 @@
     });
  
 
-    
     $(window).click(function(){
         $("#myMenu-container").hide();
          $("#myYaneodo-menu").removeClass("borderLine");
          flag=false;
         
     });
+    
+    
+    
+	/* 검색창 */
+    $(function(){
+        $(document).mousedown(function( e ){
+            if( $("#searchBox1").is(":visible") ) {
+                $("#searchBox1").each(function(){
+                    var l_position = $(this).offset();
+                    l_position.right = parseInt(l_position.left) + ($(this).width());
+                    l_position.bottom = parseInt(l_position.top) + parseInt($(this).height());
+
+                    if( ( l_position.left <= e.pageX && e.pageX <= l_position.right )
+                        && ( l_position.top <= e.pageY && e.pageY <= l_position.bottom ) ) {
+                    } else {
+                        $(this).hide();
+                    }
+                });
+
+            $("#container").css("opacity", "1");
+            
+            }
+        });
+        
+        $("#search").click(function(){
+            if( !$("#searchBox1").is(":visible") ) {
+                $("#searchBox1").show();
+
+                $("#container").css("opacity", ".7");
+            }
+        });
+    });
+    
+    
+    
 
     </script>
 

@@ -44,7 +44,7 @@
 
         /* 버튼류 */
         
-        #side-btns button, #apply-menu input[type="button"], #apply-menu input[type="submit"] {
+        #side-btns button, #apply-menu input[type="button"] {
             width: 100%;
             margin-bottom: 10px;
             font-size:16px;
@@ -235,32 +235,21 @@
             height: 60px;
             border-radius: 10px;
             margin-bottom: 10px;
+        }
+
+        .apply-file>input[type="checkbox"] {
+            
+            width: 30px;
+            float:left;
+            margin-top: 10px;
+            margin-right: 20px;
+           
+        }
+
+        
+        .apply-file {
             padding: 10px 0;
             color: #AAA;
-        }
-
-/*         .apply-file>input[type="checkbox"] {
-            
-            width: 30px;
-            float:left;
-            margin-top: 10px;
-            margin-right: 20px;
-
-        } */
-        
-        .apply-file input[type="radio"] {
-            
-            width: 30px;
-            float:left;
-            margin-top: 10px;
-            margin-right: 20px;
-            cursor: pointer;
-        }
-
-        .apply-file label {
-
-            width: 270px;
-            font-weight: normal;
         }
 
         #resume-name {
@@ -297,15 +286,15 @@
         <div id="jobOpening">
 
             <div id="company-photo">
-                <img class="img-thumbnail" src="/yaneodo/images/jobOpening/${jdto.photo }" style="width:700px; height:500px;">
+                <img class="img-thumbnail" src="${dto.photo }" style="width:700px; height:500px;">
             </div>
 
             <div style="margin-bottom: 30px;">
-                <h2 style="margin-bottom: 10px;">${jdto.job}</h2>
-                <h4 style="margin-bottom: 10px;"> <a href="/yaneodo/jobnotice/company/view.do?seq=${jdto.companySeq}"> ${jdto.name }</a></h4>
+                <h2 style="margin-bottom: 10px;">${dto.job}</h2>
+                <h4 style="margin-bottom: 10px;"> <a href="/yaneodo/jobnotice/company/view.do?seq=${dto.companySeq}"> ${dto.name }</a></h4>
                 
                 <div id="company-location">
-                    <h6>${jdto.place }</h6>
+                    <h6>${dto.place }</h6>
                 </div>
 
       
@@ -322,7 +311,7 @@
 
             <div>
                 <div id="description" class="">
-                    ${jdto.description}
+                    ${dto.description}
                 </div>
            
 
@@ -332,11 +321,11 @@
 
             <div>
                 <span class="form-subtitle">마감일</span>
-                <span class="form-content">${jdto.endDate }</span>
+                <span class="form-content">${dto.endDate }</span>
             </div>
             <div>
                 <span class="form-subtitle">근무지역</span>
-                <span class="form-content">${jdto.address}</span>
+                <span class="form-content">${dto.address}</span>
             </div>
 
             <div>
@@ -345,10 +334,10 @@
 
             
             <div id="company-info">
-                <a href="/yaneodo/jobnotice/company/view.do?seq=${jdto.companySeq}">
-                <div><img src="/yaneodo/images/company/${jdto.cphoto }" style="width:50px; height:50px;"></div>
-                <div>${jdto.name }</div>
-                <div>${jdto.industry }</div>
+                <a href="/yaneodo/jobnotice/company/view.do?seq=${dto.companySeq}">
+                <div><img src="img/nopic.png" style="width:50px; height:50px;"></div>
+                <div>${dto.name }</div>
+                <div>${dto.industry }</div>
                 </a>
             </div>
            
@@ -383,11 +372,8 @@
         </div>
 
 
-
-		
         <div id="apply-menu" class="right-aside">
-		<form method="POST" action="/yaneodo/jobnotice/applyok.do?">
-		
+
             <div id="apply-title">
                 <span>지원하기</span>
                 <input type="button" value="뒤로" id="apply-back" class="btn">
@@ -417,14 +403,14 @@
 				<c:forEach items="${rlist}" var="rdto">
 				
                 <div class="apply-file">
-                   	<label>
-                   		<input type="radio" name="resume" value=${rdto.resumeSeq }>
-                    	<div id="resume-name">${rdto.orgfileName }</div>
-                    	<div id="resume-regdate">${rdto.editDate } 작성완료</div>
-                   	</label>
+                    <input type="checkbox">
+                    <div id="resume-name">${rdto.orgfileName }</div>
+                    <div id="resume-regdate">${rdto.editDate } 작성완료</div>
                 </div>
                 
     	 		</c:forEach>
+
+          
 
 
                 <div id="btn-container">
@@ -437,17 +423,14 @@
                 
             </div>
 
-			 <%-- <input type="hidden" name="customerSeq" value="${mdto.customerSeq }"> --%>
-			 <input type="hidden" name="jobOpeningSeq" value="${jdto.jobOpeningSeq}">
-			
-            <input type="submit" class="btn btn-primary" value="제출하기">
-	
-		</form>
+
+            <input type="button" class="btn btn-primary" value="제출하기">
+
+
         </div>
-		
 
         <%-- </c:if> --%>
-		
+
             
         <div style="clear: both;"></div> 
 

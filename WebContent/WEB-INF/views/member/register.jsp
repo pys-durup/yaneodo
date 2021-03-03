@@ -12,8 +12,7 @@
 <%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
 
 <link rel="stylesheet" href="/yaneodo/css/member/register.css">
-<link rel="stylesheet" href="/yaneodo/css/member/header.css">
-<link rel="stylesheet" href="/yaneodo/css/member/footer.css">
+<link rel="stylesheet" href="/yaneodo/css/member/mainheader.css">
 
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
@@ -22,6 +21,9 @@
 <script
 	src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
 
+<script>
+
+</script>
 
 
 <style>
@@ -51,6 +53,7 @@
 			<label for="email">이메일</label> <input type="email"
 				class="form-control" id="email" name="email"
 				placeholder="이메일을 입력해주세요." required>
+			<span id="result" style="color: red;"></span>
 		</div>
 
 		<div class="box">
@@ -130,7 +133,7 @@
 
 		var now = new Date();
 		curYear = now.getFullYear();
-
+		
 		for (var i = curYear - 60; i <= curYear; i++) {
 			var op = new Option();
 			op.value = i;
@@ -185,10 +188,15 @@
 		}
 		
 		
+		
+		
+		
+		let rtn = false;	
+		
 		/* 입력한 정보 유효성 검사 */
 		$("#form1").submit(function(evt) {
 			
-			var name = $("#name").val().trim();
+			var name = $("#name").val().trim();		
 			
 			//이름, 닉네임 길이 확인
 			if (name.length < 2 || name.length > 5) {
@@ -215,7 +223,7 @@
 				return false;
 			}
 
-			
+
 			//휴대폰 번호
 			if ($("#phone").val().trim().replace(/-/gi, "").length > 11) {
 				alert("휴대폰 번호는 '-' 제외 11자 이내로 입력해주세요.");
@@ -239,7 +247,7 @@
 				return false;
 			}
 			
-			console.log($("#agree").prop('checked'));
+			//console.log($("#agree").prop('checked'));
 			
 			if (!$("#agree").prop('checked')) {
 				alert("개인정보 수집 및 이용에 동의해주세요.");
@@ -247,7 +255,46 @@
 				return false;
 			}
 
+			//console.log(rtn);
+			
+			//이메일 중복 검사
+			$.ajax({
+				type: "GET",
+				url: "/yaneodo/member/registercheck.do",
+				data: "email=" + $("#email").val(),
+				async: false,
+				success: function(result) {
+					//콜백함수
+					if (result != 0) {					
+						$("#result").css("color", "red");
+						$("#result").text("이미 등록된 이메일입니다.");
+						rtn = false;	
+						//console.log(rtn);
+					} else {
+						//$("#result").text("사용 가능한 이메일입니다.");
+						rtn = true;
+						//console.log(rtn);
+					}
+					
+				},
+				error: function(a,b,c) {
+					console.log(a,b,c)
+				}
+			});
+			
+ 			//console.log(rtn);
+			
+			if (!rtn) {
+				evt.preventDefault();
+				return false;
+			}
+			
+			
+			
+			
 		});
+		
+
 
 		
 	</script>
