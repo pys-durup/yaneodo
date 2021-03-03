@@ -134,10 +134,10 @@
 		<div id="theme">
 			<div class="title">
 				테마별 채용
-				<div class="arrowsSm">
+<!-- 				<div class="arrowsSm">
 					<span class="glyphicon glyphicon-menu-left"></span> <span
 						class="glyphicon glyphicon-menu-right"></span>
-				</div>
+				</div> -->
 			</div>
 			<div class="details">
 				<div>
