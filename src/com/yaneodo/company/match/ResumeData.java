@@ -233,7 +233,7 @@ public class ResumeData extends HttpServlet {
 						+ "                                            <div><span class='glyphicon glyphicon-file'></span><span> %s</span></div>\r\n"
 						+ "                                        </div>\r\n"
 						+ "                                    </div>\r\n" + "                                </div>",
-						dto.getUrl(), dto.getPfile());
+						dto.getUrl());
 			}
 		}
 		// ========================================================================================================
