@@ -58,7 +58,7 @@ html>body {
 
 #content {
     float: left;
-    max-width: 800px;
+    width: 800px;
     min-height: 700px;
     line-height: 50px;
     background-color: #FFFFFF;
