@@ -23,7 +23,7 @@
 	</div>
 	<div style="clear:both;"></div>
     
-    <div id="pageAll" style="height: 2200px;">
+    <div id="pageAll" style="height: 1300px;">
     
     	<%@include file="/WEB-INF/views/admin/inc/sidemenu.jsp" %>
 

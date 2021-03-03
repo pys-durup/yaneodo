@@ -27,14 +27,12 @@
                         <div class="panel-body sname" onclick="location.href='/yaneodo/admin/member/memberlist.do'">
                             일반회원 목록
                         </div>
-                        <!--
                         <div class="panel-body sname">
                             일반회원 휴면
                         </div>
                         <div class="panel-body sname">
                             일반회원 탈퇴
                         </div>
-                        -->
                     </div>
                 
                 </div>
@@ -56,14 +54,12 @@
                         <div class="panel-body sname" onclick="location.href='/yaneodo/admin/company/companylist.do'">
                             기업회원 목록
                         </div>
-                        <!--
                         <div class="panel-body sname">
                             기업회원 휴면
                         </div>
                         <div class="panel-body sname">
                             기업회원 탈퇴
                         </div>
-                        -->
                     </div>
                 </div>
         

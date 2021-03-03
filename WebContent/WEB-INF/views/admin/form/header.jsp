@@ -19,7 +19,7 @@
                 <li><a class="menuLink" id="alarm"><img src="">알람</a></li>
                 <li><a class="menuLink" id="photo"><img src="">사진</a></li>
                 <li><a class="menuLink" id="bservice">기업서비스</a></li>
-                <li><a class="menuLink" id="qservice" onclick="location.href='/yaneodo/admin/member/memberlist.do?'">관리자 서비스</a></li>             
+                <li><a class="menuLink" id="mservice" onclick="location.href='/yaneodo/admin/member/memberlist.do?'">관리자서비스</a></li>   
                 <div style="clear: both;"></div>              
             </ul>
             

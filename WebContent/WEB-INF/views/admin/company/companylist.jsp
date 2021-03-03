@@ -54,7 +54,7 @@
                             	<td class="profile"><img src="/yaneodo/images/admin/company.png" alt="기본" style="width: 200px;"></td>
                             </c:if>
                             <c:if test="${!empty dto.companyPhoto}">
-                            	<td class="profile"><img src="/yaneodo/images/company/${dto.companyPhoto}" alt="${dto.companyPhoto}" style="width: 200px; height: 150px"></td>
+                            	<td class="profile"><img src="/yaneodo/images/admin/${dto.companyPhoto}" alt="${dto.companyPhoto}" style="width: 200px;"></td>
                             </c:if>
                             <td class="business-name">${dto.companyName}</td>
                             <td class="business-tel">${dto.regNum}</td>

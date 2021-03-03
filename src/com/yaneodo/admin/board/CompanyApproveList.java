@@ -52,7 +52,7 @@ public class CompanyApproveList extends HttpServlet {
 		
 		ArrayList<CompanyDTO> list = dao.list(map);
 		
-		totalCount = dao.getTotalCountApprove(map);
+		totalCount = dao.getTotalCount(map);
 		
 		totalPage = (int)Math.ceil((double)totalCount / pageSize);
 		
