@@ -40,7 +40,7 @@ public class SearchDAO {
 		
 		try {
 					
-			String sql = String.format("select companySeq, companyName, industry, companyPhoto from vwSearch where companyName like '%%%s%%'", searchKey);
+			String sql = String.format("select companySeq, companyName, industry, companyPhoto from vwSearch where companyName like '%%%s%%' or title like '%%%s%%' or job like '%%%s%%'", searchKey, searchKey, searchKey);
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);

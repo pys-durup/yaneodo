@@ -59,9 +59,9 @@
 				<c:if test="${reclist.jobphoto.toLowerCase().endsWith('jpg') || reclist.jobphoto.toLowerCase().endsWith('gif') || reclist.jobphoto.toLowerCase().endsWith('png') }">
 				<c:forEach items="${reclist}" var="reclist" varStatus="status">
 					<div class="details">
-						<div>
+						<a href="/yaneodo/jobnotice/view.do?seq=${newlist.jobOpeningSeq}">
 							<img src="/yaneodo/images/jobopening/${reclist.jobPhoto}" class="companyPic">
-						</div>
+						</a>
 						<div class="desc">${reclist.job}</div>
 						<div class="desc sm">${reclist.companyName}</div>
 					</div>
@@ -83,9 +83,9 @@
 					<c:if test="${newlist.jobPhoto.toLowerCase().endsWith('jpg') || newlist.jobPhoto.toLowerCase().endsWith('gif') || newlist.jobPhoto.toLowerCase().endsWith('png') }">			
 						<div class="details">
 						
-							<div>
+							<a href="/yaneodo/jobnotice/view.do?seq=${newlist.jobOpeningSeq}">
 								<img src="/yaneodo/images/jobopening/${newlist.jobPhoto}" class="companyPic">
-							</div>
+							</a>
 							<div class="desc">${newlist.job}</div>
 							<div class="desc sm">${newlist.companyName}</div>
 
@@ -114,9 +114,9 @@
 				<c:if test="${newlist.jobPhoto.toLowerCase().endsWith('jpg') || newlist.jobPhoto.toLowerCase().endsWith('gif') || newlist.jobPhoto.toLowerCase().endsWith('png') }">			
 					<div class="details">
 					
-						<div>
+						<a href="/yaneodo/jobnotice/view.do?seq=${newlist.jobOpeningSeq}">
 							<img src="/yaneodo/images/jobopening/${newlist.jobPhoto}" class="companyPic">
-						</div>
+						</a>
 						<div class="desc">${newlist.job}</div>
 						<div class="desc sm">${newlist.companyName}</div>
 

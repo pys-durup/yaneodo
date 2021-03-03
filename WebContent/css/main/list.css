@@ -49,6 +49,11 @@
 	margin: 20px;
 }
 
+#companyList .clist {
+	margin-right: 5px;
+	margin-bottom: px;
+}
+
 #companyList .clist #desc {
 	font-size: 18px;
 	float: left;

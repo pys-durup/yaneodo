@@ -28,6 +28,12 @@ public class List extends HttpServlet {
 		  //position 검색 -> 직무 리스트 
 		  ArrayList<SearchDTO> jlist = dao.jlist(searchKey);
 		  
+		  for (SearchDTO dto: jlist) {
+			  if (dto.getPlace().length() > 15) {
+				  dto.setPlace(dto.getPlace().substring(0,  15) + "..");
+			  }
+		  }
+		  
 		  req.setAttribute("searchKey", searchKey);	  
 		  req.setAttribute("clist", clist); //companySeq, companyName, industry, companyPhoto
 		  req.setAttribute("jlist", jlist); //jobOpeningSeq, companyName, title, job, place, jobPhoto

@@ -42,21 +42,28 @@
             <c:forEach items="${clist}" var="clist" varStatus="status">
             	<c:if test="${clist.companyPhoto.toLowerCase().endsWith('jpg') || clist.companyPhoto.toLowerCase().endsWith('gif') || clist.companyPhoto.toLowerCase().endsWith('png') }">
 	                <li class="clist">
-	                    <div>
+	                    <div class="">
 	                        <img src="/yaneodo/images/company/${clist.companyPhoto}" style="float: left;" class="ppic">
 	                        <div id=desc style="float:left; height:100px;">
 	                        	<h2>${clist.companyName}</h2>
 	                        	<h3>${clist.industry}</h3>
 	                        </div>
+	                        
+	                        
 	                    </div>
 	                </li>
 	                
-	                <c:if test="${status.index + 1 % 2 == 0}">           
+	                <c:if test="${(status.index+1) % 2 == 0}">           
 	                		<div style="clear: both;"></div>
 					</c:if>
- 
-               	</c:if>
+
+					</c:if>
             </c:forEach>
+            
+            	   <c:if test="${clist.size() % 2 == 1}">           
+	                		<div style="clear: both;"></div>
+					</c:if>
+            
 
 			</ul>
 			
@@ -78,13 +85,19 @@
 				 	<c:if test="${jlist.jobPhoto.toLowerCase().endsWith('jpg') || jlist.jobPhoto.toLowerCase().endsWith('gif') || jlist.jobPhoto.toLowerCase().endsWith('png') }">
 						
 		                <li class="plist" style="float: left;">
-		                    <div><img src="/yaneodo/images/company/jobOpening/${jlist.jobPhoto}" class="ppic"></div>
+		                	
+		                    <div>
+		                    <a href="/yaneodo/jobnotice/view.do?seq=${jlist.jobOpeningSeq}">
+		                    <img src="/yaneodo/images/jobopening/${jlist.jobPhoto}" class="ppic">
+		                    </a>
+		                    </div>
 		                    <div class="desc">${jlist.job}</div>
 		                    <div class="desc sm">${jlist.companyName}</div>
-		                    <div class="desc sm">${jlist.place}</div>
+			                <div class="desc sm">${jlist.place}</div>
+
 		                </li>
 		                
-		                <c:if test="${status.index + 1 % 4 == 0}">           
+		                <c:if test="${(status.index+1) % 4 == 0}">           
 	                		<div style="clear: both;"></div>
 
 						</c:if>

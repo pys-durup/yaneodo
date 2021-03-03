@@ -26,7 +26,10 @@ public class LoginOk extends HttpServlet {
 		dto.setPassword(password);
 		
 		int result = dao.login(dto);
-		//System.out.println(result);
+		
+		System.out.println(email);
+		System.out.println(password);
+		System.out.println(result);
 		
 		//결과 처리
 		if (result == 1) {
@@ -41,7 +44,7 @@ public class LoginOk extends HttpServlet {
 			session.setAttribute("cmseq", rdto.getCompanyMemberSeq());
 			session.setAttribute("cmstate", rdto.getState());
 			
-			//System.out.println(rdto.getState());
+			System.out.println(rdto.getState());
 			
 			
 			//승인 여부에 따라 페이지 분기
