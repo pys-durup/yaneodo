@@ -78,12 +78,12 @@ public class CompanyDAO {
 		return null;
 	}
 	
-	//MemberList 서블릿 > 멤버 리스트 개수 구하기
+	//CompanyList 서블릿 > 기업 리스트 개수 구하기
 	public int getTotalCount(HashMap<String, String> map) {
 		
 		try {
 			
-			String sql = "select count(*) as cnt from tblCustomer";
+			String sql = "select count(*) as cnt from tblCompany where state = 1";
 			
 			stat = conn.createStatement();
 			rs = stat.executeQuery(sql);
@@ -100,6 +100,27 @@ public class CompanyDAO {
 		
 		return 0;
 		
+	}
+	
+	public int getTotalCountApprove(HashMap<String, String> map) {
+
+		try {
+			
+			String sql = "select count(*) as cnt from tblCompany where state = 0";
+			
+			stat = conn.createStatement();
+			rs = stat.executeQuery(sql);
+			
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
+		} catch (Exception e) {
+			System.out.println("CompanyDAO.getTotalCount()");
+			e.printStackTrace();
+		}
+		
+		return 0;
 	}
 
 	public CompanyDTO company(String seq) {

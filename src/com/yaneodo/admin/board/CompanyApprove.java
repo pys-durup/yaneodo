@@ -29,10 +29,6 @@ public class CompanyApprove extends HttpServlet {
 		CompanyDAO dao = new CompanyDAO();
 		CompanyDTO companydto = dao.company(seq);
 		
-			
-		companydto.setEstablishment(companydto.getEstablishment().substring(0, 10));
-		
-		
 		dao.close();
 		
 		//3. 결과 반환

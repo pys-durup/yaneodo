@@ -30,8 +30,6 @@ public class Company extends HttpServlet {
 		CompanyDTO companydto = dao.company(seq);
 		ArrayList<CompanyDTO> jobopeningList = dao.jobOpening(seq);
 		
-		companydto.setEstablishment(companydto.getEstablishment().substring(0, 10));
-		
 		for (CompanyDTO jobopeningdto : jobopeningList) {
 			
 			//날짜에서 시간 잘라내기

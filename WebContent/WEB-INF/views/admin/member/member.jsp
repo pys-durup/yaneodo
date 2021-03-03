@@ -28,10 +28,10 @@
         <section id="contents" style="height: 1500px;">
             <div id="subtitle">회원 정보</div>
             <div id="member">
-            	<c:if test="${memberdto.photo eq 'null'}">
+            	<c:if test="${memberdto.photo eq null}">
                 	<div><img src="/yaneodo/images/admin/user.png" alt="기본" style="width: 80px; height: 80px;"></div>
                 </c:if>
-                <c:if test="${memberdto.photo ne 'null'}">
+                <c:if test="${memberdto.photo ne null}">
                 	<div><img src="/yaneodo/images/admin/${dto.photo}" alt="${dto.photo}"></div>
                 </c:if>
                 

@@ -20,7 +20,7 @@
 	</div>
 	<div style="clear:both;"></div>
     
-    <div id="pageAll">
+    <div id="pageAll" style="height: 1300px;">
 		<div class="aperture"></div>
         <div class="container">
             <div class="col-md-9 col-sm-9 col-xs-12" style="float: left;">
