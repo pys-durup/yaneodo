@@ -14,6 +14,7 @@
 .modal-body .row {
 	margin-top: 30px;
 }
+
 #search-reasult .glyphicon-star .glyphicon-star-empty {
 	color: blue;
 	font-size: 15px;
@@ -439,12 +440,15 @@
 	<script>
     
 	
+
+
     // modal 창 조작
     $(document).ready(function() {
         $("#btnReading").click(function() {
             $('#modalResumePreview').modal('hide');
             $('#modalReading').modal('hide');
         });
+
         $("#btnInterview").click(function() {
             $('#modalResumeDetail').modal('hide');
         });
@@ -460,6 +464,8 @@
    		  //alert(this);
    		  this.addClass("side-list-item-selected");
    		});
+
+
     });
     /*
     let pseq = $('#btnresumedetail');
@@ -473,6 +479,7 @@
  
     //이력서 미리보기 Modal
     $('#modalResumePreview').on('show.bs.modal', function(e) {
+
         //get data-id attribute of the clicked element
         pseq = $(e.relatedTarget).data('profileseq');
         rseq = $(e.relatedTarget).data('resumeseq');
@@ -601,6 +608,7 @@
         	}
         })
         
+
     	
     });
     

@@ -24,7 +24,7 @@ public class CodingTestQuestion extends HttpServlet {
 			
 		
 
-		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/codingtest/codingtestquestiontest.jsp");
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/admin/codingtest/codingtestquestion.jsp");
 		dispatcher.forward(req, resp);
 	}
 }

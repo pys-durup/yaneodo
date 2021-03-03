@@ -16,7 +16,7 @@ public class AbroadDelete extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String seq = req.getParameter("abseq");
+		String seq = req.getParameter("seq");
 		String rseq = req.getParameter("rseq");
 		ResumeDAO dao = new ResumeDAO();
 		

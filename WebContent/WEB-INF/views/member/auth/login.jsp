@@ -43,35 +43,16 @@
 			
 			
 			<div>
-				<input type="submit" id="btn1" value="로그인">
+				<input type="submit" id="btn1" value="로그인" class="form-control">
 			</div>			
+			<div id="subTitle">계정이 없으신가요? 
+                <a href="/yaneodo/member/register.do" id="" style="text-decoration: none; cursor: pointer;">회원가입 하러가기</a>
+			</div>
+			
+			
 		</div>
 	</form>
 	</c:if>
-
-	<!-- 비밀번호 입력 -->
-	
-<%-- 	<c:if test="${not empty email}">
-	<form method="POST" action="/yaneodo/member/loginok.do" enctype="multipart/form-data" id="form2">
-		<div id="cpassword">
-			<div class="logo">
-				yaneoDO
-				<div class="glyphicon glyphicon-remove" id="cpasswordClose"
-					style="color: gray; float: left;"></div>
-				<div style="clear: both;"></div>
-			</div>
-			<div class="subtitle">비밀번호</div>
-			<div class="inputbox">
-				<input type="password" id="password" name="password"
-					placeholder="비밀번호를 입력해주세요." required>
-			</div>
-			<div>
-				<input type="submit" id="btn2" value="로그인">
-			</div>
-		</div>
-	</form>
-	</c:if> --%>
-	
 	
 	<!-- 로그인 끝 -->
 
@@ -81,16 +62,10 @@
     /* 로그인 창, 검색창 숨기기 */
     $(document).ready(function() {
         $("#clogin").hide();
-        $("#cpassword").hide();
         $("#searchBox1").hide();
     });
 
     $("#emailClose").click(function() {
-        $("#clogin").hide();
-        $("#container").css("opacity", "1");
-    });
-
-    $("#cpasswordClose").click(function() {
         $("#clogin").hide();
         $("#container").css("opacity", "1");
     });

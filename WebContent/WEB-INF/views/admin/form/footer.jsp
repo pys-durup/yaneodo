@@ -15,7 +15,7 @@
                     <li><span id="logo">yaneoDO</span></li>
                     <li class="notice">이용약관</li>
                     <li class="notice">개인정보 처리방침</li>
-                    <li class="notice" onclick="location.href='/yaneodo/admin/service/service.do'">고객센터</li>
+                    <li class="notice">고객센터</li>
                 </ul>
                 <select id="right">
                     <option>한국 (한국어)</option>

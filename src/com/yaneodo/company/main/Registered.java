@@ -19,7 +19,7 @@ public class Registered extends HttpServlet {
 		HttpSession session = req.getSession();
 		
 		String cmseq = (String)session.getAttribute("cmseq");
-		//System.out.println(session.getAttribute("cmseq"));
+		System.out.println(session.getAttribute("cmseq"));
 		
 		CompanyDAO dao = new CompanyDAO();	
 		CompanyDTO dto = dao.getCompany(cmseq);

@@ -24,18 +24,14 @@ public class JoinCheck extends HttpServlet {
 		
 		//1.
 		String email = req.getParameter("email");
-		
-		
-		
-		
+
 		//2.
+		//System.out.println(email);
 		
-		System.out.println(email);
-		
-		CompanyDAO dao = new CompanyDAO();
+		CmemberDAO dao = new CmemberDAO();
 		int result = dao.checkId(email);
 		
-		System.out.println(result);
+		//System.out.println(result);
 		
 		
 		//3. 

@@ -99,7 +99,7 @@
         
         <div id="btns">
             <form action="">
-                <input type="button" id="next" name="next" value="돌아가기" class="btn btn-primary" onclick="location.href='/yaneodo/admin/codingtest/codingtestadd.do';">
+                <input type="button" id="next" name="next" value="돌아가기" class="btn btn-primary" onclick="location.href='project_admin_codingtest_add.html';">
                 <input type="button" id="regist" name="regist" value="등록하기" class="btn btn-primary"onclick="location.href='project_admin_codingtest.html';">
             </form>
 

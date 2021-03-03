@@ -32,30 +32,7 @@ public class CompanyDAO {
 	}
 	
 	
-	//companyJoin servlet -> 아이디 중복검사 요청
-	public int checkId(String email) {
-		
-		try {
-			
-			String sql = "select count(*) as cnt from tblCompanyMember where email = ?";
-			
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, email);
-			rs = pstat.executeQuery();
-			
-			if (rs.next()) {
-				return rs.getInt("cnt");
-			}
-			
-			
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		
-		return 0;
-	}
-	
-	
+
 	
 	//company register servlet
 	public int add(CompanyDTO dto) {

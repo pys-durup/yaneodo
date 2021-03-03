@@ -13,7 +13,6 @@ import javax.servlet.http.HttpSession;
 
 import com.yaneodo.member.MemberDAO;
 import com.yaneodo.member.MemberDTO;
-import com.yaneodo.member.status.StatusDAO;
 
 
 @WebServlet("/member/myyaneodo/customer_edit.do")
@@ -27,15 +26,6 @@ public class Customer_edit extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		MemberDTO dto = dao.getInfo((String)session.getAttribute("seq"));
 
-		String seq = (String)session.getAttribute("seq");
-		StatusDAO dao2 = new StatusDAO();
-		int match = dao2.matchCount(seq);
-		int read = dao2.readCount(seq);
-		int want = dao2.wantedCount(seq);
-		
-		req.setAttribute("match", match);
-		req.setAttribute("read", read);
-		req.setAttribute("want", want);
 		
 		req.setAttribute("dto", dto);
 		

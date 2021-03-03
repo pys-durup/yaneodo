@@ -54,7 +54,7 @@ public class Customer_editOk extends HttpServlet {
 			
 			resp.setCharacterEncoding("UTF-8");
 			PrintWriter writer=resp.getWriter();
-			writer.print("<html><head><meta charset='utf-8'></head><body>");
+			writer.print("<html><head><meta charset='utf-8'></head>body>");
 			writer.print("<script>");
 			writer.print("alert('수정에 실패하였습니다.');");
 			writer.print("history.back();");

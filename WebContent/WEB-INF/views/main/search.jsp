@@ -9,6 +9,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insert title here</title>
 
+<%@include file="/WEB-INF/views/member/inc/asset.jsp"%>
+
 <style>
 </style>
 </head>
@@ -16,13 +18,11 @@
 
 	<!-- 검색 시작 -->
 
-	<form action="">
+	<form method="GET" action="/yaneodo/main/list.do" id="searchForm">
 		<div id="searchBox1" style="display: none;">
 			<div id="searchBox2">
-				<span class="glyphicon glyphicon-search" id="searchCon"
-					style="outline: none";></span> <input type="text"
-					class="form-control" id="searchKey" name="searchKey"
-					placeholder="#태그, 회사, 포지션 검색">
+				<span class="glyphicon glyphicon-search" id="searchCon" style="outline: none;"></span> 
+				<input type="text" class="form-control" id="searchKey" name="searchKey" placeholder="#태그, 회사, 포지션 검색">
 			</div>
 
 
@@ -42,6 +42,11 @@
 
 	<script>
 
+	
+	
+	
+	
+	
 	</script>
 </body>
 </html>

@@ -1,81 +1,93 @@
+/* 로그인 */
 #clogin {
-    border: 1px solid gray;
-    border-radius: 5px;
-    background-color: white;
-    width: 410px;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    padding-bottom: 15px;
-    z-index: 2;
-
+	border: 1px solid gray;
+	border-radius: 5px;
+	background-color: white;
+	width: 410px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	padding-bottom: 30px;
+	z-index: 100;
 }
 
-/* #cpassword {
-    height: 280px;
-} */
 
+.logo {
+	color: blueviolet;
+	font-weight: bold;
+	margin-right: 50px;
+	font-size: 1.2em;
+	position: relative;
+	left: 0px;
+	top: 0px;
+}
 
 #clogin div {
-    margin: 5px 10px;
-    padding: 5px 10px;
+	margin: 5px 10px;
+	padding: 5px 10px;
 }
 
 #clogin .logo {
-    font-size: 16px;
-    text-align: center;
-    margin: 15px 0px;
-    padding: 5px 10px;
+	font-size: 16px;
+	text-align: center;
+	margin: 15px 0px;
+	padding: 5px 10px;
 }
 
 #clogin #title {
-    font-size: 20px;
-    text-align: center;
-    margin: 15px 0px 25px 0px;
-    padding: 5px 10px;
+	font-size: 20px;
+	text-align: center;
+	margin: 15px 0px 25px 0px;
+	padding: 5px 10px;
 }
 
 #clogin .subtitle {
-    text-align: left;
-    margin: 0px 15px;
-    transform: translate(0px, 10px);
+	/* border: 1px solid red; */
+	text-align: left;
+	margin: 0px 15px;
+	transform: translate(0px, 10px);
 }
-
-/* #cpassword .subtitle {
-    margin-top: 40px;
-} */
 
 #emailClose {
-    position: absolute;
-    right: 10px;
+	position: absolute;
+	right: 10px;
 }
 
-#email, #password {
-    width: 360px;
-    padding: 10px 10px;
-    outline: none;
+#clogin #email {
+	width: 360px;
+	padding: 10px 10px;
+	outline: none;
 }
 
 #clogin #btn1 {
-    border: 1px solid rgb(216, 216, 216);
-    border-radius: 30px;
-    width: 350px;
-    background-color: rgb(230, 230, 230);
-    font-size: 15px;
-    margin: 10px 0px 25px 0px;
-    padding: 5px 30px;
-    outline: none;
+	border: 1px solid rgb(216, 216, 216);
+	border-radius: 5px;
+	width: 467px;
+	width: 368px;
+	height: 40px;
+	background-color: rgb(204, 204, 204);
+	font-size: 15px;
+	text-align: center;
+	margin: 15px 0px 0px 0px;
+	padding: 5px 10px;
+	outline: none;
 }
 
 #clogin button:hover {
-    background-color: rgb(187, 187, 187);
+    background-color: rgb(218, 218, 218);
 }
 
 
 #clogin .btnClose {
-    position: absolute;
-    right: 15px;
-    top: 5px;
-    cursor: pointer;
+	position: absolute;
+	right: 15px;
+	top: 5px;
+	cursor: pointer;
 }
+
+#clogin #subTitle {
+	text-align: center;
+}
+
+

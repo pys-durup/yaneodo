@@ -48,10 +48,10 @@
                     </div>
 
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/company/companyapprovelist.do'">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/business/businesslist.do'">
                             기업회원 승인관리
                         </div>
-                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/company/companylist.do'">
+                        <div class="panel-body sname">
                             기업회원 목록
                         </div>
                         <div class="panel-body sname">
@@ -63,7 +63,7 @@
                     </div>
                 </div>
         
-        		<!-- 
+        
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingThree">
                         <h4 class="panel-title">
@@ -74,18 +74,17 @@
                     </div>
 
                     <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/service/servicelist.do'">
+                        <div class="panel-body sname">
                             고객센터 답변
                         </div>
                     </div>
                 </div>
-                -->
         
                 <div class="panel panel-default">
                     <div class="panel-heading" role="tab" id="headingNine">
                         <h4 class="panel-title">
                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                                커뮤니티
+                                게시판
                             </a>
                         </h4>
                     </div>
@@ -111,9 +110,9 @@
                     </div>
 
                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-                       <!--  <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_main.do';">
+                        <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_main.do';">
               메인
-            </div> -->
+            </div>
                         <div class="panel-body sname" onclick="location.href='/yaneodo/admin/matchup/matchup_company.do';">
                             기업 회원별
                         </div>

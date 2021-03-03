@@ -24,12 +24,8 @@
 }
 
 #section-body .thumbnail img {
-    width: 315px;
+    width: 350px;
     height: 250px;
-}
-
-#section-body .thumbnail .caption {
-	border-top: 1px solid #ccc;
 }
 
 #section-body .thumbnail p {

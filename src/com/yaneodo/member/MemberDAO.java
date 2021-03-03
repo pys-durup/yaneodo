@@ -168,6 +168,74 @@ public class MemberDAO {
 	}
 
 
+	
+	//프로필 View -> 회원 프로필정보 반환
+	public MemberDTO getProfile(String seq) {
+		
+		try {
+			
+			String sql = "select * from vwProfile where customerSeq = ?";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+			
+			rs = pstat.executeQuery();
+			
+			
+			if(rs.next()) {
+				
+				MemberDTO dto = new MemberDTO();
+				
+				dto.setProfileSeq(rs.getString("profileSeq"));
+				dto.setResumeSeq(rs.getString("resumeSeq"));
+				dto.setJobSeq(rs.getString("jobSeq"));
+				dto.setIsWorkSeq(rs.getString("isWorkSeq"));
+				dto.setSchool(rs.getString("school"));
+				dto.setMajor(rs.getString("major"));
+				dto.setCompany(rs.getString("company"));
+				dto.setCareer(rs.getString("career"));
+				
+				//회원번호, 회원이름
+				dto.setCustomerSeq(rs.getNString("customerSeq"));
+				dto.setName(rs.getNString("customerName"));
+				
+			
+	
+				return dto;
+			}
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+		return null;
+	}
+
+
+	// 프로필 EditOk -> 프로필수정
+	public int editProfile(MemberDTO dto) {
+		
+		try {
+			
+			String sql = "update tblProfile p set school = ?, major = ?, company = ?"
+					+ "  where (select r.customerSeq from tblResume r where p.resumeSeq = r.resumeSeq) = ?"; //이력서번호로 회원번호찾아야함
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getSchool());
+			pstat.setString(2, dto.getMajor());
+			pstat.setString(3, dto.getCompany());
+			pstat.setString(4, dto.getCustomerSeq()); //회원번호
+			
+			
+			return pstat.executeUpdate();
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		} 
+	
+		return 0;
+	}
+	
 
 
 	
@@ -205,7 +273,7 @@ public class MemberDAO {
 		
 		try {
 			
-			String sql = "select * from tblCustomer where email = ?";
+			String sql = "select customerSeq, email, name, nickName, lastJoin from tblCustomer where email = ?";
 			
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, email);
@@ -217,12 +285,9 @@ public class MemberDAO {
 				
 				dto.setCustomerSeq(rs.getString("customerSeq"));
 				dto.setEmail(rs.getString("email"));
-				dto.setPhoto(rs.getString("photo"));
-				dto.setName(rs.getString("name"));
-				dto.setPhone(rs.getString("phone"));
+				dto.setPhoto(rs.getString("name"));
 				dto.setNickName(rs.getString("nickName"));
 				dto.setLastJoin(rs.getString("lastJoin"));
-				dto.setPassword(rs.getString("password"));
 				
 				return dto;
 			}
@@ -265,87 +330,32 @@ public class MemberDAO {
 	}
 
 
-	/***
-	 * 비밀번호 수정 
-	 * @author 혜승
-	 * @param dto
-	 * @return
-	 */
-	public int checkPW(MemberDTO dto) {
+	//register servlet -> 아이디 중복검사 요청
+	public int checkId(String email) {
+		
 		try {
 			
-			String sql ="update tblCustomer set password=? where customerseq=? and password=?";
+			String sql = "select count(*) as cnt from tblCustomer where email = ?";
 			
 			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, dto.getNewpw());
-			pstat.setString(2, dto.getCustomerSeq());
-			pstat.setString(3, dto.getPassword());
+			pstat.setString(1, email);
+			rs = pstat.executeQuery();
 			
-			return pstat.executeUpdate();
-
+			if (rs.next()) {
+				return rs.getInt("cnt");
+			}
+			
 			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
+		
 		return 0;
 	}
-
-
-/***
- * 회원탈퇴
- * @author 혜승
- * @param seq
- * @return
- */
-	public int delaccount(String seq) {
-		
-		try {
-			
-			String sql = "update tblCustomer set photo='', name='', nickname='', email='', phone='', birth='', gender='',password='', joindate='', lastjoin='' where customerseq=?";
-			
-			pstat = conn.prepareStatement(sql);
-			pstat.setString(1, seq);
-				
-			return pstat.executeUpdate();
-			
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-		return 0;
+	
 	}
 
 
-/***
- * 회원사진올리기
- * @author 혜승
- * @param dto
- * @param seq
- * @return
- */
-public int photoEdit(MemberDTO dto) {
-	try {
-		
-		String sql = "update tblcustomer set photo =? where customerseq = ?";
-		
-		pstat= conn.prepareStatement(sql);
-		pstat.setString(1, dto.getPhoto());
-		pstat.setString(2, dto.getCustomerSeq());
-		
-		return pstat.executeUpdate();
-		
-		
-	} catch (Exception e) {
-		System.out.println(e);
-	}
-	return 0;
-}
-
-
-
-	
-	
-	
-}
 
 
 

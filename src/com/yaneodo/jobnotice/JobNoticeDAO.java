@@ -71,7 +71,7 @@ public class JobNoticeDAO {
 				dto.setStartDate(rs.getString("startDate"));
 				dto.setEndDate(rs.getString("endDate"));
 				dto.setJob(rs.getString("job"));
-				dto.setPlace(rs.getString("place").substring(0, 5));
+				dto.setPlace(rs.getString("place"));
 				dto.setDescription(rs.getString("description"));
 				dto.setPhoto(rs.getString("photo"));
 				
@@ -124,8 +124,6 @@ public class JobNoticeDAO {
 				dto.setName(rs.getString("name"));
 				dto.setIndustry(rs.getString("industry"));
 				dto.setAddress(rs.getString("address"));
-				dto.setCphoto(rs.getString("cphoto"));
-				
 				
 				return dto;
 			}

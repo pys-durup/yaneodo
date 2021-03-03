@@ -30,22 +30,20 @@ public class EditOk extends HttpServlet {
 		//1.
 		req.setCharacterEncoding("UTF-8");
 		
-		String customerSeq = req.getParameter("customerSeq"); //수정할 회원번호
 		String school = req.getParameter("school");
 		String major = req.getParameter("major");
 		String company = req.getParameter("company");
-		String introduction = req.getParameter("introduction");
+		String customerSeq = req.getParameter("customerSeq"); //수정할 회원번호
 		
 		
 		//2.
-		ProfileDAO dao = new ProfileDAO();
+		MemberDAO dao = new MemberDAO();
 		MemberDTO dto = new MemberDTO();
 		
 		dto.setSchool(school);
 		dto.setMajor(major);
 		dto.setCompany(company);
 		dto.setCustomerSeq(customerSeq);
-		dto.setIntroduction(introduction);
 		
 		
 		int result = dao.editProfile(dto); //프로필수정하기

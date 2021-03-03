@@ -8,9 +8,9 @@
 <title>Insert title here</title>
 
 <%@include file="/WEB-INF/views/admin/inc/asset.jsp" %>
-
     <link rel="stylesheet" href="/yaneodo/css/admin/admin-member.css">
 
+    
 </head>
 <body>
 	<!-- header -->

@@ -16,7 +16,7 @@ public class TrainingDelete extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-		String seq = req.getParameter("trseq");
+		String seq = req.getParameter("seq");
 		String rseq = req.getParameter("rseq");
 		ResumeDAO dao = new ResumeDAO();
 		
