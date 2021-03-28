@@ -4,7 +4,7 @@
 <table>
     <tr>
         <th>프로젝트명</th>
-        <th>Yaneodor</th>
+        <th>Yaneodo</th>
         <th>개발 기간</th>
         <th>2021.01.28 ~ 2021.03.02</th>
     </tr>
@@ -63,15 +63,36 @@
 
 ### 기업에 지원한 지원자 목록 확인 & 면접 제안
 ---
+<p float="left">
+  <img src="images/volunteer_1.png" width="49%"/>
+  <img src="images/volunteer_2.png" width="49%"/>
+</p>
 
 ### 모집공고별 지원자 목록 확인 & 이력서 보기
 ---
+<p float="left">
+  <img src="images/volunteer_4.png" width="49%"/>
+  <img src="images/volunteer_3.png" width="49%"/>
+</p>
 
 ### 야너두 모든 회원 프로필 & 이력서 미리보기
 ---
+<p float="left">
+  <img src="images/matchup_1.PNG" width="49%"/>
+  <img src="images/matchup_2.PNG" width="49%"/>
+</p>
 
 ### 열람권 사용하여 이력서 상세보기 & 면접 제안하기
 ---
+<p float="left">
+  <img src="images/matchup_2.PNG" width="49%"/>
+  <img src="images/matchup_3.PNG" width="49%"/>
+</p>
+
+<p float="left">
+  <img src="images/matchup_4.PNG" width="49%"/>
+  <img src="images/matchup_5.PNG" width="49%"/>
+</p>
 
 ### 모집공고 등록
 ---
@@ -88,3 +109,7 @@
 ### 모집공고 삭제
 ---
 <img src="images/position_del.gif" />
+
+
+## 후기
+---
