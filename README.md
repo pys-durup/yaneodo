@@ -1,4 +1,4 @@
-# JSP&Servlet로 만든 개발자 구인구직 사이트
+# [JSP&Servlet] 개발자 전용 구인구직 사이트
 
 ## 개발환경
 <table>
@@ -24,7 +24,7 @@
         <th>개발도구</th>
         <th>Eclipse JEE, VSCode, sqlDeveloper</th>
         <th>사용기술</th>
-        <th> Apache, Oracle </th>
+        <th> Apache, Oracle, JSP&Servlet </th>
     </tr>
     <tr>
         <th>개발 인원</th>
